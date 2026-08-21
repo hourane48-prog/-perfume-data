@@ -1,0 +1,12 @@
+{
+  "Luzi - Ombre Nomade": {
+    "maturation": 60,
+    "heat": "بارد",
+    "special": "يُخلط الزيت مع المعززات ببطء، ثم يُضاف الكحول على ثلاث دفعات."
+  },
+  "Luzi - Baccarat Rouge 540": {
+    "maturation": 30,
+    "heat": "غرفة",
+    "special": "يحتاج إلى رجّ مستمر في أول 48 ساعة."
+  }
+}
