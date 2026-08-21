@@ -1,4 +1,4 @@
-// perfumes_data.js
+// perfumes_data.js الجديد والمعدل
 async function loadPerfumesData() {
     try {
         const response = await fetch('https://hourane48-prog.github.io/-perfume-data/Perfumes_list.txt');
@@ -8,26 +8,36 @@ async function loadPerfumesData() {
         
         if (!window.perfumeDB) window.perfumeDB = {};
 
-        lines.forEach(line => {
-            const match = line.match(/(.+?)[\s\-:]+(\d+\.?\d*)/);
-            if (match && match[1] && match[2]) {
-                const name = match[1].trim();
-                const priceUSD = parseFloat(match[2]);
-                if (!window.perfumeDB[name] && priceUSD > 0) {
-                    window.perfumeDB[name] = {
-                        priceUSD: priceUSD,
-                        priceJOD: +(priceUSD * 0.71).toFixed(2),
-                        family: "luxury",
-                        color: "gold"
-                    };
-                    added++;
+        // هذه الحلقة تقرأ سطرين سطرين (سطر للاسم، وسطر للسعر)
+        for (let i = 0; i < lines.length - 1; i += 2) {
+            let nameLine = lines[i].trim();
+            let priceLine = lines[i+1] ? lines[i+1].trim() : "";
+
+            // التحقق إذا كان هناك اسم وسعر
+            if (nameLine && priceLine.includes("سعر:")) {
+                // استخراج الرقم من جملة "سعر: 297.81"
+                const priceMatch = priceLine.match(/سعر:\s*(\d+\.?\d*)/);
+                
+                if (priceMatch) {
+                    const priceAED = parseFloat(priceMatch[1]);
+                    const name = "Luzi - " + nameLine;
+
+                    if (!window.perfumeDB[name] && priceAED > 0) {
+                        window.perfumeDB[name] = {
+                            pricePerKgAED: priceAED,
+                            priceJOD: +(priceAED * 0.71).toFixed(2), // التحويل للدينار
+                            family: "luxury",
+                            color: "gold"
+                        };
+                        added++;
+                    }
                 }
             }
-        });
+        }
         
         if (typeof populateDatalist === 'function') populateDatalist();
-        alert(`✅ تم تحميل ${added} عطر بنجاح وتحديث الأسعار بالدينار الأردني!`);
+        alert(`✅ تم تحميل ${added} عطر بنجاح!`);
     } catch (err) {
-        alert("فشل التحميل: " + err.message);
+        alert("فشل تحميل البيانات: " + err.message);
     }
 }
