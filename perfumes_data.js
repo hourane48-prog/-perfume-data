@@ -1,85 +1,61 @@
-// perfumes_data.js - الإصدار المحسّن النهائي مع استدعاء تلقائي
+// perfumes_data.js - إصدار مخصص لتنسيق "سطر اسم ثم سطر سعر"
 async function loadPerfumesData() {
     try {
-        const baseUrls = [
-            'https://hourane48-prog.github.io/-perfume-data',
-            'https://raw.githubusercontent.com/hourane48-prog/-perfume-data/main'
-        ];
+        // جلب ملف القائمة
+        const response = await fetch('https://raw.githubusercontent.com/hourane48-prog/-perfume-data/main/Perfumes_list.txt');
+        const text = await response.text();
+        const lines = text.split('\n').map(l => l.trim()).filter(l => l);
 
-        let listText = null;
-        for (let base of baseUrls) {
-            try {
-                const resp = await fetch(`${base}/Perfumes_list.txt`);
-                if (resp.ok) {
-                    listText = await resp.text();
-                    break;
-                }
-            } catch(e) {}
-        }
-        if (!listText) throw new Error("تعذر تحميل قائمة العطور من أي مصدر.");
-
-        const lines = listText.split('\n').map(l => l.trim()).filter(l => l);
         if (!window.perfumeDB) window.perfumeDB = {};
         let added = 0;
 
-        for (let line of lines) {
-            if (!/\d/.test(line)) continue;
-            let parts = null;
-            if (line.includes(' - ')) {
-                parts = line.split(' - ');
-            } else {
-                const match = line.match(/^(.+?)\s+(\d+\.?\d*)\s*$/);
-                if (match) parts = [match[1].trim(), match[2].trim()];
-            }
-            if (parts && parts.length >= 2) {
-                const name = parts[0].trim();
-                const price = parseFloat(parts[1].replace(/[^0-9.]/g, ''));
-                if (name && price > 0) {
-                    const key = "Luzi - " + name;
-                    if (!window.perfumeDB[key]) {
-                        window.perfumeDB[key] = {
-                            pricePerKgAED: price,
-                            priceJOD: +(price * 0.71).toFixed(2),
-                            family: "luxury",
-                            color: "gold"
-                        };
-                        added++;
-                    }
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            if (line.includes('السعر:')) {
+                // استخراج السعر: نبحث عن أول رقم بعد "السعر:"
+                const priceMatch = line.match(/السعر:\s*(\d+\.?\d*)/);
+                if (!priceMatch) continue;
+                const priceAED = parseFloat(priceMatch[1]);
+
+                // السطر السابق هو اسم العطر
+                let nameLine = lines[i - 1] ? lines[i - 1].trim() : '';
+                if (!nameLine) continue;
+
+                // تنظيف الاسم: إزالة "عطر" من البداية، إزالة الأقواس و"(الكود:...)"
+                let name = nameLine
+                    .replace(/^عطر\s+/, '')                  // إزالة "عطر" في البداية
+                    .replace(/\s*\(الكود:.*?\)\s*/g, '')    // إزالة "(الكود: ...)"
+                    .replace(/\s*\([^)]*\)\s*$/g, '')        // إزالة الأقواس في النهاية
+                    .replace(/\s*-\s*/g, ' - ')              // توحيد الشرطات
+                    .trim();
+
+                if (!name) name = nameLine;
+
+                const key = "Luzi - " + name;
+                if (priceAED > 0 && !window.perfumeDB[key]) {
+                    window.perfumeDB[key] = {
+                        pricePerKgAED: priceAED,
+                        priceJOD: +(priceAED * 0.71).toFixed(2),
+                        family: "luxury",
+                        color: "gold"
+                    };
+                    added++;
                 }
             }
         }
 
-        if (added === 0) {
-            for (let i = 0; i < lines.length - 1; i += 2) {
-                const nameLine = lines[i].trim();
-                const priceLine = lines[i+1] ? lines[i+1].trim() : "";
-                const priceMatch = priceLine.match(/سعر:\s*(\d+\.?\d*)/);
-                if (nameLine && priceMatch) {
-                    const price = parseFloat(priceMatch[1]);
-                    const key = "Luzi - " + nameLine;
-                    if (!window.perfumeDB[key] && price > 0) {
-                        window.perfumeDB[key] = {
-                            pricePerKgAED: price,
-                            priceJOD: +(price * 0.71).toFixed(2),
-                            family: "luxury",
-                            color: "gold"
-                        };
-                        added++;
-                    }
-                }
-            }
-        }
-
+        // تحميل طرق التصنيع الخاصة
         try {
-            const profResp = await fetch(`${baseUrls[0]}/perfume_profiles.json`);
-            if (profResp.ok) {
-                const profiles = await profResp.json();
-                window.perfumeProfiles = profiles;
+            const respProfiles = await fetch('https://raw.githubusercontent.com/hourane48-prog/-perfume-data/main/perfume_profiles.json');
+            if (respProfiles.ok) {
+                window.perfumeProfiles = await respProfiles.json();
             }
         } catch(e) {}
 
+        // حقن لوحة المبيعات
         injectDashboard();
 
+        // تحديث قائمة الاقتراحات
         if (typeof populateDatalist === 'function') populateDatalist();
 
         alert(`✅ تم تحميل ${added} عطر جديد بنجاح!`);
@@ -134,5 +110,5 @@ function injectDashboard() {
     updateDashboardUI();
 }
 
-// استدعاء الدالة فوراً بعد التحميل
+// استدعاء الدالة فورًا
 loadPerfumesData();
