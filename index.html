@@ -652,6 +652,7 @@ function renderCustomerCatalog(items) {
     `).join('');
 }
 
+
 function filterCustomerCatalog() {
     var rawQ = document.getElementById('shamerSearchInput').value.toLowerCase().trim();
 
@@ -669,7 +670,6 @@ function filterCustomerCatalog() {
     });
     renderCustomerCatalog(filtered);
 }
-
 
 function addProduct() {
     const name = document.getElementById('prodName').value.trim();
