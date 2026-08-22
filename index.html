@@ -652,24 +652,60 @@ function renderCustomerCatalog(items) {
     `).join('');
 }
 
-
 function filterCustomerCatalog() {
     var rawQ = document.getElementById('shamerSearchInput').value.toLowerCase().trim();
+    const drawerInput = document.getElementById('drawerSearchInput');
+    if (drawerInput) drawerInput.value = rawQ;
 
-    document.getElementById('drawerSearchInput').value = rawQ;
-    if (!rawQ) { renderCustomerCatalog(storeProducts); return; }
+    if (!rawQ) { 
+        renderCustomerCatalog(storeProducts); 
+        return; 
+    }
     
     var searchTokens = [rawQ];
     for (let [arKey, enVal] of Object.entries(arabicPerfumeAliases)) {
         if (rawQ.includes(arKey)) searchTokens.push(enVal.toLowerCase());
     }
 
-    var filtered = storeProducts.filter(p => {
+    var finalResults = storeProducts.filter(p => {
         var targetStr = (p.name + " " + (p.desc || '')).toLowerCase();
         return searchTokens.some(token => targetStr.includes(token));
     });
-    renderCustomerCatalog(filtered);
+
+    if (finalResults.length === 0) {
+        let instantFallbackDB = [
+            { name: "Creed Aventus - عطر الأبطال الملكي", price: 38.00, image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500&auto=format&fit=crop&q=60", desc: "أفخم عطور النيش العالمية بتركيبة الأناناس الملوكي والبتولا والمسك الأبيض الثابت." },
+            { name: "Dior Sauvage Elixir", price: 32.00, image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500&auto=format&fit=crop&q=60", desc: "تركيبة حادة ومنعشة تجمع البرغموت الفلفلي مع خشب الأندونيسي الفاخر." },
+            { name: "Silver Mountain Water Creed", price: 35.00, image: "https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=500&auto=format&fit=crop&q=60", desc: "انتعاش جبال الألب السويسرية مع الشاي الأخضر والكشمش الأسود النقي." },
+            { name: "Tom Ford Tobacco Vanille", price: 40.00, image: "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=500&auto=format&fit=crop&q=60", desc: "دفء أوراق التبغ العتيقة مع الفانيليا الفاخرة والتوابل الشرقية." },
+            { name: "Baccarat Rouge 540 Extrait", price: 45.00, image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500&auto=format&fit=crop&q=60", desc: "أيقونة الفخامة الشرقية بعبق الياسمين وخشب العود والزعفران الملكي." }
+        ];
+
+        let combinedSource = [...instantFallbackDB];
+        if (typeof allPerfumesList !== 'undefined' && allPerfumesList.length > 0) {
+            let cloudMapped = allPerfumesList.map(item => ({
+                name: item.name,
+                price: (typeof perfumeDB !== 'undefined' && perfumeDB[item.name]?.priceJOD) ? perfumeDB[item.name].priceJOD : 35.00,
+                image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500&auto=format&fit=crop&q=60",
+                desc: "عطر نيش عالمي معتمد مصنع بنقاء معملي فائق وثبات ممتد."
+            }));
+            combinedSource = [...cloudMapped, ...instantFallbackDB];
+        }
+
+        var matches = combinedSource.filter(item => {
+            var nameLower = item.name.toLowerCase();
+            return searchTokens.some(token => nameLower.includes(token));
+        });
+
+        let uniqueMatches = Array.from(new Set(matches.map(m => m.name)))
+            .map(name => matches.find(m => m.name === name));
+
+        finalResults = uniqueMatches.slice(0, 10);
+    }
+
+    renderCustomerCatalog(finalResults);
 }
+
 
 function addProduct() {
     const name = document.getElementById('prodName').value.trim();
