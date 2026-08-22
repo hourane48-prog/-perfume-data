@@ -1,4 +1,4 @@
-// perfumes_data.js المحدث بنظام اللوحة العائمة الثابتة
+// perfumes_data.js المحدث للحقن المباشر داخل مركز التحديث
 async function loadPerfumesData() {
     try {
         // 1. جلب قائمة العطور والأسعار
@@ -53,34 +53,51 @@ async function loadPerfumesData() {
             };
         };
 
-        // 4. حقن لوحة التحكم بنظام ثابت وعائم (Floating) يظهر دائماً على الشاشة
-        let existingDashboard = document.getElementById('myFixedDashboard');
-        if (!existingDashboard) {
-            const div = document.createElement('div');
-            div.id = 'myFixedDashboard';
-            div.style.cssText = "position: fixed; bottom: 15px; left: 10px; right: 10px; z-index: 999999; background: rgba(20, 20, 20, 0.95); color: #fff; padding: 12px; border-radius: 12px; border: 2px solid #d4af37; box-shadow: 0 5px 20px rgba(0,0,0,0.9); font-family: Tahoma, sans-serif;";
+        // 4. حقن لوحة التحكم مباشرة داخل صندوق "مركز التحديث" الظاهر على شاشتك
+        let targetContainer = null;
+        const allDivs = document.querySelectorAll('div, section, form');
+        for (let div of allDivs) {
+            if (div.innerText && div.innerText.includes('مركز التحديث')) {
+                targetContainer = div;
+                break;
+            }
+        }
+
+        // إذا لم يتم العثور على القسم، سنبحث عن زر جلب التحديث ونحقن اللوحة تحته
+        if (!targetContainer) {
+            const buttons = document.querySelectorAll('button');
+            for (let btn of buttons) {
+                if (btn.innerText && btn.innerText.includes('جلب التحديث')) {
+                    targetContainer = btn.parentElement;
+                    break;
+                }
+            }
+        }
+
+        let existingDashboard = document.getElementById('injectedDashboard');
+        if (!existingDashboard && targetContainer) {
+            const dashboardDiv = document.createElement('div');
+            dashboardDiv.id = 'injectedDashboard';
+            dashboardDiv.style.cssText = "background: #1a1a1a; color: #fff; padding: 12px; border-radius: 8px; margin: 10px 0; border: 2px solid #d4af37; font-family: Tahoma, sans-serif;";
             
-            div.innerHTML = `
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                    <h3 style="margin: 0; color: #d4af37; font-size: 14px;">📊 لوحة المبيعات (أطياب)</h3>
-                    <button onclick="document.getElementById('myFixedDashboard').style.display='none'" style="background:none; border:none; color:#aaa; font-size:16px; cursor:pointer;">✕ إخفاء</button>
-                </div>
+            dashboardDiv.innerHTML = `
+                <h3 style="margin: 0 0 8px 0; color: #d4af37; font-size: 14px; text-align: center;">📊 لوحة المبيعات (أطياب)</h3>
                 <div style="display: flex; justify-content: space-between; gap: 6px; margin-bottom: 8px;">
                     <div style="background: #2a2a2a; padding: 8px; border-radius: 6px; width: 48%; text-align: center;">
                         <span style="font-size: 10px; color: #aaa;">إجمالي المبيعات</span>
-                        <div id="totalSales" style="font-size: 14px; font-weight: bold; color: #d4af37;">0.00 د.أ</div>
+                        <div id="totalSales" style="font-size: 13px; font-weight: bold; color: #d4af37;">0.00 د.أ</div>
                     </div>
                     <div style="background: #2a2a2a; padding: 8px; border-radius: 6px; width: 48%; text-align: center;">
                         <span style="font-size: 10px; color: #aaa;">عدد الطلبات</span>
-                        <div id="totalOrders" style="font-size: 14px; font-weight: bold; color: #4CAF50;">0</div>
+                        <div id="totalOrders" style="font-size: 13px; font-weight: bold; color: #4CAF50;">0</div>
                     </div>
                 </div>
                 <button onclick="resetDashboard()" style="background: #d9534f; color: white; border: none; padding: 5px; border-radius: 4px; font-size: 10px; cursor: pointer; width: 100%;">تصفير الإحصائيات</button>
             `;
-            document.body.appendChild(div);
+            targetContainer.appendChild(dashboardDiv);
         }
 
-        // الدوال المسؤولة عن الحسابات
+        // دوال الحسابات
         window.recordSale = function(perfumeName, priceJOD, quantity) {
             let salesData = JSON.parse(localStorage.getItem('perfumeSales')) || [];
             salesData.push({ name: perfumeName, price: priceJOD, qty: quantity, total: (priceJOD * quantity).toFixed(2) });
@@ -109,7 +126,7 @@ async function loadPerfumesData() {
         updateDashboardUI();
 
         if (typeof populateDatalist === 'function') populateDatalist();
-        alert(`✅ تم تحديث العطور والوصفات وتثبيت لوحة التحكم بنجاح!`);
+        alert(`✅ تم التحديث بنجاح، وظهرت لوحة التحكم في مركز التحديث!`);
     } catch (err) {
         alert("فشل التحميل: " + err.message);
     }
