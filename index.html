@@ -172,9 +172,10 @@ th { background-color: #242424; color: var(--primary); }
         </div>
 
         <div class="box" style="margin-bottom:15px;">
-            <form onsubmit="event.preventDefault(); return false;">
-    <input type="text" id="shamerSearchInput" placeholder="ابحث عن اسم العطر بالعربية أو الإنجليزية..." autocomplete="off">
+            <form onsubmit="event.preventDefault(); filterCustomerCatalog(); return false;">
+    <input type="text" id="shamerSearchInput" oninput="filterCustomerCatalog()" placeholder="ابحث عن اسم العطر بالعربية أو الإنجليزية..." autocomplete="off">
 </form>
+
 
         </div>
         <div id="customerProductGrid" class="product-grid"></div>
