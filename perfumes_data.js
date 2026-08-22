@@ -139,4 +139,7 @@ function injectDashboard() {
         }
     };
     updateDashboardUI();
+    
 }
+// استدعاء الدالة فوراً بعد التحمي
+loadPerfumesData();
