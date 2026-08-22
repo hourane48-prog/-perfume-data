@@ -1,0 +1,51 @@
+{
+  "Iso E Super": {
+    "pubchem_cid": 5365886,
+    "cas": "54464-57-2",
+    "mw": "234.38 g/mol",
+    "formula": "C16H26O",
+    "source": "PubChem NCBI / Zenodo"
+  },
+  "Hedione": {
+    "pubchem_cid": 94212,
+    "cas": "24851-98-7",
+    "mw": "226.31 g/mol",
+    "formula": "C13H22O3",
+    "source": "PubChem NCBI / Zenodo"
+  },
+  "Ambroxan": {
+    "pubchem_cid": 638011,
+    "cas": "6790-58-5",
+    "mw": "236.39 g/mol",
+    "formula": "C16H28O",
+    "source": "PubChem NCBI / Zenodo"
+  },
+  "Galaxolide": {
+    "pubchem_cid": 91457,
+    "cas": "1222-05-5",
+    "mw": "258.40 g/mol",
+    "formula": "C18H26O",
+    "source": "PubChem NCBI / Zenodo"
+  },
+  "Cyclomethicone D5": {
+    "pubchem_cid": 10913,
+    "cas": "541-02-6",
+    "mw": "370.77 g/mol",
+    "formula": "C10H30O5Si5",
+    "source": "PubChem NCBI / Zenodo"
+  },
+  "DPG": {
+    "pubchem_cid": 20275,
+    "cas": "25265-71-8",
+    "mw": "134.17 g/mol",
+    "formula": "C6H14O3",
+    "source": "PubChem NCBI / Zenodo"
+  },
+  "BHT": {
+    "pubchem_cid": 31404,
+    "cas": "128-37-0",
+    "mw": "220.35 g/mol",
+    "formula": "C15H24O",
+    "source": "PubChem NCBI / Zenodo"
+  }
+}
