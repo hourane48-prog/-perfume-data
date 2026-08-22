@@ -52,25 +52,122 @@ th { background-color: #242424; color: var(--primary); }
 .store-card-desc { font-size: 12px; color: #aaa; line-height: 1.5; margin-bottom: 10px; }
 .store-card-price { font-size: 18px; font-weight: bold; color: #4cff6e; margin-bottom: 10px; }
 .btn-order { background: linear-gradient(135deg, #25d366, #128c7e); border: none; color: #fff; font-weight: bold; padding: 10px; border-radius: 6px; cursor: pointer; text-decoration: none; text-align: center; display: block; }
-.admin-lock-btn { position: fixed; bottom: 15px; left: 15px; background: rgba(30,30,30,0.8); border: 1px solid #444; color: #888; border-radius: 50%; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; z-index: 1000; }
 .step-badge { background: #d4af37; color: #000; font-weight: bold; padding: 2px 7px; border-radius: 4px; font-size: 12px; margin-left: 5px; }
 .color-input-group { text-align: center; flex: 1; }
 .color-input-group label { font-size: 11px; margin-bottom: 2px; display: block; color: #bbb; }
+
+/* Top Navbar & Side Drawer */
+.top-navbar {
+    position: sticky; top: 0; z-index: 990;
+    background: rgba(9, 9, 11, 0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212,175,55,0.25);
+    padding: 12px 18px; display: flex; align-items: center; justify-content: space-between;
+}
+.navbar-brand { font-size: 19px; font-weight: 700; color: var(--primary); letter-spacing: 2px; cursor: pointer; user-select: none; }
+.navbar-menu-btn { background: none; border: none; color: var(--primary); font-size: 26px; cursor: pointer; padding: 0; width: auto; margin: 0; line-height: 1; }
+
+.drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 1000; display: none; opacity: 0; transition: 0.3s ease; }
+.drawer-overlay.active { display: block; opacity: 1; }
+.side-drawer {
+    position: fixed; top: 0; bottom: 0; width: 300px; max-width: 85%;
+    background: #111114; z-index: 1001; border-inline-start: 1px solid rgba(212,175,55,0.25);
+    padding: 24px 20px; display: flex; flex-direction: column; gap: 20px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 30px rgba(0,0,0,0.9);
+}
+body[dir="rtl"] .side-drawer { right: 0; transform: translateX(100%); }
+body[dir="ltr"] .side-drawer { left: 0; transform: translateX(-100%); }
+body[dir="rtl"] .side-drawer.open, body[dir="ltr"] .side-drawer.open { transform: translateX(0); }
+
+.drawer-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 12px; }
+.drawer-header h3 { margin: 0; font-size: 18px; color: var(--primary); }
+.drawer-close { background: none; border: none; color: #888; font-size: 22px; cursor: pointer; width: auto; padding: 0; margin: 0; }
+.drawer-section-title { font-size: 12px; color: #aaa; margin-bottom: 8px; font-weight: bold; }
+
+.lang-btn-group { display: flex; gap: 6px; }
+.lang-btn {
+    flex: 1; padding: 8px 4px; background: #1c1c21; border: 1px solid rgba(212,175,55,0.2);
+    color: #aaa; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: bold; margin: 0;
+}
+.lang-btn.active { background: var(--primary); color: #000; border-color: var(--primary); }
+
+/* Stealth PIN Security Modal */
+.stealth-modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.88); backdrop-filter: blur(8px);
+    z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px;
+}
+.stealth-modal.active { display: flex; }
+.pin-dialog {
+    width: 100%; max-width: 320px; background: #141417; border: 1px solid var(--primary);
+    border-radius: 14px; padding: 24px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.9);
+}
+.pin-input {
+    width: 80%; padding: 12px; font-size: 22px; text-align: center;
+    letter-spacing: 8px; background: #1c1c21; border: 1px solid rgba(212,175,55,0.3);
+    color: var(--primary); border-radius: 8px; margin: 18px auto; outline: none; font-weight: bold;
+}
+
 </style>
 </head>
 <body>
 
-<div class="admin-lock-btn" onclick="promptAdminLogin()" title="المختبر السري">🔒</div>
+<!-- الشريط العلوي الفاخر -->
+<header class="top-navbar">
+    <div class="navbar-brand" onclick="triggerSecretStealthLogin()">🎭 THE MASK</div>
+    <button class="navbar-menu-btn" onclick="toggleSideMenu()" aria-label="Menu">☰</button>
+</header>
+
+<!-- القائمة الجانبية للزبائن -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="toggleSideMenu()"></div>
+<div class="side-drawer" id="sideDrawer">
+    <div class="drawer-header">
+        <h3>THE MASK 🎭</h3>
+        <button class="drawer-close" onclick="toggleSideMenu()">✕</button>
+    </div>
+
+    <div>
+        <div class="drawer-section-title" id="txt_drawer_search_title">🔍 البحث السريع عن العطور</div>
+        <input type="text" id="drawerSearchInput" placeholder="ابحث باسم العطر، النوتات..." oninput="syncAndSearch(this.value)">
+    </div>
+
+    <div>
+        <div class="drawer-section-title" id="txt_drawer_lang_title">🌐 اللغة / Language</div>
+        <div class="lang-btn-group">
+            <button class="lang-btn active" id="btn_lang_ar" onclick="setAppLanguage('ar')">العربية</button>
+            <button class="lang-btn" id="btn_lang_en" onclick="setAppLanguage('en')">English</button>
+            <button class="lang-btn" id="btn_lang_fr" onclick="setAppLanguage('fr')">Français</button>
+        </div>
+    </div>
+
+    <div style="margin-top:auto; border-top:1px solid rgba(255,255,255,0.08); padding-top:15px; font-size:11px; color:#777; text-align:center;">
+        The Mask Haute Parfumerie &copy; 2026
+    </div>
+</div>
+
+<!-- نافذة الدخول السري الخفية للمختبر -->
+<div class="stealth-modal" id="adminPinModal">
+    <div class="pin-dialog">
+        <h3 style="color:var(--primary); margin-bottom:4px;">MASTER ACCESS</h3>
+        <div style="font-size:12px; color:#aaa;" id="txt_pin_subtitle">الولوج الآمن لمختبر التصنيع والمعايرة</div>
+        <input type="password" maxlength="5" class="pin-input" id="stealthPinInput" placeholder="•••••" autocomplete="off">
+        <div style="display:flex; gap:8px;">
+            <button class="action-btn" onclick="verifyStealthPin()" style="flex:1; margin:0;" id="txt_pin_btn_enter">دخول</button>
+            <button onclick="closeStealthPinModal()" style="flex:1; margin:0; background:#222; border:1px solid #444; color:#aaa; border-radius:7px; cursor:pointer;" id="txt_pin_btn_cancel">إلغاء</button>
+        </div>
+    </div>
+</div>
+
 
 <div class="container">
 
     <!-- 1. واجهة المتجر للزبائن -->
     <div id="customerSection">
-        <div class="customer-hero">
-            <h1>The Mask 🎭</h1>
-            <div style="color:#d4af37; font-size:14px; letter-spacing:2px;">HAUTE PARFUMERIE & LUXURY BLENDS</div>
-            <p style="color:#aaa; font-size:13px; max-width:600px; margin:10px auto 0;">إبداعات عطرية نيشية بتركيزات أصلية وثبات ممتد، مصممة بنقاء معملي فائق وبدون أي أثر دهني.</p>
+                <div class="customer-hero">
+            <h1 onclick="triggerSecretStealthLogin()" style="cursor:pointer;">The Mask 🎭</h1>
+            <div style="color:#d4af37; font-size:14px; letter-spacing:2px;" id="txt_hero_subtitle">HAUTE PARFUMERIE & LUXURY BLENDS</div>
+            <p style="color:#aaa; font-size:13px; max-width:600px; margin:10px auto 0;" id="txt_hero_desc">إبداعات عطرية نيشية بتركيزات أصلية وثبات ممتد، مصممة بنقاء معملي فائق وبدون أي أثر دهني.</p>
         </div>
+
         <div class="box" style="margin-bottom:15px;">
             <input type="text" id="catalogSearch" placeholder="🔍 ابحث عن اسم العطر بالعربية أو الإنجليزية أو النوتات..." oninput="filterCustomerCatalog()">
         </div>
@@ -271,7 +368,7 @@ th { background-color: #242424; color: var(--primary); }
 
 <script>
 const CLOUD_BASE = 'https://cdn.jsdelivr.net/gh/hourane48-prog/-perfume-data@main';
-const ADMIN_PIN = "1987";
+const ADMIN_PIN = "1993L";
 
 const BOTTLE_COST_JOD = 0.750;
 const LABOR_OVERHEAD = 0.300;
@@ -366,16 +463,128 @@ let masterFormulationsDB = {};
 let fuseEngine = null;
 let allPerfumesList = [];
 
-function promptAdminLogin() {
-    var pin = prompt("🔐 أدخل الرمز السري للولوج إلى مختبر التصنيع Master Pro-Lab:");
-    if (pin === ADMIN_PIN) {
+/* قاموس اللغات والترجمة الفورية */
+const i18n = {
+    ar: {
+        dir: 'rtl',
+        heroSub: 'HAUTE PARFUMERIE & LUXURY BLENDS',
+        heroDesc: 'إبداعات عطرية نيشية بتركيزات أصلية وثبات ممتد، مصممة بنقاء معملي فائق وبدون أي أثر دهني.',
+        searchPlaceholder: '🔍 ابحث عن اسم العطر بالعربية أو الإنجليزية أو النوتات...',
+        orderBtn: '🛍️ اطلب العطر الآن عبر واتساب',
+        noResults: 'لا توجد عطور مطابقة لبحثك حالياً.',
+        drawerSearch: '🔍 البحث السريع عن العطور',
+        drawerLang: '🌐 اللغة / Language',
+        pinSub: 'الولوج الآمن لمختبر التصنيع والمعايرة',
+        pinEnter: 'دخول',
+        pinCancel: 'إلغاء'
+    },
+    en: {
+        dir: 'ltr',
+        heroSub: 'HAUTE PARFUMERIE & LUXURY BLENDS',
+        heroDesc: 'Artisanal niche fragrance blends crafted with maximum purity, exceptional longevity, and non-greasy precision.',
+        searchPlaceholder: '🔍 Search by perfume name, notes, or accord...',
+        orderBtn: '🛍️ Order Now via WhatsApp',
+        noResults: 'No matching perfumes found in the catalog.',
+        drawerSearch: '🔍 Fast Fragrance Search',
+        drawerLang: '🌐 Language / اللغة',
+        pinSub: 'Secure Authorization for Master Pro-Lab',
+        pinEnter: 'Authorize',
+        pinCancel: 'Cancel'
+    },
+    fr: {
+        dir: 'ltr',
+        heroSub: 'HAUTE PARFUMERIE & MÉLANGES DE LUXE',
+        heroDesc: 'Créations de haute parfumerie aux concentrations authentiques, sillage d’exception et pureté absolue sans résidu gras.',
+        searchPlaceholder: '🔍 Rechercher un parfum, des notes ou accords...',
+        orderBtn: '🛍️ Commander via WhatsApp',
+        noResults: 'Aucun parfum correspondant trouvé.',
+        drawerSearch: '🔍 Recherche Rapide',
+        drawerLang: '🌐 Langue / Language',
+        pinSub: 'Accès Sécurisé au Laboratoire de Formulation',
+        pinEnter: 'Entrer',
+        pinCancel: 'Annuler'
+    }
+};
+
+let currentLang = 'ar';
+
+function setAppLanguage(lang) {
+    if (!i18n[lang]) return;
+    currentLang = lang;
+    const data = i18n[lang];
+
+    document.documentElement.lang = lang;
+    document.documentElement.dir = data.dir;
+    document.body.dir = data.dir;
+
+    document.getElementById('txt_hero_subtitle').innerText = data.heroSub;
+    document.getElementById('txt_hero_desc').innerText = data.heroDesc;
+    document.getElementById('catalogSearch').placeholder = data.searchPlaceholder;
+    document.getElementById('drawerSearchInput').placeholder = data.searchPlaceholder;
+    document.getElementById('txt_drawer_search_title').innerText = data.drawerSearch;
+    document.getElementById('txt_drawer_lang_title').innerText = data.drawerLang;
+    document.getElementById('txt_pin_subtitle').innerText = data.pinSub;
+    document.getElementById('txt_pin_btn_enter').innerText = data.pinEnter;
+    document.getElementById('txt_pin_btn_cancel').innerText = data.pinCancel;
+
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(`btn_lang_${lang}`).classList.add('active');
+
+    renderCustomerCatalog();
+}
+
+function toggleSideMenu() {
+    const drawer = document.getElementById('sideDrawer');
+    const overlay = document.getElementById('drawerOverlay');
+    drawer.classList.toggle('open');
+    overlay.classList.toggle('active');
+}
+
+function syncAndSearch(val) {
+    document.getElementById('catalogSearch').value = val;
+    filterCustomerCatalog();
+}
+
+/* محرك الدخول الشبحي: 5 نقرات سريعة على الشعار */
+let stealthTapCount = 0;
+let stealthTapTimer;
+function triggerSecretStealthLogin() {
+    stealthTapCount++;
+    clearTimeout(stealthTapTimer);
+    if (stealthTapCount >= 5) {
+        stealthTapCount = 0;
+        openStealthPinModal();
+    } else {
+        stealthTapTimer = setTimeout(() => { stealthTapCount = 0; }, 1400);
+    }
+}
+
+function openStealthPinModal() {
+    const modal = document.getElementById('adminPinModal');
+    const input = document.getElementById('stealthPinInput');
+    modal.classList.add('active');
+    input.value = '';
+    setTimeout(() => input.focus(), 150);
+}
+
+function closeStealthPinModal() {
+    document.getElementById('adminPinModal').classList.remove('active');
+    document.getElementById('stealthPinInput').value = '';
+}
+
+function verifyStealthPin() {
+    const input = document.getElementById('stealthPinInput').value;
+    if (input === ADMIN_PIN) {
+        closeStealthPinModal();
         document.getElementById('customerSection').style.display = 'none';
         document.getElementById('adminLabSection').style.display = 'block';
         window.scrollTo(0, 0);
-    } else if (pin !== null) {
-        alert("❌ الرمز السري غير صحيح!");
+    } else {
+        alert(currentLang === 'ar' ? "❌ الرمز السري غير صحيح!" : "❌ Invalid PIN Code!");
+        document.getElementById('stealthPinInput').value = '';
     }
 }
+
 
 function lockAdminLab() {
     document.getElementById('adminLabSection').style.display = 'none';
@@ -410,9 +619,10 @@ function renderCustomerCatalog(items) {
     const grid = document.getElementById('customerProductGrid');
     if (!grid) return;
     var listToRender = items || storeProducts;
+    const t = i18n[currentLang];
     
     if (listToRender.length === 0) {
-        grid.innerHTML = '<p style="color:#aaa; text-align:center; grid-column:1/-1;">لا توجد عطور مطابقة لبحثك حالياً.</p>';
+        grid.innerHTML = `<p style="color:#aaa; text-align:center; grid-column:1/-1;">${t.noResults}</p>`;
         return;
     }
 
@@ -426,7 +636,7 @@ function renderCustomerCatalog(items) {
                 </div>
                 <div>
                     <div class="store-card-price">${parseFloat(p.price).toFixed(2)} JOD</div>
-                    <a href="https://wa.me/?text=${encodeURIComponent('مرحباً The Mask، أود طلب عطر: ' + p.name + ' بسعر ' + p.price + ' JOD')}" target="_blank" class="btn-order">🛍️ اطلب العطر الآن عبر واتساب</a>
+                    <a href="https://wa.me/?text=${encodeURIComponent('Hello The Mask, I would like to order: ' + p.name + ' (' + p.price + ' JOD)')}" target="_blank" class="btn-order">${t.orderBtn}</a>
                 </div>
             </div>
         </div>
@@ -435,6 +645,7 @@ function renderCustomerCatalog(items) {
 
 function filterCustomerCatalog() {
     var rawQ = document.getElementById('catalogSearch').value.toLowerCase().trim();
+    document.getElementById('drawerSearchInput').value = rawQ;
     if (!rawQ) { renderCustomerCatalog(storeProducts); return; }
     
     var searchTokens = [rawQ];
@@ -448,6 +659,7 @@ function filterCustomerCatalog() {
     });
     renderCustomerCatalog(filtered);
 }
+
 
 function addProduct() {
     const name = document.getElementById('prodName').value.trim();
