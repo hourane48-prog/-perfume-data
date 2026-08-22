@@ -54,6 +54,8 @@ th { background-color: #242424; color: var(--primary); }
 .btn-order { background: linear-gradient(135deg, #25d366, #128c7e); border: none; color: #fff; font-weight: bold; padding: 10px; border-radius: 6px; cursor: pointer; text-decoration: none; text-align: center; display: block; }
 .admin-lock-btn { position: fixed; bottom: 15px; left: 15px; background: rgba(30,30,30,0.8); border: 1px solid #444; color: #888; border-radius: 50%; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; z-index: 1000; }
 .step-badge { background: #d4af37; color: #000; font-weight: bold; padding: 2px 7px; border-radius: 4px; font-size: 12px; margin-left: 5px; }
+.color-input-group { text-align: center; flex: 1; }
+.color-input-group label { font-size: 11px; margin-bottom: 2px; display: block; color: #bbb; }
 </style>
 </head>
 <body>
@@ -62,7 +64,7 @@ th { background-color: #242424; color: var(--primary); }
 
 <div class="container">
 
-    <!-- 1. واجهة المتجر العامة للزبائن -->
+    <!-- 1. واجهة المتجر للزبائن -->
     <div id="customerSection">
         <div class="customer-hero">
             <h1>The Mask 🎭</h1>
@@ -169,10 +171,19 @@ th { background-color: #242424; color: var(--primary); }
                 </div>
                 <div>
                     <label>ملون العطر (قطرات / 100 مل):</label>
-                    <div class="color-mixer" style="display:flex; gap:6px;">
-                        <input type="number" id="blueDrops" placeholder="أزرق" value="0" oninput="updateLiquidColorPreview()">
-                        <input type="number" id="redDrops" placeholder="أحمر" value="0" oninput="updateLiquidColorPreview()">
-                        <input type="number" id="yellowDrops" placeholder="أصفر" value="0" oninput="updateLiquidColorPreview()">
+                    <div style="display:flex; gap:6px;">
+                        <div class="color-input-group">
+                            <label>🔵 أزرق</label>
+                            <input type="number" id="blueDrops" placeholder="0" value="0" oninput="updateLiquidColorPreview()">
+                        </div>
+                        <div class="color-input-group">
+                            <label>🔴 أحمر</label>
+                            <input type="number" id="redDrops" placeholder="0" value="0" oninput="updateLiquidColorPreview()">
+                        </div>
+                        <div class="color-input-group">
+                            <label>🟡 أصفر</label>
+                            <input type="number" id="yellowDrops" placeholder="0" value="0" oninput="updateLiquidColorPreview()">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -276,7 +287,6 @@ const EU_26_ALLERGENS = [
     "Farnesol", "Benzyl Benzoate", "Cinnamal", "Anise Alcohol", "Benzyl Alcohol", "Isoeugenol"
 ];
 
-// قاموس الترجمة الصوتية والبحث باللغة العربية
 const arabicPerfumeAliases = {
     "سيلفر": "SILVER", "سلفر": "SILVER", "ماونتن": "MOUNTAIN", "كريد": "CREED",
     "افنتوس": "AVENTUS", "أفنتوس": "AVENTUS", "سوفاج": "SAUVAGE", "ديور": "DIOR",
@@ -514,7 +524,7 @@ async function loadCloudData() {
             if (fRes.ok) masterFormulationsDB = await fRes.json();
         } catch(e) { console.warn("Datasets active"); }
 
-        document.getElementById('syncStatus').innerHTML = `✔ تم الاتصال بنجاح! تم ربط ${allPerfumesList.length} عطراً بالقواعد الصناعية الست ومعايير ISO 22716 GMP.`;
+        document.getElementById('syncStatus').innerHTML = `✔ تم الاتصال بنجاح! تم ربط ${allPerfumesList.length} عطراً بالقواعد الصناعية ومعايير ISO 22716 GMP.`;
         setupAutocomplete('p1_name', 'p1_results', 'p1_type');
         setupAutocomplete('p2_name', 'p2_results', 'p2_type');
     } catch(err) {
@@ -587,9 +597,7 @@ function setupAutocomplete(inputId, resultsId, typeSelectId) {
 
         let searchTerms = [rawQ];
         for (let [arKey, enVal] of Object.entries(arabicPerfumeAliases)) {
-            if (rawQ.includes(arKey)) {
-                searchTerms.push(enVal.toLowerCase());
-            }
+            if (rawQ.includes(arKey)) searchTerms.push(enVal.toLowerCase());
         }
 
         let combined = [];
@@ -663,14 +671,22 @@ function getGMPLotCode(p1Name) {
     return 'LOT-' + yy + mm + dd + '-' + code;
 }
 
-function getMasterSpecsCard(p1Name, t1) {
-    var pMetrics = parfumoMetricsDB[p1Name] || { longevity_hours: 8.5, sillage_rating: 8.2, recommended_seasons: ["جميع الفصول"], original_match_rate: "98.2%" };
+function getMasterSpecsCard(p1Name, t1, targetConc, intensity) {
+    var pMetrics = parfumoMetricsDB[p1Name] || { longevity_hours: 7.0, sillage_rating: 7.5, recommended_seasons: ["جميع الفصول"], original_match_rate: "98.2%" };
     var formSpec = masterFormulationsDB[p1Name] || {
-        oil_specifications: { grade: "Grade A+ (Premium Pure)", density_g_ml: 0.950, flash_point_celsius: 85 },
-        maceration_protocol: { recommended_days: 28, cold_shock_temp_celsius: "2°C to 4°C", aging_room_temp: "18°C - 20°C" },
+        oil_specifications: { grade: "Grade A (High Volatile Fresh Oil)", density_g_ml: 0.925, flash_point_celsius: 72 },
+        maceration_protocol: { recommended_days: 21, cold_shock_temp_celsius: "2°C to 4°C", aging_room_temp: "18°C - 20°C" },
         layering_intelligence: { recommended_role: "Harmonizer", optimal_ratio_as_primary: "60% - 70%" }
     };
     var gcms = gcmsMasterDB[p1Name] || null;
+
+    // الحساب الديناميكي لثبات الجلد والملابس بحسب درجة التركيز
+    var concFactor = targetConc / 0.15;
+    var intFactor = (intensity === 'light') ? 0.85 : ((intensity === 'strong') ? 1.35 : 1.0);
+    
+    var skinHours = Math.round((pMetrics.longevity_hours * concFactor * intFactor) * 10) / 10;
+    var fabricHours = Math.round(skinHours * 2.8);
+    var dynamicSillage = Math.min(10, Math.round((pMetrics.sillage_rating * Math.pow(concFactor, 0.4) * intFactor) * 10) / 10);
 
     var filterGrade = (['woody', 'amber', 'leather'].includes(t1)) 
         ? "Grade 4 (5 - 8 µm) - ترشيح ميكروني متزن للحفاظ على الجزيئات والراتنجات الثقيلة"
@@ -678,10 +694,11 @@ function getMasterSpecsCard(p1Name, t1) {
 
     var html = "<div style='background:#141414; border:1px solid #333; padding:12px; border-radius:8px; margin-bottom:12px;'>";
     
-    html += "<div style='display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;'>";
-    html += "<div><b style='color:#4cff6e;'>⏱️ الثبات (Parfumo Engine):</b> " + pMetrics.longevity_hours + " ساعة</div>";
-    html += "<div><b style='color:#d4af37;'>💨 الفوحان:</b> " + pMetrics.sillage_rating + " / 10</div>";
-    html += "<div><b style='color:#55ccff;'>🎯 تطابق الأصل:</b> " + pMetrics.original_match_rate + "</div>";
+    html += "<div style='display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:8px; margin-bottom:10px;'>";
+    html += "<div style='background:#1b281b; padding:8px; border-radius:6px; border:1px solid #2ecc71;'><b style='color:#4cff6e;'>⏱️ ثبات الجلد (Skin):</b> " + skinHours + " ساعة</div>";
+    html += "<div style='background:#1b2428; padding:8px; border-radius:6px; border:1px solid #3498db;'><b style='color:#55ccff;'>🧥 ثبات الملابس (Fabric):</b> " + fabricHours + " ساعة (تثبيت نسيجي)</div>";
+    html += "<div style='background:#28241b; padding:8px; border-radius:6px; border:1px solid #d4af37;'><b style='color:#d4af37;'>💨 الفوحان المعملي:</b> " + dynamicSillage + " / 10</div>";
+    html += "<div style='background:#221b28; padding:8px; border-radius:6px; border:1px solid #9b59b6;'><b style='color:#bb86fc;'>🎯 تطابق الأصل:</b> " + pMetrics.original_match_rate + "</div>";
     html += "</div>";
     
     html += "<div class='spec-grid'>";
@@ -1006,7 +1023,7 @@ function runAIEngine() {
 
         var dManual = document.getElementById('dynamicManual');
         if (dManual) {
-            var masterCardHtml = getMasterSpecsCard(p1Name, t1);
+            var masterCardHtml = getMasterSpecsCard(p1Name, t1, targetConc, intensity);
             var pyr = getOlfactoryPyramid(p1Name, t1, Boolean(p2Name), p2Name, t2);
             var sop = generateDetailedSOP(p1Name, p2Name, oilTotalWeight, primaryEnh, pWeight, secondaryEnh, sWeight, dpgWeight, bhtWeight, cycloWeight, ethWeight, days, totalBatch, (lossRate * 100).toFixed(1));
             var tech = getCompactTechReport(formula);
