@@ -1282,23 +1282,71 @@ async function startBarcodeScanner() {
 }
 
 async function captureAndRecognize() {
-    const file = document.getElementById('ocrInput').files[0];
-    if (!file) return alert("اختر صورة أولاً");
-    const resDiv = document.getElementById('ocrResult');
-    resDiv.innerHTML = "⏳ جاري قراءة النص بالذكاء الاصطناعي...";
-    try {
-        const res = await Tesseract.recognize(file, 'eng');
-        const text = res.data.text.toLowerCase();
-        resDiv.innerHTML = `النص المستخرج: <b>${res.data.text.substring(0, 50)}...</b>`;
-        const match = Object.keys(perfumeDB).find(k => text.includes(k.toLowerCase().split(' ')[0]));
-        if (match) {
-            document.getElementById('p1_name').value = match;
-            document.getElementById('p1_type').value = detectFamilyString(match);
-            updateLiquidColorPreview();
-            resDiv.innerHTML += `<br><span style="color:#4cff6e;">✔ تم التعرف على: ${match}</span>`;
+        const fileInput = document.getElementById('ocrFileInput') || document.querySelector('input[type="file"]');
+    const file = fileInput ? fileInput.files[0] : null;
+    const resDiv = document.getElementById('ocrResult') || document.getElementById('ocrStatus');
+    
+    if (!file) {
+        alert("     !");
+        return;
+    }
+
+    if (resDiv) resDiv.innerHTML = `<span style="color:var(--primary);">     ...</span>`;
+
+    const img = new Image();
+    img.src = URL.createObjectURL(file);
+    img.onload = async () => {
+        try {
+            // 1.    Canvas     
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const maxDim = 1000;
+            let scale = Math.min(maxDim / img.width, maxDim / img.height, 1);
+            canvas.width = img.width * scale;
+            canvas.height = img.height * scale;
+            
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            
+            //     
+            const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const d = imgData.data;
+            for (let i = 0; i < d.length; i += 4) {
+                let gray = 0.299 * d[i] + 0.587 * d[i+1] + 0.114 * d[i+2];
+                let val = gray > 130 ? 255 : 0; //       
+                d[i] = d[i+1] = d[i+2] = val;
+            }
+            ctx.putImageData(imgData, 0, 0);
+
+            if (resDiv) resDiv.innerHTML = `<span style="color:var(--primary);">    ...</span>`;
+
+            // 2.     Tesseract
+            const res = await Tesseract.recognize(canvas, 'eng');
+            const rawText = res.data.text.trim();
+            const cleanText = rawText.toLowerCase().replace(/[^a-z0-9\s]/g, ' ');
+
+            if (resDiv) {
+                resDiv.innerHTML = ` : <b>${rawText.slice(0, 45)}...</b>`;
+            }
+
+            // 3.     
+            const dbKeys = typeof masterFormulationsDB !== 'undefined' ? Object.keys(masterFormulationsDB) : (typeof perfumeDB !== 'undefined' ? Object.keys(perfumeDB) : []);
+            let matchedName = dbKeys.find(key => cleanText.includes(key.toLowerCase()) || key.toLowerCase().includes(cleanText));
+
+            if (matchedName) {
+                if (document.getElementById('p1_name')) document.getElementById('p1_name').value = matchedName;
+                if (typeof updateLiquidColorPreview === 'function') updateLiquidColorPreview();
+                if (resDiv) resDiv.innerHTML += `<br><span style="color:#2ecc71;">    : ${matchedName}</span>`;
+            } else {
+                //         
+                if (document.getElementById('p1_name')) document.getElementById('p1_name').value = rawText.split('\n')[0].trim();
+                if (resDiv) resDiv.innerHTML += `<br><span style="color:#d4af37;">        .</span>`;
+            }
+        } catch (err) {
+            if (resDiv) resDiv.innerHTML = `<span style="color:#e74c3c;">    .</span>`;
+            console.error(err);
         }
-    } catch(e) { resDiv.innerHTML = "فشل التحليل: " + e.message; }
-}
+    };
+
 
 window.addEventListener('DOMContentLoaded', () => {
     loadCloudData();
