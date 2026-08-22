@@ -75,9 +75,10 @@ th { background-color: #242424; color: var(--primary); }
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 0 30px rgba(0,0,0,0.9);
 }
-body[dir="rtl"] .side-drawer { right: 0; transform: translateX(100%); }
-body[dir="ltr"] .side-drawer { left: 0; transform: translateX(-100%); }
-body[dir="rtl"] .side-drawer.open, body[dir="ltr"] .side-drawer.open { transform: translateX(0); }
+[dir="rtl"] .side-drawer { right: 0; left: auto; transform: translateX(100%); }
+[dir="ltr"] .side-drawer { left: 0; right: auto; transform: translateX(-100%); }
+[dir="rtl"] .side-drawer.open, [dir="ltr"] .side-drawer.open { transform: translateX(0); }
+
 
 .drawer-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 12px; }
 .drawer-header h3 { margin: 0; font-size: 18px; color: var(--primary); }
