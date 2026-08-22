@@ -620,7 +620,9 @@ let defaultStoreProducts = [
     }
 ];
 
-let storeProducts = JSON.parse(localStorage.getItem('the_mask_store_products')) || defaultStoreProducts;
+let savedStore = JSON.parse(localStorage.getItem('the_mask_store_products'));
+let storeProducts = (Array.isArray(savedStore) && savedStore.length > 0) ? savedStore : defaultStoreProducts;
+
 
 function renderCustomerCatalog(items) {
     const grid = document.getElementById('customerProductGrid');
