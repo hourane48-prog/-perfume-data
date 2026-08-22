@@ -1,7 +1,9 @@
-// perfumes_data.js - الإصدار المتوافق مع تنسيق سطر اسم ثم سطر سعر
+// perfumes_data.js - الإصدار النهائي المدمج
 async function loadPerfumesData() {
     try {
-        const response = await fetch('https://raw.githubusercontent.com/hourane48-prog/-perfume-data/main/Perfumes_list.txt');
+        // استخدم jsDelivr لتحميل أسرع وتجنب مشاكل CORS
+        const baseUrl = 'https://cdn.jsdelivr.net/gh/hourane48-prog/-perfume-data@main';
+        const response = await fetch(`${baseUrl}/Perfumes_list.txt`);
         const text = await response.text();
         const lines = text.split('\n').map(l => l.trim()).filter(l => l);
 
@@ -41,6 +43,16 @@ async function loadPerfumesData() {
                     }
                 }
             }
+        }
+
+        // تحميل طرق التصنيع الخاصة
+        try {
+            const respProfiles = await fetch(`${baseUrl}/perfume_profiles.json`);
+            if (respProfiles.ok) {
+                window.perfumeProfiles = await respProfiles.json();
+            }
+        } catch(e) {
+            console.log("لم يتم تحميل ملف طرق التصنيع الخاصة.");
         }
 
         // حقن لوحة المبيعات
