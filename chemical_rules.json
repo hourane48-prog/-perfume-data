@@ -1,0 +1,26 @@
+{
+  "solvents_rules": {
+    "DPG": { "max_pct": 0.02, "optimal_pct": 0.01, "desc": "مبطئ تبخر ومذيب" },
+    "IPM": { "max_pct": 0.05, "optimal_pct": 0.01, "desc": "مخفف للزوجة الزيت" },
+    "Benzyl_Benzoate": { "max_pct": 0.05, "optimal_pct": 0.00, "desc": "مثبت للزيوت الثقيلة" },
+    "BHT": { "optimal_pct": 0.0005, "desc": "مضاد أكسدة لحماية العطر" }
+  },
+  "family_enhancers": {
+    "citrus": { "primary": "Hedione", "pct": 0.01, "secondary": null },
+    "marine": { "primary": "Hedione", "pct": 0.005, "secondary": "Ambroxan", "sec_pct": 0.002 },
+    "woody": { "primary": "Iso E Super", "pct": 0.015, "secondary": null },
+    "amber": { "primary": "Ambroxan", "pct": 0.008, "secondary": "Iso E Super", "sec_pct": 0.005 },
+    "musky": { "primary": "Galaxolide", "pct": 0.01, "secondary": "Hedione", "sec_pct": 0.005 },
+    "floral": { "primary": "Hedione", "pct": 0.01, "secondary": "Iso E Super", "sec_pct": 0.005 },
+    "leather": { "primary": "Iso E Super", "pct": 0.01, "secondary": "Ambroxan", "sec_pct": 0.005 },
+    "gourmand": { "primary": "Ambroxan", "pct": 0.005, "secondary": null },
+    "fruity": { "primary": "Hedione", "pct": 0.01, "secondary": null },
+    "green": { "primary": "Iso E Super", "pct": 0.01, "secondary": "Hedione", "sec_pct": 0.005 }
+  },
+  "ifra_limits": {
+    "Galaxolide": 0.02,
+    "Iso E Super": 0.20,
+    "Hedione": 0.30,
+    "Ambroxan": 0.05
+  }
+}
