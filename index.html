@@ -651,7 +651,8 @@ function renderCustomerCatalog(items) {
 }
 
 function filterCustomerCatalog() {
-    var rawQ = document.getElementById('catalogSearch').value.toLowerCase().trim();
+    var rawQ = document.getElementById('shamerSearchInput').value.toLowerCase().trim();
+
     document.getElementById('drawerSearchInput').value = rawQ;
     if (!rawQ) { renderCustomerCatalog(storeProducts); return; }
     
