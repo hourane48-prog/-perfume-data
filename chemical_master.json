@@ -1,0 +1,72 @@
+{
+  "Iso E Super": {
+    "cas": "54464-57-2",
+    "substantivity_hours": 172,
+    "vapor_pressure_mmhg": 0.002,
+    "odor_type": "woody-ambery",
+    "ifra_cat4_max_pct": 21.4,
+    "optimal_pct": 1.2,
+    "anti_stain_role": "enhancer",
+    "desc": "معزز انتشار وثبات ثلاثي الأبعاد للنوتات الخشبية والجلدية"
+  },
+  "Hedione": {
+    "cas": "24851-98-7",
+    "substantivity_hours": 96,
+    "vapor_pressure_mmhg": 0.001,
+    "odor_type": "floral-citrusy-fresh",
+    "ifra_cat4_max_pct": 30.0,
+    "optimal_pct": 1.0,
+    "anti_stain_role": "enhancer",
+    "desc": "موسع هالة عطرية ويرفع إشعاع الحمضيات والأزهار"
+  },
+  "Ambroxan": {
+    "cas": "6790-58-5",
+    "substantivity_hours": 400,
+    "vapor_pressure_mmhg": 0.0003,
+    "odor_type": "amber-musky-dry",
+    "ifra_cat4_max_pct": 5.0,
+    "optimal_pct": 0.5,
+    "anti_stain_role": "fixative_enhancer",
+    "desc": "مثبت قاعدي فائق الثبات وفوحان دافئ للعنبريات والغورماند"
+  },
+  "Galaxolide": {
+    "cas": "1222-05-5",
+    "substantivity_hours": 400,
+    "vapor_pressure_mmhg": 0.00007,
+    "odor_type": "clean-musky",
+    "ifra_cat4_max_pct": 2.0,
+    "optimal_pct": 1.0,
+    "anti_stain_role": "fixative",
+    "desc": "مسك نظيف ومثبت ناعم للمسكيات والأزهار"
+  },
+  "Cyclomethicone D5": {
+    "cas": "541-02-6",
+    "substantivity_hours": 2,
+    "vapor_pressure_mmhg": 0.15,
+    "odor_type": "odorless",
+    "ifra_cat4_max_pct": 100.0,
+    "optimal_pct": 0.5,
+    "anti_stain_role": "dry_carrier",
+    "desc": "ناقل جاف حريري سريع التبخر يمنع الأثر الدهني والبقع على الأقمشة"
+  },
+  "DPG": {
+    "cas": "25265-71-8",
+    "substantivity_hours": 300,
+    "vapor_pressure_mmhg": 0.01,
+    "odor_type": "odorless",
+    "ifra_cat4_max_pct": 100.0,
+    "optimal_pct": 1.0,
+    "anti_stain_role": "blending_agent",
+    "desc": "معدل تبخر ناعم يربط الزيوت بالكحول دون خنق الفوحان"
+  },
+  "BHT": {
+    "cas": "128-37-0",
+    "substantivity_hours": 500,
+    "vapor_pressure_mmhg": 0.0001,
+    "odor_type": "odorless",
+    "ifra_cat4_max_pct": 0.1,
+    "optimal_pct": 0.05,
+    "anti_stain_role": "antioxidant",
+    "desc": "مضاد أكسدة لحماية الروابط العطرية الحساسة من التلف وتغير اللون"
+  }
+}
