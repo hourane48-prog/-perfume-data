@@ -1,4 +1,4 @@
-// perfumes_data.js الشامل (عطور + وصفات + لوحة التحكم)
+// perfumes_data.js المحدث بنظام اللوحة العائمة الثابتة
 async function loadPerfumesData() {
     try {
         // 1. جلب قائمة العطور والأسعار
@@ -41,7 +41,7 @@ async function loadPerfumesData() {
             console.log("لا توجد وصفات خاصة إضافية.");
         }
 
-        // 3. دالة فحص طريقة التحضير (لكل عطر)
+        // 3. دالة فحص طريقة التحضير
         window.getPreparationMethod = function(perfumeName) {
             if (window.perfumeProfiles && window.perfumeProfiles[perfumeName]) {
                 return window.perfumeProfiles[perfumeName];
@@ -53,34 +53,34 @@ async function loadPerfumesData() {
             };
         };
 
-        // 4. حقن لوحة التحكم (Dashboard) تلقائياً داخل التطبيق إذا لم تكن موجودة
-        if (!document.getElementById('myDashboard')) {
-            const dashboardHTML = `
-            <div id="myDashboard" style="background: #1a1a1a; color: #fff; padding: 15px; border-radius: 10px; margin: 15px 0; border: 1px solid #d4af37; font-family: Tahoma, sans-serif;">
-                <h3 style="margin-top: 0; color: #d4af37; font-size: 16px; text-align: center;">📊 لوحة التحكم والمبيعات</h3>
-                <div style="display: flex; justify-content: space-between; margin: 10px 0;">
-                    <div style="background: #2a2a2a; padding: 10px; border-radius: 5px; width: 48%; text-align: center;">
-                        <p style="margin: 0; font-size: 12px; color: #aaa;">إجمالي المبيعات</p>
-                        <h4 id="totalSales" style="margin: 5px 0; color: #d4af37;">0.00 د.أ</h4>
+        // 4. حقن لوحة التحكم بنظام ثابت وعائم (Floating) يظهر دائماً على الشاشة
+        let existingDashboard = document.getElementById('myFixedDashboard');
+        if (!existingDashboard) {
+            const div = document.createElement('div');
+            div.id = 'myFixedDashboard';
+            div.style.cssText = "position: fixed; bottom: 15px; left: 10px; right: 10px; z-index: 999999; background: rgba(20, 20, 20, 0.95); color: #fff; padding: 12px; border-radius: 12px; border: 2px solid #d4af37; box-shadow: 0 5px 20px rgba(0,0,0,0.9); font-family: Tahoma, sans-serif;";
+            
+            div.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <h3 style="margin: 0; color: #d4af37; font-size: 14px;">📊 لوحة المبيعات (أطياب)</h3>
+                    <button onclick="document.getElementById('myFixedDashboard').style.display='none'" style="background:none; border:none; color:#aaa; font-size:16px; cursor:pointer;">✕ إخفاء</button>
+                </div>
+                <div style="display: flex; justify-content: space-between; gap: 6px; margin-bottom: 8px;">
+                    <div style="background: #2a2a2a; padding: 8px; border-radius: 6px; width: 48%; text-align: center;">
+                        <span style="font-size: 10px; color: #aaa;">إجمالي المبيعات</span>
+                        <div id="totalSales" style="font-size: 14px; font-weight: bold; color: #d4af37;">0.00 د.أ</div>
                     </div>
-                    <div style="background: #2a2a2a; padding: 10px; border-radius: 5px; width: 48%; text-align: center;">
-                        <p style="margin: 0; font-size: 12px; color: #aaa;">عدد الطلبات</p>
-                        <h4 id="totalOrders" style="margin: 5px 0; color: #4CAF50;">0</h4>
+                    <div style="background: #2a2a2a; padding: 8px; border-radius: 6px; width: 48%; text-align: center;">
+                        <span style="font-size: 10px; color: #aaa;">عدد الطلبات</span>
+                        <div id="totalOrders" style="font-size: 14px; font-weight: bold; color: #4CAF50;">0</div>
                     </div>
                 </div>
-                <button onclick="resetDashboard()" style="background: #d9534f; color: white; border: none; padding: 6px 10px; border-radius: 4px; font-size: 11px; cursor: pointer; width: 100%;">إعادة ضبط الإحصائيات</button>
-            </div>`;
-            
-            // وضع لوحة التحكم في بداية الشاشة أو في مكان مناسب
-            const container = document.body || document.firstElementChild;
-            if (container) {
-                const div = document.createElement('div');
-                div.innerHTML = dashboardHTML;
-                container.insertBefore(div, container.firstChild);
-            }
+                <button onclick="resetDashboard()" style="background: #d9534f; color: white; border: none; padding: 5px; border-radius: 4px; font-size: 10px; cursor: pointer; width: 100%;">تصفير الإحصائيات</button>
+            `;
+            document.body.appendChild(div);
         }
 
-        // دوال إدارة لوحة التحكم
+        // الدوال المسؤولة عن الحسابات
         window.recordSale = function(perfumeName, priceJOD, quantity) {
             let salesData = JSON.parse(localStorage.getItem('perfumeSales')) || [];
             salesData.push({ name: perfumeName, price: priceJOD, qty: quantity, total: (priceJOD * quantity).toFixed(2) });
@@ -106,11 +106,10 @@ async function loadPerfumesData() {
             }
         };
 
-        // تحديث واجهة اللوحة فورياً
         updateDashboardUI();
 
         if (typeof populateDatalist === 'function') populateDatalist();
-        alert(`✅ تم تحميل ${added} عطر، تفعيل الوصفات، وظهور لوحة التحكم بنجاح!`);
+        alert(`✅ تم تحديث العطور والوصفات وتثبيت لوحة التحكم بنجاح!`);
     } catch (err) {
         alert("فشل التحميل: " + err.message);
     }
