@@ -1,56 +1,47 @@
-// perfumes_data.js - إصدار مخصص لتنسيق "سطر اسم ثم سطر سعر"
+// perfumes_data.js - الإصدار المتوافق مع تنسيق سطر اسم ثم سطر سعر
 async function loadPerfumesData() {
     try {
-        // جلب ملف القائمة
         const response = await fetch('https://raw.githubusercontent.com/hourane48-prog/-perfume-data/main/Perfumes_list.txt');
         const text = await response.text();
         const lines = text.split('\n').map(l => l.trim()).filter(l => l);
 
         if (!window.perfumeDB) window.perfumeDB = {};
         let added = 0;
+        let skipped = 0;
 
         for (let i = 0; i < lines.length; i++) {
             const line = lines[i];
             if (line.includes('السعر:')) {
-                // استخراج السعر: نبحث عن أول رقم بعد "السعر:"
                 const priceMatch = line.match(/السعر:\s*(\d+\.?\d*)/);
-                if (!priceMatch) continue;
-                const priceAED = parseFloat(priceMatch[1]);
+                if (priceMatch && i > 0) {
+                    const priceAED = parseFloat(priceMatch[1]);
+                    let nameLine = lines[i - 1].trim();
+                    if (!nameLine) continue;
 
-                // السطر السابق هو اسم العطر
-                let nameLine = lines[i - 1] ? lines[i - 1].trim() : '';
-                if (!nameLine) continue;
+                    let name = nameLine
+                        .replace(/^عطر\s+/, '')
+                        .replace(/\s*\(الكود:.*?\)\s*/g, '')
+                        .replace(/\s*\([^)]*\)\s*$/g, '')
+                        .replace(/\s*-\s*/g, ' - ')
+                        .trim();
 
-                // تنظيف الاسم: إزالة "عطر" من البداية، إزالة الأقواس و"(الكود:...)"
-                let name = nameLine
-                    .replace(/^عطر\s+/, '')                  // إزالة "عطر" في البداية
-                    .replace(/\s*\(الكود:.*?\)\s*/g, '')    // إزالة "(الكود: ...)"
-                    .replace(/\s*\([^)]*\)\s*$/g, '')        // إزالة الأقواس في النهاية
-                    .replace(/\s*-\s*/g, ' - ')              // توحيد الشرطات
-                    .trim();
+                    if (!name) name = nameLine;
 
-                if (!name) name = nameLine;
-
-                const key = "Luzi - " + name;
-                if (priceAED > 0 && !window.perfumeDB[key]) {
-                    window.perfumeDB[key] = {
-                        pricePerKgAED: priceAED,
-                        priceJOD: +(priceAED * 0.71).toFixed(2),
-                        family: "luxury",
-                        color: "gold"
-                    };
-                    added++;
+                    const key = "Luzi - " + name;
+                    if (priceAED > 0 && !window.perfumeDB[key]) {
+                        window.perfumeDB[key] = {
+                            pricePerKgAED: priceAED,
+                            priceJOD: +(priceAED * 0.71).toFixed(2),
+                            family: "luxury",
+                            color: "gold"
+                        };
+                        added++;
+                    } else {
+                        skipped++;
+                    }
                 }
             }
         }
-
-        // تحميل طرق التصنيع الخاصة
-        try {
-            const respProfiles = await fetch('https://raw.githubusercontent.com/hourane48-prog/-perfume-data/main/perfume_profiles.json');
-            if (respProfiles.ok) {
-                window.perfumeProfiles = await respProfiles.json();
-            }
-        } catch(e) {}
 
         // حقن لوحة المبيعات
         injectDashboard();
@@ -58,7 +49,7 @@ async function loadPerfumesData() {
         // تحديث قائمة الاقتراحات
         if (typeof populateDatalist === 'function') populateDatalist();
 
-        alert(`✅ تم تحميل ${added} عطر جديد بنجاح!`);
+        alert(`✅ تم تحميل ${added} عطر جديد بنجاح! (تم تخطي ${skipped} مكرر/غير صالح)`);
     } catch (err) {
         alert("فشل التحميل: " + err.message);
     }
@@ -110,5 +101,5 @@ function injectDashboard() {
     updateDashboardUI();
 }
 
-// استدعاء الدالة فورًا
+// استدعاء الدالة فوراً
 loadPerfumesData();
