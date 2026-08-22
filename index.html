@@ -172,7 +172,10 @@ th { background-color: #242424; color: var(--primary); }
         </div>
 
         <div class="box" style="margin-bottom:15px;">
-            <input type="text" id="catalogSearch" placeholder="🔍 ابحث عن اسم العطر بالعربية أو الإنجليزية أو النوتات..." oninput="filterCustomerCatalog()">
+            <form onsubmit="event.preventDefault(); return false;">
+    <input type="text" id="shamerSearchInput" placeholder="ابحث عن اسم العطر بالعربية أو الإنجليزية..." autocomplete="off">
+</form>
+
         </div>
         <div id="customerProductGrid" class="product-grid"></div>
     </div>
