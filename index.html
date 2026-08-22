@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Mask 🎭 - Haute Parfumerie</title>
+<title>The Mask 🎭 - Haute Parfumerie & Pro Lab</title>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.1.1/dist/tesseract.min.js"></script>
 <script src="https://unpkg.com/@zxing/library@latest"></script>
@@ -29,24 +29,23 @@ th { background-color: #242424; color: var(--primary); }
 .cost-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; text-align: center; }
 .cost-card { background: #121212; padding: 10px; border-radius: 6px; border: 1px solid #333; }
 .cost-card .val { font-size: 15px; font-weight: bold; color: #4cff6e; margin-top: 4px; }
-.sop-box { background: #121212; padding: 14px; border-radius: 8px; border: 1px solid #333; line-height: 1.8; margin-top: 12px; font-size: 13px; }
+.sop-box { background: #121212; padding: 16px; border-radius: 8px; border: 1px solid #3a3a3a; line-height: 2.0; margin-top: 12px; font-size: 13px; }
 .compat-meter { height: 12px; background: #333; border-radius: 6px; overflow: hidden; margin-top: 6px; border: 1px solid #444; }
 .compat-fill { height: 100%; transition: width 0.4s ease; text-align: center; font-size: 10px; color: #000; font-weight: bold; line-height: 12px; }
-.autocomplete-items { position: absolute; border: 1px solid #444; background: #222; max-height: 200px; overflow-y: auto; width: 100%; z-index: 99; border-radius: 4px; }
-.autocomplete-items div { padding: 9px; cursor: pointer; border-bottom: 1px solid #333; font-size: 13px; }
+.autocomplete-items { position: absolute; border: 1px solid #555; background: #1c1c1c; max-height: 260px; overflow-y: auto; width: 100%; z-index: 999; border-radius: 6px; box-shadow: 0 6px 20px rgba(0,0,0,0.9); }
+.autocomplete-items div { padding: 10px; cursor: pointer; border-bottom: 1px solid #282828; font-size: 13px; text-align: right; }
 .autocomplete-items div:hover { background: #333; color: var(--primary); }
 .badge { display: inline-block; padding: 3px 8px; border-radius: 12px; font-size: 11px; margin: 2px; border: 1px solid #444; }
 .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin-top: 8px; }
 .spec-item { background: #1c1c1c; padding: 8px; border-radius: 6px; border: 1px solid #333; font-size: 12px; }
 .gmp-badge { background: #1a2938; border: 1px solid #3880ff; padding: 10px; border-radius: 6px; margin-bottom: 12px; font-size: 13px; }
 .btn-suggest { background: #1c3629; border: 1px solid #2ecc71; color: #2ecc71; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold; width: auto; margin-top: 4px; }
-
-/* تنسيقات المتجر للعملاء */
+.identity-card { background: #141414; border: 1px solid #333; border-radius: 8px; padding: 14px; margin-top: 12px; }
+.liquid-preview-box { width: 50px; height: 90px; border: 2px solid #555; border-radius: 8px; margin: 0 auto 8px; box-shadow: 0 0 15px rgba(212,175,55,0.15); transition: background 0.4s; }
 .customer-hero { text-align: center; padding: 25px 15px; border-bottom: 1px solid #2a2a2a; margin-bottom: 20px; }
 .customer-hero h1 { font-size: 28px; letter-spacing: 1px; margin-bottom: 5px; }
 .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
-.store-card { background: #141414; border: 1px solid #262626; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s; }
-.store-card:hover { border-color: var(--primary); }
+.store-card { background: #141414; border: 1px solid #262626; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
 .store-card img { width: 100%; height: 200px; object-fit: cover; background: #222; }
 .store-card-body { padding: 14px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
 .store-card-title { font-size: 16px; font-weight: bold; color: var(--primary); margin-bottom: 6px; }
@@ -54,36 +53,34 @@ th { background-color: #242424; color: var(--primary); }
 .store-card-price { font-size: 18px; font-weight: bold; color: #4cff6e; margin-bottom: 10px; }
 .btn-order { background: linear-gradient(135deg, #25d366, #128c7e); border: none; color: #fff; font-weight: bold; padding: 10px; border-radius: 6px; cursor: pointer; text-decoration: none; text-align: center; display: block; }
 .admin-lock-btn { position: fixed; bottom: 15px; left: 15px; background: rgba(30,30,30,0.8); border: 1px solid #444; color: #888; border-radius: 50%; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; z-index: 1000; }
+.step-badge { background: #d4af37; color: #000; font-weight: bold; padding: 2px 7px; border-radius: 4px; font-size: 12px; margin-left: 5px; }
 </style>
 </head>
 <body>
 
-<!-- زر الدخول السري للمختبر -->
 <div class="admin-lock-btn" onclick="promptAdminLogin()" title="المختبر السري">🔒</div>
 
 <div class="container">
 
-    <!-- ========================== 1. واجهة المتجر العامة للزبائن ========================== -->
+    <!-- 1. واجهة المتجر العامة للزبائن -->
     <div id="customerSection">
         <div class="customer-hero">
             <h1>The Mask 🎭</h1>
             <div style="color:#d4af37; font-size:14px; letter-spacing:2px;">HAUTE PARFUMERIE & LUXURY BLENDS</div>
-            <p style="color:#aaa; font-size:13px; max-width:600px; margin:10px auto 0;">اكتشف أرقى العطور النيشية والشرقية المصممة بأعلى معايير النقاء والثبات الفائق، بدون أي أثر دهني.</p>
+            <p style="color:#aaa; font-size:13px; max-width:600px; margin:10px auto 0;">إبداعات عطرية نيشية بتركيزات أصلية وثبات ممتد، مصممة بنقاء معملي فائق وبدون أي أثر دهني.</p>
         </div>
-
         <div class="box" style="margin-bottom:15px;">
-            <input type="text" id="catalogSearch" placeholder="🔍 ابحث عن عطرك المفضل أو المكونات..." oninput="filterCustomerCatalog()">
+            <input type="text" id="catalogSearch" placeholder="🔍 ابحث عن اسم العطر بالعربية أو الإنجليزية أو النوتات..." oninput="filterCustomerCatalog()">
         </div>
-
         <div id="customerProductGrid" class="product-grid"></div>
     </div>
 
-    <!-- ========================== 2. المختبر الصناعي المعملي السري للمالك ========================== -->
+    <!-- 2. المختبر الصناعي المعملي السري للمالك -->
     <div id="adminLabSection" style="display:none;">
         <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom:15px;">
             <div>
-                <h2>المختبر الصناعي السري 🧪 (The Mask Pro-Lab)</h2>
-                <div style="color: #aaa; font-size: 12px;">لوحة الإدارة والتحليل الكيميائي GMP وتركيب العطور الخاصة</div>
+                <h2>المختبر السري للتركيب 🧪 (The Mask Pro-Lab)</h2>
+                <div style="color: #aaa; font-size: 12px;">لوحة التصنيع الصناعي ISO 22716 GMP والبروتوكول المعملي المطور</div>
             </div>
             <button onclick="lockAdminLab()" style="width:auto; background:#442222; border:1px solid #ff4c4c; color:#fff; padding:6px 12px;">🔒 إغلاق وتأمين المختبر</button>
         </div>
@@ -118,11 +115,11 @@ th { background-color: #242424; color: var(--primary); }
 
             <div class="grid-2" style="margin-top: 5px;">
                 <div style="position: relative;">
-                    <label>العطر الأساسي (بحث في 1219 عطر):</label>
-                    <input type="text" id="p1_name" placeholder="ابحث باسم العطر الأول..." autocomplete="off">
+                    <label>العطر الأساسي (اكتب حرفين بالعربي أو الإنجليزي):</label>
+                    <input type="text" id="p1_name" placeholder="مثال: سيلفر، كريد، silver، aventus..." autocomplete="off">
                     <div id="p1_results" class="autocomplete-items" style="display:none;"></div>
                     <label>العائلة المكتشفة آلياً:</label>
-                    <select id="p1_type">
+                    <select id="p1_type" onchange="updateLiquidColorPreview()">
                         <option value="green">عشبي / أخضر (Green/Herbal)</option>
                         <option value="citrus">حمضي (Citrus)</option>
                         <option value="woody">خشبي (Woody)</option>
@@ -138,7 +135,7 @@ th { background-color: #242424; color: var(--primary); }
                 </div>
                 <div style="position: relative;">
                     <label>عطر ثانوي للمزج والطبقات (Layering Modifier):</label>
-                    <input type="text" id="p2_name" placeholder="ابحث عن العطر الثاني إن وجد..." autocomplete="off">
+                    <input type="text" id="p2_name" placeholder="ابحث بالعربي أو الإنجليزي..." autocomplete="off">
                     <div id="p2_results" class="autocomplete-items" style="display:none;"></div>
                     <label>العائلة للثانوي:</label>
                     <select id="p2_type">
@@ -173,9 +170,9 @@ th { background-color: #242424; color: var(--primary); }
                 <div>
                     <label>ملون العطر (قطرات / 100 مل):</label>
                     <div class="color-mixer" style="display:flex; gap:6px;">
-                        <input type="number" id="blueDrops" placeholder="أزرق" value="0">
-                        <input type="number" id="redDrops" placeholder="أحمر" value="0">
-                        <input type="number" id="yellowDrops" placeholder="أصفر" value="0">
+                        <input type="number" id="blueDrops" placeholder="أزرق" value="0" oninput="updateLiquidColorPreview()">
+                        <input type="number" id="redDrops" placeholder="أحمر" value="0" oninput="updateLiquidColorPreview()">
+                        <input type="number" id="yellowDrops" placeholder="أصفر" value="0" oninput="updateLiquidColorPreview()">
                     </div>
                 </div>
             </div>
@@ -223,6 +220,8 @@ th { background-color: #242424; color: var(--primary); }
 
         <div id="smartSopBox" class="box" style="display:none;">
             <div id="gmpTraceabilityCard" class="gmp-badge"></div>
+            <div id="identityCard" class="identity-card"></div>
+
             <label>⚗️ المعادلة المعملية النظيفة (Formulation Specs):</label>
             <table>
                 <thead>
@@ -238,10 +237,8 @@ th { background-color: #242424; color: var(--primary); }
             </table>
 
             <div id="dynamicManual" class="sop-box"></div>
-            <div id="namingSuggestion" style="margin-top:10px; font-weight:bold; color:var(--primary); text-align:center;"></div>
         </div>
 
-        <!-- إدارة منتجات واجهة العميل -->
         <div class="box">
             <h3>📦 إدارة المعروضات في متجر الزبائن</h3>
             <div class="grid-2">
@@ -263,7 +260,7 @@ th { background-color: #242424; color: var(--primary); }
 
 <script>
 const CLOUD_BASE = 'https://cdn.jsdelivr.net/gh/hourane48-prog/-perfume-data@main';
-const ADMIN_PIN = "1987"; // الرمز السري لفتح المختبر
+const ADMIN_PIN = "1987";
 
 const BOTTLE_COST_JOD = 0.750;
 const LABOR_OVERHEAD = 0.300;
@@ -279,6 +276,18 @@ const EU_26_ALLERGENS = [
     "Farnesol", "Benzyl Benzoate", "Cinnamal", "Anise Alcohol", "Benzyl Alcohol", "Isoeugenol"
 ];
 
+// قاموس الترجمة الصوتية والبحث باللغة العربية
+const arabicPerfumeAliases = {
+    "سيلفر": "SILVER", "سلفر": "SILVER", "ماونتن": "MOUNTAIN", "كريد": "CREED",
+    "افنتوس": "AVENTUS", "أفنتوس": "AVENTUS", "سوفاج": "SAUVAGE", "ديور": "DIOR",
+    "توم فورد": "TOM FORD", "توباكو": "TOBACCO", "فانيلا": "VANILLE", "بكارات": "BACCARAT",
+    "روج": "ROUGE", "سانتال": "SANTAL", "تير": "TERRE", "هيرمس": "HERMES",
+    "شانيل": "CHANEL", "بلو": "BLEU", "ايروس": "EROS", "فرزاتشي": "VERSACE",
+    "انفكتوس": "INVICTUS", "عود": "OUD", "وود": "WOOD", "عنبر": "AMBER",
+    "اكوا": "AQUA", "سيليستيا": "CELESTIA", "امواج": "AMOUAGE", "انترلود": "INTERLUDE",
+    "بلاك افغانو": "BLACK AFGANO", "جريس": "GRIS", "جوتشي": "GUCCI", "لاكوست": "LACOSTE"
+};
+
 const compatMatrix = {
     woody: { woody:95, citrus:85, marine:75, amber:90, gourmand:80, floral:85, musky:95, green:90, leather:90, fruity:80 },
     citrus: { woody:85, citrus:95, marine:90, amber:65, gourmand:40, floral:90, musky:85, green:95, leather:60, fruity:95 },
@@ -293,20 +302,49 @@ const compatMatrix = {
 };
 
 const colorRecipes = {
-    woody: { blue: 0, red: 2, yellow: 6 }, citrus: { blue: 0, red: 0, yellow: 8 },
-    marine: { blue: 5, red: 0, yellow: 1 }, amber: { blue: 0, red: 5, yellow: 7 },
-    gourmand: { blue: 0, red: 6, yellow: 5 }, floral: { blue: 1, red: 6, yellow: 2 },
-    musky: { blue: 0, red: 0, yellow: 0 }, green: { blue: 3, red: 0, yellow: 7 },
-    leather: { blue: 2, red: 6, yellow: 6 }, fruity: { blue: 0, red: 5, yellow: 5 }
+    woody: { blue: 0, red: 2, yellow: 6, hex: "#c69255" },
+    citrus: { blue: 0, red: 0, yellow: 8, hex: "#e5e865" },
+    marine: { blue: 5, red: 0, yellow: 1, hex: "#5dade2" },
+    amber: { blue: 0, red: 5, yellow: 7, hex: "#d35400" },
+    gourmand: { blue: 0, red: 6, yellow: 5, hex: "#a04000" },
+    floral: { blue: 1, red: 6, yellow: 2, hex: "#f1948a" },
+    musky: { blue: 0, red: 0, yellow: 0, hex: "#fdfefe" },
+    green: { blue: 3, red: 0, yellow: 7, hex: "#52be80" },
+    leather: { blue: 2, red: 6, yellow: 6, hex: "#6e2c00" },
+    fruity: { blue: 0, red: 5, yellow: 5, hex: "#eb984e" }
 };
 
-const namingDatabase = {
-    "woody-amber": ["العود الملكي", "أسرار الشرق", "سلطان العطور"],
-    "citrus-marine": ["نسيم المحيط", "أكوا إنتنس", "انتعاش أزرق"],
-    "green-citrus": ["واحة النعناع", "سليستيا الأخضر", "إكسير الطبيعة"],
-    "gourmand-amber": ["حلوى الشرق", "كراميل ملكي", "شوكولا نوار"],
-    "floral-musky": ["رقة الياسمين", "مسك الورد", "مخمل أبيض"],
-    "default": ["عطر التميز", "خلطة أطياب الخاصة", "إكسير الفخامة"]
+const bespokeIdentityDB = {
+    green: {
+        names: ["سليستيا إكسير (Celestia Elixir)", "واحة الماستر (Oasis Mask)", "إمبيريال فيردي (Imperial Verde)"],
+        slogan: "انتعاش عشبي ساحر بنقاء أوراق النعناع والليم الإيطالي الفاخر.",
+        bottle: "زجاجة كريستالية مستطيلة شفافة مع غطاء معدني فضي لماق وبخاخ Micro-Mist دقيق.",
+        box: "علبة فاخرة بلون أخضر زمردي مع تطعيم بالخط الذهبي الملكي."
+    },
+    woody: {
+        names: ["تاج العود (Crown Oud)", "الأخشاب الملكية (Royal Woods)", "ماسك بريفيه (Mask Privé)"],
+        slogan: "فخامة الأخشاب النادرة مع عبق العود والأرز السويسري النقي.",
+        bottle: "زجاجة مربعة ثقيلة باللون الأسود الملكي المطفي مع غطاء مغناطيسي نحاسي.",
+        box: "علبة جلدية فاخرة مبطنة بالمخمل الأسود."
+    },
+    amber: {
+        names: ["العنبر الإمبراطوري (Imperial Amber)", "شمس الشرق (Solar Orient)", "أورا نوار (Aura Noir)"],
+        slogan: "دفء بلسمي مغناطيسي يجسد الفخامة والفوحان الشرقي الأصيل.",
+        bottle: "زجاجة عنبرية متدرجة اللون بلمسات نحاسية مع غطاء ذهبي كلاسيكي.",
+        box: "علبة كرتونية صلبة بلون عنابي داكن مع ختم شمعي ذهبي."
+    },
+    citrus: {
+        names: ["شلال الحمضيات (Citrus Torrent)", "أكوا بريز (Aqua Breeze)", "برغموت سافاج (Sauvage Bergamot)"],
+        slogan: "إشراقة برغموت كالابريا المتلألئ مع انتعاش هيدروليكي فائق.",
+        bottle: "زجاجة أسطوانية شفافة ناصعة النقاء مع غطاء ألومنيوم فضي غير لامع.",
+        box: "علبة بيضاء نقية بلمسات صفراء نيون عصرية."
+    },
+    default: {
+        names: ["أطياب الملكية (Royal Atyab)", "سلطان التميز (Sultan Mask)", "إكسير الهيبة (Prestige Elixir)"],
+        slogan: "توليفة نيشية خاصة مصممة بأعلى معايير الحرفة العطرية.",
+        bottle: "زجاجة نيش ثقيلة 100 مل بقاعدة زجاجية سميكة وغطاء أسود وزر رش ناعم.",
+        box: "علبة فاخرة كلاسيكية تناسب جميع الإهداءات الخاصة."
+    }
 };
 
 let perfumeDB = {};
@@ -318,7 +356,6 @@ let masterFormulationsDB = {};
 let fuseEngine = null;
 let allPerfumesList = [];
 
-// ========================== التحكم في الأمان والواجهتين ==========================
 function promptAdminLogin() {
     var pin = prompt("🔐 أدخل الرمز السري للولوج إلى مختبر التصنيع Master Pro-Lab:");
     if (pin === ADMIN_PIN) {
@@ -336,7 +373,6 @@ function lockAdminLab() {
     window.scrollTo(0, 0);
 }
 
-// ========================== محرك واجهة الزبون والمتجر ==========================
 let defaultStoreProducts = [
     {
         name: "Aqua Celestia Forte Floral",
@@ -388,12 +424,18 @@ function renderCustomerCatalog(items) {
 }
 
 function filterCustomerCatalog() {
-    var q = document.getElementById('catalogSearch').value.toLowerCase().trim();
-    if (!q) {
-        renderCustomerCatalog(storeProducts);
-        return;
+    var rawQ = document.getElementById('catalogSearch').value.toLowerCase().trim();
+    if (!rawQ) { renderCustomerCatalog(storeProducts); return; }
+    
+    var searchTokens = [rawQ];
+    for (let [arKey, enVal] of Object.entries(arabicPerfumeAliases)) {
+        if (rawQ.includes(arKey)) searchTokens.push(enVal.toLowerCase());
     }
-    var filtered = storeProducts.filter(p => p.name.toLowerCase().includes(q) || (p.desc && p.desc.toLowerCase().includes(q)));
+
+    var filtered = storeProducts.filter(p => {
+        var targetStr = (p.name + " " + (p.desc || '')).toLowerCase();
+        return searchTokens.some(token => targetStr.includes(token));
+    });
     renderCustomerCatalog(filtered);
 }
 
@@ -435,7 +477,6 @@ function deleteProduct(i) {
     }
 }
 
-// ========================== محرك البيانات السحابية ==========================
 async function loadCloudData() {
     try {
         const pRes = await fetch(`${CLOUD_BASE}/clean_perfumes.txt`);
@@ -451,7 +492,12 @@ async function loadCloudData() {
             }
         });
 
-        fuseEngine = new Fuse(allPerfumesList, { keys: ['name'], threshold: 0.35 });
+        fuseEngine = new Fuse(allPerfumesList, {
+            keys: ['name'],
+            threshold: 0.50,
+            ignoreLocation: true,
+            minMatchCharLength: 2
+        });
 
         try {
             const [nRes, mRes, gRes, cRes, fRes] = await Promise.all([
@@ -466,7 +512,7 @@ async function loadCloudData() {
             if (gRes.ok) gcmsMasterDB = await gRes.json();
             if (cRes.ok) chemicalRulesDB = await cRes.json();
             if (fRes.ok) masterFormulationsDB = await fRes.json();
-        } catch(e) { console.warn("Cloud datasets active"); }
+        } catch(e) { console.warn("Datasets active"); }
 
         document.getElementById('syncStatus').innerHTML = `✔ تم الاتصال بنجاح! تم ربط ${allPerfumesList.length} عطراً بالقواعد الصناعية الست ومعايير ISO 22716 GMP.`;
         setupAutocomplete('p1_name', 'p1_results', 'p1_type');
@@ -516,7 +562,7 @@ function detectFamilyString(val) {
     }
 
     var lower = val.toLowerCase();
-    if (lower.indexOf('celestia') > -1 || lower.indexOf('herba') > -1 || lower.indexOf('mint') > -1) return 'green';
+    if (lower.indexOf('celestia') > -1 || lower.indexOf('silver') > -1 || lower.indexOf('mountain') > -1 || lower.indexOf('mint') > -1) return 'green';
     if (lower.indexOf('oud') > -1 || lower.indexOf('wood') > -1 || lower.indexOf('cedar') > -1) return 'woody';
     if (lower.indexOf('citrus') > -1 || lower.indexOf('lemon') > -1 || lower.indexOf('bergamot') > -1) return 'citrus';
     if (lower.indexOf('amber') > -1 || lower.indexOf('spic') > -1 || lower.indexOf('tobacco') > -1) return 'amber';
@@ -535,24 +581,58 @@ function setupAutocomplete(inputId, resultsId, typeSelectId) {
     if (!input || !results) return;
 
     input.addEventListener('input', () => {
-        const q = input.value.trim();
+        let rawQ = input.value.trim().toLowerCase();
         results.innerHTML = '';
-        if (q.length < 2 || !fuseEngine) { results.style.display = 'none'; return; }
-        const hits = fuseEngine.search(q);
-        if (hits.length > 0) {
+        if (rawQ.length < 2) { results.style.display = 'none'; return; }
+
+        let searchTerms = [rawQ];
+        for (let [arKey, enVal] of Object.entries(arabicPerfumeAliases)) {
+            if (rawQ.includes(arKey)) {
+                searchTerms.push(enVal.toLowerCase());
+            }
+        }
+
+        let combined = [];
+        searchTerms.forEach(term => {
+            let directMatches = allPerfumesList.filter(p => p.name.toLowerCase().includes(term));
+            let fuzzyMatches = fuseEngine ? fuseEngine.search(term).map(h => h.item) : [];
+            combined.push(...directMatches, ...fuzzyMatches);
+        });
+
+        let uniqueHits = Array.from(new Set(combined));
+
+        if (uniqueHits.length > 0) {
             results.style.display = 'block';
-            hits.slice(0, 8).forEach(h => {
+            uniqueHits.slice(0, 15).forEach(item => {
                 const div = document.createElement('div');
-                div.innerHTML = `<strong>${h.item.name}</strong>`;
+                div.innerHTML = `<strong>${item.name}</strong>`;
                 div.onclick = () => {
-                    input.value = h.item.name;
-                    document.getElementById(typeSelectId).value = detectFamilyString(h.item.name);
+                    input.value = item.name;
+                    document.getElementById(typeSelectId).value = detectFamilyString(item.name);
+                    updateLiquidColorPreview();
                     results.style.display = 'none';
                 };
                 results.appendChild(div);
             });
         } else { results.style.display = 'none'; }
     });
+}
+
+function updateLiquidColorPreview() {
+    var t1 = document.getElementById('p1_type')?.value || 'green';
+    var b = parseInt(document.getElementById('blueDrops')?.value) || 0;
+    var r = parseInt(document.getElementById('redDrops')?.value) || 0;
+    var y = parseInt(document.getElementById('yellowDrops')?.value) || 0;
+
+    var baseHex = colorRecipes[t1]?.hex || "#d4af37";
+    if (b > 0 && r === 0 && y === 0) baseHex = "#3498db";
+    else if (r > 0 && b === 0 && y === 0) baseHex = "#e74c3c";
+    else if (y > 0 && b === 0 && r === 0) baseHex = "#f1c40f";
+    else if (b > 0 && y > 0) baseHex = "#2ecc71";
+    else if (r > 0 && y > 0) baseHex = "#e67e22";
+
+    var el = document.getElementById('liquidFlask');
+    if (el) el.style.backgroundColor = baseHex;
 }
 
 function suggestBestPairing() {
@@ -632,9 +712,9 @@ function getMasterSpecsCard(p1Name, t1) {
     }
 
     if (declaredAllergens.length === 0) declaredAllergens = ["Limonene", "Linalool"];
-    html += "<div style='margin-top:10px; background:#221515; border:1px solid #5a2525; padding:8px; border-radius:6px; font-size:11px; color:#ffaaaa;'>";
-    html += "<b>🏷️ إقرار الحساسية الإلزامي للبطاقة التعريفية (EU CosIng Allergen Declaration):</b><br>";
-    html += "يحتوي هذا العطر على مركبات طبيعية خاضعة للتصريح: <span style='color:#fff;'>" + declaredAllergens.join(', ') + "</span>.";
+    html += "<div style='margin-top:10px; background:#2b1212; border:1px solid #ff4c4c; padding:10px; border-radius:6px; font-size:11px; color:#ffaaaa;'>";
+    html += "<b style='color:#ff6b6b;'>🏷️ إقرار الحساسية الإلزامي للبطاقة التعريفية (EU CosIng Allergen Declaration):</b><br>";
+    html += "تنبيه معملي: يجب طباعة المركبات التالية على ملصق الزجاجة الخارجي قانونياً: <span style='color:#fff; font-weight:bold;'>" + declaredAllergens.join(', ') + "</span>.";
     html += "</div>";
 
     html += "</div>";
@@ -677,29 +757,38 @@ function generateDetailedSOP(p1Name, p2Name, oilWeight, enh1, enh1W, enh2, enh2W
     var title = p1Name + (p2Name ? " + " + p2Name : "");
     var enhText = enh2 ? `${enh1} (${enh1W.toFixed(2)}g) + ${enh2} (${enh2W.toFixed(2)}g)` : `${enh1} (${enh1W.toFixed(2)}g)`;
     
-    return `<div class='phase-title'>🧪 خطوات التصنيع والمعايرة المعملية القياسية (SOP - ISO 22716)</div>
-    <div class='phase-desc' style='line-height:1.9; color:#ddd;'>
-        <b>1. ضبط أوزان المواد الخام الصافية (تشغيلة كلية مع فاقد ${lossPct}% = ${grossBatch.toFixed(2)} جم):</b><br>
-        - الزيت العطري النقي (${title}): <b>${oilWeight.toFixed(2)} جم</b>.<br>
-        - المعززات الموجهة: <b>${enhText}</b>.<br>
-        - مضاد الأكسدة (BHT): <b>${bhtW.toFixed(3)} جم</b> | وسيط الربط والتنعيم (DPG): <b>${dpgW.toFixed(2)} جم</b>.<br>
-        - مانع البقع والناقل الحريري (Cyclomethicone D5): <b>${cycloW.toFixed(2)} جم</b>.<br><br>
-        
-        <b>2. المزج والتجنيس الأولي:</b><br>
-        - امزج الزيت مع المعززات و DPG و Cyclo و BHT في وعاء زجاجي لمدة <b>3 دقائق</b> بسرعة متزنة (300-500 RPM).<br><br>
-        
-        <b>3. إضافة الكحول (Ethanol 96%):</b><br>
-        - أضف الكحول الإيثيلي المتبقي (<b>${ethW.toFixed(2)} جم</b>) تدريجياً على 3 دفعات مع التحريك المستمر لتجنب الصدمة الحرارية والكحولية.<br><br>
-        
-        <b>4. بروتوكول التعتيق والترشيح المعتمد (${days} يوماً):</b><br>
-        - صدمة حرارية باردة (2-4°م) لمدة <b>24-48 ساعة</b> لترسيب الشمعيات.<br>
-        - الترشيح النهائي عبر ورق ترشيح ميكروني مخصص.<br>
-        - التعتيق النهائي: حفظ العبوة في مكان معتم تماماً (18-20°م) لمدة لا تقل عن <b>${days} يوماً</b> لاكتمال النضج.
+    return `<div class='phase-title' style='color:var(--primary); font-weight:bold; font-size:15px; margin-bottom:10px; border-bottom:1px solid #333; padding-bottom:5px;'>🧪 دليل خطوات التصنيع والمعايرة المعملية القياسية (SOP - ISO 22716)</div>
+    <div class='phase-desc' style='line-height:2.1; color:#ddd;'>
+        <div style='background:#222; border-left:4px solid #d4af37; padding:8px 12px; border-radius:4px; margin-bottom:10px;'>
+            <b style='color:#4cff6e;'>⚠️ تنبيه معملي حرج قبل البدء:</b><br>
+            تكون الزيوت العطرية الخام بدرجة حرارة الغرفة الطبيعية <b>(18°م - 22°م)</b> لضمان دقة الوزن واللزوجة وتفكك الجزيئات، لأن تبريد الزيت الخام مسبقاً يسبب تبلور الراتنجات وتكتل الشمعيات مما يمنع تجانسها.
+        </div>
+
+        <p><span class='step-badge'>المرحلة 1</span> <b style='color:#55ccff;'>إذابة البلورات والمثبتات (Premixing Phase):</b><br>
+        في كأس معملي زجاجي نظيف، أضف وسيط الربط والتنعيم <b>DPG (${dpgW.toFixed(2)} جم)</b> ومضاد الأكسدة <b>BHT (${bhtW.toFixed(3)} جم)</b> وجزيئات العنبر الصلبة إن وجدت، مع كمية بسيطة جداً من الكحول (حوالي 2-3 جم) وحرك المزيج حتى تذوب البلورات كلياً.</p>
+
+        <p><span class='step-badge'>المرحلة 2</span> <b style='color:#55ccff;'>المعززات السائلة والناقل الحريري:</b><br>
+        أضف المعززات الإشعاعية الموجهة <b>${enhText}</b> ثم أضف مانع البقع والناقل الحريري <b>Cyclomethicone D5 (${cycloW.toFixed(2)} جم)</b>، وامزج لمدة دقيقة واحدة بحركة دائرية هادئة.</p>
+
+        <p><span class='step-badge'>المرحلة 3</span> <b style='color:#55ccff;'>إدخال الزيت العطري الخام (${title}):</b><br>
+        صب الزيت العطري بالوزن الدقيق <b>${oilWeight.toFixed(2)} جم</b> فوق قاعدة المعززات، وامزج الخليط لمدة <b>3 دقائق متواصلة</b> بسرعة متزنة (300-500 RPM) لترتبط السلاسل الهيدروكربونية كيميائياً.</p>
+
+        <p><span class='step-badge'>المرحلة 4</span> <b style='color:#55ccff;'>التدريج الكحولي الهادئ (Ethanol 96%):</b><br>
+        أضف كحول الإيثانول المتبقي (<b>${ethW.toFixed(2)} جم</b>) تدريجياً على <b>3 دفعات متساوية</b> مع التحريك المستمر لمنع الصدمة الحرارية والكحولية الناتجة عن امتصاص الكحول للماء وتمدده.</p>
+
+        <p><span class='step-badge'>المرحلة 5</span> <b style='color:#55ccff;'>الصدمة الحرارية والترسيب (Cold Shock / Winterization):</b><br>
+        أغلق الوعاء بإحكام وضعه في الثلاجة بدرجة حرارة <b>(2°م إلى 4°م) لمدة 48 ساعة متواصلة</b> لترسيب الدهون غير الذائبة، الشمعيات، والتربينات الثقيلة في قاع الوعاء.</p>
+
+        <p><span class='step-badge'>المرحلة 6</span> <b style='color:#55ccff;'>الترشيح الميكروني الفائق (Micron Filtration):</b><br>
+        اسكب المزيج <b>وهو بارد مباشرة</b> عبر ورق ترشيح ميكروني معتمد لفصل كافة الرواسب المجهرية وضمان نقاء بصري تام وشفافية كريستالية.</p>
+
+        <p><span class='step-badge'>المرحلة 7</span> <b style='color:#55ccff;'>التعتيق المظلم (Dark Aging & Maturation):</b><br>
+        احفظ العطر في عبوات زجاجية داكنة محكمة الإغلاق في مكان معتم تماماً وبدرجة حرارة ثابتة <b>(18°م)</b> لمدة لا تقل عن <b>${days} يوماً</b> لاكتمال النضج الشمي والاتزان العطري النهائي.</p>
     </div>`;
 }
 
 function getCompactTechReport(formula) {
-    return `<div class='phase-title' style='color:#4cff6e;'>✅ السلامة الكيميائية ومعايير IFRA الدولية (Category 4)</div>
+    return `<div class='phase-title' style='color:#4cff6e; margin-top:8px;'>✅ السلامة الكيميائية ومعايير IFRA الدولية (Category 4)</div>
     <div class='phase-desc' style='color:#aaa;'>جميع نسب المعززات (Iso E Super, Ambroxan, Hedione, Galaxolide) والمذيبات مطابقة لأعلى معايير الأمان الدولية الصادرة عن IFRA ولا تسبب أي تحسس أو بقع على الأقمشة.</div>`;
 }
 
@@ -869,7 +958,7 @@ function runAIEngine() {
         var now = new Date();
         var exp = new Date();
         exp.setFullYear(now.getFullYear() + 3);
-        var days = masterFormulationsDB[p1Name]?.maceration_protocol?.recommended_days || 28;
+        var days = masterFormulationsDB[p1Name]?.maceration_protocol?.recommended_days || 35;
         var matDate = new Date();
         matDate.setDate(now.getDate() + days);
 
@@ -881,6 +970,27 @@ function runAIEngine() {
                     <div><b>تاريخ التصنيع:</b> ${now.toISOString().split('T')[0]}</div>
                     <div><b>اكتمال التعتيق:</b> <span style="color:#4cff6e;">${matDate.toISOString().split('T')[0]}</span></div>
                     <div><b>انتهاء الصلاحية (PAO 36M):</b> ${exp.toISOString().split('T')[0]}</div>
+                </div>
+            `;
+        }
+
+        var ident = bespokeIdentityDB[t1] || bespokeIdentityDB['default'];
+        var currentHex = colorRecipes[t1]?.hex || "#d4af37";
+        var idCard = document.getElementById('identityCard');
+        if (idCard) {
+            idCard.innerHTML = `
+                <h4 style="color:var(--primary); margin-bottom:10px;">🎨 الهوية البصرية وتصميم المنتج (Bespoke Identity & Packaging)</h4>
+                <div style="display:grid; grid-template-columns: 80px 1fr; gap:15px; align-items:center;">
+                    <div style="text-align:center;">
+                        <div id="liquidFlask" class="liquid-preview-box" style="background-color:${currentHex};"></div>
+                        <span style="font-size:11px; color:#aaa;">لون السائل</span>
+                    </div>
+                    <div>
+                        <div style="font-size:13px; margin-bottom:4px;"><b style="color:var(--primary);">✨ الأسماء التجارية المقترحة:</b> <span style="color:#fff;">${ident.names.join(' | ')}</span></div>
+                        <div style="font-size:12px; color:#aaa; margin-bottom:6px;"><b>الشعار الترويجي (Slogan):</b> "${ident.slogan}"</div>
+                        <div style="font-size:12px; color:#ddd; margin-bottom:4px;"><b>🍾 شكل ولون الزجاجة الموصى بها:</b> ${ident.bottle}</div>
+                        <div style="font-size:12px; color:#ddd;"><b>📦 نمط التغليف والعلبة:</b> ${ident.box}</div>
+                    </div>
                 </div>
             `;
         }
@@ -909,10 +1019,7 @@ function runAIEngine() {
             document.getElementById('redDrops').value = Math.round((colorRecipes[t1].red || 0) * scale);
             document.getElementById('yellowDrops').value = Math.round((colorRecipes[t1].yellow || 0) * scale);
         }
-
-        var key = p2Name ? `${t1}-${t2}` : `${t1}-amber`;
-        var names = namingDatabase[key] || namingDatabase['default'];
-        document.getElementById('namingSuggestion').innerHTML = `✨ <b>الاسم المقترح للخلطة:</b> ${names[Math.floor(Math.random() * names.length)]}`;
+        updateLiquidColorPreview();
 
     } catch (err) {
         alert("حدث خطأ أثناء تنفيذ الحسابات: " + err.message);
@@ -935,6 +1042,7 @@ async function startBarcodeScanner() {
                 if (found) {
                     document.getElementById('p1_name').value = found;
                     document.getElementById('p1_type').value = detectFamilyString(found);
+                    updateLiquidColorPreview();
                 }
             }
         });
@@ -954,6 +1062,7 @@ async function captureAndRecognize() {
         if (match) {
             document.getElementById('p1_name').value = match;
             document.getElementById('p1_type').value = detectFamilyString(match);
+            updateLiquidColorPreview();
             resDiv.innerHTML += `<br><span style="color:#4cff6e;">✔ تم التعرف على: ${match}</span>`;
         }
     } catch(e) { resDiv.innerHTML = "فشل التحليل: " + e.message; }
