@@ -1,7 +1,6 @@
-// perfumes_data.js - الإصدار المحسّن النهائي
+// perfumes_data.js - الإصدار المحسّن النهائي مع استدعاء تلقائي
 async function loadPerfumesData() {
     try {
-        // الروابط البديلة
         const baseUrls = [
             'https://hourane48-prog.github.io/-perfume-data',
             'https://raw.githubusercontent.com/hourane48-prog/-perfume-data/main'
@@ -23,9 +22,7 @@ async function loadPerfumesData() {
         if (!window.perfumeDB) window.perfumeDB = {};
         let added = 0;
 
-        // طريقة 1: كل سطر يحتوي "اسم - سعر" أو "اسم السعر"
         for (let line of lines) {
-            // تجاهل الأسطر التي لا تحتوي أرقام
             if (!/\d/.test(line)) continue;
             let parts = null;
             if (line.includes(' - ')) {
@@ -52,7 +49,6 @@ async function loadPerfumesData() {
             }
         }
 
-        // طريقة 2: إذا لم يتم إضافة أي شيء، جرّب تنسيق سطرين (اسم ثم سعر)
         if (added === 0) {
             for (let i = 0; i < lines.length - 1; i += 2) {
                 const nameLine = lines[i].trim();
@@ -74,7 +70,6 @@ async function loadPerfumesData() {
             }
         }
 
-        // تحميل طرق التصنيع الخاصة
         try {
             const profResp = await fetch(`${baseUrls[0]}/perfume_profiles.json`);
             if (profResp.ok) {
@@ -83,10 +78,8 @@ async function loadPerfumesData() {
             }
         } catch(e) {}
 
-        // حقن لوحة المبيعات
         injectDashboard();
 
-        // تحديث قائمة الاقتراحات
         if (typeof populateDatalist === 'function') populateDatalist();
 
         alert(`✅ تم تحميل ${added} عطر جديد بنجاح!`);
@@ -139,7 +132,7 @@ function injectDashboard() {
         }
     };
     updateDashboardUI();
-    
 }
-// استدعاء الدالة فوراً بعد التحمي
+
+// استدعاء الدالة فوراً بعد التحميل
 loadPerfumesData();
