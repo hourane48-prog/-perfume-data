@@ -5,19 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Mask | فخامة لا تُضاهى</title>
     <style>
-        * { box-sizing: border-box; }
-        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: #000; color: #fff; overflow-x: hidden; transition: background 0.3s, color 0.3s; }
         
-        .header { text-align: center; padding: 30px 20px; border-bottom: 2px solid #d4af37; background: #000; position: relative; }
+        /* الثيمات */
+        [data-theme="light"] body { background: #f5f5f5; color: #111; }
+        [data-theme="light"] .card, [data-theme="light"] .modal-content, [data-theme="light"] .settings-panel { background: #fff; border-color: #ddd; }
+        [data-theme="light"] .search { background: #fff; color: #111; }
+        
+        /* الهيدر */
+        .header { text-align: center; padding: 30px 20px; border-bottom: 2px solid #d4af37; position: relative; }
         .logo { font-size: 40px; font-weight: 900; color: #d4af37; text-shadow: 0 0 20px #d4af37; }
+        
+        /* زر الإعدادات */
+        .settings-btn { position: fixed; top: 15px; right: 15px; z-index: 1000; font-size: 30px; background: none; border: none; color: #d4af37; cursor: pointer; }
+        
+        /* الإعدادات */
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 999; display: none; cursor: pointer; }
+        .settings-panel { position: fixed; top: 0; right: -320px; width: 280px; height: 100%; background: #111; border-left: 2px solid #d4af37; padding: 20px; z-index: 1000; transition: right 0.3s; }
+        .settings-panel.open { right: 0; }
+        .close-settings { position: absolute; top: 10px; left: 10px; font-size: 30px; color: #d4af37; cursor: pointer; background: none; border: none; }
+        
+        /* البحث */
         .search-area { margin: 20px auto; width: 90%; max-width: 600px; position: relative; }
         .search { width: 100%; padding: 15px; font-size: 18px; border-radius: 50px; border: 2px solid #d4af37; background: #111; color: #fff; outline: none; }
-        
-        /* قائمة الاقتراحات الجديدة (أكثر قوة) */
         .search-results { position: absolute; top: 105%; left: 0; right: 0; background: #1a1a1a; border: 2px solid #d4af37; border-radius: 10px; max-height: 250px; overflow-y: auto; display: none; z-index: 999; }
         .search-item { padding: 12px; cursor: pointer; border-bottom: 1px solid #333; color: #fff; }
         .search-item:hover { background: #d4af37; color: #000; }
         
+        /* الشبكة */
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; padding: 40px; }
         .card { background: #111; border: 1px solid #333; border-radius: 15px; overflow: hidden; cursor: pointer; transition: 0.3s; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); }
@@ -26,14 +42,6 @@
         .brand { color: #d4af37; font-size: 14px; font-weight: bold; }
         .name { font-size: 20px; font-weight: 800; margin: 5px 0; }
         .price { color: #4caf50; font-size: 24px; font-weight: bold; }
-        
-        /* زر الإعدادات */
-        .settings-btn { position: fixed; top: 15px; right: 15px; z-index: 1000; font-size: 30px; background: none; border: none; color: #d4af37; cursor: pointer; }
-        /* طبقة التعتيم */
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 999; display: none; cursor: pointer; }
-        .settings-panel { position: fixed; top: 0; right: -320px; width: 280px; height: 100%; background: #111; border-left: 2px solid #d4af37; padding: 20px; z-index: 1000; transition: right 0.3s ease; }
-        .settings-panel.open { right: 0; }
-        .close-settings { position: absolute; top: 10px; left: 10px; font-size: 30px; color: #d4af37; background: none; border: none; cursor: pointer; }
         
         /* نافذة التفاصيل */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
@@ -44,17 +52,14 @@
         .modal-body { padding: 20px; max-height: 400px; overflow-y: auto; }
         .modal-title { font-size: 24px; font-weight: 900; color: #d4af37; margin-bottom: 5px; }
         .modal-desc { font-size: 16px; color: #ccc; margin-bottom: 20px; line-height: 1.8; }
-        
         .modal-notes { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-bottom: 20px; }
         .notes-label { color: #d4af37; font-weight: bold; }
-        
         .concs-buttons { display: flex; gap: 10px; margin-bottom: 20px; }
         .btn-conc { flex: 1; padding: 12px; background: #222; border: 1px solid #555; color: #fff; cursor: pointer; font-weight: bold; border-radius: 5px; }
         .btn-conc.active { background: #d4af37; color: #000; }
-        
         .btn-wa { display: block; background: #25d366; color: #000; text-align: center; padding: 15px; font-weight: 900; text-decoration: none; border-radius: 10px; font-size: 18px; margin-bottom: 20px; }
         
-        /* عطور مشابهة */
+        /* مشابه */
         .similar-title { color: #d4af37; font-size: 20px; font-weight: bold; margin-bottom: 15px; border-top: 1px solid #333; padding-top: 15px; }
         .similar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
         .similar-card { background: #222; border: 1px solid #333; padding: 10px; text-align: center; cursor: pointer; border-radius: 10px; }
@@ -69,7 +74,6 @@
     </div>
 
     <button class="settings-btn" onclick="openSettings()">⚙️</button>
-
     <div class="overlay" id="overlay" onclick="closeSettings()"></div>
     <div class="settings-panel" id="settingsPanel">
         <button class="close-settings" onclick="closeSettings()">×</button>
@@ -85,7 +89,7 @@
     </div>
 
     <div class="search-area">
-        <input class="search" id="search" placeholder="ابحث بالاسم أو البراند..." oninput="handleSearch()">
+        <input class="search" id="search" placeholder="ابحث بالاسم أو البراند أو النوتة..." oninput="handleSearch()">
         <div class="search-results" id="searchResults"></div>
     </div>
 
@@ -99,18 +103,13 @@
         const DATA_URL = 'https://raw.githubusercontent.com/hourane48-prog/-perfume-data/main/perfume_catalog.json';
         const WA_NUMBER = '962799305030';
         let allPerfumes = [];
+        let currentLang = 'ar';
         
-        // خريطة البحث العربي مقابل الإنجليزي
-        const arSearchMap = {
-            'كريد': 'creed', 'توم فورد': 'tom ford', 'أمواج': 'amouage', 'روجا': 'roja', 'عود': 'oud', 'جاكوار': 'jaguar', 'عطر': '', 'فانيليا': 'vanilla'
-        };
-
         const translations = {
             ar: { extra:'إكسترا', edp:'بارفيوم', edt:'تواليت', commercial:'شعبي', top:'الافتتاحية', heart:'القلب', base:'القاعدة', order:'🛒 اطلب هذا العطر', similar:'عطور مشابهة' },
             en: { extra:'Extra', edp:'EDP', edt:'EDT', commercial:'Commercial', top:'Top Notes', heart:'Heart', base:'Base', order:'🛒 Order Now', similar:'Similar' },
             fr: { extra:'Extra', edp:'EDP', edt:'EDT', commercial:'Commercial', top:'Notes', heart:'Coeur', base:'Fond', order:'🛒 Commander', similar:'Similaires' }
         };
-        let currentLang = 'ar';
 
         async function loadCatalog() {
             const res = await fetch(DATA_URL);
@@ -137,17 +136,9 @@
         function toggleTheme() {
             const body = document.body;
             body.setAttribute('data-theme', body.getAttribute('data-theme') === 'light' ? '' : 'light');
-            if (body.getAttribute('data-theme') === 'light') {
-                document.body.style.background = '#f5f5f5';
-                document.body.style.color = '#111';
-                document.querySelectorAll('.card').forEach(c => c.style.background = '#fff');
-            } else {
-                document.body.style.background = '#000';
-                document.body.style.color = '#fff';
-                document.querySelectorAll('.card').forEach(c => c.style.background = '#111');
-            }
         }
 
+        // دالة البحث الاحترافية (الجزئي بالعربي والإنجليزي)
         function handleSearch() {
             let q = document.getElementById('search').value.toLowerCase().trim();
             const resultsDiv = document.getElementById('searchResults');
@@ -158,20 +149,17 @@
                 return;
             }
 
-            // تحويل الحروف العربية إلى إنجليزية
-            if (/[\u0600-\u06FF]/.test(q)) {
-                if (arSearchMap[q]) q = arSearchMap[q];
-            }
-            
-            const matched = allPerfumes.filter(p => 
-                (p.name.toLowerCase().includes(q) || (p.name_ar && p.name_ar.toLowerCase().includes(q))) || 
-                (p.brand && p.brand.toLowerCase().includes(q))
-            );
+            const matched = allPerfumes.filter(p => {
+                const en = (p.name || '').toLowerCase();
+                const ar = (p.name_ar || '').toLowerCase();
+                const brand = (p.brand || '').toLowerCase();
+                const notes = JSON.stringify(p.top_notes || []).toLowerCase();
+                return en.includes(q) || ar.includes(q) || brand.includes(q) || notes.includes(q);
+            });
             
             if (matched.length > 0) {
-                // عرض قائمة منسدلة فورية بآخر 8 نتائج
                 resultsDiv.innerHTML = matched.slice(0, 8).map(p => 
-                    `<div class="search-item" onclick="selectSearch('${p.name.replace(/'/g, "\\'")}')">${p.name} - ${p.brand}</div>`
+                    `<div class="search-item" onclick="selectSearch('${(p.name_ar || p.name).replace(/'/g, "\\'")}')">${p.name_ar || p.name} - ${p.brand}</div>`
                 ).join('');
                 resultsDiv.style.display = 'block';
             } else {
@@ -221,7 +209,7 @@
             let similarHTML = similar.slice(0, 4).map(s => `
                 <div class="similar-card" onclick="openModal(s)">
                     <img src="${s.image}">
-                    <div>${s.name}</div>
+                    <div>${s.name_ar || s.name}</div>
                 </div>
             `).join('');
             
@@ -231,7 +219,7 @@
                     <div class="modal-close" onclick="closeModal(event)">×</div>
                 </div>
                 <div class="modal-body">
-                    <div class="modal-title">${p.name}</div>
+                    <div class="modal-title">${p.name_ar || p.name}</div>
                     <div class="brand" style="color:#d4af37; margin-bottom:10px;">${p.brand}</div>
                     <div class="modal-desc">${description}</div>
                     <div class="modal-notes">
