@@ -5,45 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Mask | فخامة لا تُضاهى</title>
     <style>
-        /* متغيرات الألوان للوضع الفاتح والداكن */
-        :root { --bg: #000; --text: #fff; --card-bg: #111; --border: #333; }
-        [data-theme="light"] { --bg: #f5f5f5; --text: #111; --card-bg: #fff; --border: #ddd; }
-
-        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--text); transition: 0.3s; }
-        .header { text-align: center; padding: 30px; border-bottom: 2px solid #d4af37; background: linear-gradient(180deg, var(--bg), transparent); }
-        .logo { font-size: 50px; font-weight: 900; color: #d4af37; text-shadow: 0 0 20px #d4af37; }
-        .settings-btn { position: absolute; top: 20px; right: 20px; font-size: 30px; background: none; border: none; color: #d4af37; cursor: pointer; }
-        .settings-panel { display: none; position: fixed; top: 0; right: 0; width: 250px; height: 100%; background: var(--card-bg); border-left: 1px solid #d4af37; padding: 20px; z-index: 100; }
-        .settings-panel.open { display: block; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+        
+        .header { text-align: center; padding: 30px 20px; border-bottom: 2px solid #d4af37; background: #000; position: relative; }
+        .logo { font-size: 40px; font-weight: 900; color: #d4af37; text-shadow: 0 0 20px #d4af37; }
         .search-area { margin: 20px auto; width: 90%; max-width: 600px; position: relative; }
-        .search { width: 100%; padding: 15px 50px 15px 15px; font-size: 18px; border-radius: 50px; border: 2px solid #d4af37; background: var(--card-bg); color: var(--text); outline: none; }
-        .search-icon { position: absolute; left: 15px; top: 15px; font-size: 20px; color: #d4af37; }
+        .search { width: 100%; padding: 15px; font-size: 18px; border-radius: 50px; border: 2px solid #d4af37; background: #111; color: #fff; outline: none; }
+        
+        /* قائمة الاقتراحات الجديدة (أكثر قوة) */
+        .search-results { position: absolute; top: 105%; left: 0; right: 0; background: #1a1a1a; border: 2px solid #d4af37; border-radius: 10px; max-height: 250px; overflow-y: auto; display: none; z-index: 999; }
+        .search-item { padding: 12px; cursor: pointer; border-bottom: 1px solid #333; color: #fff; }
+        .search-item:hover { background: #d4af37; color: #000; }
+        
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; padding: 40px; }
-        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 15px; overflow: hidden; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+        .card { background: #111; border: 1px solid #333; border-radius: 15px; overflow: hidden; cursor: pointer; transition: 0.3s; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); }
         .card img { width: 100%; height: 350px; object-fit: cover; }
         .card-info { padding: 15px; text-align: center; }
         .brand { color: #d4af37; font-size: 14px; font-weight: bold; }
         .name { font-size: 20px; font-weight: 800; margin: 5px 0; }
         .price { color: #4caf50; font-size: 24px; font-weight: bold; }
+        
+        /* زر الإعدادات */
+        .settings-btn { position: fixed; top: 15px; right: 15px; z-index: 1000; font-size: 30px; background: none; border: none; color: #d4af37; cursor: pointer; }
+        /* طبقة التعتيم */
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 999; display: none; cursor: pointer; }
+        .settings-panel { position: fixed; top: 0; right: -320px; width: 280px; height: 100%; background: #111; border-left: 2px solid #d4af37; padding: 20px; z-index: 1000; transition: right 0.3s ease; }
+        .settings-panel.open { right: 0; }
+        .close-settings { position: absolute; top: 10px; left: 10px; font-size: 30px; color: #d4af37; background: none; border: none; cursor: pointer; }
+        
         /* نافذة التفاصيل */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 200; justify-content: center; align-items: center; }
-        .modal-content { background: var(--card-bg); width: 90%; max-width: 600px; border-radius: 20px; overflow: hidden; border: 2px solid #d4af37; }
-        .modal img { width: 100%; height: 400px; object-fit: cover; }
-        .modal-body { padding: 20px; }
-        .modal-close { position: absolute; top: 15px; right: 15px; font-size: 30px; color: #d4af37; cursor: pointer; background: #000; border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; }
-        .modal-notes { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin: 15px 0; }
-        .modal-notes div { margin-bottom: 10px; }
-        .btn-concs { display: flex; gap: 10px; margin: 15px 0; }
-        .btn-conc { flex: 1; padding: 10px; background: #222; border: 1px solid #555; color: #fff; cursor: pointer; }
-        .btn-conc.active { background: #d4af37; color: #000; font-weight: bold; }
-        .btn-wa { display: block; background: #25d366; color: #000; text-align: center; padding: 15px; font-weight: 900; text-decoration: none; border-radius: 10px; }
-        .similar-title { color: #d4af37; margin-top: 20px; font-size: 18px; }
-        .similar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
-        .similar-card { background: var(--card-bg); border: 1px solid #d4af37; padding: 10px; text-align: center; cursor: pointer; }
-        .similar-card img { width: 100%; height: 80px; object-fit: cover; }
-        /* القوائم المنسدلة */
-        datalist { background: #fff; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: #111; width: 95%; max-width: 700px; border-radius: 20px; overflow: hidden; border: 2px solid #d4af37; }
+        .modal-hero { position: relative; width: 100%; height: 350px; background: #000; }
+        .modal-hero img { width: 100%; height: 100%; object-fit: contain; }
+        .modal-close { position: absolute; top: 10px; right: 10px; font-size: 30px; color: #d4af37; cursor: pointer; background: rgba(0,0,0,0.7); border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; }
+        .modal-body { padding: 20px; max-height: 400px; overflow-y: auto; }
+        .modal-title { font-size: 24px; font-weight: 900; color: #d4af37; margin-bottom: 5px; }
+        .modal-desc { font-size: 16px; color: #ccc; margin-bottom: 20px; line-height: 1.8; }
+        
+        .modal-notes { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-bottom: 20px; }
+        .notes-label { color: #d4af37; font-weight: bold; }
+        
+        .concs-buttons { display: flex; gap: 10px; margin-bottom: 20px; }
+        .btn-conc { flex: 1; padding: 12px; background: #222; border: 1px solid #555; color: #fff; cursor: pointer; font-weight: bold; border-radius: 5px; }
+        .btn-conc.active { background: #d4af37; color: #000; }
+        
+        .btn-wa { display: block; background: #25d366; color: #000; text-align: center; padding: 15px; font-weight: 900; text-decoration: none; border-radius: 10px; font-size: 18px; margin-bottom: 20px; }
+        
+        /* عطور مشابهة */
+        .similar-title { color: #d4af37; font-size: 20px; font-weight: bold; margin-bottom: 15px; border-top: 1px solid #333; padding-top: 15px; }
+        .similar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+        .similar-card { background: #222; border: 1px solid #333; padding: 10px; text-align: center; cursor: pointer; border-radius: 10px; }
+        .similar-card img { width: 100%; height: 100px; object-fit: cover; border-radius: 5px; }
+        .similar-card div { font-size: 13px; margin-top: 5px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -52,12 +68,12 @@
         <div style="color:#d4af37;">BEYOND THE FACE</div>
     </div>
 
-    <!-- زر الإعدادات -->
-    <button class="settings-btn" onclick="toggleSettings()">⚙️</button>
+    <button class="settings-btn" onclick="openSettings()">⚙️</button>
 
-    <!-- لوحة الإعدادات الجانبية -->
+    <div class="overlay" id="overlay" onclick="closeSettings()"></div>
     <div class="settings-panel" id="settingsPanel">
-        <h3>إعدادات العرض</h3>
+        <button class="close-settings" onclick="closeSettings()">×</button>
+        <h3 style="color:#d4af37;">إعدادات العرض</h3>
         <label>اللغة:</label><br>
         <select onchange="changeLanguage(this.value)" style="width:100%; padding:10px; margin-bottom:15px;">
             <option value="ar">العربية</option>
@@ -68,17 +84,13 @@
         <button onclick="toggleTheme()" style="width:100%; padding:10px; background:#d4af37; border:none; cursor:pointer;">تبديل الوضع (فاتح/داكن)</button>
     </div>
 
-    <!-- البحث -->
     <div class="search-area">
-        <input class="search" id="search" list="suggestions" placeholder="ابحث بالاسم أو البراند (عربي أو إنجليزي)..." oninput="filterProducts()">
-        <span class="search-icon">🔍</span>
-        <datalist id="suggestions"></datalist>
+        <input class="search" id="search" placeholder="ابحث بالاسم أو البراند..." oninput="handleSearch()">
+        <div class="search-results" id="searchResults"></div>
     </div>
 
-    <!-- شبكة العطور -->
     <div id="catalog" class="grid"></div>
 
-    <!-- نافذة التفاصيل -->
     <div id="modal" class="modal" onclick="closeModal(event)">
         <div class="modal-content" id="modalContent"></div>
     </div>
@@ -88,56 +100,107 @@
         const WA_NUMBER = '962799305030';
         let allPerfumes = [];
         
-        // الترجمات
+        // خريطة البحث العربي مقابل الإنجليزي
+        const arSearchMap = {
+            'كريد': 'creed', 'توم فورد': 'tom ford', 'أمواج': 'amouage', 'روجا': 'roja', 'عود': 'oud', 'جاكوار': 'jaguar', 'عطر': '', 'فانيليا': 'vanilla'
+        };
+
         const translations = {
-            ar: { extra:'إكسترا', edp:'بارفيوم', edt:'تواليت', commercial:'شعبي', top:'الافتتاحية', heart:'القلب', base:'القاعدة', order:'🛒 اطلب هذا العطر', similar:'عطور مشابهة قد تعجبك' },
-            en: { extra:'Extra', edp:'EDP', edt:'EDT', commercial:'Commercial', top:'Top Notes', heart:'Heart', base:'Base', order:'🛒 Order Now', similar:'Similar Perfumes You Might Like' },
-            fr: { extra:'Extra', edp:'EDP', edt:'EDT', commercial:'Commercial', top:'Notes de Tête', heart:'Notes de Coeur', base:'Notes de Fond', order:'🛒 Commander', similar:'Parfums Similaires' }
+            ar: { extra:'إكسترا', edp:'بارفيوم', edt:'تواليت', commercial:'شعبي', top:'الافتتاحية', heart:'القلب', base:'القاعدة', order:'🛒 اطلب هذا العطر', similar:'عطور مشابهة' },
+            en: { extra:'Extra', edp:'EDP', edt:'EDT', commercial:'Commercial', top:'Top Notes', heart:'Heart', base:'Base', order:'🛒 Order Now', similar:'Similar' },
+            fr: { extra:'Extra', edp:'EDP', edt:'EDT', commercial:'Commercial', top:'Notes', heart:'Coeur', base:'Fond', order:'🛒 Commander', similar:'Similaires' }
         };
         let currentLang = 'ar';
 
         async function loadCatalog() {
             const res = await fetch(DATA_URL);
             allPerfumes = await res.json();
-            buildSuggestions();
-            render();
+            render(allPerfumes);
         }
 
-        // بناء الاقتراحات (عربي وإنجليزي)
-        function buildSuggestions() {
-            const list = document.getElementById('suggestions');
-            list.innerHTML = '';
-            allPerfumes.forEach(p => {
-                const opt1 = document.createElement('option'); opt1.value = p.name;
-                const opt2 = document.createElement('option'); opt2.value = p.brand;
-                list.appendChild(opt1); list.appendChild(opt2);
-            });
+        function openSettings() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('settingsPanel').classList.add('open');
         }
 
-        // الفلترة
-        function filterProducts() {
-            const q = document.getElementById('search').value.toLowerCase();
-            const filtered = allPerfumes.filter(p => 
+        function closeSettings() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('settingsPanel').classList.remove('open');
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            render(allPerfumes);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            body.setAttribute('data-theme', body.getAttribute('data-theme') === 'light' ? '' : 'light');
+            if (body.getAttribute('data-theme') === 'light') {
+                document.body.style.background = '#f5f5f5';
+                document.body.style.color = '#111';
+                document.querySelectorAll('.card').forEach(c => c.style.background = '#fff');
+            } else {
+                document.body.style.background = '#000';
+                document.body.style.color = '#fff';
+                document.querySelectorAll('.card').forEach(c => c.style.background = '#111');
+            }
+        }
+
+        function handleSearch() {
+            let q = document.getElementById('search').value.toLowerCase().trim();
+            const resultsDiv = document.getElementById('searchResults');
+            
+            if (q.length === 0) {
+                resultsDiv.style.display = 'none';
+                render(allPerfumes);
+                return;
+            }
+
+            // تحويل الحروف العربية إلى إنجليزية
+            if (/[\u0600-\u06FF]/.test(q)) {
+                if (arSearchMap[q]) q = arSearchMap[q];
+            }
+            
+            const matched = allPerfumes.filter(p => 
                 p.name.toLowerCase().includes(q) || 
-                p.brand.toLowerCase().includes(q) || 
-                (p.top_notes && JSON.stringify(p.top_notes).toLowerCase().includes(q))
+                (p.brand && p.brand.toLowerCase().includes(q))
             );
-            render(filtered);
+            
+            if (matched.length > 0) {
+                // عرض قائمة منسدلة فورية بآخر 8 نتائج
+                resultsDiv.innerHTML = matched.slice(0, 8).map(p => 
+                    `<div class="search-item" onclick="selectSearch('${p.name.replace(/'/g, "\\'")}')">${p.name} - ${p.brand}</div>`
+                ).join('');
+                resultsDiv.style.display = 'block';
+            } else {
+                resultsDiv.style.display = 'none';
+            }
+            
+            render(matched);
         }
 
-        // العرض الأساسي
-        function render(data = allPerfumes) {
+        function selectSearch(name) {
+            document.getElementById('search').value = name;
+            document.getElementById('searchResults').style.display = 'none';
+            handleSearch();
+        }
+
+        function render(data) {
             const t = translations[currentLang];
-            const container = document.getElementById('catalog'); container.innerHTML = '';
-            data.forEach((p, idx) => {
-                const card = document.createElement('div'); card.className = 'card';
-                card.onclick = () => openModal(idx, data);
+            const container = document.getElementById('catalog');
+            container.innerHTML = '';
+            data.forEach((p) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.onclick = () => openModal(p);
                 card.innerHTML = `
                     <img src="${p.image}" onerror="this.src='https://via.placeholder.com/280?text=The+Mask'">
                     <div class="card-info">
                         <div class="brand">${p.brand || 'THE MASK'}</div>
                         <div class="name">${p.name}</div>
-                        <div class="price" id="card-price-${idx}">${p.prices.extra} د.أ</div>
+                        <div class="price">${p.prices.extra} د.أ</div>
                         <div style="color:#888; font-size:12px; margin-top:5px;">اضغط للتفاصيل</div>
                     </div>
                 `;
@@ -145,45 +208,42 @@
             });
         }
 
-        // فتح نافذة التفاصيل
-        function openModal(index, data) {
-            const p = data[index];
+        function openModal(p) {
             const t = translations[currentLang];
+            const top = p.top_notes && p.top_notes.length ? p.top_notes.join(', ') : 'غير محدد';
+            const heart = p.heart_notes && p.heart_notes.length ? p.heart_notes.join(', ') : 'غير محدد';
+            const base = p.base_notes && p.base_notes.length ? p.base_notes.join(', ') : 'غير محدد';
+            const description = p.description || 'تجربة عطرية فاخرة تمزج بين النوتات الشرقية والغربية لتترك أثراً لا يُنسى.';
+
+            let similar = allPerfumes.filter(x => x.brand === p.brand && x.name !== p.name);
+            if (similar.length === 0) similar = allPerfumes.filter(x => x.name !== p.name).slice(0, 3);
             
-            // اقتراح عطور مشابهة (نفس البراند أو عشوائية)
-            let similar = data.filter(x => x.brand === p.brand && x.name !== p.name);
-            if (similar.length === 0) {
-                // اختيار عطور عشوائية إذا لم يوجد نفس البراند
-                similar = data.filter(x => x.name !== p.name).slice(0, 3);
-            }
-            let similarHTML = similar.map((s, i) => `
-                <div class="similar-card" onclick="openModal(${data.indexOf(s)}, data)">
+            let similarHTML = similar.slice(0, 4).map(s => `
+                <div class="similar-card" onclick="openModal(s)">
                     <img src="${s.image}">
-                    <div style="font-size:12px;">${s.name}</div>
+                    <div>${s.name}</div>
                 </div>
             `).join('');
-
-            // عرض النوتات
-            const top = p.top_notes.length ? p.top_notes.join(', ') : 'غير محدد';
-            const heart = p.heart_notes.length ? p.heart_notes.join(', ') : 'غير محدد';
-            const base = p.base_notes.length ? p.base_notes.join(', ') : 'غير محدد';
-
+            
             document.getElementById('modalContent').innerHTML = `
-                <div class="modal-close" onclick="closeModal(event)">×</div>
-                <img src="${p.image}">
+                <div class="modal-hero">
+                    <img src="${p.image}">
+                    <div class="modal-close" onclick="closeModal(event)">×</div>
+                </div>
                 <div class="modal-body">
-                    <div class="brand">${p.brand}</div>
-                    <div class="name">${p.name}</div>
+                    <div class="modal-title">${p.name}</div>
+                    <div class="brand" style="color:#d4af37; margin-bottom:10px;">${p.brand}</div>
+                    <div class="modal-desc">${description}</div>
                     <div class="modal-notes">
-                        <strong style="color:#d4af37;">${t.top}:</strong> ${top}<br>
-                        <strong style="color:#d4af37;">${t.heart}:</strong> ${heart}<br>
-                        <strong style="color:#d4af37;">${t.base}:</strong> ${base}
+                        <div><span class="notes-label">${t.top}:</span> ${top}</div>
+                        <div><span class="notes-label">${t.heart}:</span> ${heart}</div>
+                        <div><span class="notes-label">${t.base}:</span> ${base}</div>
                     </div>
-                    <div class="btn-concs">
-                        <button class="btn-conc active" id="m-extra" onclick="changeModalPrice('extra', ${index})">${t.extra} (${p.prices.extra} د.أ)</button>
-                        <button class="btn-conc" id="m-edp" onclick="changeModalPrice('edp', ${index})">${t.edp} (${p.prices.edp} د.أ)</button>
-                        <button class="btn-conc" id="m-edt" onclick="changeModalPrice('edt', ${index})">${t.edt} (${p.prices.edt} د.أ)</button>
-                        <button class="btn-conc" id="m-commercial" onclick="changeModalPrice('commercial', ${index})">${t.commercial} (${p.prices.commercial} د.أ)</button>
+                    <div class="concs-buttons">
+                        <button class="btn-conc active" id="m-extra">${t.extra} (${p.prices.extra} د.أ)</button>
+                        <button class="btn-conc" id="m-edp">${t.edp} (${p.prices.edp} د.أ)</button>
+                        <button class="btn-conc" id="m-edt">${t.edt} (${p.prices.edt} د.أ)</button>
+                        <button class="btn-conc" id="m-commercial">${t.commercial} (${p.prices.commercial} د.أ)</button>
                     </div>
                     <a href="https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('أريد طلب: ' + p.name)}" target="_blank" class="btn-wa">${t.order}</a>
                     <div class="similar-title">${t.similar}</div>
@@ -193,34 +253,10 @@
             document.getElementById('modal').style.display = 'flex';
         }
 
-        // تغيير السعر داخل النافذة
-        function changeModalPrice(type, index) {
-            const p = allPerfumes[index];
-            document.querySelectorAll('.btn-conc').forEach(b => b.classList.remove('active'));
-            document.getElementById(`m-${type}`).classList.add('active');
-        }
-
         function closeModal(e) {
             if (e.target.id === 'modal' || e.target.className === 'modal-close') {
                 document.getElementById('modal').style.display = 'none';
             }
-        }
-
-        // إعدادات اللغة والوضع
-        function toggleSettings() {
-            document.getElementById('settingsPanel').classList.toggle('open');
-        }
-        
-        function changeLanguage(lang) {
-            currentLang = lang;
-            // تغيير اتجاه الصفحة حسب اللغة
-            document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            render();
-        }
-
-        function toggleTheme() {
-            const current = document.body.getAttribute('data-theme');
-            document.body.setAttribute('data-theme', current === 'light' ? '' : 'light');
         }
 
         loadCatalog();
