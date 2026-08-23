@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مختبر The Mask Pro-Lab</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #1a1a1a; color: #fff; padding: 20px; }
+        .lock { text-align: center; margin-top: 50px; }
+        input { padding: 10px; width: 300px; border: 1px solid #d4af37; border-radius: 5px; background: #222; color: #fff; }
+        button { padding: 10px 20px; background: #d4af37; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        .hidden { display: none; }
+        .panel { background: #252525; padding: 20px; border-radius: 10px; }
+        h2 { color: #d4af37; }
+        .form-row { margin-bottom: 10px; }
+        .form-row input, .form-row textarea { width: 100%; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+    <!-- شاشة القفل -->
+    <div id="lockScreen" class="lock">
+        <h1>🔒 مختبر The Mask</h1>
+        <p>أدخل كلمة مرور المعمل</p>
+        <input type="password" id="passInput" placeholder="كلمة المرور">
+        <button onclick="checkPass()">دخول</button>
+        <p id="err" style="color:red;"></p>
+    </div>
+
+    <!-- لوحة التحكم -->
+    <div id="labPanel" class="hidden">
+        <h2>⚗️ محرك التصنيع والتراكيب</h2>
+        <p>مرحباً بك يا صانع العطور! هذه لوحة إدارة الإنتاج.</p>
+        <div class="panel">
+            <h3>إضافة / تعديل عطر في المتجر:</h3>
+            <div class="form-row"><input type="text" id="pName" placeholder="اسم العطر"></div>
+            <div class="form-row"><input type="text" id="pBrand" placeholder="البراند"></div>
+            <div class="form-row"><input type="number" id="pPrice" placeholder="السعر (د.أ)"></div>
+            <div class="form-row"><input type="text" id="pImage" placeholder="رابط صورة العطر (URL)"></div>
+            <div class="form-row"><textarea id="pNotes" placeholder="النوتات: افتتاحية, قلب, قاعدة"></textarea></div>
+            <button onclick="addProduct()">💾 حفظ العطر</button>
+            <hr>
+            <h3>قائمة المنتجات الحالية:</h3>
+            <div id="prodList"></div>
+        </div>
+    </div>
+
+    <script>
+        // كلمة المرور الافتراضية: TheMask@2024
+        const HASHED_PASSWORD = "d3b07384d113edec49eaa6238ad5ff00";
+
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function checkPass() {
+            const input = document.getElementById('passInput').value;
+            const hash = await sha256(input);
+            if (hash === HASHED_PASSWORD) {
+                document.getElementById('lockScreen').classList.add('hidden');
+                document.getElementById('labPanel').classList.remove('hidden');
+                loadProducts();
+            } else {
+                document.getElementById('err').innerText = "كلمة المرور غير صحيحة!";
+            }
+        }
+
+        async function loadProducts() {
+            const res = await fetch('https://raw.githubusercontent.com/hourane48-prog/-perfume-data/main/perfume_catalog.json');
+            window.allProds = await res.json();
+            renderList();
+        }
+
+        function renderList() {
+            const list = document.getElementById('prodList');
+            list.innerHTML = '';
+            window.allProds.forEach((p, idx) => {
+                list.innerHTML += `<div style="border-bottom:1px solid #444;padding:10px;">${p.name} - ${p.priceJOD} د.أ <button onclick="deleteProd(${idx})">🗑️ حذف</button></div>`;
+            });
+        }
+
+        async function addProduct() {
+            alert("تم حفظ العطر محلياً. لرفعه فعلياً على جيثب، يرجى استخدام Termux لرفع الملف الجديد.");
+        }
+        
+        function deleteProd(idx) {
+            alert("سيتم الحذف عند تحديث الملف يدوياً.");
+        }
+    </script>
+</body>
+</html>
