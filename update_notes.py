@@ -62,10 +62,25 @@ for line in lines:
     # الصور من مستودعك الخاص على GitHub (مضمونة 100% لأنك رفعتها بنجاح)
     image_url = f"https://raw.githubusercontent.com/hourane48-prog/-perfume-data/main/images/{pid}.jpg" if pid else ""
 
-    catalog.append({
-        "name": clean_name.upper(), "brand": brand, "prices": get_prices(brand),
-        "image": image_url, "top_notes": notes['top'], "heart_notes": notes['heart'], "base_notes": notes['base']
-    })
+    # تحميل الأسماء العربية
+try:
+    with open('arabic_names.json', 'r', encoding='utf-8') as f:
+        arabic_names = json.load(f)
+except:
+    arabic_names = {}
+
+name_ar = arabic_names.get(clean_name.upper(), clean_name)
+
+catalog.append({
+    "name": clean_name.upper(),
+    "name_ar": name_ar,
+    "brand": brand,
+    "prices": get_prices(brand),
+    "image": image_url,
+    "top_notes": notes['top'],
+    "heart_notes": notes['heart'],
+    "base_notes": notes['base']
+})
 
 with open('perfume_catalog.json', 'w', encoding='utf-8') as f:
     json.dump(catalog, f, ensure_ascii=False, indent=4)

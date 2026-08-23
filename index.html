@@ -164,7 +164,7 @@
             }
             
             const matched = allPerfumes.filter(p => 
-                p.name.toLowerCase().includes(q) || 
+                (p.name.toLowerCase().includes(q) || (p.name_ar && p.name_ar.toLowerCase().includes(q))) || 
                 (p.brand && p.brand.toLowerCase().includes(q))
             );
             
@@ -199,7 +199,7 @@
                     <img src="${p.image}" onerror="this.src='https://via.placeholder.com/280?text=The+Mask'">
                     <div class="card-info">
                         <div class="brand">${p.brand || 'THE MASK'}</div>
-                        <div class="name">${p.name}</div>
+                        <div class="name">${p.name_ar || p.name}</div>
                         <div class="price">${p.prices.extra} د.أ</div>
                         <div style="color:#888; font-size:12px; margin-top:5px;">اضغط للتفاصيل</div>
                     </div>
