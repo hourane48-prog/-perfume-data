@@ -4,63 +4,55 @@
         "substantivity_hours": 400,
         "vapor_pressure_mmhg": 0.00062,
         "ifra_max_pct": 20.0,
-        "role": "عماد الهيكل الخشبي ومجسّم الروائح",
-        "odor_type": "Woody/Amber"
+        "role": "هيكل خشبي/مجسّم للرائحة"
     },
     "Hedione": {
         "cas": "24851-98-7",
         "substantivity_hours": 384,
         "vapor_pressure_mmhg": 0.001,
         "ifra_max_pct": 100.0,
-        "role": "موسع انتشار وإشعاع زهري",
-        "odor_type": "Floral/Jasmine"
+        "role": "موسع انتشار إشعاعي"
     },
     "Ambroxan": {
         "cas": "6790-58-5",
         "substantivity_hours": 400,
         "vapor_pressure_mmhg": 0.0001,
         "ifra_max_pct": 100.0,
-        "role": "نواة عنبرية مشعة ومثبت عميق",
-        "odor_type": "Ambergris"
+        "role": "مثبت عنبري عميق"
     },
     "Galaxolide": {
         "cas": "1222-05-5",
         "substantivity_hours": 400,
         "vapor_pressure_mmhg": 8.5e-05,
         "ifra_max_pct": 20.0,
-        "role": "مسك نظيف قاعدي",
-        "odor_type": "Musk"
+        "role": "مسك نظيف قاعدي"
     },
     "Cyclomethicone D5": {
         "cas": "541-02-6",
         "substantivity_hours": 0,
         "vapor_pressure_mmhg": 0.2,
         "ifra_max_pct": 100.0,
-        "role": "ناقل حريري سريع التبخر ومانع بقع",
-        "odor_type": "Odorless/Solvent"
+        "role": "ناقل حريري/مانع تزييت"
     },
     "DPG (Dipropylene Glycol)": {
         "cas": "25265-71-8",
         "substantivity_hours": 0,
         "vapor_pressure_mmhg": 0.016,
         "ifra_max_pct": 100.0,
-        "role": "معدل تبخر كيميائي ومذيب",
-        "odor_type": "Odorless/Solvent"
+        "role": "معدل تبخر كيميائي"
     },
     "BHT (Antioxidant)": {
         "cas": "128-37-0",
         "substantivity_hours": 0,
         "vapor_pressure_mmhg": 0.001,
         "ifra_max_pct": 0.5,
-        "role": "مضاد أكسدة وحفظ تفاعل الأكسجين",
-        "odor_type": "Odorless/Preservative"
+        "role": "مضاد أكسدة لحماية الزيوت"
     },
     "Ethanol 96%": {
         "cas": "64-17-5",
         "substantivity_hours": 0,
         "vapor_pressure_mmhg": 59.3,
         "ifra_max_pct": 100.0,
-        "role": "وسط ناقل ومذيب كحولي",
-        "odor_type": "Alcoholic"
+        "role": "مذيب كحولي متطاير"
     }
 }
