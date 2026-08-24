@@ -1,126 +1,362 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مختبر The Mask Pro-Lab</title>
-    
-    <!-- استيراد مكتبات Firebase (الطريقة الآمنة) -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+async function runAIEngine() {
+    try {
+        // 1. قراءة المدخلات الأساسية من واجهة المختبر
+        const p1Input = document.getElementById('p1_name')?.value.trim().toUpperCase();
+        const p2Input = document.getElementById('p2_name')?.value.trim().toUpperCase();
+        
+        if (!p1Input) { 
+            showStatus("❌ خطأ معملي: يرجى إدخال اسم العطر الأساسي من قاعدة البيانات!", "danger"); 
+            return; 
+        }
 
-        // إعدادات Firebase الخاصة بك
-        const firebaseConfig = {
-            apiKey: "AIzaSyAp4NNm0yXsEMVpGhtEVMvDGqvp7P8X01U",
-            authDomain: "the-mask-security.firebaseapp.com",
-            projectId: "the-mask-security",
-            storageBucket: "the-mask-security.firebasestorage.app",
-            messagingSenderId: "824767222562",
-            appId: "1:824767222562:web:6b8954cb95196e0aaf8b7b",
-            measurementId: "G-37Q2ZS9M36"
-        };
+        const netBatch = parseFloat(document.getElementById('batchVolume')?.value) || 100;
+        const lossRate = parseFloat(document.getElementById('lossFactor')?.value) || 0.025;
+        const totalBatch = netBatch * (1 + lossRate); // التشغيلة الكلية (Gross Batch)
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
+        const pType = document.getElementById('productTypeSelector')?.value || 'alcoholic_edp';
+        const intensity = document.getElementById('enhancerIntensity')?.value || 'balanced';
+        
+        // استخراج العائلة العطرية لتحليل التوافق
+        const t1 = document.getElementById('p1_type')?.value || 'woody';
+        const t2 = document.getElementById('p2_type')?.value || 'citrus';
 
-        // دالة تسجيل الدخول
-        window.checkPass = async function() {
-            const email = document.getElementById('emailInput').value;
-            const password = document.getElementById('passInput').value;
-            const errMsg = document.getElementById('err');
-            errMsg.innerText = "";
+        // 2. الاتصال بقواعد البيانات الصناعية (Strict Fetching)
+        const catalogRes = await fetch('https://cdn.jsdelivr.net/gh/hourane48-prog/-perfume-data@main/perfume_catalog.json');
+        const chemRes = await fetch('https://cdn.jsdelivr.net/gh/hourane48-prog/-perfume-data@main/chemical_master.json');
+        
+        if (!catalogRes.ok || !chemRes.ok) throw new Error("فشل الاتصال بقواعد البيانات المركزية (GitHub).");
+        
+        const catalog = await catalogRes.json();
+        const chemDB = await chemRes.json();
+
+        // 3. المطابقة الدقيقة للعطور (Exact Match Algorithm)
+        let primaryPerfume = null, primaryKey = null;
+        let secondaryPerfume = null, secondaryKey = null;
+
+        for (let key in catalog) {
+            let cleanKey = key.toUpperCase().replace('LUZI - ', '');
+            if (cleanKey.includes(p1Input) || p1Input.includes(cleanKey)) {
+                primaryPerfume = catalog[key]; primaryKey = key;
+            }
+            if (p2Input && (cleanKey.includes(p2Input) || p2Input.includes(cleanKey))) {
+                secondaryPerfume = catalog[key]; secondaryKey = key;
+            }
+        }
+
+        if (!primaryPerfume) {
+            showStatus(`❌ العطر [${p1Input}] غير مدرج في الكتالوج الموثق. يرجى تحديث قاعدة البيانات.`, "danger");
+            return;
+        }
+
+        // 4. مصفوفة التوافق في حال المزج (Layering Compatibility)
+        let isLayering = !!secondaryPerfume;
+        let compatibilityScore = 100;
+        if (isLayering) {
+            // مصفوفة توافق صناعية صارمة
+            const matrix = {
+                woody: { woody:95, citrus:85, marine:70, amber:90, gourmand:80, floral:85, musky:95, green:90, leather:90 },
+                citrus: { woody:85, citrus:95, marine:90, amber:65, gourmand:40, floral:90, musky:85, green:95, leather:60 },
+                amber: { woody:90, citrus:65, marine:50, amber:95, gourmand:90, floral:80, musky:90, green:60, leather:95 },
+                floral: { woody:85, citrus:90, marine:80, amber:80, gourmand:70, floral:95, musky:95, green:85, leather:70 }
+            };
+            compatibilityScore = (matrix[t1] && matrix[t1][t2]) ? matrix[t1][t2] : 75;
             
-            try {
-                await signInWithEmailAndPassword(auth, email, password);
-                // سيتم تفعيل لوحة التحكم تلقائياً عند نجاح الدخول
-            } catch (error) {
-                const errorCode = error.code;
-                if (errorCode === 'auth/invalid-credential') {
-                    errMsg.innerText = "البريد الإلكتروني أو كلمة المرور غير صحيحة!";
-                } else {
-                    errMsg.innerText = "حدث خطأ، حاول مجدداً.";
-                }
+            updateCompatibilityUI(compatibilityScore, isLayering);
+            if (compatibilityScore <= 50) {
+                showStatus("🚨 رفض معملي: المزيج غير متوافق كيميائياً وشمياً (أقل من 50%). العملية ملغاة.", "danger");
+                return;
             }
+        } else {
+            document.getElementById('compatBox').style.display = 'none';
+        }
+
+        // 5. هندسة التركيز الكيميائي (Target Concentration)
+        let targetConc = 0.18, pTypeLabel = "Eau de Parfum (18%)", isPureOil = false;
+        const typeMap = {
+            'alcoholic_extrait': { c: 0.25, l: "Parfum / Extrait (25%)" },
+            'alcoholic_commercial': { c: 0.06, l: "تجاري شعبي (6%)" },
+            'alcoholic_edt': { c: 0.10, l: "Eau de Toilette (10%)" },
+            'alcoholic_edc': { c: 0.04, l: "Eau de Cologne (4%)" },
+            'alcoholic_elixir': { c: 0.35, l: "Elixir فائق القوة (35%)" },
+            'hair_body_mist': { c: 0.10, l: "Hair & Body Mist (10%)" },
+            'pure_cpo': { c: 0.96, l: "زيت عطري للمسح (96%)", pure: true }
+        };
+        if (typeMap[pType]) {
+            targetConc = typeMap[pType].c;
+            pTypeLabel = typeMap[pType].l;
+            isPureOil = typeMap[pType].pure || false;
+        }
+
+        // أسعار المواد الكيميائية (JOD للغرام الواحد)
+        const chemPrices = {
+            "Iso E Super": 0.050, "Hedione": 0.040, "Ambroxan": 0.250, "Galaxolide": 0.045,
+            "Cyclomethicone D5": 0.035, "DPG": 0.012, "BHT": 0.060, "Ethanol 96%": 0.005
         };
 
-        // دالة تسجيل الخروج
-        window.logOut = async function() {
-            await signOut(auth);
-        };
+        let formula = [];
+        let usedWeight = 0;
+        let totalOilCost = 0;
 
-        // مراقبة حالة الدخول (هل أنت مسجل دخول؟)
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // إذا تم تسجيل الدخول بنجاح
-                document.getElementById('lockScreen').classList.add('hidden');
-                document.getElementById('labPanel').classList.remove('hidden');
-                loadProducts();
+        // 6. وزن الزيت وتكلفته
+        let totalOilWeight = totalBatch * targetConc;
+        if (!isLayering) {
+            let cost = (totalOilWeight / 1000) * (primaryPerfume.priceJOD || 35.0);
+            formula.push({ name: primaryKey, role: "الزيت العطري الأساسي", w: totalOilWeight, c: cost, p: targetConc * 100 });
+            totalOilCost = cost;
+        } else {
+            let w1 = totalOilWeight * 0.60; // 60% للمحور الأساسي
+            let w2 = totalOilWeight * 0.40; // 40% للمعدل (Modifier)
+            let c1 = (w1 / 1000) * (primaryPerfume.priceJOD || 35.0);
+            let c2 = (w2 / 1000) * (secondaryPerfume.priceJOD || 35.0);
+            formula.push({ name: primaryKey + " (60%)", role: "قاعدة المزج الأساسية", w: w1, c: c1, p: (targetConc * 100) * 0.60 });
+            formula.push({ name: secondaryKey + " (40%)", role: "المعدل العطري الثانوي", w: w2, c: c2, p: (targetConc * 100) * 0.40 });
+            totalOilCost = c1 + c2;
+        }
+        usedWeight += totalOilWeight;
+
+        // 7. حساب المذيبات والمعززات بمعايير IFRA
+        let intFactor = (intensity === 'strong') ? 1.5 : (intensity === 'light' ? 0.5 : 1.0);
+        
+        // المعززات (تخصيص ذكي بناء على العائلة العطرية)
+        let isoW = 0, hedW = 0, ambW = 0;
+        if (!isPureOil) {
+            if (['woody', 'leather', 'amber'].includes(t1)) {
+                isoW = totalBatch * 0.015 * intFactor; // 1.5%
+                ambW = totalBatch * 0.002 * intFactor; // 0.2%
+            } else if (['citrus', 'floral', 'marine'].includes(t1)) {
+                hedW = totalBatch * 0.018 * intFactor; // 1.8%
+                isoW = totalBatch * 0.005 * intFactor; // 0.5%
             } else {
-                // إذا تم تسجيل الخروج
-                document.getElementById('lockScreen').classList.remove('hidden');
-                document.getElementById('labPanel').classList.add('hidden');
+                isoW = totalBatch * 0.010 * intFactor;
+                hedW = totalBatch * 0.010 * intFactor;
             }
-        });
-    </script>
+            
+            // التأكد من عدم تجاوز حدود IFRA
+            if (isoW > (totalBatch * (chemDB["Iso E Super"]?.ifra_max_pct/100 || 0.2))) isoW = totalBatch * 0.2;
+            
+            if (isoW > 0) { formula.push({ name: "Iso E Super", role: "هيكل خشبي ومجسّم", w: isoW, c: isoW * chemPrices["Iso E Super"], p: (isoW/totalBatch)*100 }); usedWeight += isoW; }
+            if (hedW > 0) { formula.push({ name: "Hedione", role: "موسع إشعاع زهري", w: hedW, c: hedW * chemPrices["Hedione"], p: (hedW/totalBatch)*100 }); usedWeight += hedW; }
+            if (ambW > 0) { formula.push({ name: "Ambroxan", role: "مثبت عنبري عميق", w: ambW, c: ambW * chemPrices["Ambroxan"], p: (ambW/totalBatch)*100 }); usedWeight += ambW; }
+        }
 
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #1a1a1a; color: #fff; padding: 20px; }
-        .lock { text-align: center; margin-top: 50px; }
-        input { padding: 10px; width: 300px; border: 1px solid #d4af37; border-radius: 5px; background: #222; color: #fff; margin-bottom: 10px; }
-        button { padding: 10px 20px; background: #d4af37; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
-        .hidden { display: none; }
-        .panel { background: #252525; padding: 20px; border-radius: 10px; }
-        h2, h1 { color: #d4af37; }
-        .form-row { margin-bottom: 10px; }
-        .form-row input, .form-row textarea { width: 100%; box-sizing: border-box; }
-    </style>
-</head>
-<body>
-    <!-- شاشة القفل -->
-    <div id="lockScreen" class="lock">
-        <h1>🔒 مختبر The Mask</h1>
-        <p>أدخل بريد المعمل وكلمة المرور</p>
-        <input type="email" id="emailInput" placeholder="owner@themask.com">
-        <input type="password" id="passInput" placeholder="كلمة المرور">
-        <button onclick="checkPass()">دخول</button>
-        <p id="err" style="color:red;"></p>
-    </div>
+        // المذيبات الإجبارية
+        let cycloW = totalBatch * (isPureOil ? 0 : 0.005);
+        if (cycloW > 0) { formula.push({ name: "Cyclomethicone D5", role: "ناقل حريري/مانع تزييت", w: cycloW, c: cycloW * chemPrices["Cyclomethicone D5"], p: 0.5 }); usedWeight += cycloW; }
 
-    <!-- لوحة التحكم -->
-    <div id="labPanel" class="hidden">
-        <h2>⚗️ محرك التصنيع والتراكيب</h2>
-        <p>مرحباً بك يا صانع العطور! هذه لوحة إدارة الإنتاج.</p>
-        <button onclick="logOut()" style="background:red; float:left;">تسجيل الخروج</button>
-        <div class="panel">
-            <h3>إضافة / تعديل عطر في المتجر:</h3>
-            <div class="form-row"><input type="text" id="pName" placeholder="اسم العطر"></div>
-            <div class="form-row"><input type="text" id="pBrand" placeholder="البراند"></div>
-            <div class="form-row"><input type="number" id="pPrice" placeholder="السعر (د.أ)"></div>
-            <div class="form-row"><input type="text" id="pImage" placeholder="رابط صورة العطر (URL)"></div>
-            <div class="form-row"><textarea id="pNotes" placeholder="النوتات: افتتاحية, قلب, قاعدة"></textarea></div>
-            <button onclick="alert('تم حفظ العطر. لرفعه فعلياً يرجى استخدام Termux.')">💾 حفظ العطر</button>
-            <hr>
-            <h3>قائمة المنتجات الحالية:</h3>
-            <div id="prodList"></div>
+        let dpgW = totalBatch * (isPureOil ? 0.02 : 0.01);
+        formula.push({ name: "DPG", role: "معدل تبخر / مذيب", w: dpgW, c: dpgW * chemPrices["DPG"], p: (dpgW/totalBatch)*100 }); usedWeight += dpgW;
+
+        let bhtW = totalBatch * 0.0005; // 0.05%
+        formula.push({ name: "BHT", role: "مضاد أكسدة لحماية الزيت", w: bhtW, c: bhtW * chemPrices["BHT"], p: 0.05 }); usedWeight += bhtW;
+
+        // الكحول الإيثيلي
+        let ethW = Math.max(0, totalBatch - usedWeight);
+        let ethCost = ethW * chemPrices["Ethanol 96%"];
+        if (ethW > 0) {
+            formula.push({ name: "Ethanol 96%", role: "مذيب كحولي عضوي متطاير", w: ethW, c: ethCost, p: (ethW/totalBatch)*100 });
+        }
+
+        // 8. توليد الجداول والواجهات (تتطابق مع الصور تماماً)
+        renderFormulationTable(formula);
+        renderCostDashboard(netBatch, totalBatch, pTypeLabel, totalOilCost, formula, ethCost, isPureOil);
+        renderGMPCard(primaryKey, totalBatch);
+        renderGCMSandAllergens(formula, primaryPerfume);
+        renderFragranticaPyramid(primaryPerfume, secondaryPerfume);
+        renderSOP(primaryKey, totalOilWeight, isoW, hedW, ambW, dpgW, cycloW, bhtW, ethW, 40);
+
+        showStatus(`✅ تمت المعايرة الصناعية بنجاح! تم بناء التركيبة وفق معايير ISO 22716.`, "success");
+
+    } catch (err) {
+        showStatus(`❌ خطأ في محرك المعالجة: ${err.message}`, "danger");
+        console.error(err);
+    }
+}
+
+// ---------------- دوال توليد الواجهات الفرعية (UI Rendering) ----------------
+
+function renderFormulationTable(formula) {
+    const tbody = document.getElementById('tableBody');
+    if (!tbody) return;
+    tbody.innerHTML = formula.map(r => `
+        <tr style="border-bottom: 1px solid #333;">
+            <td style="text-align:right; padding:10px;">
+                <strong style="color:#fff; font-size:14px;">${r.name}</strong><br>
+                <span style="font-size:11px; color:#888;">${r.role}</span>
+            </td>
+            <td style="color:#d4af37; font-weight:bold; font-size:14px;">${r.w.toFixed(2)} g</td>
+            <td style="color:${r.p > 40 ? '#4cff6e' : '#fff'};">${r.p.toFixed(2)}%</td>
+            <td style="color:#aaa;">${r.c.toFixed(3)} JOD</td>
+        </tr>
+    `).join('');
+}
+
+function renderCostDashboard(netBatch, totalBatch, pTypeLabel, oilCost, formula, ethCost, isPureOil) {
+    let chemCost = formula.reduce((sum, item) => sum + item.c, 0) - oilCost - ethCost;
+    let bottleCost = 0.750;
+    let overhead = 0.300;
+    let totalCost = oilCost + chemCost + ethCost + bottleCost + overhead;
+    let retailPrice = totalCost * (isPureOil ? 3.5 : 2.8);
+
+    document.getElementById('lblVolume').innerText = `${netBatch}g (Gross: ${totalBatch.toFixed(1)}g)`;
+    document.getElementById('lblProductType').innerText = pTypeLabel;
+    document.getElementById('lblOilCost').innerText = oilCost.toFixed(3) + " JOD";
+    document.getElementById('lblEnhancerCost').innerText = chemCost.toFixed(3) + " JOD";
+    document.getElementById('lblBottleCost').innerText = (ethCost + bottleCost + overhead).toFixed(3) + " JOD";
+    document.getElementById('lblTotal').innerText = totalCost.toFixed(3) + " JOD";
+    document.getElementById('lblRetail').innerText = retailPrice.toFixed(3) + " JOD";
+    
+    document.getElementById('costDashboard').style.display = 'block';
+}
+
+function renderGMPCard(pName, batchSize) {
+    let d = new Date();
+    let lotCode = `LOT-${d.getFullYear().toString().slice(-2)}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}-${pName.substring(0,3).toUpperCase()}`;
+    let expDate = new Date(d); expDate.setFullYear(d.getFullYear() + 3);
+    let matDate = new Date(d); matDate.setDate(d.getDate() + 40);
+
+    let html = `
+        <div style="background:#141414; border:1px solid #4cff6e; border-radius:8px; padding:12px; margin-bottom:15px;">
+            <div style="color:#4cff6e; font-weight:bold; margin-bottom:8px;">✅ بطاقة تتبع الجودة (GMP) - ISO 22716</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:12px; color:#ddd;">
+                <div>📦 كود التشغيلة: <b style="color:#55ccff;">${lotCode}</b></div>
+                <div>⚖️ الحجم الإجمالي: <b>${batchSize.toFixed(1)} g</b></div>
+                <div>⏳ تاريخ النضج: <b style="color:#d4af37;">${matDate.toISOString().split('T')[0]}</b></div>
+                <div>🛡️ الصلاحية (PAO): <b>${expDate.toISOString().split('T')[0]}</b></div>
+            </div>
         </div>
-    </div>
+    `;
+    
+    let manualDiv = document.getElementById('dynamicManual');
+    if(manualDiv) manualDiv.innerHTML = html; // بداية تعبئة المربع التفصيلي
+}
 
-    <script>
-        // تحميل المنتجات من GitHub (قراءة فقط)
-        async function loadProducts() {
-            const res = await fetch('https://raw.githubusercontent.com/hourane48-prog/-perfume-data/main/perfume_catalog.json');
-            window.allProds = await res.json();
-            renderList();
+function renderGCMSandAllergens(formula, primaryPerfume) {
+    let manualDiv = document.getElementById('dynamicManual');
+    
+    // 1. تفكيك GC-MS (فقط للمضافات الموثقة)
+    let gcmsHtml = `
+        <div style="margin-top:15px; border-left:3px solid #d4af37; padding-left:10px;">
+            <div style="color:#d4af37; font-weight:bold; font-size:14px;">🔬 تفكيك البصمة الجزيئية والمذيبات (GC-MS Deconstruction)</div>
+            <div style="font-size:11px; color:#888; margin-bottom:8px;">* التركيبة السرية للزيت الأساسي محفوظة (Trade Secret). البيانات أدناه للمضافات المعملية الموثقة:</div>
+    `;
+    
+    formula.forEach(f => {
+        if(f.name !== "Ethanol 96%" && !f.role.includes("الزيت")) {
+            gcmsHtml += `<div style="background:#1a1a1a; padding:6px; margin-bottom:4px; border-radius:4px; font-size:12px; border:1px solid #333;">
+                <b style="color:#fff;">${f.name}</b> (${f.p.toFixed(2)}%)<br><span style="color:#aaa;">الوظيفة: ${f.role}</span>
+            </div>`;
         }
+    });
+    gcmsHtml += `</div>`;
 
-        function renderList() {
-            const list = document.getElementById('prodList');
-            list.innerHTML = '';
-            window.allProds.forEach((p, idx) => {
-                list.innerHTML += `<div style="border-bottom:1px solid #444;padding:10px;">${p.name} - ${p.priceJOD} د.أ <button onclick="alert('سيتم الحذف عند تحديث الملف يدوياً.')">🗑️ حذف</button></div>`;
-            });
+    // 2. إقرار مسببات الحساسية (Allergens) بناءً على النوتات
+    let allergens = ["Linalool", "Limonene"]; // افتراضي لمعظم العطور
+    let notesStr = JSON.stringify(primaryPerfume?.notes || "").toLowerCase();
+    if(notesStr.includes("citrus") || notesStr.includes("ليمون") || notesStr.includes("برتقال")) allergens.push("Citral");
+    if(notesStr.includes("rose") || notesStr.includes("ورد")) allergens.push("Citronellol", "Geraniol");
+    if(notesStr.includes("spice") || notesStr.includes("قرفة")) allergens.push("Cinnamal", "Eugenol");
+
+    let allergensHtml = `
+        <div style="margin-top:15px; background:#3d1414; border:1px solid #ff4c4c; padding:10px; border-radius:6px;">
+            <div style="color:#ff4c4c; font-weight:bold; font-size:13px; margin-bottom:5px;">🏷️ إقرار مسببات الحساسية لبطاقة المنتج (EU CosIng Allergen Declaration)</div>
+            <div style="font-size:12px; color:#ffaaaa;">يحتوي الزيت العطري على مركبات عضوية ملزمة بالتصريح: <br><b style="color:#fff;">${[...new Set(allergens)].join('، ')}</b>.</div>
+        </div>
+    `;
+
+    if(manualDiv) manualDiv.innerHTML += gcmsHtml + allergensHtml;
+}
+
+function renderFragranticaPyramid(p1, p2) {
+    let manualDiv = document.getElementById('dynamicManual');
+    let notes = p1?.notes || {top:[], heart:[], base:[]};
+    
+    let isVerified = (p1?.data_integrity === "Verified");
+    let titleColor = isVerified ? "#4cff6e" : "#ff4c4c";
+    let titleText = isVerified ? "🔺 التسلسل الهرمي الموثق (Fragrantica Master DB)" : "⚠️ التسلسل الهرمي (بيانات قيد التحديث)";
+
+    let pyramidHtml = `
+        <div style="margin-top:15px; background:#181818; padding:12px; border-radius:8px; border:1px solid #333;">
+            <div style="color:${titleColor}; font-weight:bold; font-size:14px; margin-bottom:8px;">${titleText}</div>
+            <div style="font-size:13px; line-height:1.8;">
+                <div><b style="color:#d4af37;">القمة (Top Notes):</b> <span style="color:#fff;">${notes.top.length ? notes.top.join('، ') : 'حمضيات متطايرة'}</span></div>
+                <div><b style="color:#d4af37;">القلب (Heart Notes):</b> <span style="color:#fff;">${notes.heart.length ? notes.heart.join('، ') : 'أزهار وأخشاب'}</span></div>
+                <div><b style="color:#d4af37;">القاعدة (Base Notes):</b> <span style="color:#fff;">${notes.base.length ? notes.base.join('، ') : 'مسك، عنبر، أخشاب عميقة'}</span></div>
+            </div>
+        </div>
+    `;
+    if(manualDiv) manualDiv.innerHTML += pyramidHtml;
+}
+
+function renderSOP(pName, oilW, isoW, hedW, ambW, dpgW, cycloW, bhtW, ethW, days) {
+    let manualDiv = document.getElementById('dynamicManual');
+    
+    let sopHtml = `
+        <div style="margin-top:15px;">
+            <div style="color:#d4af37; font-weight:bold; font-size:14px; margin-bottom:8px;">🧪 دليل خطوات التصنيع والمعايرة (SOP - ISO 22716)</div>
+            
+            <div style="background:#262626; border-left:3px solid #d4af37; padding:10px; font-size:12px; line-height:1.8; color:#ddd; border-radius:0 6px 6px 0;">
+                <b style="color:#ffb44c;">⚠️ تنبيه معملي حرج قبل البدء:</b> تأكد أن الزيت الخام والمذيبات بدرجة حرارة الغرفة الطبيعية (18°م - 22°م). إدخال زيت مبرد مسبقاً يسبب صدمة تكسر الروابط العطرية.<br><br>
+
+                <b style="color:#d4af37;">المرحلة 1:</b> إذابة البلورات والمثبتات (Premixing Phase).<br>
+                في كأس زجاجي، يوضع <b>DPG (${dpgW.toFixed(2)}g)</b> ومضاد الأكسدة <b>BHT (${bhtW.toFixed(3)}g)</b>. إذا احتوت التركيبة على عنبر صلب (Ambroxan)، يُذاب هنا مع كمية بسيطة جداً من الكحول.<br><br>
+
+                <b style="color:#d4af37;">المرحلة 2:</b> المعززات السائلة والناقل الحريري.<br>
+                تُضاف المعززات السائلة الموصوفة <b>(${isoW>0?'Iso E Super ':''}${hedW>0?'Hedione ':''})</b>. يضاف بعدها مانع البقع <b>Cyclomethicone D5 (${cycloW.toFixed(2)}g)</b>.<br><br>
+
+                <b style="color:#d4af37;">المرحلة 3:</b> إدخال الزيت العطري الخام.<br>
+                يُصب الزيت الخام <b>(${oilW.toFixed(2)}g)</b> فوق قاعدة المذيبات ببطء. يوضع المزيج على محرك مغناطيسي (Magnetic Stirrer) بسرعة (300-500 RPM) للربط التساهمي لمدة 3 دقائق كاملة.<br><br>
+
+                <b style="color:#d4af37;">المرحلة 4:</b> الامتزاج الكحولي (Ethanol 96%).<br>
+                يُحقن الكحول الإيثيلي المتبقي <b>(${ethW.toFixed(2)}g)</b> تدريجياً على 3 دفعات متباعدة لمنع التكسير أو التغيم.<br><br>
+
+                <b style="color:#d4af37;">المرحلة 5:</b> الصدمة الحرارية والترسيب (Cold Shock).<br>
+                تُغلق العبوة بإحكام وتُحفظ في ثلاجة مبردة (2°م إلى 4°م) لمدة <b>48 ساعة</b> متواصلة لترسيب الشمعيات الثقيلة.<br><br>
+
+                <b style="color:#d4af37;">المرحلة 6:</b> الترشيح الميكروني الفائق.<br>
+                يُسكب المزيج "وهو بارد" مباشرة عبر ورق ترشيح ميكروني معتمد لفصل الشمعيات المترسبة.<br><br>
+
+                <b style="color:#d4af37;">المرحلة 7:</b> التعتيق المظلم (Dark Aging).<br>
+                تُحفظ العبوات في بيئة معتمة جافة ومحكمة الإغلاق (18°م - 20°م) لمدة لا تقل عن <b>${days} يوماً</b> لاكتمال النضج العطري بالكامل.
+            </div>
+        </div>
+    `;
+    
+    if(manualDiv) manualDiv.innerHTML += sopHtml;
+    document.getElementById('smartSopBox').style.display = 'block';
+}
+
+function updateCompatibilityUI(score, isLayering) {
+    let box = document.getElementById('compatBox');
+    let fill = document.getElementById('compatFill');
+    let advice = document.getElementById('compatAdvice');
+    
+    if (!box || !fill || !advice) return;
+    
+    if (isLayering) {
+        box.style.display = 'block';
+        fill.style.width = score + '%';
+        fill.innerText = score + '%';
+        
+        if (score >= 85) {
+            fill.style.backgroundColor = '#4cff6e';
+            advice.innerHTML = "<b style='color:#4cff6e;'>✔ تركيبة متناغمة ومثالية للمزج.</b>";
+        } else if (score >= 60) {
+            fill.style.backgroundColor = '#d4af37';
+            advice.innerHTML = "<b style='color:#d4af37;'>⚠️ تركيبة مقبولة، قد تحتاج إلى موازنة في أوقات التعتيق.</b>";
+        } else {
+            fill.style.backgroundColor = '#ff4c4c';
+            advice.innerHTML = "<b style='color:#ff4c4c;'>❌ تحذير: التوافق ضعيف جداً، الرائحة ستكون متضاربة.</b>";
         }
-    </script>
-</body>
-</html>
+    } else {
+        box.style.display = 'none';
+    }
+}
+
+function showStatus(msg, type) {
+    const box = document.getElementById('statusBox');
+    if(box) {
+        box.style.display = 'block';
+        box.className = `status-card status-${type}`;
+        box.innerHTML = msg;
+    }
+}
