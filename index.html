@@ -55,22 +55,21 @@
                 document.getElementById('loading').style.display = 'none';
                 
                 for (let key in catalog) {
-                    let perfData = catalog[key];
+                    let perfData = catalog[key] || {};
                     let metricData = metrics[key] || { longevity_hours: 8, sillage_rating: 7.5 };
                     let displayName = key.replace('Luzi - ', '').replace('LUZI - ', '');
                     
                     allPerfumes.push({
                         name: displayName,
-                        price: perfData.priceJOD,
-                        integrity: perfData.data_integrity,
-                        notes: perfData.notes,
-                        longevity: metricData.longevity_hours,
-                        sillage: metricData.sillage_rating
+                        price: perfData.priceJOD || 0.0,
+                        notes: perfData.notes || { top: [], heart: [], base: [] },
+                        longevity: metricData.longevity_hours || 8,
+                        sillage: metricData.sillage_rating || 7.5
                     });
                 }
                 renderPerfumes(allPerfumes);
             } catch (error) {
-                document.getElementById('loading').innerHTML = `❌ عذراً، حدث خطأ في الاتصال بالخوادم: ${error.message}`;
+                document.getElementById('loading').innerHTML = `❌ خطأ في النظام: ${error.message}`;
             }
         }
 
@@ -79,17 +78,19 @@
             grid.innerHTML = '';
             
             perfumesArray.forEach(p => {
-                let hasNotes = p.notes.top.length > 0 || p.notes.heart.length > 0 || p.notes.base.length > 0;
-                let topHtml = hasNotes && p.notes.top.length ? p.notes.top.join('، ') : '';
-                let heartHtml = hasNotes && p.notes.heart.length ? p.notes.heart.join('، ') : '';
-                let baseHtml = hasNotes && p.notes.base.length ? p.notes.base.join('، ') : '';
+                let notes = p.notes || {};
+                let top = notes.top || [];
+                let heart = notes.heart || [];
+                let base = notes.base || [];
+                
+                let hasNotes = top.length > 0 || heart.length > 0 || base.length > 0;
                 
                 let pyramidHtml = '';
                 if (hasNotes) {
                     pyramidHtml = `
-                        ${topHtml ? `<div class="note-row"><span>القمة:</span> <span class="note-val">${topHtml}</span></div>` : ''}
-                        ${heartHtml ? `<div class="note-row"><span>القلب:</span> <span class="note-val">${heartHtml}</span></div>` : ''}
-                        ${baseHtml ? `<div class="note-row"><span>القاعدة:</span> <span class="note-val">${baseHtml}</span></div>` : ''}
+                        ${top.length ? `<div class="note-row"><span>القمة:</span> <span class="note-val">${top.join('، ')}</span></div>` : ''}
+                        ${heart.length ? `<div class="note-row"><span>القلب:</span> <span class="note-val">${heart.join('، ')}</span></div>` : ''}
+                        ${base.length ? `<div class="note-row"><span>القاعدة:</span> <span class="note-val">${base.join('، ')}</span></div>` : ''}
                     `;
                 } else {
                     pyramidHtml = `<div class="note-row secret-blend">✨ تركيبة سرية خاصة تتميز بالفخامة والتفرد، صُممت لتناسب الذوق الرفيع.</div>`;
