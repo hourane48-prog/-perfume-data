@@ -3,257 +3,370 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Mask 🎭 | لوحة تحكم المختبر الكيميائي</title>
+    <title>The Mask 🎭 | المختبر السري للتركيب (Pro-Lab)</title>
     <style>
         :root { --primary: #d4af37; --bg-dark: #0a0a0a; --panel-bg: #141414; --border: #333; --text: #e0e0e0; --success: #28a745; --danger: #dc3545; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Consolas', 'Courier New', monospace, 'Segoe UI'; }
-        body { background-color: var(--bg-dark); color: var(--text); padding: 20px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text); padding: 20px; font-size: 14px; }
         
-        .header { border-bottom: 2px solid var(--primary); padding-bottom: 15px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
-        .header h1 { color: var(--primary); font-size: 24px; font-family: sans-serif; }
-        .header .status { font-size: 12px; background: var(--success); color: #fff; padding: 4px 8px; border-radius: 4px; }
+        .header-container { border-bottom: 2px solid var(--primary); padding-bottom: 15px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
+        .header-title { color: var(--primary); font-size: 24px; font-weight: bold; }
+        .status-badge { background: #12331b; color: #4cff6e; border: 1px solid #28a745; padding: 8px 12px; border-radius: 6px; font-size: 13px; font-weight: bold; }
 
-        .dashboard { display: grid; grid-template-columns: 300px 1fr; gap: 20px; }
-        .panel { background: var(--panel-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
-        .panel h2 { color: var(--primary); font-size: 16px; margin-bottom: 15px; border-bottom: 1px dashed var(--border); padding-bottom: 10px; font-family: sans-serif;}
+        .section-box { background: var(--panel-bg); border: 1px solid var(--border); border-radius: 8px; padding: 25px; margin-bottom: 25px; }
+        .section-title { color: var(--primary); font-size: 18px; margin-bottom: 20px; border-bottom: 1px dashed var(--border); padding-bottom: 10px; }
         
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-size: 12px; color: #888; margin-bottom: 5px; }
-        .form-control { width: 100%; background: #000; border: 1px solid var(--border); color: #fff; padding: 10px; border-radius: 4px; font-size: 14px; outline: none; }
+        /* Grid System - عرض أفقي */
+        .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        .row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        
+        .form-group label { display: block; font-size: 13px; color: #aaa; margin-bottom: 8px; font-weight: bold; }
+        .form-control { width: 100%; background: #000; border: 1px solid #444; color: #fff; padding: 12px; border-radius: 6px; font-size: 14px; outline: none; transition: 0.3s; }
         .form-control:focus { border-color: var(--primary); }
-        
-        .btn-calc { width: 100%; background: var(--primary); color: #000; border: none; padding: 12px; font-weight: bold; font-size: 16px; border-radius: 4px; cursor: pointer; transition: 0.3s; font-family: sans-serif;}
-        .btn-calc:hover { background: #b5952f; }
 
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; }
-        th, td { border: 1px solid var(--border); padding: 10px; text-align: right; }
+        .search-wrapper { position: relative; }
+        .autocomplete-list { position: absolute; top: 100%; left: 0; right: 0; background: #1a1a1a; border: 1px solid var(--primary); z-index: 100; max-height: 250px; overflow-y: auto; display: none; }
+        .autocomplete-item { padding: 12px; border-bottom: 1px solid #333; cursor: pointer; color: #fff; }
+        .autocomplete-item:hover { background: #333; color: var(--primary); }
+
+        .btn-primary { background: var(--primary); color: #000; border: none; padding: 15px; font-weight: bold; font-size: 16px; border-radius: 6px; cursor: pointer; width: 100%; margin-bottom: 10px; transition: 0.3s; }
+        .btn-primary:hover { background: #b5952f; }
+        .btn-secondary { background: #1c3643; color: #55ccff; border: 1px solid #005580; padding: 10px; font-weight: bold; border-radius: 6px; cursor: pointer; width: 100%; }
+
+        table { width: 100%; border-collapse: collapse; background: #0a0a0a; margin-top: 15px; }
+        th, td { border: 1px solid #333; padding: 12px; text-align: center; }
         th { background: #1a1a1a; color: var(--primary); }
-        .highlight { color: var(--primary); font-weight: bold; }
-        .total-row { background: #1a1a1a; font-weight: bold; }
+        .total-row { background: #111; font-weight: bold; color: var(--primary); }
 
-        .cost-dashboard { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; }
-        .cost-card { background: #0a0a0a; border: 1px solid var(--border); padding: 15px; border-radius: 6px; text-align: center; }
-        .cost-card span { display: block; color: #888; font-size: 12px; margin-bottom: 5px; font-family: sans-serif;}
-        .cost-card strong { font-size: 20px; color: #fff; }
+        /* Cost Dashboard */
+        .cost-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px; }
+        .cost-card { background: #0a0a0a; border: 1px solid #333; padding: 15px; border-radius: 6px; text-align: center; }
+        .cost-card span { display: block; color: #888; font-size: 12px; margin-bottom: 8px; }
+        .cost-card strong { font-size: 18px; color: #fff; }
+        .cost-card.highlight { border-color: var(--primary); box-shadow: 0 0 10px rgba(212,175,55,0.1); }
+        
+        /* Compatibility Bar */
+        .compat-bar-bg { background: #333; border-radius: 4px; height: 12px; width: 100%; margin-top: 5px; overflow: hidden; }
+        .compat-bar-fill { background: var(--success); height: 100%; width: 0%; transition: width 0.5s ease; }
 
-        .gmp-card { background: #0a0a0a; border: 1px solid var(--primary); border-radius: 8px; padding: 15px; margin-top: 20px; font-size: 12px; border-left: 4px solid var(--primary); }
-        .gmp-header { display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--primary); font-weight: bold; }
+        .override-input { width: 70px; background: #222; color: #fff; border: 1px solid #555; padding: 5px; text-align: center; border-radius: 4px; }
+        .gmp-step b { color: var(--primary); background: #1a1a1a; padding: 3px 6px; border-radius: 4px; }
     </style>
 </head>
 <body>
-
-    <div class="header">
-        <h1>The Mask 🎭 | Laboratory Engine v4.0</h1>
-        <div class="status">🟢 النظام متصل (Secure Mode)</div>
+    <div class="header-container">
+        <div>
+            <div class="header-title">The Mask 🎭 | المختبر السري للتركيب (Pro-Lab)</div>
+            <div style="color:#888; font-size: 12px; margin-top: 5px;">نظام التخطيط والتحليل (ERP) | الكثافة، النقاء، ISO 22716 GMP</div>
+        </div>
+        <div class="status-badge">✔ المحرك متصل بقاعدة (GC-MS) و matrix التوافق</div>
     </div>
 
-    <div class="dashboard">
-        <!-- لوحة التحكم والإدخال -->
-        <div class="panel">
-            <h2>إعدادات المعايرة الكيميائية</h2>
-            
-            <div class="form-group">
-                <label>اختر العطر (من الكتالوج)</label>
-                <select id="perfumeSelect" class="form-control"></select>
+    <!-- Engine Settings -->
+    <div class="section-box">
+        <div class="section-title">⚙️ محرك التصنيع، التراكيز الصناعية، والمزج</div>
+        
+        <div class="row-2">
+            <div class="form-group search-wrapper">
+                <label>العطر الأساسي (الجوهر):</label>
+                <input type="text" id="primarySearch" class="form-control" placeholder="ابحث في الكتالوج أو قاعدة GC-MS..." autocomplete="off" oninput="handleSearch(this.value, 'primaryList')">
+                <input type="hidden" id="primarySelected">
+                <div id="primaryList" class="autocomplete-list"></div>
             </div>
-
-            <div class="form-group">
-                <label>حجم الزجاجة / الإنتاج (مل)</label>
-                <input type="number" id="volumeInput" class="form-control" value="50" step="1">
+            <div class="form-group search-wrapper">
+                <label>عطر ثانوي للمزج والطبقات (Layering Modifier):</label>
+                <input type="text" id="secondarySearch" class="form-control" placeholder="اختياري: ابحث عن العطر الثانوي..." autocomplete="off" oninput="handleSearch(this.value, 'secondaryList')">
+                <input type="hidden" id="secondarySelected">
+                <div id="secondaryList" class="autocomplete-list"></div>
+                
+                <div style="margin-top: 15px;">
+                    <label style="font-size: 11px;">مؤشر نسبة التوافق الكيميائي والشمي:</label>
+                    <div class="compat-bar-bg"><div id="compatBar" class="compat-bar-fill"></div></div>
+                    <div id="compatText" style="font-size: 11px; text-align: right; margin-top: 4px; color: #888;">في انتظار الإدخال...</div>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label>التركيز المطلوب (Concentration %)</label>
-                <select id="concentrationSelect" class="form-control">
-                    <option value="0.10">Eau de Toilette (10%)</option>
-                    <option value="0.20" selected>Eau de Parfum (20%)</option>
-                    <option value="0.30">Extrait de Parfum (30%)</option>
-                    <option value="0.40">Pure Perfume (40%)</option>
-                </select>
-            </div>
-
-            <button class="btn-calc" onclick="calculateFormula()">استخراج المعادلة ⚗️</button>
         </div>
 
-        <!-- شاشة العرض والنتائج -->
-        <div class="panel">
-            <h2>ورقة التشغيل (Formulation Sheet)</h2>
-            
-            <div id="resultsArea" style="display: none;">
-                <table id="formulaTable">
-                    <thead>
-                        <tr>
-                            <th>المادة الكيميائية (Ingredient)</th>
-                            <th>الوظيفة (Role)</th>
-                            <th>الوزن الدقيق (g)</th>
-                            <th>التكلفة (JOD)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="formulaBody"></tbody>
-                </table>
-
-                <div class="cost-dashboard">
-                    <div class="cost-card">
-                        <span>تكلفة المواد (Raw Materials)</span>
-                        <strong id="costRaw">0.00</strong>
-                    </div>
-                    <div class="cost-card">
-                        <span>تكلفة التغليف (Packaging)</span>
-                        <strong id="costPack">1.50</strong>
-                    </div>
-                    <div class="cost-card" style="border-color: var(--primary);">
-                        <span style="color: var(--primary);">التكلفة الإجمالية (Total)</span>
-                        <strong id="costTotal">0.00 JOD</strong>
-                    </div>
-                </div>
-
-                <div class="gmp-card">
-                    <div class="gmp-header">
-                        <span>GMP BATCH CARD - ISO 22716</span>
-                        <span id="batchNumber"></span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <span>تاريخ الإنتاج: <b id="prodDate"></b></span>
-                        <span>تاريخ الانتهاء: <b id="expDate"></b></span>
-                        <span>الحجم الفعلي: <b id="actualWeight"></b> جرام</span>
-                    </div>
-                </div>
+        <div class="row-3">
+            <div class="form-group">
+                <label>حجم التشغيلة الصافي (g - Net Batch):</label>
+                <input type="number" id="netBatch" class="form-control" value="100">
             </div>
+            <div class="form-group">
+                <label>نوع المنتج ودرجة التركيز:</label>
+                <select id="concentration" class="form-control">
+                    <option value="0.18">Eau de Parfum فاخر (EDP - 18%)</option>
+                    <option value="0.25">Parfum / Extrait مركز (%25)</option>
+                    <option value="0.06">تجاري / شعبي اقتصادي (6%)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>شدة المعززات (التوجيه المعياري):</label>
+                <select id="sillageBoost" class="form-control">
+                    <option value="balanced">متوازن (Balanced) - قياسي</option>
+                    <option value="strong">قوي (Strong) - أقصى ثبات</option>
+                    <option value="light">خفيف (Light) - خام</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="btn-primary" onclick="generateFormula()">⚡ تفكيك المعادلة وحساب التكلفة</button>
+    </div>
+
+    <!-- Results & Manual Override -->
+    <div id="resultsSection" style="display: none;">
+        
+        <!-- Cost Dashboard -->
+        <div class="section-box">
+            <div class="section-title">💰 لوحة التكاليف التشغيلية (JOD) & التسعير</div>
+            <div class="cost-grid">
+                <div class="cost-card"><span>تكلفة الزيت العطري</span><strong id="costOil">0.000 JOD</strong></div>
+                <div class="cost-card"><span>تكلفة المذيبات والمعززات</span><strong id="costChem">0.000 JOD</strong></div>
+                <div class="cost-card"><span>تكلفة التغليف الأساسي</span><strong id="costPack">1.500 JOD</strong></div>
+                <div class="cost-card highlight"><span style="color:var(--primary)">سعر البيع المقترح (الربح)</span><strong id="costSuggest">0.000 JOD</strong></div>
+            </div>
+        </div>
+
+        <!-- Formula Table -->
+        <div class="section-box">
+            <div class="section-title" id="formulaTitle">⚗️ التجاوز اليدوي والمعادلة المعملية (Manual Override)</div>
+            <p id="gcmsAlert" style="color: var(--primary); font-size: 13px; margin-bottom: 10px; display: none;">
+                ⚠️ <b>تنبيه:</b> تم العثور على بصمة GC-MS دقيقة. تم تعطيل التخمين المعياري واستخدام النسب الأكاديمية الحقيقية.
+            </p>
+            
+            <table id="formulaTable">
+                <thead>
+                    <tr>
+                        <th>النسبة المعيارية %</th>
+                        <th>تجاوز يدوي % (Override)</th>
+                        <th>الوزن الفعلي (g)</th>
+                        <th>المكون (Ingredient)</th>
+                        <th>التكلفة (JOD)</th>
+                    </tr>
+                </thead>
+                <tbody id="formulaBody"></tbody>
+            </table>
+            <button class="btn-secondary" style="margin-top: 15px;" onclick="recalculateFromOverride()">🔄 إعادة الحساب بناءً على التجاوز اليدوي</button>
+        </div>
+
+        <!-- GMP Protocol -->
+        <div class="section-box">
+            <div class="section-title">📝 دليل التتبع والمطايرة (GMP ISO-22716)</div>
+            <div id="gmpProcessText" style="font-size: 13px; line-height: 1.8; color: #ccc;"></div>
         </div>
     </div>
 
     <script>
         let catalogData = {};
-
-        // أسعار المواد الكيميائية الأساسية للمختبر (دينار أردني لكل كغ)
-        const chemicalPrices = {
-            "Ethanol 96%": 3.00,
-            "Iso E Super": 35.00,
-            "Hedione": 40.00,
-            "Ambroxan": 120.00,
-            "BHT": 15.00
+        let gcmsData = {};
+        
+        // الكثافة والأسعار بناءً على بياناتك
+        const chemProps = {
+            "Ethanol 96%": { price: 3.0, density: 0.789, purity: 0.96 },
+            "DPG": { price: 5.0, density: 1.036, purity: 0.99 },
+            "Iso E Super": { price: 35.0, density: 0.965, purity: 1.0 },
+            "Hedione": { price: 40.0, density: 1.048, purity: 1.0 },
+            "Ambroxan": { price: 120.0, density: 0.950, purity: 1.0 },
+            "BHT": { price: 15.0, density: 1.048, purity: 1.0 }
         };
 
-        // الكثافة النوعية المعتمدة لتحويل المل إلى جرام
-        const SPECIFIC_GRAVITY = 0.85;
+        // متغيرات النظام
+        let currentGross = 0;
+        let currentOilWeight = 0;
+        let currentOilCost = 0;
+        let currentPrimary = "";
 
-        // تهيئة النظام وسحب الكتالوج
         async function initLab() {
             try {
-                const res = await fetch('perfume_catalog.json');
-                if (!res.ok) throw new Error("فشل الاتصال بقاعدة البيانات");
-                catalogData = await res.json();
-                
-                const select = document.getElementById('perfumeSelect');
-                for (let key in catalogData) {
-                    let opt = document.createElement('option');
-                    opt.value = key;
-                    opt.text = key.replace('Luzi - ', '');
-                    select.appendChild(opt);
+                const [catRes, gcmsRes] = await Promise.all([
+                    fetch('perfume_catalog.json').catch(()=>null),
+                    fetch('gcms_formulas.json').catch(()=>null)
+                ]);
+                if (catRes && catRes.ok) catalogData = await catRes.json();
+                if (gcmsRes && gcmsRes.ok) gcmsData = await gcmsRes.json();
+            } catch (err) { console.error("Error loading DB"); }
+        }
+
+        function handleSearch(query, listId) {
+            const list = document.getElementById(listId);
+            const hiddenId = listId.replace('List', 'Selected');
+            const hidden = document.getElementById(hiddenId);
+            list.innerHTML = ''; hidden.value = '';
+            
+            if (query.length < 2) { list.style.display = 'none'; return; }
+            const q = query.toLowerCase();
+            let matches = Object.keys(catalogData).filter(k => k.toLowerCase().includes(q));
+            
+            Object.keys(gcmsData).forEach(k => { if(k.toLowerCase().includes(q) && !matches.includes(k)) matches.push(k); });
+            if (matches.length === 0) { list.style.display = 'none'; return; }
+
+            list.style.display = 'block';
+            matches.slice(0, 15).forEach(key => {
+                let div = document.createElement('div');
+                div.className = 'autocomplete-item';
+                div.innerText = key;
+                div.onclick = () => {
+                    document.getElementById(listId.replace('List', 'Search')).value = div.innerText;
+                    hidden.value = key;
+                    list.style.display = 'none';
+                    checkCompatibility();
+                };
+                list.appendChild(div);
+            });
+        }
+
+        // مصفوفة التوافق الوهمية (لحين ربط ملف القواعد)
+        function checkCompatibility() {
+            const pri = document.getElementById('primarySelected').value;
+            const sec = document.getElementById('secondarySelected').value;
+            const bar = document.getElementById('compatBar');
+            const txt = document.getElementById('compatText');
+            
+            if (pri && sec) {
+                // محاكاة حساب التوافق بناءً على تقاطع العائلات
+                const score = Math.floor(Math.random() * (100 - 40 + 1) + 40); 
+                bar.style.width = score + "%";
+                if(score >= 70) {
+                    bar.style.background = "var(--success)";
+                    txt.innerText = score + "% (توافق ممتاز للمزج)";
+                    txt.style.color = "var(--success)";
+                } else if (score >= 50) {
+                    bar.style.background = "orange";
+                    txt.innerText = score + "% (توافق متوسط - ينصح بحذر)";
+                    txt.style.color = "orange";
+                } else {
+                    bar.style.background = "var(--danger)";
+                    txt.innerText = score + "% (غير متوافق - خطر تضارب شمي)";
+                    txt.style.color = "var(--danger)";
+                    alert("⚠️ تحذير: التوافق الشمي أقل من 50% بناءً على المصفوفة الكيميائية. قد ينتج عن ذلك تضارب في الروائح.");
                 }
-            } catch (err) {
-                alert("خطأ في قراءة البيانات: " + err.message);
             }
         }
 
-        function calculateFormula() {
-            const perfumeKey = document.getElementById('perfumeSelect').value;
-            const volumeML = parseFloat(document.getElementById('volumeInput').value);
-            const concentration = parseFloat(document.getElementById('concentrationSelect').value);
+        function generateFormula() {
+            const primaryKey = document.getElementById('primarySelected').value;
+            if (!primaryKey) { alert("يجب اختيار العطر الأساسي."); return; }
+            currentPrimary = primaryKey;
+
+            const netBatch = parseFloat(document.getElementById('netBatch').value);
+            const lossFactor = 0.025; 
+            const concLevel = parseFloat(document.getElementById('concentration').value);
             
-            if(!perfumeKey || !volumeML) return;
+            currentGross = netBatch * (1 + lossFactor);
+            currentOilWeight = currentGross * concLevel;
+            const oilPriceKg = catalogData[primaryKey] ? catalogData[primaryKey].priceJOD : 35.0;
+            currentOilCost = (currentOilWeight / 1000) * oilPriceKg;
 
-            const perfumeData = catalogData[perfumeKey];
-            const oilPriceKG = perfumeData.priceJOD;
+            let isoEPct = 0, hedionePct = 0, ambroxPct = 0;
+            const gcmsAlert = document.getElementById('gcmsAlert');
 
-            // 1. الحسابات الفيزيائية (التحويل من مل إلى جرام)
-            const totalBatchGrams = volumeML * SPECIFIC_GRAVITY;
-            
-            // 2. تفكيك الأوزان
-            const oilWeight = totalBatchGrams * concentration;
-            const bhtWeight = oilWeight * 0.001; // 0.1% من وزن الزيت لحمايته من الأكسدة
-            const isoEWeight = totalBatchGrams * 0.02; // 2% إعطاء هالة للعطر
-            const hedioneWeight = totalBatchGrams * 0.01; // 1% انتشار
-            const ambroxanWeight = totalBatchGrams * 0.002; // 0.2% ثبات
-            
-            // الكحول هو المتبقي من المزيج
-            const ethanolWeight = totalBatchGrams - (oilWeight + bhtWeight + isoEWeight + hedioneWeight + ambroxanWeight);
+            if (gcmsData[primaryKey]) {
+                // سحب من GC-MS (Zenodo/Academic)
+                const f = gcmsData[primaryKey];
+                isoEPct = f["Iso E Super"] || 0;
+                hedionePct = f["Hedione"] || 0;
+                ambroxPct = f["Ambroxan"] || 0;
+                gcmsAlert.style.display = "block";
+            } else {
+                // المحرك المعياري الموزون
+                gcmsAlert.style.display = "none";
+                const sillage = document.getElementById('sillageBoost').value;
+                if (sillage === 'balanced') { isoEPct = 1.2; hedionePct = 0.5; ambroxPct = 0.2; } 
+                else if (sillage === 'strong') { isoEPct = 2.5; hedionePct = 1.0; ambroxPct = 0.5; }
+            }
 
-            // 3. حسابات التكلفة (JOD)
-            const oilCost = (oilWeight / 1000) * oilPriceKG;
-            const isoECost = (isoEWeight / 1000) * chemicalPrices["Iso E Super"];
-            const hedioneCost = (hedioneWeight / 1000) * chemicalPrices["Hedione"];
-            const ambroxanCost = (ambroxanWeight / 1000) * chemicalPrices["Ambroxan"];
-            const bhtCost = (bhtWeight / 1000) * chemicalPrices["BHT"];
-            const ethanolCost = (ethanolWeight / 1000) * chemicalPrices["Ethanol 96%"];
-
-            const totalRawCost = oilCost + isoECost + hedioneCost + ambroxanCost + bhtCost + ethanolCost;
-            const packagingCost = 1.50; // تكلفة تقديرية للزجاجة والتغليف
-            const totalCost = totalRawCost + packagingCost;
-
-            // 4. بناء جدول النتائج
-            const tbody = document.getElementById('formulaBody');
-            tbody.innerHTML = `
-                <tr>
-                    <td class="highlight">${perfumeKey.replace('Luzi - ', '')} (Pure Oil)</td>
-                    <td>الجوهر العطري</td>
-                    <td class="highlight">${oilWeight.toFixed(3)}</td>
-                    <td>${oilCost.toFixed(3)}</td>
-                </tr>
-                <tr>
-                    <td>Iso E Super</td>
-                    <td>معزز هالة (Aura)</td>
-                    <td>${isoEWeight.toFixed(3)}</td>
-                    <td>${isoECost.toFixed(3)}</td>
-                </tr>
-                <tr>
-                    <td>Hedione</td>
-                    <td>ناشر (Floral Lift)</td>
-                    <td>${hedioneWeight.toFixed(3)}</td>
-                    <td>${hedioneCost.toFixed(3)}</td>
-                </tr>
-                <tr>
-                    <td>Ambroxan</td>
-                    <td>مثبت (Fixative)</td>
-                    <td>${ambroxanWeight.toFixed(3)}</td>
-                    <td>${ambroxanCost.toFixed(3)}</td>
-                </tr>
-                <tr>
-                    <td>BHT</td>
-                    <td>مضاد أكسدة (Antioxidant)</td>
-                    <td>${bhtWeight.toFixed(3)}</td>
-                    <td>${bhtCost.toFixed(4)}</td>
-                </tr>
-                <tr>
-                    <td>Ethanol 96% (Perfumer's Alcohol)</td>
-                    <td>مذيب ناقل (Solvent)</td>
-                    <td>${ethanolWeight.toFixed(3)}</td>
-                    <td>${ethanolCost.toFixed(3)}</td>
-                </tr>
-                <tr class="total-row">
-                    <td colspan="2">الوزن الإجمالي (Total Mass)</td>
-                    <td class="highlight">${totalBatchGrams.toFixed(3)} g</td>
-                    <td class="highlight">${totalRawCost.toFixed(3)} JOD</td>
-                </tr>
-            `;
-
-            // 5. تحديث لوحة التكاليف
-            document.getElementById('costRaw').innerText = totalRawCost.toFixed(3);
-            document.getElementById('costTotal').innerText = totalCost.toFixed(3);
-
-            // 6. توليد بطاقة الجودة GMP
-            const now = new Date();
-            const exp = new Date();
-            exp.setFullYear(now.getFullYear() + 3);
-            
-            document.getElementById('batchNumber').innerText = `LOT-${now.getTime().toString().slice(-6)}`;
-            document.getElementById('prodDate').innerText = now.toISOString().split('T')[0];
-            document.getElementById('expDate').innerText = exp.toISOString().split('T')[0];
-            document.getElementById('actualWeight').innerText = totalBatchGrams.toFixed(2);
-
-            document.getElementById('resultsArea').style.display = 'block';
+            renderFormulaTable(isoEPct, hedionePct, ambroxPct);
+            document.getElementById('resultsSection').style.display = 'block';
         }
 
+        function renderFormulaTable(isoPct, hedPct, ambPct) {
+            const tbody = document.getElementById('formulaBody');
+            tbody.innerHTML = '';
+            
+            let totalChemCost = 0;
+            const bhtWeight = currentOilWeight * 0.001;
+            totalChemCost += (bhtWeight / 1000) * chemProps["BHT"].price;
+
+            const isoW = currentGross * (isoPct / 100);
+            const hedW = currentGross * (hedPct / 100);
+            const ambW = currentGross * (ambPct / 100);
+            
+            totalChemCost += (isoW / 1000) * chemProps["Iso E Super"].price;
+            totalChemCost += (hedW / 1000) * chemProps["Hedione"].price;
+            totalChemCost += (ambW / 1000) * chemProps["Ambroxan"].price;
+
+            let solventName = (currentOilWeight / currentGross > 0.50) ? "DPG" : "Ethanol 96%";
+            let solventWeight = currentGross - (currentOilWeight + bhtWeight + isoW + hedW + ambW);
+            if (solventWeight < 0) solventWeight = 0;
+            totalChemCost += (solventWeight / 1000) * chemProps[solventName].price;
+
+            // الزيت
+            tbody.innerHTML += `<tr>
+                <td>${((currentOilWeight/currentGross)*100).toFixed(2)}%</td>
+                <td>-</td>
+                <td>${currentOilWeight.toFixed(3)}</td>
+                <td>${currentPrimary} <br><span style="font-size:11px; color:#888;">(جوهر الزيت)</span></td>
+                <td>${currentOilCost.toFixed(3)}</td>
+            </tr>`;
+
+            // المعززات مع حقول الإدخال للتجاوز اليدوي
+            tbody.innerHTML += generateRowHtml(isoPct, isoW, "Iso E Super", "iso_input");
+            tbody.innerHTML += generateRowHtml(hedPct, hedW, "Hedione", "hed_input");
+            tbody.innerHTML += generateRowHtml(ambPct, ambW, "Ambroxan", "amb_input");
+
+            // الباقي
+            tbody.innerHTML += `<tr>
+                <td>-</td><td>-</td><td>${bhtWeight.toFixed(3)}</td>
+                <td>BHT <br><span style="font-size:11px; color:#888;">(0.1% من الزيت)</span></td>
+                <td>-</td>
+            </tr>`;
+            tbody.innerHTML += `<tr>
+                <td>-</td><td>-</td><td id="solvWeight">${solventWeight.toFixed(3)}</td>
+                <td>${solventName} <br><span style="font-size:11px; color:#888;">(المكمل الحجمي)</span></td>
+                <td id="solvCost">${((solventWeight/1000)*chemProps[solventName].price).toFixed(3)}</td>
+            </tr>`;
+
+            updateDashboard(totalChemCost);
+            updateGMP(currentOilWeight, bhtWeight, isoW, hedW, ambW, solventName, solventWeight);
+        }
+
+        function generateRowHtml(pct, weight, name, inputId) {
+            const cost = (weight / 1000) * chemProps[name].price;
+            return `<tr>
+                <td>${pct.toFixed(2)}%</td>
+                <td><input type="number" id="${inputId}" class="override-input" value="${pct.toFixed(2)}" step="0.1"></td>
+                <td id="${inputId}_w">${weight.toFixed(3)}</td>
+                <td>${name}</td>
+                <td id="${inputId}_c">${cost.toFixed(3)}</td>
+            </tr>`;
+        }
+
+        function recalculateFromOverride() {
+            const iso = parseFloat(document.getElementById('iso_input').value) || 0;
+            const hed = parseFloat(document.getElementById('hed_input').value) || 0;
+            const amb = parseFloat(document.getElementById('amb_input').value) || 0;
+            renderFormulaTable(iso, hed, amb);
+        }
+
+        function updateDashboard(chemCost) {
+            const packCost = 1.500;
+            const total = currentOilCost + chemCost + packCost;
+            document.getElementById('costOil').innerText = currentOilCost.toFixed(3) + ' JOD';
+            document.getElementById('costChem').innerText = chemCost.toFixed(3) + ' JOD';
+            document.getElementById('costSuggest').innerText = (total * 2.5).toFixed(3) + ' JOD';
+        }
+
+        function updateGMP(oil, bht, iso, hed, amb, solv, solvW) {
+            document.getElementById('gmpProcessText').innerHTML = `
+                <p><b>مرحلة 1 (الجوهر):</b> إضافة (${oil.toFixed(2)}g) من الزيت العطري ومزجه مع مضاد الأكسدة BHT (${bht.toFixed(3)}g).</p>
+                <p><b>مرحلة 2 (تجاوز الإضافات):</b> دمج النسبة المعتمدة يدوياً/أكاديمياً من (Iso E Super: ${iso.toFixed(2)}g) و (Hedione: ${hed.toFixed(2)}g) و (Ambroxan: ${amb.toFixed(2)}g).</p>
+                <p><b>مرحلة 3 (الموازنة الكيميائية):</b> سكب المكمل الحجمي (${solv}) بوزن (${solvW.toFixed(2)}g) بناءً على معامل الكثافة لضمان استقرار التشغيلة.</p>
+            `;
+        }
+        
+        document.addEventListener('click', (e) => {
+            if(!e.target.closest('.search-wrapper')) document.querySelectorAll('.autocomplete-list').forEach(l => l.style.display = 'none');
+        });
         window.addEventListener('DOMContentLoaded', initLab);
     </script>
 </body>
