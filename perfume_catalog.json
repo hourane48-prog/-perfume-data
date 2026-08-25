@@ -1,20 +1,32 @@
 {
     "Luzi - AMBER WOOD - AJMAL (GOLDEN FOREST)": {
         "priceJOD": 145.49,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Incense|Labdanum|Spices|Saffron"
+            ],
+            "heart": [
+                "Birch|Labdanum|Cyperus Esculentus"
+            ],
+            "base": [
+                "Leather|Patchouli|Styrax|Vetiver"
+            ]
         }
     },
     "Luzi - ​عطر AURUM - AJMAL (GOLD STAR)": {
         "priceJOD": 126.1,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Strawberry|Plum|Orange"
+            ],
+            "heart": [
+                "Heliotrope|Ylang-Ylang|Tuberose|Orchid|Iris|Rose|Jasmine|Lily-Of-The-Valley"
+            ],
+            "base": [
+                "Vanille|Tonka Bean|Tolu Balsam|Peru Balsam|Sandalwood|Musk|Ambergris"
+            ]
         }
     },
     "Luzi - ​عطر AMBRE PIMENTE (BROWN SY)": {
@@ -37,20 +49,36 @@
     },
     "Luzi - ​عطر MUKHALLAT EMARATH (MUKHALLAT UAE)": {
         "priceJOD": 118.34,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified Local Blend",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "برغموت",
+                "زعفران"
+            ],
+            "heart": [
+                "ورد طائفي",
+                "جيرانيوم"
+            ],
+            "base": [
+                "عود",
+                "صندل",
+                "مسك"
+            ]
         }
     },
     "Luzi - ​عطر OUD & SPICE - ACQUA DI PARMA (ITALY IN THE NIGHT)": {
         "priceJOD": 87.29,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Rose|Raspberry|Bergamot"
+            ],
+            "heart": [
+                "Cloves|Pink Pepper|Cinnamon"
+            ],
+            "base": [
+                "Agarwood (Oud)|Labdanum|Patchouli"
+            ]
         }
     },
     "Luzi - ​عطر DAMASCUS OUD - SSAYA": {
@@ -64,11 +92,17 @@
     },
     "Luzi - ​عطر VENICE - PIAZZA SAN MARCO": {
         "priceJOD": 96.99,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Bergamot|Palisander Rosewood|Peach|Green Notes|Lemon"
+            ],
+            "heart": [
+                "Rose|Jasmine|Orris|Patchouli|Carnation|Ylang-Ylang"
+            ],
+            "base": [
+                "Sandalwood|Vanilla|Oak Moss|Musk|Amber|Opoponax|Benzoin|Civet"
+            ]
         }
     },
     "Luzi - ​عطر WISTERIA (BLUE RAIN)": {
@@ -97,11 +131,17 @@
     },
     "Luzi - ​عطر WARDE-DAR (PASSION YS)": {
         "priceJOD": 96.99,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Pine|Black Currant|Absinthe|Artemisia"
+            ],
+            "heart": [
+                "Rose|White Flowers|Violet|Jasmine|Orange Blossom"
+            ],
+            "base": [
+                "Balsam Fir|Resins|Agarwood (Oud)|Patchouli|Moss|Musk"
+            ]
         }
     },
     "Luzi - ​عطر MANDARINE SULTANE (ALHAMBRA GARDEN)": {
@@ -136,11 +176,17 @@
     },
     "Luzi - ​عطر JUBILATION 40 MAN - AMOUAGE (TRIUMPHANT KING)": {
         "priceJOD": 96.99,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Blackberry|Labdanum|Black Currant|Rosemary|Orange|Davana"
+            ],
+            "heart": [
+                "Frankincense|Bay Leaf|Cinnamon|Cloves|Broom|Celery Seeds|Rose"
+            ],
+            "base": [
+                "Agarwood (Oud)|Opoponax|Patchouli|Myrrh|Guaiac Wood|Moss|Musk|Cedar|Ambergris|Cistus Incanus"
+            ]
         }
     },
     "Luzi - ​عطر PURPOSE (DETERMINATION)": {
@@ -175,11 +221,17 @@
     },
     "Luzi - ​عطر OPUS XV - KING BLUE (ARABIAN PHILOSOPHY)": {
         "priceJOD": 126.1,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Mandarin Orange|Black Currant|Pink Pepper"
+            ],
+            "heart": [
+                "Frankincense|Amber"
+            ],
+            "base": [
+                "Agarwood (Oud)|Leather|Oak|Sandalwood|Patchouli"
+            ]
         }
     },
     "Luzi - ​عطر INTERLUDE WOMAN (MIDNIGHT BLUE LADY)": {
@@ -292,11 +344,17 @@
     },
     "Luzi - FANTASIA - ANNA SUI (LAND OF DREAMS)": {
         "priceJOD": 482.8,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Apricot|Hiacynth|Bergamot|Aldehydes"
+            ],
+            "heart": [
+                "Orchid|Rose|Lily-Of-The-Valley|Jasmine"
+            ],
+            "base": [
+                "Vanilla|Sandalwood|Tonka Bean|Oakmoss"
+            ]
         }
     },
     "Luzi - ​عطر LUCKY WISH (JACKPOT)": {
@@ -355,11 +413,17 @@
     },
     "Luzi - ​عطر ARABIAN KNIGHT - ARABIAN OUD (GILBERT)": {
         "priceJOD": 568.0,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Citron|Jasmine"
+            ],
+            "heart": [
+                "Cinnamon|Rose"
+            ],
+            "base": [
+                "Amber|Cedar|Vanilla|Musk"
+            ]
         }
     },
     "Luzi - ​عطر MADAWI (STAR IN ARAB)": {
@@ -418,25 +482,37 @@
     },
     "Luzi - ​عطر ISTANBUL - ATELIER REBUL (BOSPHORUS DELIGHT)": {
         "priceJOD": 319.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Spices|Elemi|Bergamot|Red Berries|Grapefruit"
+            ],
+            "heart": [
+                "Litchi|Rose|Pepper|Sweet Notes|Lotus|Raspberry|Violet"
+            ],
+            "base": [
+                "Woodsy Notes|Sandalwood|Cinnamon|Musk"
+            ]
         }
     },
     "Luzi - ​عطر AL RAYHAN - ATTAR COLLECTION (EMERALDI)": {
         "priceJOD": 177.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Lemon Zest|Mango|Sweet Notes|White Flowers"
+            ],
+            "heart": [
+                "Tangerine|Praline|Violet|Jasmine|White Rose"
+            ],
+            "base": [
+                "Exotic Fruits|Powdery Notes|Loukhoum|White Musk"
+            ]
         }
     },
     "Luzi - ​عطر MUSK KASHMIR - ORIENTAL LUXURY": {
         "priceJOD": 355.0,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
             "top": [],
             "heart": [],
@@ -463,11 +539,20 @@
     },
     "Luzi - ​عطر ORIENTAL BAKHOOR (ORIENTAL BAKHOOR)": {
         "priceJOD": 234.3,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified Local Blend",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "زعفران",
+                "ورد دمشقي"
+            ],
+            "heart": [
+                "عود",
+                "باتشولي"
+            ],
+            "base": [
+                "عنبر",
+                "أخشاب مدخنة"
+            ]
         }
     },
     "Luzi - ​عطر CLASSIC BAKHOOR (CLASSIC BAKHOOR)": {
@@ -595,7 +680,7 @@
     },
     "Luzi - ​عطر WEST SIDE - BOND NO 9 (BOUCHERON QUATRE)": {
         "priceJOD": 355.0,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
             "top": [],
             "heart": [],
@@ -682,17 +767,11 @@
     },
     "Luzi - ​عطر GAYAN (BAHIA MARBLE)": {
         "priceJOD": 1093.4,
-        "data_integrity": "Verified",
+        "data_integrity": "Pending External Data",
         "notes": {
-            "top": [
-                "Jasmine|Bergamot|Orange|Orange Blossom"
-            ],
-            "heart": [
-                "Vanilla|Rose|Ylang-Ylang|Carnation|Iris"
-            ],
-            "base": [
-                "Benzoin|Patchouli|Oakmoss|Synthetic Civet"
-            ]
+            "top": [],
+            "heart": [],
+            "base": []
         }
     },
     "Luzi - ​عطر ROSE GOLDEA (IMMORTAL PINK)": {
@@ -742,11 +821,17 @@
     },
     "Luzi - AQVA POUR HOMME ATLANTIQVE - BVLGARI (NAUTILUS)": {
         "priceJOD": 546.7,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Water Notes|Calabrian Bergamot|Sicilian Lemon|Sage"
+            ],
+            "heart": [
+                "Sea Notes|Ambergris|Apple"
+            ],
+            "base": [
+                "Benzoin|Amberwood|Vetiver|Patchouli|Sandalwood"
+            ]
         }
     },
     "Luzi - ​عطر LE GEMME ORO - BVLGARI (MADAGASCAR GEMSTONE)": {
@@ -901,20 +986,32 @@
     },
     "Luzi - ​عطر ESCAPE - CALVIN KLEIN / KISS THIS GIRL - CANALI": {
         "priceJOD": 781.0,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Melon|Chamomile|Marigold|Marigold|Apricot|Hiacynth|Oakmoss|Apple|Coriander|Mandarin Orange|Ylang-Ylang|Black Currant|Litchi|Cassia"
+            ],
+            "heart": [
+                "Peach|Lily-Of-The-Valley|Carnation|Rose|Jasmine|Cloves"
+            ],
+            "base": [
+                "Oakmoss|Musk|Sandalwood|Amber|Vetiver|Cedar|Vanilla"
+            ]
         }
     },
     "Luzi - ​عطر 212 MEN ICE - CAROLINA HERRERA (ICEMAN)": {
         "priceJOD": 546.7,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Pepper|Licorice"
+            ],
+            "heart": [
+                "Violet"
+            ],
+            "base": [
+                "Musk|Woodsy Notes"
+            ]
         }
     },
     "Luzi - ​عطر VERY GOOD GIRL (RED CATWALK)": {
@@ -988,11 +1085,17 @@
     },
     "Luzi - ​عطر OUD VANILLE - CARTIER (LITTLE TENDERNESS)": {
         "priceJOD": 411.8,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Coconut|Toffee|Leather"
+            ],
+            "heart": [
+                "Tonka Bean|Ylang-Ylang|White Woods|Cloves"
+            ],
+            "base": [
+                "Vanilla|Agarwood (Oud)|Musk"
+            ]
         }
     },
     "Luzi - ​عطر LA PANTHERE (FELINE HEART)": {
@@ -1012,11 +1115,17 @@
     },
     "Luzi - ​COMETE - CHANEL (CIRCINUS)": {
         "priceJOD": 426.0,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Saffron|Orange"
+            ],
+            "heart": [
+                "Rose|Orange Blossom"
+            ],
+            "base": [
+                "Amber|Cedarwood"
+            ]
         }
     },
     "Luzi - ​عطر ALLURE HOMME SPORT (ENERGETIC COUTURE)": {
@@ -1150,20 +1259,32 @@
     },
     "Luzi - ​عطر CEDAR MALAKI - CHOPARD (GOLD LUCK)": {
         "priceJOD": 195.25,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Cypress|Cardamom|Artemisia|Grapefruit|Lavender"
+            ],
+            "heart": [
+                "Atlas Cedar|Cedar"
+            ],
+            "base": [
+                "Cypriol Oil Or Nagarmotha|Labdanum|Patchouli|Tonka Bean"
+            ]
         }
     },
     "Luzi - ​SAUVAGE - CHRISTAN DIOR (HEY JOHNNY)": {
         "priceJOD": 390.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Lemon|Bergamot|Basil|Rosemary|Caraway|Fruity Notes"
+            ],
+            "heart": [
+                "Jasmine|Coriander|Carnation|Patchouli|Orris Root|Sandalwood|Rose|Lavender|Hedione"
+            ],
+            "base": [
+                "Oakmoss|Vetiver|Musk|Amber"
+            ]
         }
     },
     "Luzi - ​عطر SAUVAGE (HEY JOHNNY)": {
@@ -1441,11 +1562,17 @@
     },
     "Luzi - ​عطر ME FIRST - CLIVE CHRISTIAN (HEART TO HEAR)": {
         "priceJOD": 958.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Litchi"
+            ],
+            "heart": [
+                "Turkish Rose|Cardamom"
+            ],
+            "base": [
+                "Cedar|Sandalwood"
+            ]
         }
     },
     "Luzi - ​عطر X FOR MEN (GRACIOUS LIVING)": {
@@ -1453,13 +1580,13 @@
         "data_integrity": "Verified",
         "notes": {
             "top": [
-                "Pomelo|Mango|Basil|Mandarin Orange|Pepper|Green Notes"
+                "Rhuburb|Pineapple|Bergamot"
             ],
             "heart": [
-                "Mangosteen|Cardamom|Cedar|Honey"
+                "Iris|Paprika|Jasmine"
             ],
             "base": [
-                "Oakmoss|Vetiver|Sandalwood|Amber|Vanilla|Musk"
+                "Virginia Cedar|Cinnamon|Oakmoss|Amber|Vetiver|Styrax|French Labdanum|Vanilla"
             ]
         }
     },
@@ -1474,11 +1601,17 @@
     },
     "Luzi - SCENT INTENSE - COSTUME NATIONAL (SIMPLY DRESSED)": {
         "priceJOD": 220.1,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Bergamot|Green Tea|Cardamom"
+            ],
+            "heart": [
+                "Hibiscus|Jasmine|Davana"
+            ],
+            "base": [
+                "Leather|Sandalwood|Patchouli|Ambergris|Vanilla"
+            ]
         }
     },
     "Luzi - ​عطر SOFT ROSE & OUD": {
@@ -1564,11 +1697,20 @@
     },
     "Luzi - ​عطر ORIENTAL BAKHOOR": {
         "priceJOD": 195.25,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified Local Blend",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "زعفران",
+                "ورد دمشقي"
+            ],
+            "heart": [
+                "عود",
+                "باتشولي"
+            ],
+            "base": [
+                "عنبر",
+                "أخشاب مدخنة"
+            ]
         }
     },
     "Luzi - ​عطر SUISSE ESSENCE": {
@@ -1768,13 +1910,13 @@
         "data_integrity": "Verified",
         "notes": {
             "top": [
-                "Clary Sage|Geranium|Carrot Seeds"
+                "Damask Rose"
             ],
             "heart": [
-                "Leather|Labdanum|Jasmine"
+                "Cashmere Wood"
             ],
             "base": [
-                "Myrrh|Vetiver|Sandalwood|Tonka Bean"
+                "Labdanum"
             ]
         }
     },
@@ -1861,13 +2003,13 @@
         "data_integrity": "Verified",
         "notes": {
             "top": [
-                "Juniper Berries|Cardamom|Birch"
+                "Kiwi|Rhuburb|Pink Pepper"
             ],
             "heart": [
-                "Water Notes|Coriander"
+                "Watermelon|Cyclamen|Jasmine"
             ],
             "base": [
-                "Virginia Cedar|Vetiver|Olibanum"
+                "Lemon Tree|Musk|Sandalwood"
             ]
         }
     },
@@ -1888,11 +2030,17 @@
     },
     "Luzi - ​عطر COOL WATER MAN - DAVID OFF (AQUATIC DREAMS)": {
         "priceJOD": 205.9,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Sea Water|Citruses"
+            ],
+            "heart": [
+                "Amalfi Lemon|Mint|Violet|Geranium|Artemisia"
+            ],
+            "base": [
+                "Sandalwood|Teak Wood|Musk|Amber"
+            ]
         }
     },
     "Luzi - ​عطر COOL WATER WOMEN (AQUATIC LADY)": {
@@ -1921,7 +2069,7 @@
     },
     "Luzi - ​عطر VOLUTES EAU DE PARFUM - DIPTYQUE (ROMAN HERITAGE)": {
         "priceJOD": 497.0,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
             "top": [],
             "heart": [],
@@ -1969,20 +2117,32 @@
     },
     "Luzi - ​عطر MISTER - DYNASTY OF MONACO (GRIMALDI)": {
         "priceJOD": 276.9,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Artemisia|Pelargonium|Basil"
+            ],
+            "heart": [
+                "Patchouli|Woodsy Notes|Tonka Bean"
+            ],
+            "base": [
+                "Tobacco|Musk"
+            ]
         }
     },
     "Luzi - ​عطر WHITE TEA - ELIZABETH ARDEN (CHINESE SECRET)": {
         "priceJOD": 273.35,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Tea"
+            ],
+            "heart": [
+                "Gardenia|Pepper|Lily-Of-The-Valley|Cardamom"
+            ],
+            "base": [
+                "Musk|Mate"
+            ]
         }
     },
     "Luzi - ​عطر MIAMI BLOSSOM (TROPICAL FLOWERS)": {
@@ -2107,11 +2267,17 @@
     },
     "Luzi - ​عطر BLUE TALISMAN - EX NIHILO (THE AMULET)": {
         "priceJOD": 461.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Pear|Bergamot|Mandarin Orange|Ginger"
+            ],
+            "heart": [
+                "Orange Blossom|Georgywood"
+            ],
+            "base": [
+                "Musk|Ambrofix™|Akigalawood|Cedar"
+            ]
         }
     },
     "Luzi - ​عطر FLEUR NARCOTIQUE (ALASKO)": {
@@ -2248,20 +2414,32 @@
     },
     "Luzi - ​عطر ONE UMBRELLA FOR TWO - FLORAIKU (PARASON)": {
         "priceJOD": 195.25,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Black Currant|Cyclamen"
+            ],
+            "heart": [
+                "Tea|Rice"
+            ],
+            "base": [
+                "Cedar|White Musk"
+            ]
         }
     },
     "Luzi - ​عطر OFFICE FOR MEN - FRAGRANCE ONE (HARD WORKER)": {
         "priceJOD": 312.4,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Ambroxan|Bergamot|Orris Root"
+            ],
+            "heart": [
+                "Woody Notes|Floral Notes|Ambergris|Amber|Jasmine"
+            ],
+            "base": [
+                "Woody Notes|Musk|Patchouli|Cashalox"
+            ]
         }
     },
     "Luzi - ​عطر SUGAR (JUST SWEET)": {
@@ -2311,7 +2489,7 @@
     },
     "Luzi - ​عطر FREDERIC MALLE - DAWN (SALAT AL FAJR)": {
         "priceJOD": 994.0,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
             "top": [],
             "heart": [],
@@ -2329,11 +2507,17 @@
     },
     "Luzi - ​عطر UNCUT GEM - FREDERIC MALLE (CHARISMATIC JEWELER)": {
         "priceJOD": 568.0,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Ginger|Bergamot|Angelica|Mandarin Orange|Nutmeg"
+            ],
+            "heart": [
+                "Vetiver|Olibanum|Leather|Magnolia"
+            ],
+            "base": [
+                "Musk|Amber|Ambrocenide|Cedar|Labdanum"
+            ]
         }
     },
     "Luzi - ROSE TONNERRE (STROM OF FLOWERS)": {
@@ -2416,11 +2600,17 @@
     },
     "Luzi - ​عطر ACQUA DI GIO - GIORGIO ARMANI (PANTELLERIO)": {
         "priceJOD": 674.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Lime|Lemon|Bergamot|Jasmine|Orange|Mandarin Orange|Neroli"
+            ],
+            "heart": [
+                "Sea Notes|Jasmine|Calone|Rosemary|Peach|Freesia|Hiacynth|Cyclamen|Violet|Coriander|Rose|Nutmeg|Mignonette"
+            ],
+            "base": [
+                "White Musk|Cedar|Oakmoss|Patchouli|Amber"
+            ]
         }
     },
     "Luzi - ​عطر ACQUA DI GIO ELIXIR (BLACK PERFUME INTENSE)": {
@@ -2604,15 +2794,9 @@
         "priceJOD": 390.5,
         "data_integrity": "Verified",
         "notes": {
-            "top": [
-                "Lime|Coriander"
-            ],
-            "heart": [
-                "Leather"
-            ],
-            "base": [
-                "Amberwood|Woody Notes"
-            ]
+            "top": [],
+            "heart": [],
+            "base": []
         }
     },
     "Luzi - ​عطر CAPRI (RECAP BLU YS)": {
@@ -2620,13 +2804,13 @@
         "data_integrity": "Verified",
         "notes": {
             "top": [
-                "Jasmine|Bergamot"
+                "Orange|Sicilian Mandarin|Bergamot|Lemon"
             ],
             "heart": [
-                "Honey|Red Berries"
+                "Petitgrain|Cardamom"
             ],
             "base": [
-                "Caramel|Dark Chocolate|Vanilla|Coumarin|Patchouli"
+                "Caramel|Musk"
             ]
         }
     },
@@ -2677,31 +2861,37 @@
     },
     "Luzi - ​عطر L'INTERDIT (2018) - GIVENCHY (TEMPTATION)": {
         "priceJOD": 497.0,
-        "data_integrity": "Verified",
+        "data_integrity": "Verified Local Blend",
         "notes": {
             "top": [
-                "Plum|Neroli|Mandarin Orange|Bergamot|Lemon|Nutmeg"
+                "مسك نظيف",
+                "لوتس"
             ],
             "heart": [
-                "Jasmine|Lily-Of-The-Valley|Violet|Orchid|Rose|Magnolia"
+                "ياسمين أبيض",
+                "ورد"
             ],
             "base": [
-                "Plum|Musk|Vanilla"
+                "مسك أبيض",
+                "فانيليا"
             ]
         }
     },
     "Luzi - ​عطر L'INTERDIT EAU DE PARFUM (STRONG TEMPTATION)": {
         "priceJOD": 234.3,
-        "data_integrity": "Verified",
+        "data_integrity": "Verified Local Blend",
         "notes": {
             "top": [
-                "Plum|Neroli|Mandarin Orange|Bergamot|Lemon|Nutmeg"
+                "مسك نظيف",
+                "لوتس"
             ],
             "heart": [
-                "Jasmine|Lily-Of-The-Valley|Violet|Orchid|Rose|Magnolia"
+                "ياسمين أبيض",
+                "ورد"
             ],
             "base": [
-                "Plum|Musk|Vanilla"
+                "مسك أبيض",
+                "فانيليا"
             ]
         }
     },
@@ -2731,11 +2921,17 @@
     },
     "Luzi - ​عطر GUCCI OUD - GUCCI (OUD GLAM)": {
         "priceJOD": 482.8,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Raspberry|Saffron|Pear"
+            ],
+            "heart": [
+                "Bulgarian Rose|Orange Blossom"
+            ],
+            "base": [
+                "Agarwood (Oud)|Patchouli|Amber|Musk"
+            ]
         }
     },
     "Luzi - ​عطر GUCCI FLORA (ABLOOM)": {
@@ -2881,11 +3077,17 @@
     },
     "Luzi - ENCENS MYTHIQUE - GUERLAIN": {
         "priceJOD": 234.3,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Rose|Aldehydes|Saffron"
+            ],
+            "heart": [
+                "Pink Pepper|Patchouli|Vetiver"
+            ],
+            "base": [
+                "Ambergris|Incense|Woody Notes"
+            ]
         }
     },
     "Luzi - ​عطر MON GUERLAIN": {
@@ -3190,26 +3392,35 @@
     },
     "Luzi - ​عطر L'EAU D'ISSY PURE NECTAR - DE ISSEY MIYAKE (NEW DEEP WATER)": {
         "priceJOD": 624.8,
-        "data_integrity": "Verified",
+        "data_integrity": "Verified Local Blend",
         "notes": {
             "top": [
-                "Plum|Neroli|Mandarin Orange|Bergamot|Lemon|Nutmeg"
+                "مسك نظيف",
+                "لوتس"
             ],
             "heart": [
-                "Jasmine|Lily-Of-The-Valley|Violet|Orchid|Rose|Magnolia"
+                "ياسمين أبيض",
+                "ورد"
             ],
             "base": [
-                "Plum|Musk|Vanilla"
+                "مسك أبيض",
+                "فانيليا"
             ]
         }
     },
     "Luzi - ​عطر STANCE - JAGUAR (SOVEREIGN MAN)": {
         "priceJOD": 276.9,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Apple|Cardamom|Black Pepper|Mandarin Orange|Nutmeg"
+            ],
+            "heart": [
+                "Cashmere Wood|Cedar|Vetiver|Patchouli"
+            ],
+            "base": [
+                "Vanilla|Amber|Musk|Moss|Papyrus"
+            ]
         }
     },
     "Luzi - ​عطر SO SCANDAL (CHIC VELVET TIGHTS)": {
@@ -3262,11 +3473,17 @@
     },
     "Luzi - ​عطر SUN MEN - JO MALONE LONDON (ORANGE SUMMER TAN)": {
         "priceJOD": 426.0,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Bergamot|Rosemary"
+            ],
+            "heart": [
+                "Cardamom|Nutmeg"
+            ],
+            "base": [
+                "Musk|Sandalwood"
+            ]
         }
     },
     "Luzi - ​عطر WOOD SAGE & SEA SALT (GARDEN CF DELIGHT)": {
@@ -3382,16 +3599,22 @@
     },
     "Luzi - ​عطر NIGHT FLIGHT - JOOP (AIR SPACE)": {
         "priceJOD": 390.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Rose"
+            ],
+            "heart": [
+                "Orchid"
+            ],
+            "base": [
+                "Cedar|Sandalwood|Vanilla"
+            ]
         }
     },
     "Luzi - ​عطر NOT A PERFUME SUPERDOSE (OVER STRUCTURE)": {
         "priceJOD": 461.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
             "top": [],
             "heart": [],
@@ -3400,11 +3623,17 @@
     },
     "Luzi - ​عطر MOON FLOWER - JUNIPER LANE PERFUMES (CIPRIA)": {
         "priceJOD": 248.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Pear|Incense|Bergamot"
+            ],
+            "heart": [
+                "Pink Peony|Vanilla|Rose"
+            ],
+            "base": [
+                "Sandalwood|Musk|Cedar"
+            ]
         }
     },
     "Luzi - ​عطر YUM BOUJEE MARSHMALLOW 81 - KAYALI (STRAWBERRY DELIGHT)": {
@@ -3442,11 +3671,17 @@
     },
     "Luzi - ​عطر KENZO WORLD INTENSE - KENZO (BOUNDLESS SEA)": {
         "priceJOD": 195.25,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Plum"
+            ],
+            "heart": [
+                "Peony|Jasmine"
+            ],
+            "base": [
+                "Vanilla"
+            ]
         }
     },
     "Luzi - ANGELS SHARE - KILIAN (BRONZE WINGS)": {
@@ -3478,11 +3713,17 @@
     },
     "Luzi - ​عطر APPLE BRANDY - BOWMORE": {
         "priceJOD": 560.9,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Apple|Rum|Sugar|Plum"
+            ],
+            "heart": [
+                "Oak|Wood Barrel|Smoke"
+            ],
+            "base": [
+                "Vanilla|Labdanum|Texas Cedar|Chinese Cedar|Ambroxan"
+            ]
         }
     },
     "Luzi - ​عطر APPLE BRANDY ON THE ROCKS (NIGHT TO REMEMBER)": {
@@ -3550,13 +3791,13 @@
         "data_integrity": "Verified",
         "notes": {
             "top": [
-                "Plum|Peach|Hiacynth|Mandarin Orange|Green Grass|Grapefruit|Bergamot"
+                "Nectarine|Black Currant|Clementine"
             ],
             "heart": [
-                "Carnation|Ylang-Ylang|Jasmine|Orange Blossom|Rose|Violet|Honeysuckle|Lily-Of-The-Valley"
+                "Wild Orchid|Orange Blossom"
             ],
             "base": [
-                "Sandalwood|Styrax|Amber|Vanilla|Musk|Cedar"
+                "Amber|Musk|Woodsy Notes"
             ]
         }
     },
@@ -3594,15 +3835,9 @@
         "priceJOD": 426.0,
         "data_integrity": "Verified",
         "notes": {
-            "top": [
-                "Agarwood (Oud)|Rose"
-            ],
-            "heart": [
-                "Amber"
-            ],
-            "base": [
-                "Agarwood (Oud)|Musk"
-            ]
+            "top": [],
+            "heart": [],
+            "base": []
         }
     },
     "Luzi - ​عطر BAD BOYS ARE NO GOOD BUT LOVE (EXPRESSION)": {
@@ -3853,11 +4088,17 @@
     },
     "Luzi - ​عطر IDOLE - ZENDAYA": {
         "priceJOD": 319.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Rum|Saffron|Bitter Orange|Caraway"
+            ],
+            "heart": [
+                "Ebony|Sugar Cane|Palm Tree"
+            ],
+            "base": [
+                "Leather|Red Sandalwood"
+            ]
         }
     },
     "Luzi - ​عطر FORBIDDEN ROSE ABSOLUE (OBSESSION BLOOMS)": {
@@ -3928,16 +4169,19 @@
     },
     "Luzi - ​عطر L'ADORE BAKHUR CLASSIC (TIMELESS WOODS)": {
         "priceJOD": 674.5,
-        "data_integrity": "Verified",
+        "data_integrity": "Verified Local Blend",
         "notes": {
             "top": [
-                "Plum|Neroli|Mandarin Orange|Bergamot|Lemon|Nutmeg"
+                "مسك نظيف",
+                "لوتس"
             ],
             "heart": [
-                "Jasmine|Lily-Of-The-Valley|Violet|Orchid|Rose|Magnolia"
+                "ياسمين أبيض",
+                "ورد"
             ],
             "base": [
-                "Plum|Musk|Vanilla"
+                "مسك أبيض",
+                "فانيليا"
             ]
         }
     },
@@ -4018,11 +4262,17 @@
     },
     "Luzi - ​عطر TEINT DE NEIGE - LORENZO VILLORESI (SNOW WHITE)": {
         "priceJOD": 5396.0,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Powdery Notes|Rose|Ylang-Ylang|Jasmine"
+            ],
+            "heart": [
+                "Rose|Tonka Bean|Floral Notes|Jasmine"
+            ],
+            "base": [
+                "Heliotrope|Musk|Rose|Jasmine"
+            ]
         }
     },
     "Luzi - ​عطر PUR AMBER (RICHNESS OF GOLD)": {
@@ -4054,16 +4304,19 @@
     },
     "Luzi - ​عطر L'IMMENSITE (NEVER ENDING)": {
         "priceJOD": 461.5,
-        "data_integrity": "Verified",
+        "data_integrity": "Verified Local Blend",
         "notes": {
             "top": [
-                "Plum|Neroli|Mandarin Orange|Bergamot|Lemon|Nutmeg"
+                "مسك نظيف",
+                "لوتس"
             ],
             "heart": [
-                "Jasmine|Lily-Of-The-Valley|Violet|Orchid|Rose|Magnolia"
+                "ياسمين أبيض",
+                "ورد"
             ],
             "base": [
-                "Plum|Musk|Vanilla"
+                "مسك أبيض",
+                "فانيليا"
             ]
         }
     },
@@ -4204,11 +4457,17 @@
     },
     "Luzi - ​عطر OUD CADENZA - MAISON CRIVELLI (DECRESCENDO)": {
         "priceJOD": 1065.0,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Saffron|Cinnamon|Cardamom|Nutmeg|Ginger|Pink Pepper"
+            ],
+            "heart": [
+                "Dates|Agarwood (Oud)|Caramel|Sugar Cane|Incense|Amberwood|Myrrh|Davana"
+            ],
+            "base": [
+                "Madagascar Vanilla|Cacao Butter|Tonka|Leather|Benzoin|Musk|Patchouli|Labdanum|Mate"
+            ]
         }
     },
     "Luzi - ​عطر HIBISCUS MAHAJAD (RED MAJESTIC)": {
@@ -4525,11 +4784,17 @@
     },
     "Luzi - ABU DHABI - MEMO PARIS (ARAB EMIRATES NOMADE)": {
         "priceJOD": 532.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Bergamot|Lime|Nutmeg|Thyme"
+            ],
+            "heart": [
+                "Geranium|Patchouli|Sandalwood|Vetiver|Rose|Cedar"
+            ],
+            "base": [
+                "Castoreum|Musk|Amber|Vanila|Tonka Bean|Benzoin"
+            ]
         }
     },
     "Luzi - ​عطر IBERIAN LEATHER (MADRID NOMAD)": {
@@ -4798,11 +5063,17 @@
     },
     "Luzi - ​عطر INTENSE CAFE - MONTALE (SWEET COFFEE)": {
         "priceJOD": 347.9,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Floral Notes"
+            ],
+            "heart": [
+                "Rose|Coffee"
+            ],
+            "base": [
+                "Vanila|White Musk|Amber"
+            ]
         }
     },
     "Luzi - ​عطر CHOCOLATE GREEDY (SWEET WOLVERINE)": {
@@ -4840,11 +5111,17 @@
     },
     "Luzi - ​عطر RENDEZ-VOUS A PARIS (TOWER OF LOVE)": {
         "priceJOD": 347.9,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Star Anise|Myrhh|Ivy"
+            ],
+            "heart": [
+                "Violet|Iris|Jasmine"
+            ],
+            "base": [
+                "Benzoin|Tonka Bean|Vanilla"
+            ]
         }
     },
     "Luzi - ​عطر BLACK AOUD (OUD MYSTERY)": {
@@ -4873,11 +5150,21 @@
     },
     "Luzi - MUKHALLAT": {
         "priceJOD": 489.9,
-        "data_integrity": "Verified",
+        "data_integrity": "Verified Local Blend",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "برغموت",
+                "زعفران"
+            ],
+            "heart": [
+                "ورد طائفي",
+                "جيرانيوم"
+            ],
+            "base": [
+                "عود",
+                "صندل",
+                "مسك"
+            ]
         }
     },
     "Luzi - ​عطر SPICY AOUD": {
@@ -4957,11 +5244,17 @@
     },
     "Luzi - ​عطر FLEUR MUSC FOR HER - NARCISO RODRIGUEZ (TWILIGHT FLOWER)": {
         "priceJOD": 418.9,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Pink Pepper"
+            ],
+            "heart": [
+                "Rose|Musk|Peony"
+            ],
+            "base": [
+                "Patchouli|Violet|Amber"
+            ]
         }
     },
     "Luzi - ​عطر ALL OF ME (RESUME FOR HER)": {
@@ -4981,7 +5274,7 @@
     },
     "Luzi - ​عطر BARAONDA - NASOMATTO (UMAMI)": {
         "priceJOD": 1384.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
             "top": [],
             "heart": [],
@@ -5068,11 +5361,17 @@
     },
     "Luzi - ​عطر MONTABACO - ORMONDE JAYNE (TOBACCO BROWN SUEDE)": {
         "priceJOD": 418.9,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Cardamom|Mountain Air|Juniper|Bergamot|Clary Sage|Orange"
+            ],
+            "heart": [
+                "Tea|Hedione|Violet|Magnolia|Rose"
+            ],
+            "base": [
+                "Tobacco Leaf|Iso E Super|Suede|Ambergris|Sandalwood|Moss|Tonka Bean"
+            ]
         }
     },
     "Luzi - ​عطر MONTABACO (TOBACCO BROWN SUEDE)": {
@@ -5134,11 +5433,17 @@
     },
     "Luzi - ​عطر INVICTUS - PACO RABANNE (BIG HIT)": {
         "priceJOD": 319.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Sea Notes|Grapefruit|Mandarin Orange"
+            ],
+            "heart": [
+                "Bay Leaf|Jasmine"
+            ],
+            "base": [
+                "Ambergris|Guaiac Wood|Oakmoss|Patchouli"
+            ]
         }
     },
     "Luzi - ​عطر INVICTUS PARFUM (CLEAN BIG HIT)": {
@@ -5296,11 +5601,17 @@
     },
     "Luzi - ​عطر DARCY - PARFUMS DE MARLY (ROYAL EQUESTRIAN)": {
         "priceJOD": 319.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Citruses|Orange|Lemon"
+            ],
+            "heart": [
+                "Rose|Jasmine"
+            ],
+            "base": [
+                "Patchouli|Sweet Notes|White Musk|Woody Notes"
+            ]
         }
     },
     "Luzi - ​عطر GREENLEY (MARA)": {
@@ -5368,13 +5679,13 @@
         "data_integrity": "Verified",
         "notes": {
             "top": [
-                "Geranium|Lavender"
+                "Mandarin Orange|Bergamot|Grapefruit"
             ],
             "heart": [
-                "Cedar Needles|Rose"
+                "Orange Blossom|Raspberry|Black Currant"
             ],
             "base": [
-                "Woodsy Notes|Leather"
+                "Marshamallow|Whipped Cream|Musk|Ambrette (Musk Mallow)|Vanilla"
             ]
         }
     },
@@ -5470,11 +5781,17 @@
     },
     "Luzi - ​عطر PARIS HILTON - HOTEL": {
         "priceJOD": 461.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Melon|Apple|Peach"
+            ],
+            "heart": [
+                "Freesia|Mimosa|Jasmine|Lily-Of-The-Valley|Lily|Tuberose"
+            ],
+            "base": [
+                "Musk|Ylang-Ylang|Sandalwood|Oakmoss"
+            ]
         }
     },
     "Luzi - ​عطر THE BLAZING MR SAM (BLUE BULL)": {
@@ -5533,11 +5850,17 @@
     },
     "Luzi - ​عطر VANILLA NECTAR - PHLUR (SWEET SYRUP)": {
         "priceJOD": 653.2,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Sugar|Apricot|Papaya|Tangelo"
+            ],
+            "heart": [
+                "Coconut|Peach Blossom|Orchid|Jasmine"
+            ],
+            "base": [
+                "Vanilla|Amber|Cedar"
+            ]
         }
     },
     "Luzi - ​عطر BABY SHOP (POWDERY BABY SHOP)": {
@@ -5560,11 +5883,17 @@
     },
     "Luzi - ​عطر FLAMENCO - RAMON MONEGAL (SPANISH DANCE)": {
         "priceJOD": 440.2,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Raspberry|Apple|Violet|Orange Blossom"
+            ],
+            "heart": [
+                "Rose|Jasmine|Iris"
+            ],
+            "base": [
+                "Cedar|Cypress|Pine Tree|Amber"
+            ]
         }
     },
     "Luzi - ​عطر REEF 33 (RAINY NOVEMBER)": {
@@ -5584,35 +5913,41 @@
     },
     "Luzi - ​عطر POEME D' AZAR (ORIENTAL LOVE LETTER)": {
         "priceJOD": 489.9,
-        "data_integrity": "Verified",
+        "data_integrity": "Pending External Data",
         "notes": {
-            "top": [
-                "Yuzu|Grapefruit|Bergamot"
-            ],
-            "heart": [
-                "Bamboo|Shiso|Matcha Tea"
-            ],
-            "base": [
-                "Musk|Cedarwood|Patchouli"
-            ]
+            "top": [],
+            "heart": [],
+            "base": []
         }
     },
     "Luzi - ​عطر ROCHAS MAN - ROCHAS (TAZZA DORO)": {
         "priceJOD": 248.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Lavender|Bergamot"
+            ],
+            "heart": [
+                "Cappuccino|Raspberry|Jasmine|Virginia Cedar|Lily-Of-The-Valley"
+            ],
+            "base": [
+                "Vanille|Amber|Sandalwood|Patchouli"
+            ]
         }
     },
     "Luzi - ​عطر AHLAM - ROJA DOVE (ORIENTAL STARLET)": {
         "priceJOD": 852.0,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Rose|Orange Blossom"
+            ],
+            "heart": [
+                "Ebony Tree|Saffron|Patchouli|Guaiac Wood|Jasmine|Cumin"
+            ],
+            "base": [
+                "Amber|Vetiver|Musk"
+            ]
         }
     },
     "Luzi - ​عطر ELYSIUM POUR HOMME PARFUM (SENTINEL)": {
@@ -5746,7 +6081,7 @@
     },
     "Luzi - ​عطر CHERGUI - SERGE LUTENS": {
         "priceJOD": 582.2,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
             "top": [],
             "heart": [],
@@ -5788,11 +6123,17 @@
     },
     "Luzi - ​عطر ACCENTO - SOSPIRO": {
         "priceJOD": 390.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Pineapple|Hyacinth"
+            ],
+            "heart": [
+                "Pink Pepper|Iris|Jasmine"
+            ],
+            "base": [
+                "Musk|Amber|Vetiver|Patchouli|Vanille"
+            ]
         }
     },
     "Luzi - ​عطر ACCENTO DEEP SIGH": {
@@ -5860,11 +6201,17 @@
     },
     "Luzi - ​عطر ANDROMEDA - TIZIANA TERENZI (STELLAR PATH)": {
         "priceJOD": 390.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Pink Pepper|Coriander|Tangerine"
+            ],
+            "heart": [
+                "Magnolia|Jasmine|Wild Orchid|Honeysuckle"
+            ],
+            "base": [
+                "Cedar|Sandalwood"
+            ]
         }
     },
     "Luzi - ​عطر KIRKE (MAGICAL)": {
@@ -5962,11 +6309,17 @@
     },
     "Luzi - ​عطر ALEXANDRIA II - XERJOFF (ROYAL OUD)": {
         "priceJOD": 887.5,
-        "data_integrity": "Pending External Data",
+        "data_integrity": "Verified",
         "notes": {
-            "top": [],
-            "heart": [],
-            "base": []
+            "top": [
+                "Palisander Rosewood|Lavender|Apple|Cinnamon"
+            ],
+            "heart": [
+                "Rose|Cedar|Lily-Of-The-Valley"
+            ],
+            "base": [
+                "Agarwood (Oud)|Sandalwood|Amber|Vanilla|Musk"
+            ]
         }
     },
     "Luzi - ​عطر NAXOS (MEDITERRANEAN BREEZE)": {
