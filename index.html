@@ -3,118 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Mask | Haute Parfumerie</title>
+    <title>The Mask 🎭 | المتجر الرسمي</title>
     <style>
-        body { background-color: #0d0d0d; color: #f0f0f0; font-family: Arial, sans-serif; margin: 0; padding: 15px; }
-        .header { text-align: center; margin-bottom: 25px; }
-        .logo { font-size: 34px; font-weight: bold; color: #d4af37; letter-spacing: 3px; }
-        .sub-title { color: #777; font-size: 14px; letter-spacing: 2px; }
-        .search-container { max-width: 500px; margin: 0 auto 20px; }
-        #search-input { width: 100%; padding: 14px; border-radius: 20px; border: 1px solid #d4af37; background: #1a1a1a; color: white; font-size: 16px; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: #181818; border: 1px solid #333; border-radius: 12px; padding: 20px; text-align: center; }
-        .card-brand { color: #d4af37; font-size: 11px; text-transform: uppercase; margin-bottom: 5px; }
-        .card-name { color: white; font-size: 19px; font-weight: bold; margin-bottom: 10px; }
-        .card-img { width: 100%; height: 220px; object-fit: contain; background: #000; border-radius: 8px; margin-bottom: 15px; }
-        .rating { font-size: 12px; color: #4cff6e; margin-bottom: 15px; }
-        .concentrations { display: flex; justify-content: center; gap: 8px; margin-bottom: 15px; }
-        .btn-conc { background: #222; border: 1px solid #444; color: #aaa; padding: 8px 0; flex: 1; border-radius: 5px; cursor: pointer; font-size: 13px; }
-        .btn-conc.active { background: #d4af37; color: black; font-weight: bold; border-color: #d4af37; }
-        .price-display { font-size: 24px; font-weight: bold; color: white; }
-        .currency { font-size: 13px; color: #d4af37; }
+        :root {
+            --primary: #d4af37;
+            --bg-dark: #0a0a0a;
+            --card-bg: #141414;
+            --text-main: #f0f0f0;
+            --text-muted: #888;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); }
+        
+        /* Header */
+        header { text-align: center; padding: 30px 15px; border-bottom: 2px solid var(--primary); background: linear-gradient(180deg, #111 0%, #0a0a0a 100%); }
+        header h1 { color: var(--primary); font-size: 28px; margin-bottom: 5px; letter-spacing: 1px; }
+        header p { color: var(--text-muted); font-size: 13px; }
+
+        /* Search & Filter */
+        .search-container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
+        .search-box { width: 100%; padding: 14px; background: #1a1a1a; border: 1px solid #333; border-radius: 8px; color: #fff; font-size: 15px; outline: none; transition: 0.3s; }
+        .search-box:focus { border-color: var(--primary); box-shadow: 0 0 8px rgba(212, 175, 55, 0.2); }
+
+        /* Grid */
+        .store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto; }
+        
+        /* Product Card */
+        .perfume-card { background: var(--card-bg); border: 1px solid #222; border-radius: 12px; padding: 20px; position: relative; transition: transform 0.3s ease; display: flex; flex-direction: column; }
+        .perfume-card:hover { transform: translateY(-5px); border-color: #444; }
+        
+        .perfume-title { color: var(--primary); font-size: 18px; font-weight: bold; margin-bottom: 8px; }
+        .perfume-price { font-size: 22px; font-weight: bold; color: #fff; margin-bottom: 15px; }
+        .perfume-price span { font-size: 12px; color: var(--text-muted); font-weight: normal; }
+
+        /* Metrics */
+        .metrics-bar { display: flex; gap: 10px; margin-bottom: 15px; }
+        .metric-badge { flex: 1; background: #1f1f1f; border: 1px solid #333; border-radius: 6px; padding: 8px; text-align: center; font-size: 12px; }
+        .metric-badge b { display: block; font-size: 14px; color: #4cff6e; margin-top: 3px; }
+        .sillage-val { color: #55ccff !important; }
+
+        /* Pyramid */
+        .pyramid-box { background: #0f0f0f; border-right: 3px solid var(--primary); padding: 12px; border-radius: 4px; font-size: 12px; line-height: 1.7; flex-grow: 1; }
+        .note-row { margin-bottom: 4px; }
+        .note-row span { color: var(--primary); font-weight: bold; display: inline-block; width: 55px; }
+        .note-val { color: #ddd; }
+
+        /* Fallback Notice */
+        .secret-blend { color: #d4af37; font-style: italic; opacity: 0.8; }
+
+        /* Footer / Status */
+        .loading-status { text-align: center; padding: 40px; color: var(--primary); font-size: 16px; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <div class="logo">THE MASK</div>
-        <div class="sub-title">HAUTE PARFUMERIE & LUXURY</div>
-    </div>
+    <header>
+        <h1>The Mask 🎭</h1>
+        <p>تجسيد الفخامة | عطور صُممت لتبقى</p>
+    </header>
 
     <div class="search-container">
-        <input type="text" id="search-input" placeholder="🔍 ابحث عن عطر (مثال: Creed, Aventus, عود...)" onkeyup="filterPerfumes()">
+        <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن عطرك المفضل هنا..." oninput="filterStore()">
     </div>
 
-    <div id="loading" style="text-align:center; color:#d4af37;">جاري تحميل العطور...</div>
-    <div class="grid" id="perfume-grid"></div>
+    <div id="loading" class="loading-status">⏳ جاري استدعاء الكتالوج الفاخر من قاعدة البيانات...</div>
+    
+    <div class="store-grid" id="storeGrid"></div>
 
     <script>
-        let perfumesData = [];
+        let allPerfumes = [];
 
-        // أزرار التركيز والأسعار
-        const concentrations = {
-            extra: { label: "إكسترا", mult: 1.0 },
-            edp: { label: "أو دو بارفيوم", mult: 0.65 },
-            edt: { label: "أو دو تواليت", mult: 0.50 },
-            comm: { label: "شعبي", mult: 0.35 }
-        };
-
-        async function fetchPerfumes() {
+        async function initStore() {
             try {
-                const res = await fetch('https://raw.githubusercontent.com/hourane48-prog/-perfume-data/main/perfume_catalog.json');
-                perfumesData = await res.json();
+                // جلب قواعد البيانات التي صنعناها
+                const catalogRes = await fetch('perfume_catalog.json');
+                const metricsRes = await fetch('perfume_parfumo_metrics.json');
+                
+                if (!catalogRes.ok) throw new Error("فشل تحميل الكتالوج");
+                
+                const catalog = await catalogRes.json();
+                const metrics = metricsRes.ok ? await metricsRes.json() : {};
+
+                const grid = document.getElementById('storeGrid');
                 document.getElementById('loading').style.display = 'none';
-                // عرض كل العطور وليس أول 150 فقط
-                renderPerfumes(perfumesData);
-            } catch (e) {
-                document.getElementById('loading').innerText = "خطأ في تحميل البيانات!";
+
+                // تحويل الكائن إلى مصفوفة لسهولة البحث والعرض
+                for (let key in catalog) {
+                    let perfData = catalog[key];
+                    let metricData = metrics[key] || { longevity_hours: 8, sillage_rating: 7.5 };
+                    
+                    // تنظيف الاسم للعرض (إزالة Luzi -)
+                    let displayName = key.replace('Luzi - ', '').replace('LUZI - ', '');
+
+                    allPerfumes.push({
+                        name: displayName,
+                        price: perfData.priceJOD,
+                        integrity: perfData.data_integrity,
+                        notes: perfData.notes,
+                        longevity: metricData.longevity_hours,
+                        sillage: metricData.sillage_rating
+                    });
+                }
+
+                // عرض العطور
+                renderPerfumes(allPerfumes);
+
+            } catch (error) {
+                document.getElementById('loading').innerHTML = `❌ عذراً، حدث خطأ في الاتصال بالخوادم: ${error.message}`;
             }
         }
 
-        function getPrice(perfume, type) {
-            const basePrice = perfume.price || 25;
-            return (basePrice * concentrations[type].mult).toFixed(1);
-        }
-
-        function renderPerfumes(data) {
-            const grid = document.getElementById('perfume-grid');
+        function renderPerfumes(perfumesArray) {
+            const grid = document.getElementById('storeGrid');
             grid.innerHTML = '';
-            
-            data.forEach((p, index) => {
+
+            perfumesArray.forEach(p => {
+                // معالجة النوتات (إذا كانت فارغة نضع نصاً تسويقياً)
+                let hasNotes = p.notes.top.length > 0 || p.notes.heart.length > 0 || p.notes.base.length > 0;
+                
+                let topHtml = hasNotes && p.notes.top.length ? p.notes.top.join('، ') : '';
+                let heartHtml = hasNotes && p.notes.heart.length ? p.notes.heart.join('، ') : '';
+                let baseHtml = hasNotes && p.notes.base.length ? p.notes.base.join('، ') : '';
+
+                let pyramidHtml = '';
+                if (hasNotes) {
+                    pyramidHtml = `
+                        ${topHtml ? `<div class="note-row"><span>القمة:</span> <span class="note-val">${topHtml}</span></div>` : ''}
+                        ${heartHtml ? `<div class="note-row"><span>القلب:</span> <span class="note-val">${heartHtml}</span></div>` : ''}
+                        ${baseHtml ? `<div class="note-row"><span>القاعدة:</span> <span class="note-val">${baseHtml}</span></div>` : ''}
+                    `;
+                } else {
+                    pyramidHtml = `<div class="note-row secret-blend">✨ تركيبة سرية خاصة تتميز بالفخامة والتفرد، صُممت لتناسب الذوق الرفيع.</div>`;
+                }
+
+                // بناء بطاقة العطر
                 const card = document.createElement('div');
-                card.className = 'card';
+                card.className = 'perfume-card';
                 card.innerHTML = `
-                    <div class="card-brand">${p.brand || 'THE MASK'}</div>
-                    <div class="card-name">${p.name}</div>
-                    <img class="card-img" src="${p.image}" onerror="this.src='https://via.placeholder.com/280?text=The+Mask'">
-                    <div class="rating">⏱️ ثبات: ${p.longevity_hours || 'غير محدد'} ساعة | 💨 فوحان: ${p.sillage || 'غير محدد'}/10</div>
-                    <div class="concentrations">
-                        <button class="btn-conc active" onclick="changePrice('extra', ${index}, this)">${concentrations.extra.label}</button>
-                        <button class="btn-conc" onclick="changePrice('edp', ${index}, this)">${concentrations.edp.label}</button>
-                        <button class="btn-conc" onclick="changePrice('edt', ${index}, this)">${concentrations.edt.label}</button>
-                        <button class="btn-conc" onclick="changePrice('comm', ${index}, this)">${concentrations.comm.label}</button>
+                    <div class="perfume-title">${p.name}</div>
+                    <div class="perfume-price">${p.price.toFixed(2)} <span>JOD (سعر الزيت / كغ)</span></div>
+                    
+                    <div class="metrics-bar">
+                        <div class="metric-badge">
+                            الثبات المتوقع
+                            <b>${p.longevity} ساعة</b>
+                        </div>
+                        <div class="metric-badge">
+                            قوة الفوحان
+                            <b class="sillage-val">${p.sillage} / 10</b>
+                        </div>
                     </div>
-                    <div class="price-display" id="price-${index}">${getPrice(p, 'extra')} <span class="currency">JOD</span></div>
+
+                    <div class="pyramid-box">
+                        ${pyramidHtml}
+                    </div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        function changePrice(type, index, btn) {
-            const p = perfumesData[index];
-            const priceEl = document.getElementById(`price-${index}`);
-            priceEl.style.opacity = 0;
-            setTimeout(() => {
-                priceEl.innerHTML = `${getPrice(p, type)} <span class="currency">JOD</span>`;
-                priceEl.style.opacity = 1;
-            }, 150);
-            const concBtns = btn.parentElement.children;
-            for (let b of concBtns) b.classList.remove('active');
-            btn.classList.add('active');
-        }
-
-        function filterPerfumes() {
-            const q = document.getElementById('search-input').value.toLowerCase();
-            // بحث شامل: الاسم، البراند، النوتات
-            const filtered = perfumesData.filter(p => 
-                p.name.toLowerCase().includes(q) || 
-                p.brand.toLowerCase().includes(q) || 
-                (p.top_notes.join(' ').toLowerCase().includes(q))
-            );
+        function filterStore() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = allPerfumes.filter(p => p.name.toLowerCase().includes(query));
             renderPerfumes(filtered);
         }
 
-        fetchPerfumes();
+        // تشغيل المحرك عند تحميل الصفحة
+        window.addEventListener('DOMContentLoaded', initStore);
     </script>
 </body>
 </html>
