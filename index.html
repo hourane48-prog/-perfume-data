@@ -5,96 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Mask 🎭 | المتجر الرسمي</title>
     <style>
-        :root {
-            --primary: #d4af37;
-            --bg-dark: #0a0a0a;
-            --card-bg: #141414;
-            --text-main: #f0f0f0;
-            --text-muted: #888;
-        }
+        :root { --primary: #d4af37; --bg-dark: #0a0a0a; --card-bg: #141414; --text-main: #f0f0f0; --text-muted: #888; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-main); }
-        
-        /* Header */
         header { text-align: center; padding: 30px 15px; border-bottom: 2px solid var(--primary); background: linear-gradient(180deg, #111 0%, #0a0a0a 100%); }
         header h1 { color: var(--primary); font-size: 28px; margin-bottom: 5px; letter-spacing: 1px; }
         header p { color: var(--text-muted); font-size: 13px; }
-
-        /* Search & Filter */
         .search-container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
         .search-box { width: 100%; padding: 14px; background: #1a1a1a; border: 1px solid #333; border-radius: 8px; color: #fff; font-size: 15px; outline: none; transition: 0.3s; }
         .search-box:focus { border-color: var(--primary); box-shadow: 0 0 8px rgba(212, 175, 55, 0.2); }
-
-        /* Grid */
         .store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto; }
-        
-        /* Product Card */
         .perfume-card { background: var(--card-bg); border: 1px solid #222; border-radius: 12px; padding: 20px; position: relative; transition: transform 0.3s ease; display: flex; flex-direction: column; }
         .perfume-card:hover { transform: translateY(-5px); border-color: #444; }
-        
         .perfume-title { color: var(--primary); font-size: 18px; font-weight: bold; margin-bottom: 8px; }
         .perfume-price { font-size: 22px; font-weight: bold; color: #fff; margin-bottom: 15px; }
         .perfume-price span { font-size: 12px; color: var(--text-muted); font-weight: normal; }
-
-        /* Metrics */
         .metrics-bar { display: flex; gap: 10px; margin-bottom: 15px; }
         .metric-badge { flex: 1; background: #1f1f1f; border: 1px solid #333; border-radius: 6px; padding: 8px; text-align: center; font-size: 12px; }
         .metric-badge b { display: block; font-size: 14px; color: #4cff6e; margin-top: 3px; }
         .sillage-val { color: #55ccff !important; }
-
-        /* Pyramid */
         .pyramid-box { background: #0f0f0f; border-right: 3px solid var(--primary); padding: 12px; border-radius: 4px; font-size: 12px; line-height: 1.7; flex-grow: 1; }
         .note-row { margin-bottom: 4px; }
         .note-row span { color: var(--primary); font-weight: bold; display: inline-block; width: 55px; }
         .note-val { color: #ddd; }
-
-        /* Fallback Notice */
         .secret-blend { color: #d4af37; font-style: italic; opacity: 0.8; }
-
-        /* Footer / Status */
         .loading-status { text-align: center; padding: 40px; color: var(--primary); font-size: 16px; }
     </style>
 </head>
 <body>
-
     <header>
         <h1>The Mask 🎭</h1>
         <p>تجسيد الفخامة | عطور صُممت لتبقى</p>
     </header>
-
     <div class="search-container">
         <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن عطرك المفضل هنا..." oninput="filterStore()">
     </div>
-
     <div id="loading" class="loading-status">⏳ جاري استدعاء الكتالوج الفاخر من قاعدة البيانات...</div>
-    
     <div class="store-grid" id="storeGrid"></div>
 
     <script>
         let allPerfumes = [];
-
         async function initStore() {
             try {
-                // جلب قواعد البيانات التي صنعناها
                 const catalogRes = await fetch('perfume_catalog.json');
                 const metricsRes = await fetch('perfume_parfumo_metrics.json');
-                
                 if (!catalogRes.ok) throw new Error("فشل تحميل الكتالوج");
-                
                 const catalog = await catalogRes.json();
                 const metrics = metricsRes.ok ? await metricsRes.json() : {};
-
-                const grid = document.getElementById('storeGrid');
                 document.getElementById('loading').style.display = 'none';
-
-                // تحويل الكائن إلى مصفوفة لسهولة البحث والعرض
+                
                 for (let key in catalog) {
                     let perfData = catalog[key];
                     let metricData = metrics[key] || { longevity_hours: 8, sillage_rating: 7.5 };
-                    
-                    // تنظيف الاسم للعرض (إزالة Luzi -)
                     let displayName = key.replace('Luzi - ', '').replace('LUZI - ', '');
-
+                    
                     allPerfumes.push({
                         name: displayName,
                         price: perfData.priceJOD,
@@ -104,10 +68,7 @@
                         sillage: metricData.sillage_rating
                     });
                 }
-
-                // عرض العطور
                 renderPerfumes(allPerfumes);
-
             } catch (error) {
                 document.getElementById('loading').innerHTML = `❌ عذراً، حدث خطأ في الاتصال بالخوادم: ${error.message}`;
             }
@@ -116,15 +77,13 @@
         function renderPerfumes(perfumesArray) {
             const grid = document.getElementById('storeGrid');
             grid.innerHTML = '';
-
+            
             perfumesArray.forEach(p => {
-                // معالجة النوتات (إذا كانت فارغة نضع نصاً تسويقياً)
                 let hasNotes = p.notes.top.length > 0 || p.notes.heart.length > 0 || p.notes.base.length > 0;
-                
                 let topHtml = hasNotes && p.notes.top.length ? p.notes.top.join('، ') : '';
                 let heartHtml = hasNotes && p.notes.heart.length ? p.notes.heart.join('، ') : '';
                 let baseHtml = hasNotes && p.notes.base.length ? p.notes.base.join('، ') : '';
-
+                
                 let pyramidHtml = '';
                 if (hasNotes) {
                     pyramidHtml = `
@@ -135,28 +94,17 @@
                 } else {
                     pyramidHtml = `<div class="note-row secret-blend">✨ تركيبة سرية خاصة تتميز بالفخامة والتفرد، صُممت لتناسب الذوق الرفيع.</div>`;
                 }
-
-                // بناء بطاقة العطر
+                
                 const card = document.createElement('div');
                 card.className = 'perfume-card';
                 card.innerHTML = `
                     <div class="perfume-title">${p.name}</div>
                     <div class="perfume-price">${p.price.toFixed(2)} <span>JOD (سعر الزيت / كغ)</span></div>
-                    
                     <div class="metrics-bar">
-                        <div class="metric-badge">
-                            الثبات المتوقع
-                            <b>${p.longevity} ساعة</b>
-                        </div>
-                        <div class="metric-badge">
-                            قوة الفوحان
-                            <b class="sillage-val">${p.sillage} / 10</b>
-                        </div>
+                        <div class="metric-badge">الثبات المتوقع<b>${p.longevity} ساعة</b></div>
+                        <div class="metric-badge">قوة الفوحان<b class="sillage-val">${p.sillage} / 10</b></div>
                     </div>
-
-                    <div class="pyramid-box">
-                        ${pyramidHtml}
-                    </div>
+                    <div class="pyramid-box">${pyramidHtml}</div>
                 `;
                 grid.appendChild(card);
             });
@@ -167,8 +115,7 @@
             const filtered = allPerfumes.filter(p => p.name.toLowerCase().includes(query));
             renderPerfumes(filtered);
         }
-
-        // تشغيل المحرك عند تحميل الصفحة
+        
         window.addEventListener('DOMContentLoaded', initStore);
     </script>
 </body>
