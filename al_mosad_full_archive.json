@@ -1,0 +1,824 @@
+[
+  {
+    "type": "posts",
+    "title": "",
+    "url": "https://www.al-mosad.com/2026/05/blog-post.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "عمل باكاب في موقع box",
+    "url": "https://www.al-mosad.com/p/box.html",
+    "content": "نظام إدارة البيانات مع Box Backup & Restore\n📦 نظام إدارة البيانات\n➕ إضافة سجل جديد\n💾 حفظ السجل\n📋 السجلات المحفوظة\nلا توجد سجلات بعد. أضف سجلاً من الأعلى.\n📥 تحميل JSON محلي\n📂 استيراد JSON\n🗑️ مسح الكل\n☁️ الربط مع Box\n⚠️ هذا الإصدار تجريبي. Client Secret مرئي في الكود. استخدم\nGoogle Apps Script\nللإنتاج.\n🔴 غير مربوط بـ Box\n🔗 ربط بحساب Box\n📤 عمل Backup إلى Box\n📥 استرجاع من Box\n❌ فصل الربط\n📂 اختر ملف Backup للاسترجاع\n-- جاري تحميل الملفات... --\n✅ استرجاع الملف المختار\n❌ إلغاء\n⚡ كيف تريد الاسترجاع؟\nلديك سجلات محلية. اختر الطريقة:\n🔄 استبدال الكل بالملف\n➕ دمج مع البيانات المحلية\n↩️ رجوع\n0%"
+  },
+  {
+    "type": "pages",
+    "title": "ملفاتي",
+    "url": "https://www.al-mosad.com/p/blog-page_387.html",
+    "content": "ملفاتي — درايفك الخاص على Box\nملفاتي\nجاري التحميل...\n⏱ 59:59\n📊\n⭐\n📋\n🌙\n🗑\n🚪\nملفاتي\n📁 درايفك الخاص على Box. ملفاتك آمنة، ويمكنك الوصول لها من أي مكان.\n🚀 تسجيل الدخول عبر Box\n🔒 جلسات آمنة، تأكيد للعمليات الحساسة، ومهلة انتهاء تلقائية.\n⚠️ جلسة العمل على وشك الانتهاء خلال\n5:00\n📊 لوحة التحكم\n📁 العودة للملفات\n📄\n0\nالملفات\n📁\n0\nالمجلدات\n💾\n0\nالمساحة\n📊\n0\nأنواع الملفات\n⭐\n0\nالمفضلة\n🔄\n0\nالإصدارات\n📈 توزيع أنواع الملفات\n📄\n0\n📁\n0\n💾\n0\n✅\n0\n⭐\n0\n💾\n0\n⬆ رفع\n📁 مجلد\n📂 جديد\n📦 ZIP\n🗑\n🔗\n⭐\n☑\n☐\n🔄\n🗑 كاش\n📊 ترتيب ▾\n🔤 الاسم\n📊 الحجم\n📅 التاريخ\n📂 النوع\n☰\n⊞\n📁 أفلت الملفات هنا للرفع\nجاري الرفع...\n0%\n✖\n✕\nCtrl+A\nتحديد\nDel\nحذف\nEsc\nإغلاق\nCtrl+Shift+D\nوضع\nCtrl+B\nمفضلة\nCtrl+Shift+V\nإصدارات\n✕\n⚠️ تأكيد\nهل أنت متأكد من هذا الإجراء؟\nإلغاء\nتأكيد\n✕\n🔗 مشاركة متقدمة\nالملف:\n📋 نسخ\nالمتعاونون:\n➕\n🌐 عام\n🔒 خاص\n🏢 الشركة\nإغلاق\n✕\n🔄 الإصدارات\nالملف:\nإغلاق\n✕\n✍️ توقيع رقمي\nالملف:\n🗑 مسح\n↩️ تراجع\n💾 حفظ\nإغلاق\n✕\n✏️ تحرير النص\nالملف:\n💾 حفظ\n⬇ تنزيل\n📋 JSON\n📊 كلمات\nإغلاق\n✕\n⭐ المفضلة\nإغلاق\n✕\n📋 النشاطات\nإغلاق\n🗑 مسح\n✕\n🎨 لون المجلد\nإلغاء\nتطبيق\n✕\n🏷️ وسوم\nإلغاء\nتطبيق\n✕\n⬇ تنزيل\n🔗 مشاركة\n🔄 إصدارات\n✍️ توقيع\n✏️ تحرير\n✕"
+  },
+  {
+    "type": "pages",
+    "title": "مدير التطبيقات",
+    "url": "https://www.al-mosad.com/p/blog-page_09.html",
+    "content": "مدير تطبيقات HTML\nمدير تطبيقات HTML\n+ تطبيق جديد\nمزامنة\nتصدير\nاستيراد\n■\n0\nإجمالي التطبيقات\n■\n0\nتم إضافتها اليوم\n■\n0 KB\nحجم البيانات\nقائمة التطبيقات\n0 تطبيق\nتطبيق جديد\n✗\nاسم التطبيق *\nالتاريخ\nالوصف / المساحة\nكود HTML *\n1\nالحروف:\n0\nإلغاء\nحفظ التطبيق\nمعاينة سريعة\nفتح في صفحة كاملة\n✗\n⚠\nتأكيد الحذف\nهل أنت متأكد أنك تريد حذف هذا التطبيق؟\nلا يمكن التراجع عن هذا الإجراء.\nإلغاء\nحذف\nمزامنة الأجهزة\n✗\nرابط مزامنة (الأفضل)\nأنشئ رابطاً يحتوي على جميع بياناتك. افتحه على أي جهاز. لا ينتهي أبداً!\nإنشاء رابط مزامنة\nانسخ هذا الرابط وافتحه على الجهاز الآخر:\nنسخ الرابط\nفتح الرابط\nQR Code (للهواتف)\nامسح الكود بالهاتف لاستلام البيانات فوراً.\nإنشاء QR Code\nامسح الكود بكاميرا الهاتف\nنسخ يدوي (الأكثر موثوقية)\nانسخ البيانات وأرسلها عبر واتساب أو إيميل. يعمل بدون إنترنت!\nنسخ جميع البيانات\nلصق البيانات\nملف JSON\nاحفظ بياناتك في ملف وانقله بالفلاش أو الإيميل.\nتصدير ملف\nاستيراد ملف"
+  },
+  {
+    "type": "pages",
+    "title": "تجارب",
+    "url": "https://www.al-mosad.com/p/brewpage.html",
+    "content": "خزنتي — درايفك الخاص على pCloud\nخزنتي\nخزنتي\nدرايفك الخاص، مبني فوق حساب pCloud الخاص بك. ملفاتك تبقى في حسابك أنت، وتصل لها من أي جهاز بعد تسجيل الدخول.\nمفتاح التطبيق (App Key)\nحفظ ومتابعة\nخطوات الحصول على المفتاح (مرة واحدة فقط):\n1. افتح\nhttps://docs.pcloud.com/my_apps/\nوسجّل دخولك بحساب pCloud.\n2. أنشئ تطبيقًا جديدًا (Create App) بأي اسم تختاره.\n3. من إعدادات التطبيق، فعّل خيار\nOAuth\nواختر\nToken flow\n.\n4. أضف رابط هذه الصفحة بالضبط كـ\nRedirect URI\n:\n5. انسخ\nApp Key\nوألصقه بالأعلى.\nتسجيل الدخول عبر pCloud\nتغيير مفتاح التطبيق\nرفع ملف\nمجلد جديد\nتحديث\nأفلت الملفات هنا للرفع\n0%\nتأكيد الحذف\nإلغاء\nحذف\nالإعدادات\nمفتاح التطبيق الحالي\nإغلاق\nتسجيل الخروج"
+  },
+  {
+    "type": "pages",
+    "title": "التطبيقات المخصصة",
+    "url": "https://www.al-mosad.com/p/blog-page_2286.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "مفضلتي",
+    "url": "https://www.al-mosad.com/p/blog-page_174.html",
+    "content": "م\nمفضلتي\nمكتبتك الخاصة من المواقع المحفوظة\nالمزامنة\nتصدير\nاستيراد\nإضافة موقع\nالتصنيفات\nجميع المواقع\n✦\nلم تحفظ أي مواقع بعد. ابدأ بإضافة أول موقع لمفضلتك.\nإضافة موقع\nإضافة موقع جديد\nالرابط (URL)\nالعنوان\nالتصنيف\nملاحظات (اختياري)\nإلغاء\nحفظ\nطريقة الاستيراد\nوجدنا\n0\nموقعاً في الملف. كيف تريد إضافتها إلى مفضلتك؟\nاستبدال جميع البيانات الحالية\nالإضافة إلى البيانات الحالية\nإلغاء\nتعديل اسم التصنيف\nالاسم الجديد\nسيتم تحديث كل المواقع المرتبطة بهذا التصنيف تلقائياً. إن اخترت اسم تصنيف موجود بالفعل، سيتم دمج التصنيفين معاً.\nإلغاء\nحفظ"
+  },
+  {
+    "type": "pages",
+    "title": "قائمة المشتريات",
+    "url": "https://www.al-mosad.com/p/blog-page_03.html",
+    "content": "النظام المتكامل للمشتريات والمستلزمات\nجاري معالجة البيانات...\nتحديد وقص المستلزم من الصورة\nقم بسحب أطراف مربع التحديد لحصر صورة المستلزم المراد حفظه وحده وتجنب بقية العناصر.\nإلغاء\nقص واعتماد الصورة\nخيارات إضافة مستلزم للقائمة\nبطاقة 1: إضافة وتجهيز المستلزم\nاسم المستلزم *\nالكمية المطلوبة *\nملاحظات إضافية\nرابط صورة المستلزم\nبطاقة 2: المستلزمات العامة (Database)\nإدراج المستلزم بالقائمة\nالنظام الموحد للمشتريات والمستلزمات\nإصدار 2026 ذكي ومتكامل بالاتصال المباشر\nقوائم المشتريات\nالمستلزمات العامة\nإنشاء قائمة جديدة\nأضف\nقوائمي المحفوظة\nجاري تحميل القوائم...\nالرجاء اختيار أو إنشاء قائمة من الجانب الأيمن لعرض محتوياتها.\nدليل المستلزمات العامة\nمحلي\nImgBB نشط\nعدد العناصر المكتشفة:\n0 مستلزم\nإضافة مستلزم جديد\nالمستلزمات العامة تُحفظ محلياً بالمتصفح، وتستخدم\nImgBB\nلرفع الصور.\nمفتاح ImgBB API\nاسم المستلزم *\nنبذة / وصف\nالسعر الافتراضي\nالتصنيف *\nاسم التصنيف الجديد *\nرابط الصورة المباشر (إن وجد)\nرفع صورة مباشرة إلى ImgBB\nاختيار ملف\nكاميرا\nسيظهر معاينة للملف هنا\nتحديد وقص جزء من الصورة\nحفظ في المستلزمات العامة\nإلغاء\nتصدير (JSON)\nاستيراد (JSON)"
+  },
+  {
+    "type": "pages",
+    "title": "بحث في ويكيبيديا",
+    "url": "https://www.al-mosad.com/p/blog-page_967.html",
+    "content": "البحث في ويكيبيديا\n📚\nالبحث في ويكيبيديا\n🔍\nاستكشف أقرب 30 نتيجة بحث مع الصور التوضيحية\nبحث شامل\n😀 😀 😀 😀 😀"
+  },
+  {
+    "type": "pages",
+    "title": "دليل الادوية والامراض",
+    "url": "https://www.al-mosad.com/p/blog-page_168.html",
+    "content": "الموسوعة الطبية الشاملة\n🏥 الموسوعة الطبية الشاملة\nStreaming + Pollinations AI\n⚠️ تنبيه طبي\n🔇\nإيقاف القراءة\n🫀\nقسم الأمراض\n🔍\nبحث عن مرض\n💊\nقسم الأدوية\n🔍\nبحث عن دواء\n⚗️\nفحص التداخلات الدوائية\n🔬\nفحص التداخل\n⚠️ تنبيه: هذه المعلومات لأغراض تثقيفية فقط ولا تغني عن استشارة الطبيب المختص."
+  },
+  {
+    "type": "pages",
+    "title": "أساسيات الإسعافات الأولية",
+    "url": "https://www.al-mosad.com/p/blog-page_479.html",
+    "content": "تطبيق أساسيات الإسعافات الأولية\n🚑 تطبيق أساسيات الإسعافات الأولية\n🇸🇦 إنتاج توعوي\nهيئة الهلال الأحمر السعودي\nهذا العمل من إنتاج هيئة الهلال الأحمر السعودي، والتي تُعنى بتقديم الخدمات الطبية الإسعافية الطارئة والسريعة بكفاءة عالية في مختلف مناطق المملكة، إلى جانب نشر ثقافة الوعي الإسعافي والتدريب المجتمعي لإنقاذ الأرواح وتخفيف المعاناة الإنسانية.\nرقم الطوارئ الموحد\n997\nاختر موضوعاً لبدء التعلم"
+  },
+  {
+    "type": "pages",
+    "title": "عارض الميديا المحلية",
+    "url": "https://www.al-mosad.com/p/blog-page_314.html",
+    "content": "عارض الميديا المتقدم\nعارض الميديا المتقدم\nاختر مجلد الوسائط\nتحديد المجلد\nلم يتم اختيار مجلد بعد.\nالكل\nصور\nفيديو\nصوتيات\nإغلاق\nمشاركة\nشاشة كاملة"
+  },
+  {
+    "type": "pages",
+    "title": "مزامنة البيانات مع جوجل درايف",
+    "url": "https://www.al-mosad.com/p/blog-page_480.html",
+    "content": "تطبيق المساعد للتسوق العائلي\nتسوق عائلتي\nجاري بدء النظام...\n🔄\nجاري تحضير بوابة الأمان...\n🟢 الاتصال السحابي نشط\nيرجى ربط حسابك بجوجل درايف لحفظ ومزامنة قائمة مشتريات عائلتك بشكل مستقل وآمن.\nربط الحساب مع Google Drive\n⚙️ إدارة مشاركة القائمة العائلية\n👇\nرابط مشاركة القائمة (لأفراد العائلة):\nنسخ\nإضافة\nسلة المشتريات العائلية"
+  },
+  {
+    "type": "pages",
+    "title": "مكتبة الصور الخاصة بي",
+    "url": "https://www.al-mosad.com/p/blog-page_948.html",
+    "content": "معرض الصور الخاص - ImgBB Manager\n📸 معرض الصور الخاص (ImgBB Manager)\n0\nإجمالي الرفع\n0 MB\nإجمالي الحجم\n-\nآخر رفع\n0\nالصور المحفوظة\n🖼️ المعرض\n📤 رفع صورة\n🗄️ قاعدة البيانات\n⚙️ الإعدادات\n📥 تصدير\n🗑️ مسح الكل\n🖼️ لا توجد صور\n📁\nانقر لاختيار صورة أو اسحبها هنا\nCtrl+V للصق | الحد الأقصى 32 MB\n📂 رفع متعدد\n📷 التقاط صورة\n📹 معاينة الكاميرا\n📸 التقاط\n✖ إغلاق الكاميرا\nالاسم:\n-\nالحجم:\n-\nالنوع:\n-\nالأبعاد:\n-\nلا يوجد حذف تلقائي\n5 دقائق\n30 دقيقة\n1 ساعة\n6 ساعات\n24 ساعة\n7 أيام\n30 يوم\n🚀 رفع الآن\n❌ إلغاء\n✅ تم الرفع!\n🔗\nنسخ\n🗑️\nنسخ\n➕ رابط صورة واحد (إضافة يدوية)\nإضافة\nلن يمكن حذف هذه الصورة من خادم ImgBB لعدم توفر رابط الحذف.\n📋 إضافة روابط متعددة (واحد في كل سطر)\n➕ إضافة الكل دفعة واحدة\n🔗 رفع عبر رابط خارجي\nلا حذف\n24 ساعة\nرفع\n📝 رفع عبر Base64\nرفع\nالكل\nاليوم\nأسبوع\nشهر\n📥 تصدير JSON\n📤 استيراد\n🗑️ حذف المحدد (محلي)\nالصورة\nالعنوان\nالحجم\nالتاريخ\nملاحظات\nرابط الحذف\nإجراءات\nلا توجد سجلات\n💡 ملاحظات:\nالصور المضافة يدوياً (عبر رابط) لا تحتوي على رابط حذف، لذا لا يمكن حذفها من الخادم.\nللحذف من ImgBB، استخدم زر \"🗑️ حذف من ImgBB\" المتوفر للصور التي رُفعت عبر التطبيق.\nيمكنك تصدير قاعدة البيانات كنسخة احتياطية واستيرادها لاحقاً.\n🔑 إعدادات API\nمفتاح ImgBB:\n💾 حفظ\n👁️ إظهار\nاحصل على مفتاح من\napi.imgbb.com\n⚙️ الإعدادات العامة\nعدد السجلات بالصفحة\n5\n10\n20\n50\nالحذف التلقائي الافتراضي\nلا يوجد\n24 ساعة\n7 أيام\nتأكيد الحذف\nنسخ الرابط تلقائياً بعد الرفع\nحذف من الخادم افتراضياً (إن أمكن)\n💾 إدارة البيانات\n📥 تصدير قاعدة البيانات\n📤 استيراد بيانات\n⚠️ إعادة تعيين كل البيانات\n☁️ النسخ الاحتياطي على Google Drive\n🔐 متوافق مع OAuth 2.0\n🖥️ بصمة الجهاز (اضغط للتعديل):\n...\n📤 نسخ احتياطي لـ Drive\n📥 استعادة من Drive\n🚫 قطع الاتصال\n⏳ جاهز\n✕\n📂 اختر نسخة لاستعادتها\nإغلاق\nجاري الرفع...\nتم بنجاح\n✕"
+  },
+  {
+    "type": "pages",
+    "title": "البحث في الويكيميديا",
+    "url": "https://www.al-mosad.com/p/blog-page_4949.html",
+    "content": "البحث في الويكيميديا\nملف صوتي\nتشغيل صوتي\nتعذر تشغيل هذا الملف الصوتي. يمكنك تحميله مباشرة من هنا:\nتحميل الملف\nالبحث في الويكيميديا\nابحث عن ملايين الملفات المجانية من ويكيميديا كومنز و Openverse — صور، فيديو، صوت، مستندات، رسوم متحركة، نماذج ثلاثية الأبعاد\n📁 الكل\n🖼 صور\n🎬 فيديو\n🎵 صوت\n📄 مستندات\n🎞️ رسوم متحركة\n🧊 ثلاثي الأبعاد\nبحث\nشائع:\nطبيعة\nتكنولوجيا\nتجريدي\nعمارة\nحيوانات\nفضاء\nطعام\nسفر\nAPI متصل\nجميع الأنواع\nعرض فوري\nالرئيسية\nويكيميديا\nجارٍ البحث...\nتعذر جلب النتائج\nإعادة المحاولة\nفتح على ويكيميديا\nتحميل المزيد\nسجل البحث\nمسح\nلا يوجد سجل بحث بعد\nالبحث في الويكيميديا\nبحث شامل في ويكيميديا كومنز و Openverse — صور، فيديو، صوت، مستندات، رسوم متحركة، نماذج ثلاثية الأبعاد\n/\nبحث\nEsc\nإغلاق\n←→\nتنقل"
+  },
+  {
+    "type": "pages",
+    "title": "كم بقى - كم مضى",
+    "url": "https://www.al-mosad.com/p/blog-page_243.html",
+    "content": "مدير المناسبات | محول هجري ميلادي متزامن\n📆 مدير المناسبات الذكي\nحوّل بين الهجري والميلادي بسلاسة | عد تنازلي وتصاعدي فوري\n📋 بطاقات المناسبات\n(0)\n⚙️ إضافة + محول + باك آب\n🏷️ اسم المناسبة\n📅 التاريخ الميلادي\nاليوم\nالشهر\nالسنة\n🌙 التاريخ الهجري\nاليوم\nالشهر\nالسنة\n⏰ الوقت المشترك (ساعة : دقيقة)\n📅 اليوم: الأحد\n📅 تعيين تاريخ اليوم الحالي\n➕ إضافة المناسبة\n❌ إلغاء التعديل\n☁️ النسخ الاحتياطي على Google Drive\nبصمة الجهاز:\n...\n📤 نسخ احتياطي\n📥 استعادة\nجاهز\n⚠️ ملاحظة هامة\nالحساب في هذا التطبيق يعتمد كلياً على التاريخ الميلادي. يمكنك استخدام الحقول أعلاه لتحويل التاريخ. تغيير أحدها سيحدث الأثر تلقائياً. عند الحفظ، يعتمد العدد على التاريخ الميلادي.\n📂 اختر نسخة للاستعادة\n✕\n⏳\nجاري جلب النسخ الاحتياطية...\nإغلاق"
+  },
+  {
+    "type": "pages",
+    "title": "محلل أرقام الهواتف",
+    "url": "https://www.al-mosad.com/p/blog-page_750.html",
+    "content": "محلل الأرقام الذكي - أزرار واضحة وجذابة\nمحلل الأرقام الذكي المتقدم\nتحليل شامل للرقم + قاعدة بيانات محلية مرئية فوراً مع آخر الأرقام المحللة\nفحص الرقم\n📞 رقم الهاتف (إدخال ذكي)\nيدعم:\n+966...\nأو\n00966...\n(يتجاهل المسافات)\nتحليل الرقم والبحث العكسي\nجاري التحليل والبحث...\nنتائج التحليل المفصلة\nروابط سريعة وبحث عكسي\n🌟 روابط عامة\n🌐 مواقع تواصل\n🗄️ قواعد بيانات\n🚨 مكافحة احتيال\n🕵️ أدوات متقدمة\n🏢 معلومات أعمال\nملاحظة: جميع الأزرار أعلاه تفتح في تبويب جديد. يمكنك البحث يدويًا في أي من هذه المواقع للحصول على معلومات إضافية عن الرقم (الاسم، المالك، السمعة، إلخ).\nصيغ الرقم (انقر 📋 للنسخ)\nحفظ الرقم الحالي في قاعدة بياناتي\nحفظ\n📌 ملاحظة: لحفظ رقم، قم بتحليله أولاً ثم أضف تعريفه.\nجهات الاتصال المحفوظة (قاعدة البيانات المحلية)\nمسح الكل\nجاري تحميل جهات الاتصال...\nآخر الأرقام التي تم تحليلها\n(انقر على أي رقم لتحليله مرة أخرى)\nجاري تحميل السجل...\nقاعدة البيانات المحلية (جهات الاتصال) والسجل محفوظان في متصفحك فقط ولا يُرسلان لأي خادم."
+  },
+  {
+    "type": "pages",
+    "title": "المواد المسببة للحساسية",
+    "url": "https://www.al-mosad.com/p/blog-page_122.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "البلندرات",
+    "url": "https://www.al-mosad.com/p/blog-page_359.html",
+    "content": "Blenders Search\n\"البلندرات\" في صناعة العطور\n\"قائمة من المواد المستخدمة في صناعة العطور تُعرف باسم \"البلندرات\" (Blenders)، وهي مكونات تُستخدم لدمج وتنسيق الروائح في العطر الواحد، مما يمنحه طابعًا سلسًا ومتجانسًا. هذه المواد لا تكون بالضرورة \"نوتات رئيسية\"، بل تعمل على:\nتوسيط الانتقالات بين النوتات.\nتعزيز الثبات والدِفء.\nإعطاء طابع ناعم أو بودري أو مسكي.\nربط المكونات المختلفة ببعضها لتجنب التنافر.\nفلتر حسب العائلة العطرية (اختياري)"
+  },
+  {
+    "type": "pages",
+    "title": "دورة استخدام الذكاء الاصطناعي للعمل في مجال العطور",
+    "url": "https://www.al-mosad.com/p/blog-page_916.html",
+    "content": "دورة استخدام الذكاء الاصطناعي للعمل في مجال العطور\nالجزء الأول\nالجزء الثاني\nالجزء الثالث"
+  },
+  {
+    "type": "pages",
+    "title": "دورة اساسيات العطور",
+    "url": "https://www.al-mosad.com/p/blog-page_173.html",
+    "content": "دورة أساسيات العطور\nنبذة عامة عن العطور\nمصادر العطور\nالرائحة\nالرموز المستخدمة في العطور\nمكونات العطور المادة العطرية\nالعائلات العطرية"
+  },
+  {
+    "type": "pages",
+    "title": "المحاسبة الشخصية",
+    "url": "https://www.al-mosad.com/p/blog-page_01.html",
+    "content": "المحاسبة الشخصية\nالمحاسبة الشخصية\nتتبع مدخولاتك، مصاريفك، مديونياتك، والتحويلات بين حساباتك المالية.\n➕ فتح حساب جديد\n🔄 مزامنة\n×\n🏦 الحسابات النشطة\n📋 كشف العمليات\n⚙️ الإعدادات\nالحسابات النشطة (\n0\n)\nاستخدم أزرار الترتيب لإعادة ترتيب البطاقات\nكشف العمليات الأخير\nإضافة\nتحويل\nالرصيد الصافي:\n0.00\nر.س\n💡 اضغط على حساب من تبويب \"الحسابات النشطة\" لعرض عملياته\nالتاريخ والوقت\nالوصف\nالنوع\nالحساب\nالإجراءات\nالمبلغ\nلا توجد عمليات مسجلة\n⚙️ الإعدادات العامة\nالبيانات محفوظة محلياً في متصفحك.\n☁️ النسخ الاحتياطي السحابي\n🔴\nغير متصل\nبصمة الجهاز\nاضغط لتعديلها\n🔖\n...\n✏️\n🔑\nتسجيل الدخول إلى Google\n🚪\nقطع الاتصال\n💾\nنسخ احتياطي الآن\n📥\nاستعادة من Drive\n📁 مسار التخزين:\nGoogle Drive / al-mosad / Personal accountin\nجاهز - سجّل الدخول لبدء النسخ الاحتياطي\n🔄 مزامنة البيانات بين الأجهزة\n🔄\n🔴\nغير متصل\nاربط حسابك بـ Box لمزامنة بياناتك تلقائياً بين أجهزتك المختلفة. تُحفظ البيانات في ملف داخل حسابك.\n🔑\nتسجيل الدخول عبر Box\n🚪\nقطع اتصال Box\n🔄\nمزامنة الآن (رفع)\n📥\nسحب أحدث البيانات\n📁 مسار التخزين:\nBox / منصة_المساعد / المحاسبة الشخصية\nجاهز - سجّل الدخول عبر Box لبدء المزامنة\nتُحفظ بياناتك محلياً، ويمكن مزامنتها بين أجهزتك عبر Box.\n📂 اختر نسخة للاستعادة\n×\nإغلاق\nحساب جديد\nالرصيد الافتتاحي\n+\n-\nرصيد موجب (+)\nالنوع\n🏦 بنكي\n💵 نقدية\n🎯 ادخار\nحفظ\nإلغاء\nتعديل الحساب\n+\n-\nبنكي\nنقدية\nادخار\nتحديث\nإلغاء\nحركة جديدة\n📋 هذه نسخة مكررة - يمكنك تعديل التاريخ والوصف قبل الحفظ\n🔻 سحب\n🔺 إيداع\nتسجيل\nإلغاء\nتحويل بين حسابات\nتأكيد\nإلغاء\nتعديل المعاملة\nحفظ\nإلغاء\n🔄 مزامنة البيانات بين الأجهزة\nإغلاق"
+  },
+  {
+    "type": "pages",
+    "title": "البحث العكسي عن الصور",
+    "url": "https://www.al-mosad.com/p/blog-page_1570.html",
+    "content": "البحث العكسي عن الصور\n🔍 البحث العكسي عن الصور\nنتائج مفتوحة عبر جميع المحركات\n⚡ أكثر من 28 محرك بحث متاح\n📸 التقط صورة أو ارفعها أو أدخل رابطها - ثم اختر محرك البحث المناسب\n📁\nرفع صورة من الجهاز\n📷\nالتقاط صورة من الكاميرا\nأو\nأدخل رابط الصورة مباشرة:\n⚙️ إعدادات البحث\nفتح النتائج في نافذة/علامة تبويب جديدة\nاستخدام صيغ بديلة تلقائياً عند فشل المحرك\nإخفاء المصدر (No-Referrer) للخصوصية\n🌐 محركات البحث العامة\n🔍\nGoogle Lens\n🔎\nGoogle Images\n🌐\nBing Visual\n🔴\nYandex\n👁️\nTinEye\n🇨🇳\nBaidu\n🦊\nSogou\n🟣\nYahoo\n⚙️\nImgOps (شامل)\n🔎\nPicSearch\n🎨 للأنمي والفن والرسومات\n🥫\nSauceNAO\n🎌\nIQDB (2D)\n🎮\nIQDB (3D)\n🇯🇵\nASCII2D\n🎨\nPixiv\n🖌️\nDeviantArt\n🛍️ البحث عن المنتجات (التسوق)\n🛒\nTaobao\n📦\nAliExpress\n🏬\nJD.com\n📸 بنوك الصور (Stock Photos)\n📸\nShutterstock\n🎬\nGetty Images\n🖼️\nAlamy\n💾\nDepositphotos\n✨\nEveryPixel\n📷\nFlickr\n📌\nPinterest\n🌟\nStocksy\n🛡️ حماية الحقوق والتراخيص\n🛡️\nPixsy\n©️\nPicRights\n📋\nCopytrack\n🌍 محركات إضافية\n🔵\nVK (روسيا)\n💡 نصائح الاستخدام:\n🔄\nصيغ بديلة تلقائية\n: إذا فشل محرك، يتم استخدام صيغة احتياطية\n🔒\nخصوصية محسّنة\n: إخفاء المصدر (No-Referrer) لحماية خصوصيتك\n⭐\nمحركات مميزة\n: ImgOps بوابة شاملة + SauceNAO للأنمي + Google Lens\n🛍️\nالبحث عن منتجات\n: Taobao و AliExpress للعثور على مصدر المنتجات\n🎨\nمحركات الأنمي\n: IQDB (2D و 3D) + Pixiv + DeviantArt\n📷\nالكاميرا\n: التقط صورة وسيتم تبديل الكاميرا من داخل التطبيق نفسه\n🔍\nنصيحة\n: استخدم ImgOps للبحث في جميع المحركات من مكان واحد"
+  },
+  {
+    "type": "pages",
+    "title": "المحرك الشامل للبحث عن الصور",
+    "url": "https://www.al-mosad.com/p/blog-page_186.html",
+    "content": "المحرك الشامل للبحث عن الصور\nأكثر من 25 مصدرًا للبحث في الويب المفتوح، الفني، والأرشيفي.\n🔍\n1. محركات عالمية (بدون قيود SafeSearch)\nGoogle Images\nBing Images\nYandex Images\nBaidu Images\n2. مجتمعات ومنصات اجتماعية (محتوى مفتوح)\nReddit\nTumblr\nImgur\nPinterest\nVKontakte\nTelegram Web\n3. فنون رقمية وتصميم (Digital Art & Design)\nDeviantArt\nArtStation\nBehance\nDribbble\n500px\nFlickr\n4. محركات بديلة وخصوصية عالية\nDuckDuckGo\nBrave Search\nStartpage\nQwant\nEcosia\nSwisscows\n5. أرشيف ومكتبات رقمية\nInternet Archive\nWikimedia Commons\nLibrary of Congress\nEuropeana\n6. متخصص (أيقونات، خلفيات، Vector)\nIconFinder\nFlaticon\nWallhaven\nUnsplash\nPexels\nPixabay"
+  },
+  {
+    "type": "pages",
+    "title": "فحص الفيديو",
+    "url": "https://www.al-mosad.com/p/blog-page_815.html",
+    "content": "الطب الشرعي الرقمي للفيديو - 25 طبقة + رابط\nالطب الشرعي الرقمي للفيديو\n25 طبقة\nنظام متعدد الطبقات لكشف الفيديوهات المُعدّلة والمُولّدة بالذكاء الاصطناعي\nاسحب الفيديو أو اضغط للرفع\nيدعم MP4, MOV, AVI, WebM · الحد الأقصى 100 ميجابايت\nأو أدخل رابط الفيديو:\nتحميل من الرابط\nبدء التحليل الجنائي\nالمكبّر الجنائي\nتحميل فيديو آخر\n25 طبقة فحص | استخراج 10 إطارات | ديناميكية الفيديو"
+  },
+  {
+    "type": "pages",
+    "title": "فحص الصورة",
+    "url": "https://www.al-mosad.com/p/blog-page_995.html",
+    "content": "الطب الشرعي الرقمي للصور - 25 طبقة + رابط\nالطب الشرعي الرقمي للصور\n25 طبقة\nنظام متعدد الطبقات لكشف الصور المُعدّلة والمُولّدة بالذكاء الاصطناعي\nاسحب الصورة أو اضغط للرفع\nيدعم PNG, JPG, JPEG · الحد الأقصى 5 ميجابايت\nأو أدخل رابط الصورة:\nتحميل من الرابط\nبدء التحليل الجنائي\nالمكبّر الجنائي\nالبحث العكسي للصورة\nتحميل صورة أخرى\n25 طبقة فحص | أوزان ديناميكية | تحديد التقنيات والمولدات"
+  },
+  {
+    "type": "pages",
+    "title": "فحص الروابط",
+    "url": "https://www.al-mosad.com/p/blog-page_969.html",
+    "content": "فحّاص الروابط المتقدم | كاشف التهديدات والسمعة\n🛡️ فاحص الروابط الذكي + سمعة النطاق\nتحليل شامل: قوائم سوداء، هيكل الصفحة، محتوى مختلط، عمر النطاق والمزيد\n🔗 رابط واحد للفحص المتقدم\n🚀 فحص شامل\n✅ الفحص يستخدم وكيل Cors-anywhere لتحليل هيكل الصفحة + قوائم سوداء urlscan.io + Whois.\n📜 سجل الفحوصات\nمسح الكل\nجميع الفحوصات تجمع بين التحليل المحلي وطلبات خارجية آمنة"
+  },
+  {
+    "type": "pages",
+    "title": "قنوات المجد بث مباشر",
+    "url": "https://www.al-mosad.com/p/blog-page_986.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "عطور اميج",
+    "url": "https://www.al-mosad.com/p/blog-page_886.html",
+    "content": "عطور اميج ✨\nصور عن العطور ومايتعلق بها، يتم اختيارها و جمعها من مختلف منصات التواصل الاجتماعي وتقديمها لك بشكل منسق و جذاب\nجاري تحميل معرض الصور من السحابة...\n×\n❯\n❮"
+  },
+  {
+    "type": "pages",
+    "title": "+ دليل الاتصالات",
+    "url": "https://www.al-mosad.com/p/blog-page_789.html",
+    "content": "دليل الاتصالات الذكي - ستيل باستيل\nدليل الاتصالات\nنظام إدارة جهات الاتصال الملون\nإضافة جهة اتصال\nلا توجد بيانات\nأضف جهة اتصالك الأولى\nتم بنجاح\nإضافة بيانات\nالاسم / العنوان\nالتصنيف\nتعديل القائمة\nاسم التصنيف الجديد\nحفظ هذا التصنيف في القائمة دائماً\nإضافة حقل جديد\nإلغاء\nحفظ البيانات\nإدارة القائمة\n+ إضافة عنصر جديد\nحفظ التغييرات"
+  },
+  {
+    "type": "pages",
+    "title": "+ بياناتي",
+    "url": "https://www.al-mosad.com/p/blog-page_554.html",
+    "content": "ملف المستخدم\nالاسم الكامل\nالبريد الإلكتروني\nيرجى تسجيل الدخول من الصفحة الرئيسية أولاً لمشاهدة بياناتك."
+  },
+  {
+    "type": "pages",
+    "title": "+ خبير العطور الاصدار الثاني",
+    "url": "https://www.al-mosad.com/p/blog-page_521.html",
+    "content": "خبير العطور - المستشار الشامل\nخبير العطور\nمستشارك الشامل • v19.5-FinalFix\nمرحباً بك في عالم الطيب\nاسألني بالكتابة أو الصوت المستمر\n🎤 اضغط للتسجيل المستمر • اضغط مرة أخرى للإيقاف والإرسال\n🎤 اضغط للتسجيل المستمر • اضغط مرة أخرى للإيقاف والإرسال\nمحادثة جديدة\nمحادثاتك\nنسخ احتياطي (Backup)\nاسترجاع نسخة (Restore)\nخبير العطور\nمستشارك الشامل • v19.5-FinalFix\n🔊 قراءة الجواب\n0%\nتغيير عنوان المحادثة\nإلغاء\nحفظ\nحذف المحادثة\nهل أنت متأكد من حذف هذه المحادثة؟ لا يمكن التراجع عن هذا الإجراء.\nإلغاء\nحذف"
+  },
+  {
+    "type": "pages",
+    "title": "تجارب",
+    "url": "https://www.al-mosad.com/p/blog-page_650.html",
+    "content": "تحويل رابط Facebook Reel\nتحويل"
+  },
+  {
+    "type": "pages",
+    "title": "الوقت الحالي",
+    "url": "https://www.al-mosad.com/p/blog-page_270.html",
+    "content": "توقيت مكة المكرمة\nالتوقيت المحلي\nالتوقيت العالمي (UTC)"
+  },
+  {
+    "type": "pages",
+    "title": "تجارب  ملتيميديا",
+    "url": "https://www.al-mosad.com/p/blog-page_49.html",
+    "content": "المشغل العالمي - النسخة المستقرة الشاملة\nالمشغل الشامل المستقر\nدعم YouTube, Rumble, OK.ru, M3U8 & Local Files\nجاهز لتشغيل أي رابط أو ملف\nتشغيل\nلصق الرابط\nرفع ملف M3U\nإعادة تعيين\nالسجل وقائمة التشغيل\n0\nالقائمة فارغة"
+  },
+  {
+    "type": "pages",
+    "title": "مبرة دار الخير",
+    "url": "https://www.al-mosad.com/p/blog-page_413.html",
+    "content": "مبرة دار الخير - نظام المستفيدين\n🤝 مبرة دار الخير\nنظام إدارة وتحليل بيانات المستفيدين الذكي\n📂 مركز البيانات\n🏠 ملف أرباب الأسر (Excel)\n👥 ملف التابعين (Excel)\n🔗 تحليل وربط البيانات\n📊 نظرة عامة\n👪 تحليل الأسر\n📜 التقارير\n🔍 بحث\n👋\nيرجى رفع الملفات والضغط على \"ربط البيانات\" للبدء\nعدد الأسر\n0\nالتابعين\n0\nإجمالي الأفراد\n0\nمتوسط الأسرة\n0\nتقرير البيانات المدمجة\n📥 تحميل Excel\nالاسم\nعدد التابعين\nالإجمالي\nالحالة\n© 2026 مبرة دار الخير - قسم تقنية المعلومات\nتم التطوير لدعم العمل الخيري المنظم"
+  },
+  {
+    "type": "pages",
+    "title": "افطار صائم",
+    "url": "https://www.al-mosad.com/p/blog-page_907.html",
+    "content": "إدارة إفطار صائم"
+  },
+  {
+    "type": "pages",
+    "title": "123",
+    "url": "https://www.al-mosad.com/p/123.html",
+    "content": "نموذج تصميم وإنتاج عطر\nنموذج تصميم وإنتاج عطر\nمعلومات أساسية\nاسم العطر\nالمصمم\nالتاريخ\nالزيوت العطرية\nم\nالزيت العطري\nعدد القطرات\nالنسبة %\nإضافة زيت عطري\nاستيراد زيت من مكتبتي\nاستيراد زيت من الكتالوج\nإنتاج عينة من التصميم\nالكمية المطلوبة (مل)\nنسبة تركيز الزيت المطلوبة (%)\nمجموع القطرات:\n0\nكمية الزيت (مل):\n0.00\nكمية الكحول (مل):\n0.00\nملاحظات\nملاحظات على التصميم\nملاحظات على الانتاج\nحفظ البيانات\nاسترجاع البيانات\nاستيراد البيانات من مصمم العطور الآلي\nحاسبة تصميم وإنتاج العطور - إصدار تجريبي\nملاحظة: هذه الأداة هي لأغراض التصميم والتجريب. قد تختلف النتائج الفعلية.\nاختر الزيوت للاستيراد\nالزيت العطري\nالكمية الأصلية (قطرة)\nتحديد الكل\nاستيراد الزيوت المختارة\nإلغاء"
+  },
+  {
+    "type": "pages",
+    "title": "تجارب 01",
+    "url": "https://www.al-mosad.com/p/123456789.html",
+    "content": "X / Twitter Viewer - View Twitter Without Account | Snaplytics\nSkip to content\nPinterest\nPinterest Profile Picture Downloader\nPinterest Image Downloader\nPinterest Video Downloader\nYouTube\nYoutube Thumbnail Downloader\nYoutube Video Transcript Generator\nYouTube Dislike Viewer\nTwitter/X\nX / Twitter GIF Downloader\nX / Twitter Video Downloader\nX / Twitter Photo Downloader\nX / Twitter Profile Picture Downloader\nX / Twitter ID Finder\nX/Twitter Character Counter\nX / Twitter Viewer\nInstagram\nInstagram Reels Downloader\nInstagram Caption Copy\nInstagram Thumbnail Download\nInstagram Audio Download\nInstagram Character Counter\nInstagram Line Break Generator\nSnapchat\nSnapchat Story Viewer\nSnapchat Video Downloader\nSnapchat DP Download\nReddit\nReddit Image Viewer\nReddit GIF Downloader\nWhatsapp\nWhatsapp DP Download\nThreads\nThreads Downloader\nThreads Profile Picture Downloader\nPinterest\nPinterest Profile Picture Downloader\nPinterest Image Downloader\nPinterest Video Downloader\nYouTube\nYoutube Thumbnail Downloader\nYoutube Video Transcript Generator\nYouTube Dislike Viewer\nTwitter/X\nX / Twitter GIF Downloader\nX / Twitter Video Downloader\nX / Twitter Photo Downloader\nX / Twitter Profile Picture Downloader\nX / Twitter ID Finder\nX/Twitter Character Counter\nX / Twitter Viewer\nInstagram\nInstagram Reels Downloader\nInstagram Caption Copy\nInstagram Thumbnail Download\nInstagram Audio Download\nInstagram Character Counter\nInstagram Line Break Generator\nSnapchat\nSnapchat Story Viewer\nSnapchat Video Downloader\nSnapchat DP Download\nReddit\nReddit Image Viewer\nReddit GIF Downloader\nWhatsapp\nWhatsapp DP Download\nThreads\nThreads Downloader\nThreads Profile Picture Downloader\nViewer\nVideo\nPhoto\nGif\nPic\nX /\nTwitter Viewer\nView\nTwitter/X Profiles\n,\nSearch Users\n, or\nView Tweets\neasily and anonymously.\nProfile\nSearch\nTweet\nPeople\nTweets\nPaste\nView Profile\nPosts\nFollowing\nFollowers\nDownload Profile Picture\nDownload Banner\nRecent Tweets\nHow to use Snaplytics X / Twitter Viewer?\n1\nChoose Your Option\nSelect from three viewing options:\nProfile\n(view user profiles),\nSearch\n(find users), or\nTweet\n(view specific tweets). Perfect for those who want to view Twitter without an account.\n2\nEnter Details\nInput the username (e.g., @username), profile URL, search term, or tweet URL depending on your selected option. Our Twitter viewer makes it easy to access content anonymously.\n3\nView Content\nInstantly access profiles, search results, or tweet details without logging in. Learn how to view Twitter without an account using our comprehensive viewer tool.\nMore X/Twitter Tools\nX/Twitter Video Downloader\nDownload videos from X/Twitter posts in various qualities.\nX/Twitter Photo Downloader\nSave high-quality photos from X/Twitter posts.\nX/Twitter GIF Downloader\nDownload animated GIFs from X/Twitter posts.\nX/Twitter Profile Picture Downloader\nDownload X/Twitter profile pictures in full size.\nX/Twitter Character Counter\nCount characters for your tweets to stay within limits.\nX/Twitter ID Finder\nFind Twitter ID by entering username.\nX / Twitter Viewer by Snaplytics\nLooking for a way to\nview Twitter without an account\n? Our comprehensive\nTwitter viewer\nis the perfect solution for accessing X/Twitter content anonymously. Whether you want to view profiles, search for users, or check out specific tweets, our tool provides everything you need without requiring login credentials.\nOur\nTwitter viewer\noffers three powerful viewing modes: Profile viewing for exploring user profiles and their recent tweets, Search functionality for finding specific users or topics, and Tweet viewing for accessing individual tweet details with media content. This makes it the ultimate tool for anyone wondering\nhow to view Twitter without an account\n.\nWhat makes our\nTwitter viewer\nexceptional is its versatility and ease of use. Simply select your preferred viewing mode, enter the relevant information (username, search term, or tweet URL), and instantly access the content. No registration, no login, no tracking – just pure, anonymous Twitter viewing.\nKey Features:\n•\nProfile Viewer:\nView complete user profiles with bio, stats, and recent tweets.\n•\nUser Search:\nFind and explore Twitter users by search terms.\n•\nTweet Viewer:\nAccess individual tweets with full media content.\n•\nAnonymous browsing:\nview Twitter without an account.\n• Download profile pictures, banners, and media content.\n• Mobile-friendly interface for viewing on any device.\n• Fast loading and real-time content access.\nFAQs\nHow can I view Twitter without an account?\nOur Twitter viewer allows you to browse Twitter content completely anonymously. Simply select your viewing option (Profile, Search, or Tweet), enter the relevant information, and access the content without any login requirements.\nHow to see someone's Twitter followers without an account?\nWhile you can view follower counts and basic profile information using our Twitter viewer, detailed follower lists are typically restricted to logged-in users by Twitter's privacy policies.\nCan you join a Twitter space without an account?\nTwitter Spaces typically require an account to participate. However, our Twitter viewer can help you find information about users who host Spaces and view their profiles anonymously.\nWhy is Twitter requiring login?\nTwitter has implemented login requirements to control access and improve user experience. Our Twitter viewer bypasses this limitation by providing anonymous access to public content.\nDoes Twitter have a guest mode?\nTwitter's guest mode has limited functionality. Our Twitter viewer provides a better alternative for anonymous browsing with full access to profiles, search, and tweet viewing.\nCan you find someone on Twitter without their username?\nYes! Use our Search feature to find users by their display name, keywords, or topics they tweet about. This is perfect for discovering profiles when you don't know the exact username.\nHow can I access Twitter without email?\nOur Twitter viewer eliminates the need for any registration or email verification. Simply use our tool to access Twitter content anonymously without providing any personal information.\nCan you see age restricted Twitter without an account?\nAge-restricted content on Twitter typically requires account verification. Our viewer can access most public content, but some restricted content may still require proper authentication.\nIs this tool free to use?\nYes, our Twitter viewer is completely free to use with all features available at no cost.\nDisclaimer\nSnaplytics X/Twitter Profile Viewer is an independent tool and is not affiliated with, endorsed by, or in any way officially connected with X Corp. (formerly Twitter, Inc.). This tool accesses publicly available information from X/Twitter. We respect user privacy and copyright. Please use this tool responsibly.\nSocial Media Tools\nInstagram Tools\nTwitter Tools\nYouTube Tools\nPinterest Tools\nLinkedIn Tools\nThreads Tools\nVSCO Tools\nGenerators\nCommunication Tools\nSnapchat Tools\nDiscord Tools\nWhatsApp Tools\nReddit Tools\nBluesky Tools\nCompany\nAbout Us\nContact Us\nLegal\nPrivacy Policy\nTerms & Conditions\nCookie Policy\nDisclaimer\nCopyright 2025\nSnaplytics\n. All rights reserved."
+  },
+  {
+    "type": "pages",
+    "title": "خبر العطور - تجارب",
+    "url": "https://www.al-mosad.com/p/blog-page_300.html",
+    "content": "خبير العطور\nمساعدك الشخصي في عالم العطور\nاطرح أي سؤال حول العطور وسأجيبك بالتفصيل\nخبير العطور:\nأهلاً بك! أنا خبيرك الشخصي في عالم العطور. اطرح سؤالك لأجيبك بكل ما يتعلق بتصميم العطور، المواد العطرية، تاريخ العطور، وأي تفاصيل أخرى.\nعلى سبيل المثال: \"ما هي المكونات الأساسية للعطر؟\" أو \"كيف يتم استخراج الزيوت العطرية من الأزهار؟\"\nالخبير يفكر...\nالمتصفح لا يدعم ميزة الإدخال الصوتي.\nإرسال"
+  },
+  {
+    "type": "pages",
+    "title": "التصميم الحر للعطور  بالنسب",
+    "url": "https://www.al-mosad.com/p/blog-page_890.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "تجربة عرض صورة من رابط",
+    "url": "https://www.al-mosad.com/p/ffesz7ipng.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "الفصول الأربعة",
+    "url": "https://www.al-mosad.com/p/blog-page_586.html",
+    "content": "تطبيق الفصول الأربعة - توقيت مكة\n🌍 الفصول الأربعة (بتوقيت مكة المكرمة)\nتواريخ فلكية دقيقة لعام 2026 حسب توقيت مكة. اضغط على أي فصل للاطلاع على التفاصيل.\n🕋 جميع التواريخ والأوقات حسب توقيت مكة (UTC+3)\nالمصادر: NOAA, NASA, timeanddate.com | توقيت مكة (UTC+3) | تحديث تلقائي للعد التنازلي"
+  },
+  {
+    "type": "pages",
+    "title": "مفكرة",
+    "url": "https://www.al-mosad.com/p/blog-page_69.html",
+    "content": "مفكرة - نسخة محلية\nمفكرة ويب — نسخة أولية\nالملاحظات\n0\nملاحظة جديدة\nتصدير\nخيارات: استيراد/تصدير/طباعة وحفظ تلقائي إلى تخزين المتصفح (localStorage).\nحفظ\nحذف\nعريض\nمائل\nتسطير\nقائمة\nإرفاق ملف\nعرض\nآخر حفظ:\nلم يتم الحفظ بعد\nتطبيق مفكرة بسيط — يعمل دون خادم. يمكنك طلب ميزات إضافية (مزامنة سحابيّة، تسجيل مستخدمين، مشاركة روابط)."
+  },
+  {
+    "type": "pages",
+    "title": "تجارب ملاحظات",
+    "url": "https://www.al-mosad.com/p/blog-page_548.html",
+    "content": "Bluesky Viewer - View Bluesky Posts, Likes, and Follows Anonymously\nBluesky Viewer\n🌐\nEnglish\nBluesky Viewer\nEnter Bluesky username to view their posts, likes, follows,\nand profile information\nSearch\nBluesky Viewer Features\n100% Anonymous Viewing\nUse Bluesky Viewer to browse profiles privately. Your viewing activity remains completely anonymous.\nNo Account Required\nStart using Bluesky Viewer instantly - no registration needed. View posts, likes, and follows right away.\nComplete Profile Access\nBluesky Viewer provides full access to public posts, likes, follows, and profiles in one place.\nFrequently asked questions\nGet answers to common questions about using our service\n1\nWhat is Bluesky Viewer?\nBluesky Viewer is a free web tool that allows you to browse Bluesky social network content anonymously. With Bluesky Viewer, you can view users' posts, likes, and following information without creating an account. Our Bluesky Viewer platform provides complete access to public Bluesky profiles, making it the perfect tool for researchers, marketers, and curious users who want to explore Bluesky content without registration. The Bluesky Viewer interface is designed to be user-friendly and provides the same viewing experience as the official Bluesky app, but with enhanced privacy features.\n2\nHow do I use Bluesky Viewer?\nUsing Bluesky Viewer is incredibly simple and straightforward. We support multiple Bluesky username formats: full handles (like jack.bsky.social), short usernames (like jack), and @symbol format (like @jack). Just enter any format in the Bluesky Viewer search bar to start viewing. Our Bluesky Viewer automatically recognizes different username formats and converts them to the correct Bluesky handle. You can search for any public Bluesky profile and instantly access their posts, likes, and follows. The Bluesky Viewer search function is optimized for speed and accuracy, ensuring you find the right Bluesky profiles quickly.\n3\nWhat content can I view with Bluesky Viewer?\nThe Bluesky Viewer lets you see all public Bluesky content including images, videos, text posts, replies, and reposts. You can view posts, likes, follows, followers, and complete profile information through our Bluesky Viewer interface. Our platform displays Bluesky content exactly as it appears on the official Bluesky app, including embedded media, links, and hashtags. Bluesky Viewer also shows engagement metrics like like counts, repost counts, and reply counts for each post. All Bluesky content displayed through our viewer maintains original formatting and quality, ensuring an authentic viewing experience.\n4\nWhy does the Bluesky Viewer likes list load slowly?\nThe Bluesky Viewer needs to fetch likes data through Bluesky's public APIs, which may take longer due to rate limiting and data processing requirements. We have optimized our Bluesky Viewer with advanced caching and batch processing techniques, so subsequent loads will be significantly faster. Our Bluesky Viewer system intelligently pre-loads frequently accessed data and implements smart caching strategies to improve performance. The initial load time for Bluesky likes may vary depending on the user's activity level and network conditions, but our Bluesky Viewer continuously works to minimize loading times.\n5\nDo I need a Bluesky account to use Bluesky Viewer?\nNo, you absolutely do not need a Bluesky account to use Bluesky Viewer. Our Bluesky Viewer is designed to work completely independently without requiring any Bluesky registration or login credentials. You can use our Bluesky Viewer service to view any public Bluesky content just by entering a username. This makes Bluesky Viewer perfect for users who want to explore Bluesky content without committing to creating an account. Our anonymous Bluesky Viewer ensures your browsing activity remains completely private and untraceable.\n6\nWhat devices support Bluesky Viewer?\nThe Bluesky Viewer uses responsive web design and supports all modern devices and browsers. You can use Bluesky Viewer on desktop computers, laptops, tablets, smartphones, and mobile devices running iOS, Android, Windows, macOS, and Linux. Our Bluesky Viewer is optimized for mobile viewing and provides an excellent user experience across all screen sizes. The Bluesky Viewer interface automatically adapts to your device&apos;s screen resolution and orientation, ensuring optimal viewing whether you&apos;re using a smartphone or desktop computer.\n7\nIs Bluesky Viewer safe and secure to use?\nYes, Bluesky Viewer is completely safe and secure to use. Our Bluesky Viewer platform does not store any personal information or track user activity. We built Bluesky Viewer with privacy-first principles, ensuring your browsing sessions remain anonymous. The Bluesky Viewer only accesses publicly available Bluesky data through official APIs, and we never collect or store user data. Our secure Bluesky Viewer infrastructure uses industry-standard encryption and security measures to protect all data transmissions.\n8\nCan I download content from Bluesky Viewer?\nBluesky Viewer allows you to view and interact with Bluesky content, but downloading capabilities depend on the content type and copyright restrictions. Our Bluesky Viewer respects all intellectual property rights and content ownership. While you can view images and videos through Bluesky Viewer, any downloading should comply with the original creator&apos;s rights and Bluesky&apos;s terms of service. Bluesky Viewer provides easy sharing options and direct links to original Bluesky posts for proper attribution.\n9\nHow often is Bluesky Viewer updated?\nBluesky Viewer is regularly updated to ensure compatibility with the latest Bluesky features and improvements. Our development team continuously monitors Bluesky API changes and updates the Bluesky Viewer accordingly. We release Bluesky Viewer updates frequently to add new features, improve performance, and fix any issues. Users always get the latest version of Bluesky Viewer automatically, ensuring the best possible experience when browsing Bluesky content.\n10\nWhat makes Bluesky Viewer different from other tools?\nBluesky Viewer stands out as the most comprehensive and user-friendly Bluesky browsing tool available. Unlike other Bluesky tools, our Bluesky Viewer offers complete anonymity, requires no registration, and provides instant access to all public Bluesky content. The Bluesky Viewer interface is specifically designed for optimal user experience, with fast loading times, intuitive navigation, and mobile-responsive design. Our Bluesky Viewer also includes advanced features like content filtering, search optimization, and enhanced privacy protection that other Bluesky viewing tools don&apos;t offer.\nHave other questions? Contact us anytime for help\nPrivacy Policy\nTerms of Service\n© 2024 Bluesky Viewer - All Rights Reserved"
+  },
+  {
+    "type": "pages",
+    "title": "ملاحظات  aNotepad",
+    "url": "https://www.al-mosad.com/p/blog-page_52.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "",
+    "url": "https://www.al-mosad.com/p/body-font-family-inter-sans-serif.html",
+    "content": "خبير العطور\nمساعدك الشخصي في عالم العطور\nاطرح أي سؤال حول العطور وسأجيبك بالتفصيل\nخبير العطور:\nأهلاً بك! أنا خبيرك الشخصي في عالم العطور. اطرح سؤالك لأجيبك بكل ما يتعلق بتصميم العطور، المواد العطرية، تاريخ العطور، وأي تفاصيل أخرى.\nعلى سبيل المثال: \"ما هي المكونات الأساسية للعطر؟\" أو \"كيف يتم استخراج الزيوت العطرية من الأزهار؟\"\nالخبير يفكر...\nالمتصفح لا يدعم ميزة الإدخال الصوتي.\nإرسال"
+  },
+  {
+    "type": "pages",
+    "title": "اختبار الذكاء (IQ) المدعوم بالذكاء الاصطناعي",
+    "url": "https://www.al-mosad.com/p/iq.html",
+    "content": "IQ Test Pro | اختبار الذكاء\nاختبار الذكاء\nPROFESSIONAL\nهل أنت مستعد للتحدي؟\nاختبار مكون من 10 أسئلة دقيقة لقياس قدراتك الذهنية.\nبدون وقت محدد • نتائج فورية\nابدأ الاختبار\nتصنيف\n1\n/\n10\nنص السؤال...\n00:00\nالتالي\nجاري تحليل النتائج\nيتم حساب معدل الذكاء بناءً على خوارزميات دقيقة...\nتم الانتهاء!\nإليك نتيجة تحليلك\nمعدل الذكاء (IQ)\n0\n--\n--\nالإجابات الصحيحة\n0/10\nالوقت الكلي\n00:00\nإعادة الاختبار"
+  },
+  {
+    "type": "pages",
+    "title": "خدمة استضافة الصور Baggato",
+    "url": "https://www.al-mosad.com/p/baggato.html",
+    "content": "😀 😀 😀 😀 😀"
+  },
+  {
+    "type": "pages",
+    "title": "تجارب",
+    "url": "https://www.al-mosad.com/p/blog-page_47.html",
+    "content": "تحدث معنا عبر واتساب"
+  },
+  {
+    "type": "pages",
+    "title": "محاسبي المحمول",
+    "url": "https://www.al-mosad.com/p/blog-page_698.html",
+    "content": "محاسبي المحمول – نسخة Financisto\n📊 محاسبي المحمول\nمصروف\nدخل\nطعام\nمواصلات\nإيجار\nراتب\nأخرى\nإضافة\nالإجمالي:\n0\nالدخل:\n0\nالمصروف:\n0\nالتاريخ\nالوصف\nالفئة\nالمبلغ\nحذف"
+  },
+  {
+    "type": "pages",
+    "title": "محرك بحث متعدد",
+    "url": "https://www.al-mosad.com/p/blog-page_850.html",
+    "content": "😀 😀 😀 😀 😀"
+  },
+  {
+    "type": "pages",
+    "title": "مشغل m3u",
+    "url": "https://www.al-mosad.com/p/insta-player-const-url-document.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "عارض الميديا المتقدم",
+    "url": "https://www.al-mosad.com/p/blog-page_462.html",
+    "content": "عارض الميديا المتقدم\nعارض الميديا المتقدم\nاختر مجلد الوسائط\nتحديد المجلد\nلم يتم اختيار مجلد بعد.\nالكل\nصور\nفيديو\nصوتيات\nإغلاق\nمشاركة\nشاشة كاملة"
+  },
+  {
+    "type": "pages",
+    "title": "تطبيق اختبار عرض الميديا",
+    "url": "https://www.al-mosad.com/p/body-font-family-segoe-ui-tahoma-geneva_29.html",
+    "content": "عارض الملتيميديا الذكي\nعارض الملتيميديا الذكي\nأدخل أي رابط مباشر لملف، وسأحاول عرضه بغض النظر عن امتداده.\nعرض الآن"
+  },
+  {
+    "type": "pages",
+    "title": "تجارب",
+    "url": "https://www.al-mosad.com/p/blog-page_449.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "مواقع الذكاء الاصطناعي",
+    "url": "https://www.al-mosad.com/p/blog-page_3.html",
+    "content": "مواقع الذكاء الاصطناعي\nمواقع الذكاء الاصطناعي\nهذا التطبيق يعرض جدولاً محدثاً لأبرز مواقع وأدوات الذكاء الاصطناعي يتم اختيارها لكم بعناية.\nجاري تحميل البيانات...\n😀 😀 😀 😀 😀"
+  },
+  {
+    "type": "pages",
+    "title": "انا",
+    "url": "https://www.al-mosad.com/p/blog-page_26.html",
+    "content": "أبو عثمان\nعادل عبد المحسن المحسن\nباحث في مجال العطور والطيب والعمل الحر وإدارة وتطوير الذات ومبرمج. خريج الكلية التقنية تخصص هندسة الإنتاج حاصل على دورة إعداد المعلمين من معهد الإدارة العامة وكذلك حاصل على العديد من الدورات الإدارية والفنية والتقنية. عملت كمدير لإدارة تِقْنِيَّة المعلومات بالمنطقة الشرقية بشركة الاتصالات السعودية لعدة سنوات. قدمت العديد من المحاضرات والدورات في مجار العطور وقدمت عدت استشارات في مجال العطور والعمل الحر وتطوير الذات وكذلك قدمت العديد من الدراسات للمؤسسات الصغيرة في مجال تِقْنِيَّة المعلومات وساعدت العديد من العاملين في مجال العطور لتأسيس اعملهم الخاصة\n😀 😀 😀 😀 😀\nمواقعي في جميع السوشيال ميديا\nمواقعي في جميع السوشيال ميديا\nجارٍ تحميل البيانات...\nرسالة\nهنا محتوى الرسالة.\nإغلاق\n😀 😀 😀 😀 😀"
+  },
+  {
+    "type": "pages",
+    "title": "روابط دعم المنصة",
+    "url": "https://www.al-mosad.com/p/blog-page_635.html",
+    "content": "روابط دعم المنصة\nروابط دعم المنصة\nشكراً لدعمكم!\nبدخولك على هذه الروابط، فإنك تساهم في استمرار وتطوير المنصة. دعمك يعني لنا الكثير.\nجارٍ تحميل البيانات...\nرسالة\nهنا محتوى الرسالة.\nإغلاق"
+  },
+  {
+    "type": "pages",
+    "title": "تعريف منصة المساعد",
+    "url": "https://www.al-mosad.com/p/blog-page_30.html",
+    "content": "روابط دعم المنصة\nروابط دعم المنصة\nشكراً لدعمكم!\nبدخولك على هذه الروابط، فإنك تساهم في استمرار وتطوير المنصة. دعمك يعني لنا الكثير.\nجارٍ تحميل البيانات...\nرسالة\nهنا محتوى الرسالة.\nإغلاق\n😀 😀 😀 😀 😀"
+  },
+  {
+    "type": "pages",
+    "title": "صحة تيوب",
+    "url": "https://www.al-mosad.com/p/blog-page_76.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "رياضة تيوب",
+    "url": "https://www.al-mosad.com/p/thinkany.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "النافع والمفيد تيوب",
+    "url": "https://www.al-mosad.com/p/blog-page_958.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "الكسب من خلال العمل على الانترنت بواسطة موقع timebucks",
+    "url": "https://www.al-mosad.com/p/timebucks.html",
+    "content": "اشترك من هنا واحصل على مكافاة تسجيل بقيمة 1 دولار\nhttps://timebucks.com/?refID=216106518\nما هو TimeBucks؟\nTimeBucks\nهو موقع من نوع\nGet-Paid-To (GPT)\n، أي موقع يتيح لك ربح مبالغ بسيطة مقابل القيام بمهام صغيرة على الإنترنت، مثل: الإجابة على استطلاعات الرأي، مشاهدة فيديوهات، إكمال عروض (offers)، النقر على روابط، وربما مهام أخرى.\nيدّعي الموقع أنه موجود منذ 10 سنوات، ويعرض نماذج دفع كإثباتات للمستخدمين.\nكيف يعمل الموقع؟ (آلية الربح)\nإليك الخطوات الأساسية التي يتبعها المستخدم عادة:\nالتسجيل بالموقع وإنشاء حساب.\nتصفح المهام المتاحة في لوحة التحكم: استطلاعات، عروض، مشاهدة فيديو، مهام بسيطة.\nإكمال المهمة كما يُطلب (مثلاً مشاهدة فيديو لمدة معينة، أو ملء استبيان).\nعندما تجمع رصيدًا يساوي الحد الأدنى للسحب، تطلب السحب.\nيُحوَّل لك المبلغ من خلال وسائل الدفع التي يدعمها الموقع (مثل البنوك، أو محافظ إلكترونية، أو غيرها إن متوفرة).\nالإيجابيات\nبعض المستخدمين يؤكدون أنهم حصلوا على المدفوعات بنجاح من الموقع، وأن عملية الدفع تتم تلقائيًا عند وصولك إلى الحد الأدنى.\nللموقع مظهر من التنوع في طرق الربح (مهام، عروض، فيديوهات، استطلاعات) مما يعطي خيارات مختلفة للمستخدم.\nبعض المستخدمين يقولون إنه موقع موثوق عند استخدامه بحذر وفهم الشروط.\nنصيحة إذا قررت استخدامه\nاحرص على:\nلا تعتمد على المهام التي تطلب منك دفع أولًا.\nلا تستخدم VPN أو تغييرات كبيرة في الموقع الجغرافي بعد التسجيل.\nاحتفظ بسجلات (صور، لقطات شاشة) لأعمالك لتدعم أي مطالبة.\nابدأ بمبالغ صغيرة حتى تتأكد أنك تستطيع السحب فعلاً.\n."
+  },
+  {
+    "type": "pages",
+    "title": "تجارب",
+    "url": "https://www.al-mosad.com/p/blog-page_54.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "دورة تركيب العطور",
+    "url": "https://www.al-mosad.com/p/rumble.html",
+    "content": "دورة تركيب العطور - مشاهدة ممتعة\nدورة تركيب العطور\nالتعريف بالدورة\nدورة تركيب العطور اليوم الاول\nدورة تركيب العطور اليوم الثاني - الجزء الاول\nدورة تركيب العطور اليوم الثاني - الجزء الثاني\nدورة تركيب العطور اليوم الثالث - الجزء الاول\nدورة تركيب العطور اليوم الثالث - الجزء الثاني\nاليوم الثالث - النقاشات والتجارب - الجزء الاول\nاليوم الثالث - النقاشات والتجارب - الجزء الثاني\nدورة تركيب العطور اليوم الرابع\nدورة تركيب العطور اليوم الخامس"
+  },
+  {
+    "type": "pages",
+    "title": "كود تشغيل رابط الفيديو - مدمج Embedded",
+    "url": "https://www.al-mosad.com/p/2.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "تجربة المواقع مع iframe",
+    "url": "https://www.al-mosad.com/p/blog-page_42.html",
+    "content": "😀 😀 😀 😀 😀\n😀 😀 😀 😀 😀"
+  },
+  {
+    "type": "pages",
+    "title": "نظام إدارة اختبارات الجودة",
+    "url": "https://www.al-mosad.com/p/blog-page_295.html",
+    "content": "نظام إدارة اختبارات جودة العطور\nجاري تحميل التطبيق...\nإشعار\nحسنًا\nتأكيد الحذف\nهل أنت متأكد من رغبتك في حذف هذا المنتج؟ لا يمكن التراجع عن هذا الإجراء.\nإلغاء\nتأكيد الحذف"
+  },
+  {
+    "type": "pages",
+    "title": "مقارنة جودة المنتجات",
+    "url": "https://www.al-mosad.com/p/blog-page_71.html",
+    "content": "مقارنة جودة المنتجات\nمقارنة جودة المنتجات\nأداة لتقييم وتوحيد أداء المنتجات المختلفة.\nإعدادات الاختبار\nعنوان الاختبار الحالي\nإدارة العينات\nإضافة\nإدارة الاختبارات (المعايير)\nإضافة\nإدارة المختبرين\nإضافة\nإنشاء جدول التقييم\nإدخال نتائج التقييم (من 1 إلى 10)\nحساب النتيجة النهائية\nالنتائج النهائية الموحدة\nالشرح التفصيلي للتطبيق\nإغلاق النافذة"
+  },
+  {
+    "type": "pages",
+    "title": "عارض تويتر",
+    "url": "https://www.al-mosad.com/p/blog-page_677.html",
+    "content": "😀 😀 😀 😀 😀"
+  },
+  {
+    "type": "pages",
+    "title": "عارض التوك توك",
+    "url": "https://www.al-mosad.com/p/blog-page_225.html",
+    "content": "😀 😀 😀 😀 😀"
+  },
+  {
+    "type": "pages",
+    "title": "عارض انستجرام",
+    "url": "https://www.al-mosad.com/p/blog-page_62.html",
+    "content": "😀 😀 😀 😀 😀"
+  },
+  {
+    "type": "pages",
+    "title": "حاسبة تكلفة الانتاج",
+    "url": "https://www.al-mosad.com/p/blog-page_10.html",
+    "content": "حاسبة تكلفة إنتاج العطور\nحاسبة تكلفة إنتاج العطور\nالمكونات العطرية\nالاسم\nالكمية (مل)\nسعر الوحدة\nالتكلفة الإجمالية\nالإجراءات\n0.00\n-\n+ إضافة بند\nالتعبئة والتغليف\nالوصف\nالكمية\nسعر الوحدة\nالتكلفة الإجمالية\nالإجراءات\n0.00\n-\n+ إضافة بند\nالعمالة والتكاليف التشغيلية\nالوصف\nالكمية\nالتكلفة\nالتكلفة الإجمالية\nالإجراءات\n0.00\n-\n+ إضافة بند\nتكاليف أخرى\nالوصف\nالكمية\nالتكلفة\nالتكلفة الإجمالية\nالإجراءات\n0.00\n-\n+ إضافة بند\nهامش الربح (%):\nالمجموع بدون ربح:\n0.00\nالمجموع مع هامش الربح:\n0.00\nتم حساب التكلفة بناءً على المدخلات أعلاه."
+  },
+  {
+    "type": "pages",
+    "title": "الموقف المالي لمشروعك",
+    "url": "https://www.al-mosad.com/p/blog-page_45.html",
+    "content": "تحديد الموقف المالي - عطور وطيب\nتحديد الموقف المالي - عطور وطيب\nتحميل بيانات الجلسة الأخيرة\nالاسم:\nالنوع:\nدخل (مبيع)\nخرج (شراء)\nالمبلغ:\nالتاريخ:\nإضافة سجل\nالنوع:\nالكل\nدخل\nخرج\nمن تاريخ:\nإلى تاريخ:\nابحث في السجلات:\nالاسم\nالنوع\nالمبلغ\nالتاريخ\nالإجراءات\nالرصيد الحالي: 0 ر.س\nحفظ البيانات\nفتح البيانات\nطباعة البيانات"
+  },
+  {
+    "type": "pages",
+    "title": "المرشات و معطرات الجو",
+    "url": "https://www.al-mosad.com/p/blog-page_89.html",
+    "content": "مصمم المرشات و معطرات الجو بالذكاء الاصطناعي\nمصمم المرشات و معطرات الجو بالذكاء الاصطناعي\nما هي المرشات العطرية (Air Freshener Sprays)؟\nالمرش العطري، المعروف أيضًا باسم معطر الجو أو مرش الغرف، هو منتج مصمم لنشر رائحة لطيفة في الأجواء المحيطة. يتميز بتركيز أخف من الزيوت العطرية مقارنةً بالعطور الجلدية، ويُستخدم عادةً لتعطير المساحات مثل المنازل، المكاتب، أو السيارات. تُرَكَّب زيوت المرشات غالبًا من مكونات خفيفة ومنعشة تتطاير بسرعة لتملأ المكان بالرائحة، مع التركيز على روائح النظافة، الحمضيات، الأزهار الخفيفة، أو الروائح الخشبية الهادئة.\nأنا خبير في تصميم زيوت المرشات العطرية، وسأساعدك في ابتكار تركيبة فريدة لمرشك الخاص بناءً على وصفك. أدخل وصفًا للمرش العطري الذي تتخيله!\nالزيوت العطرية المحددة (اختياري)\nأدخل الزيوت التي ترغب في استخدامها في تصميم المرش مع أي ملاحظات. سيظهر حقل جديد تلقائيًا عند الكتابة.\nصمم زيت المرش\nصمم بالتركيبة الطبقية\nإغلاق"
+  },
+  {
+    "type": "pages",
+    "title": "مصمم العطور الزيتية",
+    "url": "https://www.al-mosad.com/p/blog-page_211.html",
+    "content": "مصمم العطور الزيتية - متجاوب وواضح\nمصمم العطور الزيتية (غير كحولية)\nما هي العطور الزيتية؟\nتراكيز عطرية مركزة تعتمد على زيوت حاملة نباتية بدلاً من الكحول، تمنح ثباتاً فائقاً وتجربة دافئة على البشرة.\nالزيوت العطرية المحددة (اختياري)\nصمم التركيبة (تركيز واحد)\nصمم بالهرم العطري (3 طبقات)\nإغلاق"
+  },
+  {
+    "type": "pages",
+    "title": "مصمم اللوشن بالذكاء الاصطناعي",
+    "url": "https://www.al-mosad.com/p/blog-page_40.html",
+    "content": "مصمم اللوشن بالذكاء الاصطناعي\n🧴 مصمم اللوشن بالذكاء الاصطناعي\nمرحباً بك!\nاللوشن هو مستحلب للعناية بالبشرة\n، يجمع بين مرحلة مائية وزيتية مع مستحلبات ومكونات نشطة لترطيب البشرة وتغذيتها. أنا خبير في تصميم تركيبات اللوشن الآمنة والفعالة. سأقوم بتحويل وصفك إلى تركيبة متوازنة ومحسوبة بدقة.\n🌿 المكونات الأساسية والنشطة (اختياري)\nأدخل المكونات التي ترغب في استخدامها (مثل زبدة الشيا، الجلسرين، فيتامين E، مستخلص الخيار). سيظهر حقل جديد تلقائياً.\n✨ صمم اللوشن ✨\nإغلاق"
+  },
+  {
+    "type": "pages",
+    "title": "المخمريات",
+    "url": "https://www.al-mosad.com/p/blog-page_93.html",
+    "content": "مصمم المخمريات بالذكاء الاصطناعي\nمصمم المخمريات بالذكاء الاصطناعي\nمرحباً بك! **المخمرية هي تركيبة عطرية تقليدية مصنوعة من زيوت عطرية وزبدة طبيعية، تستخدم لتعطير الجسم والشعر**. أنا خبير في تصميم وصناعة المخمريات. سأقوم بتحويل وصفك أو مكوناتك إلى تركيبة فاخرة ومحسوبة بدقة. أطلق العنان لخيالك العطري!\nالمكونات العطرية والأساسية المحددة (اختياري)\nأدخل المكونات التي ترغب في استخدامها (مثل زبدة الشيا، زيت اللوز، المسك، العنبر). سيظهر حقل جديد تلقائيًا عند الكتابة.\nصمم المخمرية\nإغلاق"
+  },
+  {
+    "type": "pages",
+    "title": "موقع شامل للخدمات الإسلامية والتراث العربي الأصيل",
+    "url": "https://www.al-mosad.com/p/blog-page_87.html",
+    "content": ".\n.\n."
+  },
+  {
+    "type": "pages",
+    "title": "تصميم اكورد من زيتين بطريقة مصفوفة التسع عينات",
+    "url": "https://www.al-mosad.com/p/blog-page_44.html",
+    "content": "حاسبة موازنة الزيوت (A:B)\nحاسبة موازنة الزيوت (A:B)\nمجموع الزيت الأول (A₀)\nمجموع الزيت الثاني (B₀)\nقطرات/قنينة\nإعادة ضبط\nتعليمات:\nاضغط على أي قارورة (1-9) أدناه لعرض نتائج الموازنة. (النسبة هي A : B)\n(القيم الافتراضية: مجموع الزيت الأول 45، مجموع الزيت الثاني 45، قطرات/قنينة 10)\nتفاصيل العينة المختارة\nاختر قارورة\nكمية الزيت الأول (A) المطلوبة:\nنسبة الزيت الأول (A) المطلوبة:\nكمية الزيت الثاني (B) المطلوبة:\nنسبة الزيت الثاني (B) المطلوبة:\nنتائج الموازنة والمجاميع\nمجموع الزيت الأول الحالي (A₀):\n45 قطرة\nمجموع الزيت الثاني الحالي (B₀):\n45 قطرة\nمجموع الزيتين الحالي:\n90 قطرة\nكمية الزيت الأول المطلوب إضافتها (x):\nكمية الزيت الثاني المطلوب إضافتها (y):\nالمجموع الكلي بعد الموازنة:\nشريط النسبة المئوية للزيت الأول (A)\nالنسبة الحالية (قبل الإضافة)\nA 50.0%\nالنسبة النهائية (بعد الموازنة)\nA 50.0%"
+  },
+  {
+    "type": "pages",
+    "title": "التطبيق قيد الانشاء",
+    "url": "https://www.al-mosad.com/p/blog-page_88.html",
+    "content": ".\nالتطبيق قيد الانشاء\n.\n.\nالتطبيق قيد الانشاء\n."
+  },
+  {
+    "type": "pages",
+    "title": "تشغيل mp4",
+    "url": "https://www.al-mosad.com/p/mp4.html",
+    "content": "مشغل الوسائط\nمشغل الوسائط\nأو اختر ملفًا محليًا:\nقائمة التشغيل فارغة\nحسناً"
+  },
+  {
+    "type": "pages",
+    "title": "تجارب",
+    "url": "https://www.al-mosad.com/p/blog-page_77.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "لعبة تخمين 2",
+    "url": "https://www.al-mosad.com/p/x-o.html",
+    "content": "لعبة تخمين العطور\nلعبة تخمين العطور\nحاول تخمين المكونات الأساسية لهذا العطر من وصفه:\nتحقق من التخمين\nالعطر التالي"
+  },
+  {
+    "type": "pages",
+    "title": "لعبة معجم العطور",
+    "url": "https://www.al-mosad.com/p/blog-page_39.html",
+    "content": "معجم العطور - لعبة تعليمية\n📚 معجم العطور 📚\nتعلم مصطلحات صناعة العطور من خلال تحديات تفاعلية\n🔤\nمطابقة المصطلحات\nطابق بين المصطلحات وتعريفاتها في صناعة العطور\n✏️\nإكمال الجمل\nأكمل الجمل الناقصة بمصطلحات عطرية مناسبة\n❓\nأسئلة متعددة\nأجب عن أسئلة متنوعة حول عالم العطور\n📅\nالترتيب الزمني\nرتب أحداث تاريخ العطور بشكل صحيح\n🖼️\nربط الصور\nطابق بين صور المكونات وأسمائها\n📂\nالتصنيف\nصنف المكونات العطرية في فئاتها الصحيحة\n⚡\nالحل السريع\nأجب عن أكبر عدد من الأسئلة في الوقت المحدد\n🧪\nتحدي المزج\nاخلط المكونات العطرية لإنشاء تركيبات صحيحة\nالسؤال\n1\nمن\n10\nالنقاط:\n0\nالوقت:\n60\nاختر وضع اللعبة\n...\nالعودة للقائمة\nالتالي\nتحقق\nتحقق من المزيج\n🎉\nأحسنت! لقد أكملت التحدي\n0%\n...\n0\nإجابات صحيحة\n0\nإجابات خاطئة\n0\nالوقت (ثانية)\n0%\nالدقة\nالقائمة الرئيسية\nإعادة المحاولة"
+  },
+  {
+    "type": "pages",
+    "title": "لعبة تخمين 1",
+    "url": "https://www.al-mosad.com/p/blog-page_32.html",
+    "content": "لعبة التخمين العطرية\n🎨 لعبة التخمين العطرية\nما هي النوتة الأساسية في هذا الوصف؟\nالسؤال التالي"
+  },
+  {
+    "type": "pages",
+    "title": "خبير العطور",
+    "url": "https://www.al-mosad.com/p/asynchttpclient-client-new.html",
+    "content": "خبير العطور\nمساعدك الشخصي في عالم العطور\nاطرح أي سؤال حول العطور وسأجيبك بالتفصيل\nخبير العطور:\nأهلاً بك! أنا خبيرك الشخصي في عالم العطور. اطرح سؤالك لأجيبك بكل ما يتعلق بتصميم العطور، المواد العطرية، تاريخ العطور، وأي تفاصيل أخرى.\nعلى سبيل المثال: \"ما هي المكونات الأساسية للعطر؟\" أو \"كيف يتم استخراج الزيوت العطرية من الأزهار؟\"\nالخبير يفكر...\nالمتصفح لا يدعم ميزة الإدخال الصوتي.\nإرسال"
+  },
+  {
+    "type": "pages",
+    "title": "لعبة مصمم العطور المخصص",
+    "url": "https://www.al-mosad.com/p/blog-page_2.html",
+    "content": "مصمم العطور - لعبة تعليمية\n🌸 مصمم العطور 🌸\nصمم عطوراً مخصصة تناسب شخصيات مختلفة\n💼\nرجل الأعمال\nيحتاج عطراً رسمياً ومهيباً للمناسبات الرسمية والاجتماعات\n🎨\nالفنانة\nتبحث عن عطر إبداعي وفريد يعكس شخصيتها الفنية\n🏃\nالرياضي\nيحتاج عطراً منعشاً ونشيطاً بعد التمرينات الرياضية\n🌟\nالشابة العصرية\nتبحث عن عطر عصري وجذاب يناسب مرحلة الشباب والحيوية\n✈️\nالمسافر\nيحتاج عطراً خفيفاً ومتعدد الاستخدامات للسفر والتنقل\n👩‍👧\nالأم\nتبحث عن عطر دافئ ومريح يعكس الحنان والأمومة\n⚕️\nالطبيب\nيحتاج عطراً محايداً واحترافياً مناسب للبيئة الطبية\n📚\nالمعلمة\nتبحث عن عطر لطيف وغير مزعج مناسب للفصل الدراسي\n👨‍🍳\nالطاهي\nيحتاج عطراً منعشاً لا يتداخل مع روائح الطعام في المطبخ\n🌅\nالمتقاعد\nيفضل العطور الكلاسيكية الهادئة والراقية\n🏗️\nالمهندسة المعمارية\nتحتاج عطراً أنيقاً وعصرياً يعكس الإبداع والاحترافية\n✍️\nالكاتبة\nتبحث عن عطر هادئ ومثير للإلهام أثناء الكتابة\n🌾\nالريفية\nتحب العطور الطبيعية والترابية التي تذكرها بالطبيعة\n💪\nالمديرة التنفيذية\nتحتاج عطراً قوياً وثقة بالنفس يعكس القيادة\n🎓\nالطالبة الجامعية\nتبحث عن عطر شبابي ومناسب للحياة الجامعية النشطة\n🎯\nالطالب الجامعي\nيحتاج عطراً عملياً ومناسباً للحياة الدراسية والاجتماعية\n📸\nالسائحة\nتحتاج عطراً خفيفاً ومنعشاً للتنقل والمغامرات\n🩺\nالممرضة\nتحتاج عطراً لطيفاً واحترافياً مناسب للعمل الصحي\nاختر شخصية\n...\nاختر مكونات العطر (حد أقصى 5 مكونات)\nالمكونات المختارة:\nلم يتم اختيار أي مكونات بعد\nالعودة للشخصيات\nتقييم العطر\nنتيجة التصميم\n0%\n...\nلعبة جديدة"
+  },
+  {
+    "type": "pages",
+    "title": "استوديو العطور الإبداعي",
+    "url": "https://www.al-mosad.com/p/3.html",
+    "content": "استوديو العطور الإبداعي\nاستوديو العطور الإبداعي\nاصنع عطرك الفريد بلمساتك الخاصة\nحفظ التصميم\nإعادة تعيين\nمكونات العطر\nالنوتات العطرية\nالنوتة العلوية:\nليمون\nالنوتة القلبية:\nياسمين\nالنوتة الأساسية:\nخشب الصندل\nالشدة العطرية\nمتوسطة\nالفئة العمرية\nنسائي\nرجالي\nللكلا الجنسين\nمكتبة المكونات العطرية\nكل الأنواع\nالنوتة العلوية\nالنوتة القلبية\nالنوتة الأساسية\nاستوديو العطور الإبداعي\nأطلق العنان لإبداعك في عالم العطور\n© 2023 استوديو العطور الإبداعي. جميع الحقوق محفوظة."
+  },
+  {
+    "type": "pages",
+    "title": "التصميم الحر للعطور  بالقطرات",
+    "url": "https://www.al-mosad.com/p/blog-page_28.html",
+    "content": "نموذج تصميم وإنتاج عطر\nنموذج تصميم وإنتاج عطر\nمعلومات أساسية\nاسم العطر\nالمصمم\nالتاريخ\nالزيوت العطرية\nم\nالزيت العطري\nعدد القطرات\nالنسبة %\nإضافة زيت عطري\nاستيراد زيت من مكتبتي\nاستيراد زيت من الكتالوج\nإنتاج عينة من التصميم\nالكمية المطلوبة (مل)\nنسبة تركيز الزيت المطلوبة (%)\nمجموع القطرات:\n0\nكمية الزيت (مل):\n0.00\nكمية الكحول (مل):\n0.00\nملاحظات\nملاحظات على التصميم\nملاحظات على الانتاج\nحفظ البيانات\nاسترجاع البيانات\nاستيراد البيانات من مصمم العطور الآلي\nحاسبة تصميم وإنتاج العطور - إصدار تجريبي\nملاحظة: هذه الأداة هي لأغراض التصميم والتجريب. قد تختلف النتائج الفعلية.\nاختر الزيوت للاستيراد\nالزيت العطري\nالكمية الأصلية (قطرة)\nتحديد الكل\nاستيراد الزيوت المختارة\nإلغاء"
+  },
+  {
+    "type": "pages",
+    "title": "الشريط الجانبي",
+    "url": "https://www.al-mosad.com/p/div-background-color-white-padding-25px_18.html",
+    "content": "مثال على شريط جانبي\nالمحتوى الرئيسي هنا\nانقر على الزر أدناه لفتح الشريط الجانبي.\nفتح الشريط الجانبي\nعنوان الشريط الجانبي\nهذا هو محتوى الشريط الجانبي.\nالصفحة الرئيسية\nحول\nاتصل بنا\nالإعدادات"
+  },
+  {
+    "type": "pages",
+    "title": "التصميم الالي للعطر حسب المواد والوصف",
+    "url": "https://www.al-mosad.com/p/div-background-color-white-padding-25px.html",
+    "content": "مصمم العطور بالذكاء الاصطناعي\nمصمم العطور بالذكاء الاصطناعي\nأدخل وصفاً للعطر أو اختر زيوتك المفضلة وسنقوم بتصميم التركيبة المثالية لك.\nالزيوت العطرية المحددة (اختياري)\nصمم العطر\nصمم بالهرم العطري"
+  },
+  {
+    "type": "pages",
+    "title": "تصميم البخور حسب المواد",
+    "url": "https://www.al-mosad.com/p/blog-page_55.html",
+    "content": "تصميم البخور حسب المواد\nتصميم البخور حسب المواد\nأنا خبير في البخور والمعمول والدخون والمخلطات. أدخل مكونات البخور التي ترغب في تصميمها وسأقدم لك تصميمًا مقترحًا وكل ما يخصه!\nاسم المكون\nالملاحظات\nإجراء\nصمم البخور\nتأكيد\nإلغاء"
+  },
+  {
+    "type": "pages",
+    "title": "تصميم البخور حسب الوصف",
+    "url": "https://www.al-mosad.com/p/blog-page_23.html",
+    "content": "تصميم البخور حسب الوصف\nتصميم البخور حسب الوصف\nأنا خبير في البخور والمعمول والدخون والمخلطات. أدخل وصف البخور الذي ترغب في تصميمه وسأقدم لك تصميمًا مقترحًا وكل ما يخصه!\nصمم البخور\nإغلاق"
+  },
+  {
+    "type": "pages",
+    "title": "مصمم البخور العكسي",
+    "url": "https://www.al-mosad.com/p/blog-page_16.html",
+    "content": "مصمم البخور بالذكاء الاصطناعي\nمصمم البخور بالذكاء الاصطناعي\nأنا خبير في البخور والمعمول والدخون والمخلطات. أدخل اسم البخور وسأقدم لك جميع المعلومات في جداول منظمة.\nصمم البخور\nإغلاق"
+  },
+  {
+    "type": "pages",
+    "title": "البصمة العطرية",
+    "url": "https://www.al-mosad.com/p/blog-page_84.html",
+    "content": "بصمتي العطرية\nاستكشف بصمتك العطرية\nأجب عن 30 سؤالاً لنرسم خريطتك العطرية ونقترح لك العطور الأنسب\nاحصل على بصمتي العطرية\nنتيجة بصمتك العطرية\nالعطور المقترحة"
+  },
+  {
+    "type": "pages",
+    "title": "رموز الاتصال لدول العالم",
+    "url": "https://www.al-mosad.com/p/blog-page_15.html",
+    "content": "رموز الاتصال الدولية\n📞 رموز الاتصال الدولية\nجميع رموز الاتصال لدول العالم في مكان واحد"
+  },
+  {
+    "type": "pages",
+    "title": "تطوير تطبيق ذكاء اصطناعي عربي",
+    "url": "https://www.al-mosad.com/p/blog-page_14.html",
+    "content": "مستكشف نماذج OpenRouter\nمستكشف نماذج OpenRouter\nاختر النموذج:\nMeta Llama 3.1 (8B)\nAnthropic Claude 3.5 Sonnet\nMistral 7B\nGoogle Gemini Pro 1.5\nOpenAI GPT-4o Mini\nأدخل استفسارك هنا:\nتوليد الاستجابة\nسيظهر الرد هنا بعد التوليد."
+  },
+  {
+    "type": "pages",
+    "title": "ادارة المستخدمين",
+    "url": "https://www.al-mosad.com/p/supabase-const-row-document.html",
+    "content": "لوحة إدارة المستخدمين - Supabase\n📋 إدارة المستخدمين\n➕ إضافة\n#\nالاسم\nتاريخ الإضافة\nإجراءات"
+  },
+  {
+    "type": "pages",
+    "title": "الباركود الخاص بالعطر",
+    "url": "https://www.al-mosad.com/p/gnod.html",
+    "content": "الباركود الخاص بالمنتج\nالباركود الخاص بالمنتج\nفلتر بالرمز أو اسم البلد\n*.*\nملاحظة:\nيمكنك الفلترة عن طريق رمز الدولة أو اسم البلد. استخدم الزر \"*.*\" لعرض جميع السجلات.\nرمز الدولة بالباركود: قائمة البلدان\nالرمز\nالبلد\nاضغط هنا لمزيد من المعلومات"
+  },
+  {
+    "type": "pages",
+    "title": "الموسوعات العربية",
+    "url": "https://www.al-mosad.com/p/blog-page_57.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "المستخدم الحالي",
+    "url": "https://www.al-mosad.com/p/blog-page.html",
+    "content": "لوحة إدارة المستخدمين - Supabase\n📋 عرض بيانات المستخدمين\nجاري تحميل بيانات المستخدمين..."
+  },
+  {
+    "type": "pages",
+    "title": "تسجيل مستخدم جديد",
+    "url": "https://www.al-mosad.com/p/localstorage.html",
+    "content": "لوحة إدارة المستخدمين - Supabase\n📋 عرض بيانات المستخدمين\nجاري تحميل بيانات المستخدمين..."
+  },
+  {
+    "type": "pages",
+    "title": "المتغير",
+    "url": "https://www.al-mosad.com/p/blog-page_9.html",
+    "content": "حفظ قيمة في المتصفح\nحفظ قيمة المتغير في المتصفح\nالقيمة المحفوظة حالياً:\nأدخل قيمة جديدة:\nتعيين وحفظ القيمة"
+  },
+  {
+    "type": "pages",
+    "title": "مصمم العطور الالي",
+    "url": "https://www.al-mosad.com/p/blog-page_82.html",
+    "content": "مُصمم العطور الذكي\nأدخل الزيوت العطرية المطلوبة (كل زيت في سطر منفصل أو مفصول بفواصل):\nوصف العطر:\nإنشاء تصميم العطر\nجاري إنشاء تصميم العطر...\n💾 حفظ التصميم\n📥 تحميل تصميم\nصيغة العطر\n#\nالمكون\nالكمية (بالقطرات)\nالنسبة (%)\nتحليل الصيغة العطرية"
+  },
+  {
+    "type": "pages",
+    "title": "صمم عطرك الخاص بالذكاء الاصطناعي",
+    "url": "https://www.al-mosad.com/p/blog-page_24.html",
+    "content": "تطبيق تصميم العطور بالذكاء الاصطناعي\nصمم عطرك الخاص بالذكاء الاصطناعي\nأدخل وصفًا لعطرك المثالي، ودع الذكاء الاصطناعي يقترح التصميم.\nصمم عطري\nتصميم العطر المقترح\nالمكون\nالنسبة (%)\nالقطرات\nحدث خطأ أثناء التصميم. يرجى المحاولة مرة أخرى."
+  },
+  {
+    "type": "pages",
+    "title": "الة حاسبة بشريط جانبي",
+    "url": "https://www.al-mosad.com/p/blog-page_11.html",
+    "content": "حاسبة ذكية\nحاسبة ذكية\nC\n%\n÷\n7\n8\n9\n×\n4\n5\n6\n-\n1\n2\n3\n+\n0\n.\n=\nx²\n√\nالسجل\nسجل العمليات\nمسح السجل"
+  },
+  {
+    "type": "pages",
+    "title": "نافذة",
+    "url": "https://www.al-mosad.com/p/7-8-9-4-5-6-1-2-3-0.html",
+    "content": "نافذة ويندوز\nمجلد المستندات\nملف\nتحرير\nعرض\nأدوات\nمساعدة\nالمستندات\nالصور\nالموسيقى\nمتصفح\nسلة المحذوفات\n5 عناصر\n1.2 ميجابايت متبقية\nابدأ\nالمستندات\nمتصفح\n12:00 م\nجديد\nقص\nنسخ\nلصق\nفرز حسب\nتخصيص\nتحديث\nموافق"
+  },
+  {
+    "type": "pages",
+    "title": "المستخدمين",
+    "url": "https://www.al-mosad.com/p/blog-page_21.html",
+    "content": "لوحة إدارة المستخدمين - Supabase\n📋 إدارة المستخدمين\n➕ إضافة\n#\nالاسم\nتاريخ الإضافة\nإجراءات"
+  },
+  {
+    "type": "pages",
+    "title": "الهيئات والمنظمات في العالم المهتمة بالعطور",
+    "url": "https://www.al-mosad.com/p/blog-page_94.html",
+    "content": "الهيئات والمنظمات في العالم المهتمة بالعطور\nالهيئات والمنظمات في العالم المهتمة بالعطور\nجاري تحميل البيانات...\nخطأ!\nحدث خطأ أثناء تحميل البيانات. يرجى المحاولة مرة أخرى لاحقًا.\n✕\nتفاصيل السجل"
+  },
+  {
+    "type": "pages",
+    "title": "مصطلحات العطور",
+    "url": "https://www.al-mosad.com/p/blog-page_12.html",
+    "content": "مصطلحات العطور\nمصطلحات العطور\nجاري تحميل البيانات..."
+  },
+  {
+    "type": "pages",
+    "title": "حساب نسبة العطور",
+    "url": "https://www.al-mosad.com/p/blog-page_56.html",
+    "content": "حساب نسبة العطور\nحساب نسبة العطور\nكثافة الزيت العطري (جم/مل):\nحجم زجاجة العطر (مل):\nكثافة الإيثانول (جم/مل):\nتركيز العطر (%):\nاحسب\nإعادة تعيين\nالنتائج:\nوزن الزيت العطري:\nوزن الإيثانول:\nالوزن الإجمالي:"
+  },
+  {
+    "type": "pages",
+    "title": "حاسبة عمر الرائحة للزيوت العطرية",
+    "url": "https://www.al-mosad.com/p/blog-page_25.html",
+    "content": "حاسبة عمر الرائحة للزيوت العطرية\nحاسبة عمر الرائحة للزيوت العطرية\nرقم\nاسم الزيت\nعمر الرائحة (بالساعات)\nالكمية (بمل)\nحذف\nإضافة زيت\nحساب النتيجة\nحفظ كـ XML"
+  },
+  {
+    "type": "pages",
+    "title": "حساب حد الاستخدام للزيوت العطرية بالتركيزات المختلفة",
+    "url": "https://www.al-mosad.com/p/blog-page_86.html",
+    "content": "حساب حد الاستخدام للزيوت العطرية بالتركيزات المختلفة\nحساب حد الاستخدام للزيوت العطرية بالتركيزات المختلفة\nأدخل البيانات لحساب حد الاستخدام الجديد.\nاسم الزيت العطري:\nحد الاستخدام بالتركيز المطلق (100%):\nالتركيز المطلوب (%):\nاحسب حد الاستخدام الجديد\nهذه الحاسبة هي لأغراض تعليمية فقط. يجب استشارة أخصائي علاج عطري مؤهل للحصول على توصيات تخفيف مخصصة وآمنة."
+  },
+  {
+    "type": "pages",
+    "title": "حساب تخفيف تركيز الكحول",
+    "url": "https://www.al-mosad.com/p/blog-page_33.html",
+    "content": "حساب تخفيف تركيز الكحول\nحساب تخفيف تركيز الكحول\nالتركيز الأولي للكحول (%):\nالحجم الأولي للكحول (مل):\nالتركيز المطلوب للكحول (%):\nاحسب كمية الماء اللازمة\nشرح طريقة تخفيف الكحول\nالنتائج:\nكمية الماء اللازمة:\nمل\nخطأ:"
+  },
+  {
+    "type": "pages",
+    "title": "تحضير محلول بتركيز معين من محلولين بتركيزين مختلفين",
+    "url": "https://www.al-mosad.com/p/blog-page_68.html",
+    "content": "حاسبة تحضير المحلول\nحساب تحضير المحلول\nأدخل تركيزات وحجوم المحاليل المتوفرة لديك لحساب كميات المزج المطلوبة.\nالتركيز الأول (C1):\nالحجم الأول (V1):\nالتركيز الثاني (C2):\nالحجم الثاني (V2):\nالتركيز النهائي المطلوب (Cf):\nالحجم النهائي المطلوب (Vf):\nاحسب\nشرح طريقة التحضير\nشرح طريقة عمل التطبيق\nالنتائج:\nالحجم المطلوب من المحلول الأول (V1):\nالحجم المطلوب من المحلول الثاني (V2):"
+  },
+  {
+    "type": "pages",
+    "title": "البحث في ويكيبيديا",
+    "url": "https://www.al-mosad.com/p/blog-page_8.html",
+    "content": "بحث عن العطور والطيب وما يتعلق بهم في ويكيبيديا\nبحث عن العطور والطيب وما يتعلق بهم في ويكيبيديا\nبحث"
+  },
+  {
+    "type": "pages",
+    "title": "مؤشر الخط العطري الشخصي",
+    "url": "https://www.al-mosad.com/p/blog-page_59.html",
+    "content": "مؤشر العطر الشخصي\nالرئيسية\nالاستبيان\nالملفات\nالإدارة\nنسخة احتياطية\n×\nإدارة الملفات الشخصية\n×\nإنشاء ملف شخصي جديد"
+  },
+  {
+    "type": "pages",
+    "title": "UUID",
+    "url": "https://www.al-mosad.com/p/gnod_2.html",
+    "content": "توليد UUID تلقائي\nمعرف UUID الفريد\nجارٍ التوليد..."
+  },
+  {
+    "type": "pages",
+    "title": "ارسال رسالة للواتساب",
+    "url": "https://www.al-mosad.com/p/blog-page_7.html",
+    "content": "const uniqueID = crypto.randomUUID(); // مدعوم في المتصفحات الحديثة"
+  },
+  {
+    "type": "pages",
+    "title": "SDS",
+    "url": "https://www.al-mosad.com/p/phind.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "مكتبة معايير IFRA",
+    "url": "https://www.al-mosad.com/p/blog-page_38.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "الشريط الاول",
+    "url": "https://www.al-mosad.com/p/import-react-usestate-useeffect-useref.html",
+    "content": "تطبيق نافذة ويندوز المنبثقة\nفتح تطبيق المواقع\nتطبيق عارض المواقع\n_\n⬜\n✕\nمواقع الذكاء الاصطناعي\nاختر الموقع:\n--- اختر موقعاً ---\nعرض\nجاري تحميل البيانات...\nعارض ملفات TSV\nمواقع الذكاء الاصطناعي\nاختر الموقع:\n--- اختر موقعاً ---\nعرض\nجاري تحميل البيانات...\nعارض ملفات TSV\nمواقع الذكاء الاصطناعي\nاختر الموقع:\n--- اختر موقعاً ---\nعرض\nجاري تحميل البيانات..."
+  },
+  {
+    "type": "pages",
+    "title": "الات حاسبة حاسبة (منبثقة)",
+    "url": "https://www.al-mosad.com/p/blog-page_5.html",
+    "content": "تطبيق نافذة ويندوز المنبثقة\nفتح تطبيق المواقع\nتطبيق عارض المواقع\n_\n⬜\n✕\nمواقع الذكاء الاصطناعي\nاختر الموقع:\n--- اختر موقعاً ---\nعرض\nجاري تحميل البيانات..."
+  },
+  {
+    "type": "pages",
+    "title": "الات حاسبة حاسبة",
+    "url": "https://www.al-mosad.com/p/blog-page_43.html",
+    "content": "عارض ملفات TSV\nمواقع الذكاء الاصطناعي\nاختر الموقع:\n--- اختر موقعاً ---\nعرض\nجاري تحميل البيانات..."
+  },
+  {
+    "type": "pages",
+    "title": "مواقع الترجمة الآلية",
+    "url": "https://www.al-mosad.com/p/blog-page_79.html",
+    "content": "عارض ملفات TSV\nمواقع الذكاء الاصطناعي\nاختر الموقع:\n--- اختر موقعاً ---\nعرض\nجاري تحميل البيانات..."
+  },
+  {
+    "type": "pages",
+    "title": "خدمة تحويل العملات",
+    "url": "https://www.al-mosad.com/p/blog-page_1.html",
+    "content": "محول العملات\nمحول العملات\n-\nاختر العملة\n⇄\n-\nاختر العملة\nالعملات\n+ إضافة\nلا توجد عملات مضافة\nاضغط على \"+ إضافة\" لإضافة عملات\nاختر العملة\n×"
+  },
+  {
+    "type": "pages",
+    "title": "تطبيق ترجمة جوجل",
+    "url": "https://www.al-mosad.com/p/blog-page_53.html",
+    "content": "تطبيق ترجمة بسيط\nتطبيق ترجمة\n0 / 200 حرف (متبقي: 200)\nالعربية\nالإنجليزية\nالفرنسية\nالإسبانية\nالألمانية\nالإيطالية\nاليابانية\nالكورية\nالبرتغالية\nالروسية\nالصينية (المبسطة)\nترجم\nالترجمة ستظهر هنا..."
+  },
+  {
+    "type": "pages",
+    "title": "محول النص إلى كلام",
+    "url": "https://www.al-mosad.com/p/blog-page_46.html",
+    "content": "تطبيق ResponsiveVoice.js\nمحول النص إلى كلام\nالنص المراد تحويله:\nاختر صوتًا:\nجارٍ تحميل الأصوات...\nتحدث\nإيقاف\nمدعوم بواسطة ResponsiveVoice.js"
+  },
+  {
+    "type": "pages",
+    "title": "بحث في موقع TGSC",
+    "url": "https://www.al-mosad.com/p/tgsc.html",
+    "content": "أداة بحث متخصصة بالبحث في موقع جمعية افرا الدولية للعطور (\nTGSC\n)\nلضمان نتائج بحث دقيقة استخدم المصطلحات الانجليزية في البحث"
+  },
+  {
+    "type": "pages",
+    "title": "محرك بحث متخصص في مجال العطور والطيب",
+    "url": "https://www.al-mosad.com/p/blog-page_60.html",
+    "content": "أداة بحث متخصصة تم تصميمها لتوفير نتائج دقيقة وذات صلة من مجموعة كبيرة من المواقع الإلكترونية الموثوقة والمهتمة في مجال العطور والطيب. بدلاً من البحث في الإنترنت بالكامل، يركز هذا المحرك على استعراض المحتوى من المصادر المتخصصة في مجال العطور والطيب، مما يضمن حصولك على معلومات موثوقة ومحددة حول ما تريد\nلضمان نتائج بحث دقيقة استخدم المصطلحات الانجليزية في البحث"
+  },
+  {
+    "type": "pages",
+    "title": "بحث في موقع ايفرا",
+    "url": "https://www.al-mosad.com/p/blog-page_67.html",
+    "content": "أداة بحث متخصصة بالبحث في موقع جمعية افرا الدولية للعطور (IFRA)\nلضمان نتائج بحث دقيقة استخدم المصطلحات الانجليزية في البحث"
+  },
+  {
+    "type": "pages",
+    "title": "المواد المسببة للحساسية",
+    "url": "https://www.al-mosad.com/p/blog-page_63.html",
+    "content": ""
+  },
+  {
+    "type": "pages",
+    "title": "كتلوج المواد العطرية",
+    "url": "https://www.al-mosad.com/p/blog-page_13.html",
+    "content": "كتلوج المواد العطرية\nكتلوج المواد العطرية\nجاري تحميل البيانات...\nخطأ!\nحدث خطأ أثناء تحميل البيانات. يرجى المحاولة مرة أخرى لاحقًا.\nعدد السجلات: 0 / 0\n×\nتفاصيل السجل"
+  },
+  {
+    "type": "pages",
+    "title": "الزيوت المتوفرة لدي",
+    "url": "https://www.al-mosad.com/p/blog-page_61.html",
+    "content": "مكتبة الزيوت العطرية\nمكتبة الزيوت العطرية\nإضافة زيت عطري جديد\nحفظ البيانات باسم (نسخة احتياطية)\nاسترجاع البيانات\nاستيراد سجل من ملف\nفلترة حسب نوع الزيت\nمركب أروماتي\nاسنشل اويل\nفرجرنس اويل\nفلترة حسب النوتة\nالمقدمة\nالقلب\nالقاعدة\nفلترة حسب الشكل\nسائل\nصلب\nكريستال\nراتنج\nبودر\nفلترة حسب الاستخدام\nتصميم\nتركيب\nناقل\nتخفيف\nمثبت\nمحسن\nمادة حافظة\nمسح الفلاتر والبحث\nعدد السجلات: 0\nإضافة زيت عطري جديد\nاختر نوع الزيت\nمركب أروماتي\nاسنشل اويل\nفرجرنس اويل\nاختر النوتة\nالمقدمة\nالقلب\nالقاعدة\nاختر الشكل\nسائل\nصلب\nكريستال\nراتنج\nبودر\nاختر الاستخدام\nتصميم\nتركيب\nناقل\nتخفيف\nمثبت\nمحسن\nمادة حافظة\nإلغاء\nإضافة\nتعديل الزيت العطري\nاختر نوع الزيت\nمركب أروماتي\nاسنشل اويل\nفرجرنس اويل\nاختر النوتة\nالمقدمة\nالقلب\nالقاعدة\nاختر الشكل\nسائل\nصلب\nكريستال\nراتنج\nبودر\nاختر الاستخدام\nتصميم\nتركيب\nناقل\nتخفيف\nمثبت\nمحسن\nمادة حافظة\nإلغاء\nتحديث\nاسترجاع البيانات المحفوظة\nاختر من القائمة أدناه إذا كنت قد حفظت البيانات سابقًا في المتصفح.\nالبيانات المحفوظة في المتصفح:\nإلغاء\nاختيار سجلات للاستيراد\nتحديد الكل\nإلغاء\nاستيراد المحدد"
+  },
+  {
+    "type": "pages",
+    "title": "نظام الملفات في المنصة",
+    "url": "https://www.al-mosad.com/p/blog-page_96.html",
+    "content": "المقصود بنظام الملفات هو الملفات التي تستخدمها التطبيقات في المنصة لحفظ البيانات عليها"
+  }
+]
