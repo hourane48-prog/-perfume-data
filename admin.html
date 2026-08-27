@@ -5,55 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Mask 🎭 | Pro-Lab ERP</title>
     <style>
-        :root { --primary: #d4af37; --bg-dark: #0a0a0a; --panel-bg: #141414; --border: #333; --text: #e0e0e0; --success: #28a745; --danger: #dc3545; --info: #17a2b8;}
+        :root { --primary: #d4af37; --bg-dark: #0a0a0a; --panel-bg: #141414; --border: #333; --text: #e0e0e0; --success: #28a745; --danger: #dc3545; --info: #17a2b8; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text); padding: 10px; font-size: 13px; }
-        
-        .header-title { color: var(--primary); font-size: 20px; font-weight: bold; border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;}
+        .header-title { color: var(--primary); font-size: 20px; font-weight: bold; border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
         .status-badge { background: #12331b; color: #4cff6e; border: 1px solid #28a745; padding: 5px 10px; border-radius: 4px; font-size: 11px; }
-
         .section-box { background: var(--panel-bg); border: 1px solid var(--border); border-radius: 8px; padding: 15px; margin-bottom: 15px; }
         .section-title { color: var(--primary); font-size: 15px; margin-bottom: 15px; border-bottom: 1px dashed var(--border); padding-bottom: 8px; }
-        
         .grid-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 12px; }
-        
         .form-group label { display: block; font-size: 11px; color: #aaa; margin-bottom: 5px; font-weight: bold; }
         .form-control { width: 100%; background: #000; border: 1px solid #444; color: #fff; padding: 10px; border-radius: 4px; font-size: 13px; outline: none; }
         .form-control:focus { border-color: var(--primary); }
-
         .search-wrapper { position: relative; }
         .autocomplete-list { position: absolute; top: 100%; left: 0; right: 0; background: #1a1a1a; border: 1px solid var(--primary); z-index: 1000; max-height: 180px; overflow-y: auto; display: none; }
         .autocomplete-item { padding: 10px; border-bottom: 1px solid #333; cursor: pointer; color: #fff; font-size: 12px; }
         .autocomplete-item:hover { background: #333; color: var(--primary); }
-
-        .color-drops { display: flex; gap: 10px; align-items: center; justify-content: space-between;}
-        .color-input { width: 50px; background: #000; color: #fff; border: 1px solid #444; text-align: center; padding: 5px; border-radius: 4px;}
+        .color-drops { display: flex; gap: 10px; align-items: center; justify-content: space-between; }
+        .color-input { width: 50px; background: #000; color: #fff; border: 1px solid #444; text-align: center; padding: 5px; border-radius: 4px; }
         .dot { height: 12px; width: 12px; border-radius: 50%; display: inline-block; }
-
-        .btn { width: 100%; padding: 12px; font-weight: bold; font-size: 14px; border-radius: 6px; cursor: pointer; border: none; margin-bottom: 10px; transition: 0.3s;}
+        .btn { width: 100%; padding: 12px; font-weight: bold; font-size: 14px; border-radius: 6px; cursor: pointer; border: none; margin-bottom: 10px; transition: 0.3s; }
         .btn-primary { background: var(--primary); color: #000; }
         .btn-secondary { background: #1c3643; color: #55ccff; border: 1px solid #005580; }
         .btn-purple { background: #4b0082; color: #fff; border: 1px solid #8a2be2; }
         .btn-brown { background: #5c3a21; color: #fff; border: 1px solid #8b5a2b; }
-
         .compat-bar-bg { background: #333; border-radius: 4px; height: 10px; width: 100%; margin-top: 5px; }
         .compat-bar-fill { background: var(--success); height: 100%; width: 0%; transition: 0.5s; }
-
         table { width: 100%; border-collapse: collapse; background: #0a0a0a; min-width: 400px; }
-        .table-responsive { overflow-x: auto; border: 1px solid #333; border-radius: 4px; margin-bottom: 15px;}
+        .table-responsive { overflow-x: auto; border: 1px solid #333; border-radius: 4px; margin-bottom: 15px; }
         th, td { border: 1px solid #333; padding: 8px; text-align: center; font-size: 11px; }
         th { background: #1a1a1a; color: var(--primary); }
-        .override-input { width: 45px; background: #222; color: #fff; border: 1px solid #555; padding: 3px; text-align: center; font-size: 11px;}
-        
+        .override-input { width: 45px; background: #222; color: #fff; border: 1px solid #555; padding: 3px; text-align: center; font-size: 11px; }
         .cost-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; margin-bottom: 15px; }
         .cost-card { background: #000; border: 1px solid #333; padding: 10px; border-radius: 4px; text-align: center; }
         .cost-card span { display: block; color: #888; font-size: 10px; margin-bottom: 4px; }
         .cost-card strong { font-size: 14px; color: #fff; }
         .cost-card.highlight { border-color: var(--primary); background: #110e00; }
-        .cost-card.highlight strong { color: var(--primary); font-size: 16px;}
-
-        .db-card { background: #111; border-left: 3px solid var(--info); padding: 10px; margin-bottom: 10px; font-size: 11px; color: #ccc;}
-        .db-card strong { color: var(--info); display: block; margin-bottom: 5px;}
+        .cost-card.highlight strong { color: var(--primary); font-size: 16px; }
+        .db-card { background: #111; border-left: 3px solid var(--info); padding: 10px; margin-bottom: 10px; font-size: 11px; color: #ccc; }
+        .db-card strong { color: var(--info); display: block; margin-bottom: 5px; }
     </style>
 </head>
 <body>
@@ -65,7 +54,6 @@
     <!-- 1. Engine & Configuration -->
     <div class="section-box">
         <div class="section-title">⚙️ محرك التصنيع والتراكيز الصناعية</div>
-        
         <div class="grid-row">
             <div class="form-group">
                 <label>نوع المنتج ودرجة التركيز:</label>
@@ -163,7 +151,6 @@
 
     <!-- 2. Results Section -->
     <div id="resultsSection" style="display: none;">
-        
         <div class="section-box">
             <div class="section-title">💰 لوحة التكاليف التشغيلية (JOD) & التسعير</div>
             <div class="cost-grid">
@@ -219,26 +206,26 @@
     <!-- 3. Tools & Store -->
     <div class="section-box">
         <div class="section-title">📸 الأدوات الذكية للتعرف والمسح</div>
-        <button class="btn btn-purple">📷 تشغيل ماسح الباركود</button>
+        <button class="btn btn-purple" onclick="startBarcodeScanner()">📷 تشغيل ماسح الباركود</button>
         <div style="display:flex; gap:10px; margin-bottom:10px;">
-            <input type="file" class="form-control" style="padding:5px;">
+            <input type="file" class="form-control" id="cameraInput" style="padding:5px;">
         </div>
-        <button class="btn btn-brown">🔍 قراءة العطر من الصورة (OCR)</button>
+        <button class="btn btn-brown" onclick="captureAndRecognize()">🔍 قراءة العطر من الصورة (OCR)</button>
     </div>
 
     <div class="section-box">
         <div class="section-title">📦 إدارة المعروضات في متجر الزبائن</div>
-        <input type="text" class="form-control" placeholder="اسم العطر للزبون" style="margin-bottom:8px;">
-        <input type="number" class="form-control" placeholder="سعر البيع (JOD)" style="margin-bottom:8px;">
-        <input type="text" class="form-control" placeholder="رابط صورة الزجاجة (URL)" style="margin-bottom:8px;">
-        <textarea class="form-control" placeholder="الوصف الشمي..." style="margin-bottom:10px; height:60px;"></textarea>
-        <button class="btn btn-primary">✨ نشر المنتج في واجهة المتجر</button>
+        <input type="text" id="prodName" class="form-control" placeholder="اسم العطر للزبون" style="margin-bottom:8px;">
+        <input type="number" id="prodPrice" class="form-control" placeholder="سعر البيع (JOD)" style="margin-bottom:8px;">
+        <input type="text" id="prodImage" class="form-control" placeholder="رابط صورة الزجاجة (URL)" style="margin-bottom:8px;">
+        <textarea id="prodDesc" class="form-control" placeholder="الوصف الشمي..." style="margin-bottom:10px; height:60px;"></textarea>
+        <button class="btn btn-primary" onclick="addProduct()">✨ نشر المنتج في واجهة المتجر</button>
     </div>
 
     <script>
         let catalogData = {};
         let gcmsData = {};
-        
+
         const chemProps = {
             "Ethanol 96%": { price: 3.0, density: 0.789, purity: 0.96 },
             "DPG": { price: 5.0, density: 1.036, purity: 0.99 },
@@ -276,12 +263,10 @@
             const hiddenId = listId.replace('List', 'Selected');
             document.getElementById(hiddenId).value = '';
             list.innerHTML = '';
-            
             if (query.length < 2) { list.style.display = 'none'; return; }
             let matches = Object.keys(catalogData).filter(k => k.toLowerCase().includes(query.toLowerCase())).slice(0, 8);
             if (matches.length === 0) { list.style.display = 'none'; return; }
             list.style.display = 'block';
-            
             matches.forEach(key => {
                 let div = document.createElement('div');
                 div.className = 'autocomplete-item';
@@ -313,14 +298,11 @@
             const box = document.getElementById('compatBox');
             if(!sec) { box.style.display = 'none'; isBlendRejected = false; return; }
             box.style.display = 'block';
-            
             const famPri = document.getElementById('primaryFamily').value;
             const famSec = document.getElementById('secondaryFamily').value;
-            
             let score = compMatrix[famPri][famSec] || 50;
             const bar = document.getElementById('compatBar');
             const txt = document.getElementById('compatText');
-
             bar.style.width = score + "%";
             if(score >= 75) {
                 bar.style.background = "var(--success)"; txt.innerHTML = `<span style="color:var(--success)">${score}% (ممتاز للمزج)</span>`; isBlendRejected = false;
@@ -335,21 +317,17 @@
             const primaryKey = document.getElementById('primarySelected').value || document.getElementById('primarySearch').value;
             if (!primaryKey) { alert("حدد العطر الأساسي."); return; }
             if (isBlendRejected) { alert("❌ مرفوض: التوافق الكيميائي أقل من 50%."); return; }
-
             const netBatch = parseFloat(document.getElementById('netBatch').value);
             const lossFactor = parseFloat(document.getElementById('lossFactor').value);
             const concLevel = parseFloat(document.getElementById('concentration').value);
             const famPri = document.getElementById('primaryFamily').value;
-            
             currentGross = netBatch * (1 + lossFactor);
             currentOilWeight = currentGross * concLevel;
-            
+
             let isoPct = 1.0, hedPct = 0.5, ambPct = 0.2, cycloPct = 0.5;
-            
-            // محرك العائلات (Weighted Engine)
             if(famPri === "Woody" || famPri === "Oriental") { isoPct = 2.5; ambPct = 0.8; }
             if(famPri === "Citrus" || famPri === "Aquatic") { hedPct = 2.0; }
-            
+
             if (document.getElementById('sillageBoost').value === 'strong') {
                 isoPct *= 1.5; hedPct *= 1.5; ambPct *= 1.5;
             } else if (document.getElementById('sillageBoost').value === 'light') {
@@ -371,15 +349,13 @@
         function renderFormulaTable(isoPct, hedPct, ambPct, cycloPct, primaryName) {
             const tbody = document.getElementById('formulaBody');
             tbody.innerHTML = '';
-            
             const secKey = document.getElementById('secondarySelected').value;
             let ratioPri = 100, ratioSec = 0;
             if (secKey) { ratioPri = parseInt(document.getElementById('blendRatio').value); ratioSec = 100 - ratioPri; }
-
             const oilPriW = currentOilWeight * (ratioPri/100);
             const oilSecW = currentOilWeight * (ratioSec/100);
-            const costOilPri = (oilPriW / 1000) * 35.0; 
-            const costOilSec = (oilSecW / 1000) * 35.0; 
+            const costOilPri = (oilPriW / 1000) * 35.0;
+            const costOilSec = (oilSecW / 1000) * 35.0;
             let totalOilCost = costOilPri + costOilSec;
 
             let totalChemCost = 0;
@@ -390,7 +366,7 @@
             const hedW = currentGross * (hedPct / 100);
             const ambW = currentGross * (ambPct / 100);
             const cycloW = currentGross * (cycloPct / 100);
-            
+
             totalChemCost += (isoW / 1000) * chemProps["Iso E Super"].price;
             totalChemCost += (hedW / 1000) * chemProps["Hedione"].price;
             totalChemCost += (ambW / 1000) * chemProps["Ambroxan"].price;
@@ -437,7 +413,7 @@
         }
 
         function updateDashboard(oilCost, chemCost) {
-            const packCost = 2.300; // زجاجة وتغليف
+            const packCost = 2.300;
             const total = oilCost + chemCost + packCost;
             document.getElementById('costOil').innerText = oilCost.toFixed(3);
             document.getElementById('costChem').innerText = chemCost.toFixed(3);
@@ -453,13 +429,36 @@
             gmp += `<b>مرحلة 3 (المذيب):</b> سكب (${solv} بوزن ${solvW.toFixed(2)}g). إضافة (Cyclomethicone ${cyclo.toFixed(2)}g) لتسريع الجفاف.<br><br>`;
             gmp += `<b>مرحلة 4 (التبريد):</b> صدمة حرارية 48 ساعة. <b>مرحلة 5:</b> فلترة. <b>مرحلة 6:</b> تعتيق (Maturation) لـ 15 يوم.`;
             document.getElementById('gmpProcessText').innerHTML = gmp;
-            
-            // تحديث بطاقات القواعد
+
             const notes = catalogData[document.getElementById('primarySelected').value]?.notes;
             if(notes) document.getElementById('fragNotes').innerText = `قمة: ${notes.top.join('، ')} | قلب: ${notes.heart.join('، ')} | قاعدة: ${notes.base.join('، ')}`;
         }
 
-        document.addEventListener('click', (e) => { if(!e.target.closest('.search-wrapper')) document.querySelectorAll('.autocomplete-list').forEach(l => l.style.display='none'); });
+        function addProduct() {
+            const name = document.getElementById('prodName').value;
+            const price = document.getElementById('prodPrice').value;
+            const image = document.getElementById('prodImage').value;
+            const desc = document.getElementById('prodDesc').value;
+            if(!name || !price) return alert('أدخل اسم العطر والسعر');
+            const product = { name, price, image, desc };
+            // هنا سنقوم بتخزين المنتج في localStorage وربطه بواجهة المتجر
+            let existing = JSON.parse(localStorage.getItem('mask_store_products') || '[]');
+            existing.push(product);
+            localStorage.setItem('mask_store_products', JSON.stringify(existing));
+            alert('✅ تم إضافة المنتج للمتجر!');
+        }
+
+        function startBarcodeScanner() {
+            alert('📷 ماسح الباركود قيد التطوير - سيتم تفعيله لاحقاً');
+        }
+
+        function captureAndRecognize() {
+            alert('🔍 ميزة OCR قيد التطوير - سيتم تفعيلها لاحقاً');
+        }
+
+        document.addEventListener('click', (e) => {
+            if(!e.target.closest('.search-wrapper')) document.querySelectorAll('.autocomplete-list').forEach(l => l.style.display='none');
+        });
         window.addEventListener('DOMContentLoaded', initLab);
     </script>
 </body>
