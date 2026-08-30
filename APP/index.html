@@ -3,563 +3,395 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Mask 🎭 | Pro-Lab</title>
+    <title>The Mask - Perfume Empire</title>
     <style>
-        :root { --primary: #d4af37; --bg: #0a0a0a; --panel: #141414; --border: #333; --text: #e0e0e0; --success: #28a745; --danger: #dc3545; --info: #17a2b8; --warning: #ffc107; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
-        body { background: var(--bg); color: var(--text); font-size: 14px; padding: 10px; }
-        
-        /* Header */
-        .header { background: #1a1a2e; border-bottom: 2px solid var(--primary); padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
-        .title { color: var(--primary); font-size: 20px; font-weight: bold; }
-        .menu-btn { background: var(--primary); color: #000; border: none; width: 40px; height: 40px; border-radius: 8px; font-size: 20px; cursor: pointer; }
-        
-        /* Drawer */
-        .drawer-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); display: none; z-index: 1000; }
-        .drawer { position: fixed; top: 0; right: -320px; width: 320px; height: 100%; background: #1a1a1a; border-left: 2px solid var(--primary); padding: 20px; overflow-y: auto; transition: right 0.3s ease; z-index: 1001; }
-        .drawer.open { right: 0; }
-        .drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .close-btn { background: transparent; border: none; color: #fff; font-size: 24px; cursor: pointer; }
-        .drawer-title { color: var(--primary); font-size: 18px; font-weight: bold; }
-        .drawer-items { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .drawer-item { background: #000; border: 1px solid #333; border-radius: 12px; padding: 15px; text-align: center; cursor: pointer; transition: 0.3s; }
-        .drawer-item:hover { background: var(--primary); color: #000; }
-        .drawer-item span { font-size: 24px; display: block; margin-bottom: 5px; }
-        .drawer-item small { font-size: 12px; font-weight: bold; }
-        
-        /* Sections */
-        .section-box { display: none; }
-        .section-box.active { display: block; }
-        .search-section { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-        .search-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .search-header h2 { color: var(--primary); font-size: 18px; }
-        
-        /* Search */
-        .search-wrapper { position: relative; }
-        .search-input { width: 100%; background: #000; border: 2px solid #444; color: #fff; padding: 12px; border-radius: 8px; font-size: 16px; outline: none; }
-        .search-input:focus { border-color: var(--primary); }
-        .autocomplete-list { position: absolute; top: 100%; left: 0; right: 0; background: #1a1a1a; border: 2px solid var(--primary); border-radius: 0 0 8px 8px; max-height: 300px; overflow-y: auto; display: none; z-index: 1000; }
-        .autocomplete-item { padding: 12px; border-bottom: 1px solid #333; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        .autocomplete-item:hover { background: var(--primary); color: #000; }
-        .autocomplete-item strong { font-size: 14px; }
-        .autocomplete-item small { font-size: 12px; color: #888; }
-        
-        /* Controls */
-        .controls-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 20px; }
-        .control-group { background: #000; border: 1px solid #333; border-radius: 8px; padding: 10px; }
-        .control-group label { display: block; font-size: 12px; color: #aaa; margin-bottom: 5px; font-weight: bold; }
-        .control-group select, .control-group input { width: 100%; background: #1a1a1a; border: 1px solid #444; color: #fff; padding: 8px; border-radius: 6px; }
-        
-        /* Buttons */
-        .btn { width: 100%; padding: 12px; border: none; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-        .btn-primary { background: var(--primary); color: #000; }
-        .btn-secondary { background: #1c3643; color: #55ccff; border: 1px solid #005580; }
-        .btn-purple { background: #4b0082; color: #fff; }
-        .btn-brown { background: #5c3a21; color: #fff; }
-        .btn-green { background: #28a745; color: #fff; }
-        .btn-red { background: #dc3545; color: #fff; }
-        
-        /* Lab View & Grid */
-        .lab-view { display: none; margin-top: 20px; }
-        .lab-view.active { display: block; }
-        .lab-header { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
-        .lab-header h2 { color: var(--primary); font-size: 20px; }
-        .back-btn { background: #444; color: #fff; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
-        
-        .lab-tabs { display: flex; gap: 5px; margin-bottom: 15px; overflow-x: auto; }
-        .tab-btn { padding: 8px 15px; background: transparent; border: none; color: var(--text); cursor: pointer; border-radius: 6px; white-space: nowrap; }
-        .tab-btn.active { background: var(--primary); color: #000; font-weight: bold; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        
-        /* TRUE GRID SYSTEM */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        .card { background: #000; border: 1px solid #333; border-radius: 12px; padding: 15px; }
-        .card h3 { color: var(--primary); font-size: 15px; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 8px; }
-        
-        .detail-row { display: flex; justify-content: space-between; padding: 8px; background: #1a1a1a; border-radius: 6px; margin-bottom: 5px; }
-        .detail-row strong { color: var(--primary); }
-        
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 6px; text-align: right; border-bottom: 1px solid #333; font-size: 12px; }
-        th { color: var(--primary); }
-        
-        /* Steps */
-        .step-card { display: flex; align-items: center; gap: 10px; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; padding: 10px; margin-bottom: 8px; }
-        .step-number { width: 25px; height: 25px; background: var(--primary); color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; }
-        .step-details p { font-size: 12px; color: #aaa; }
-        
-        .alert { padding: 10px; border-radius: 6px; margin-bottom: 10px; font-size: 13px; }
-        .alert-warning { background: #2a2410; border: 1px solid var(--warning); color: #ffc107; }
-        .alert-danger { background: #2a1010; border: 1px solid var(--danger); color: var(--danger); }
-        .alert-success { background: #103a10; border: 1px solid var(--success); color: var(--success); }
-        
-        @media (max-width: 600px) {
-            .cards-grid { grid-template-columns: 1fr; }
-            .drawer { right: -100%; width: 85%; }
-            .drawer.open { right: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+        }
+        /* أزرار التنقل */
+        .nav-buttons {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .nav-btn {
+            background: transparent;
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+        .nav-btn.active {
+            background: #d4af37;
+            color: #000;
+        }
+        .nav-btn:hover {
+            background: #d4af37;
+            color: #000;
+        }
+        /* بطاقات المتجر */
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .product-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #222;
+        }
+        .product-card h3 {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #fff;
+        }
+        .product-card .price {
+            color: #d4af37;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .product-card .notes {
+            font-size: 12px;
+            color: #888;
+            margin: 5px 10px;
+        }
+        .product-card button {
+            background: #d4af37;
+            color: #000;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+            width: 90%;
+            font-weight: bold;
+        }
+        /* المختبر */
+        #labPanel {
+            display: none;
+            padding: 20px;
+        }
+        .lab-box {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            margin-bottom: 20px;
+        }
+        .lab-box h2 {
+            color: #d4af37;
+        }
+        input, select, textarea {
+            background: #222;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .lab-btn {
+            background: #d4af37;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .lab-btn:hover {
+            background: #bfa030;
+        }
+        /* لوحة النتائج */
+        .result-box {
+            background: #0f2a0f;
+            border: 1px solid #4caf50;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        .result-box h3 {
+            color: #4caf50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 8px;
+            text-align: center;
+            font-size: 14px;
+        }
+        th {
+            background-color: #333;
+            color: #d4af37;
+        }
+        .cost-dashboard {
+            background: #1a2a1a;
+            border: 1px solid #4caf50;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        .cost-dashboard h3 {
+            color: #4caf50;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <button class="menu-btn" onclick="openDrawer()">☰</button>
-        <div class="title">The Mask 🎭 | Pro-Lab</div>
+
+<div class="container">
+    <h1>🎭 The Mask</h1>
+    <p class="subtitle">Beyond the Face</p>
+    
+    <!-- أزرار التنقل -->
+    <div class="nav-buttons">
+        <button class="nav-btn active" onclick="showStore()">🛍️ المتجر</button>
+        <button class="nav-btn" onclick="showLab()">⚗️ المختبر</button>
     </div>
     
-    <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
-    <div class="drawer" id="drawer">
-        <div class="drawer-header">
-            <span class="drawer-title">الأقسام</span>
-            <button class="close-btn" onclick="closeDrawer()">×</button>
-        </div>
-        <div class="drawer-items">
-            <div class="drawer-item" onclick="goToSection('fragrance')"><span>⚗️</span><small>العطور</small></div>
-            <div class="drawer-item" onclick="goToSection('musk')"><span>🧴</span><small>المسكات</small></div>
-            <div class="drawer-item" onclick="goToSection('bakhoor')"><span>🪵</span><small>البخور</small></div>
-            <div class="drawer-item" onclick="goToSection('mukhallat')"><span>🏺</span><small>المخلطات</small></div>
-            <div class="drawer-item" onclick="goToSection('spray')"><span>💨</span><small>معطرات</small></div>
-            <div class="drawer-item" onclick="goToSection('hairBody')"><span>🌸</span><small>شعر وجسم</small></div>
-            <div class="drawer-item" onclick="goToSection('ifra')"><span>🛡️</span><small>IFRA</small></div>
-            <div class="drawer-item" onclick="goToSection('cost')"><span>💰</span><small>التكلفة</small></div>
-            <div class="drawer-item" onclick="goToSection('inventory')"><span>📦</span><small>الجرد</small></div>
-            <div class="drawer-item" onclick="goToSection('rawMaterials')"><span>🧪</span><small>المواد الخام</small></div>
-            <div class="drawer-item" onclick="goToSection('admin')"><span>👤</span><small>الإدارة</small></div>
-        </div>
+    <!-- قسم المتجر -->
+    <div id="storePanel">
+        <div class="store-grid" id="storeGrid"></div>
     </div>
     
-    <div class="main-content" style="padding: 20px; max-width: 1200px; margin: 0 auto;">
+    <!-- قسم المختبر -->
+    <div id="labPanel">
+        <div class="lab-box">
+            <h2>🔒 دخول المختبر</h2>
+            <input type="password" id="labPassword" placeholder="كلمة المرور">
+            <button class="lab-btn" onclick="checkPassword()">دخول</button>
+            <p id="errMsg" style="color:red; display:none;">كلمة المرور غير صحيحة!</p>
+        </div>
         
-        <!-- Fragrance Section -->
-        <div id="fragrance" class="section-box active">
-            <div class="search-section">
-                <div class="search-header">
-                    <h2>⚗️ استوديو صياغة العطور</h2>
-                    <span id="perfumeCount">0 عطر</span>
-                </div>
+        <div id="labContent" style="display:none;">
+            <div class="lab-box">
+                <h2>⚙️ محرك التصنيع</h2>
+                <label>العطر الأساسي:</label>
+                <input type="text" id="basePerfume" placeholder="اكتب اسم العطر">
                 
-                <div class="search-wrapper">
-                    <input type="text" id="primarySearch" class="search-input" placeholder="اكتب أول حرف..." oninput="handleSearch(this.value)" autocomplete="off">
-                    <div id="searchResults" class="autocomplete-list"></div>
-                </div>
+                <label>العائلة العطرية:</label>
+                <select id="familySelect">
+                    <option value="woody">خشبي</option>
+                    <option value="citrus">حمضي</option>
+                    <option value="marine">بحري</option>
+                    <option value="amber">عنبري</option>
+                    <option value="gourmand">غورماند</option>
+                    <option value="floral">أزهار</option>
+                    <option value="musky">مسك</option>
+                    <option value="fruity">فواكه</option>
+                    <option value="green">أخضر</option>
+                    <option value="leather">جلدي</option>
+                </select>
                 
-                <div id="perfumeInfo" style="display:none;">
-                    <div class="controls-grid">
-                        <div class="control-group">
-                            <label>التركيز:</label>
-                            <select id="concentration" onchange="calculateFormula()">
-                                <option value="0.18">EDP - 18%</option>
-                                <option value="0.25">Parfum - 25%</option>
-                                <option value="0.10">EDT - 10%</option>
-                                <option value="0.06">Commercial - 6%</option>
-                                <option value="0.04">EDC - 4%</option>
-                                <option value="0.35">Elixir - 35%</option>
-                                <option value="0.96">Pure CPO - 96%</option>
-                            </select>
-                        </div>
-                        <div class="control-group">
-                            <label>الحجم (جم):</label>
-                            <input type="number" id="netBatch" value="100" oninput="calculateFormula()">
-                        </div>
-                        <div class="control-group">
-                            <label>الفاقد:</label>
-                            <select id="lossFactor" onchange="calculateFormula()">
-                                <option value="1.025">2.5%</option>
-                                <option value="1.05">5.0%</option>
-                                <option value="1.01">1.0%</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="controls-grid" style="margin-top:10px;">
-                        <div class="control-group">
-                            <label>لون أزرق:</label>
-                            <input type="number" id="dropBlue" value="0" oninput="calculateFormula()">
-                        </div>
-                        <div class="control-group">
-                            <label>لون أحمر:</label>
-                            <input type="number" id="dropRed" value="0" oninput="calculateFormula()">
-                        </div>
-                        <div class="control-group">
-                            <label>لون أصفر:</label>
-                            <input type="number" id="dropYellow" value="0" oninput="calculateFormula()">
-                        </div>
-                        <div class="control-group">
-                            <label>لون أخضر:</label>
-                            <input type="number" id="dropGreen" value="0" oninput="calculateFormula()">
-                        </div>
-                    </div>
-                    
-                    <button class="btn btn-primary" onclick="calculateFormula()">⚡ تفكيك المحرك المعملي</button>
-                    
-                    <div id="labView" class="lab-view">
-                        <div class="lab-header">
-                            <h2 id="labPerfumeName"></h2>
-                            <button class="back-btn" onclick="resetLab()">عودة للبحث</button>
-                        </div>
-                        
-                        <div class="lab-tabs">
-                            <button class="tab-btn active" onclick="switchLabTab('formula')">📊 المعادلة</button>
-                            <button class="tab-btn" onclick="switchLabTab('steps')">🏭 التصنيع</button>
-                            <button class="tab-btn" onclick="switchLabTab('cost')">💰 التكلفة</button>
-                            <button class="tab-btn" onclick="switchLabTab('pyramid')">🔺 الهرم</button>
-                        </div>
-                        
-                        <div id="labFormula" class="tab-content active">
-                            <div class="cards-grid">
-                                <div class="card">
-                                    <h3>المكونات الرئيسية</h3>
-                                    <div id="formulaDetails"></div>
-                                </div>
-                                <div class="card">
-                                    <h3>المكونات GC-MS</h3>
-                                    <div id="gcmsDetails"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div id="labSteps" class="tab-content">
-                            <div class="card">
-                                <h3>بروتوكول التصنيع الكامل</h3>
-                                <div id="manufacturingSteps"></div>
-                            </div>
-                        </div>
-                        
-                        <div id="labCost" class="tab-content">
-                            <div class="cards-grid">
-                                <div class="card">
-                                    <h3>التكلفة</h3>
-                                    <div id="costCalculation"></div>
-                                </div>
-                                <div class="card">
-                                    <h3>الأداء</h3>
-                                    <div id="performanceInfo"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div id="labPyramid" class="tab-content">
-                            <div class="card">
-                                <h3>الهرم العطري</h3>
-                                <div id="pyramidInfo"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <label>حجم التشغيلة (جرام):</label>
+                <input type="number" id="batchSize" value="100" min="10">
+                
+                <label>التركيز:</label>
+                <select id="concentration">
+                    <option value="0.25">Extrait 25%</option>
+                    <option value="0.18" selected>EDP 18%</option>
+                    <option value="0.10">EDT 10%</option>
+                    <option value="0.04">EDC 4%</option>
+                </select>
+                
+                <button class="lab-btn" onclick="runEngine()">⚡ تنفيذ المحرك</button>
+            </div>
+            
+            <div class="result-box" id="resultBox">
+                <h3>⚗️ المعادلة المعملية</h3>
+                <table id="formulaTable">
+                    <thead>
+                        <tr>
+                            <th>المكون</th>
+                            <th>الوزن (g)</th>
+                            <th>النسبة %</th>
+                        </tr>
+                    </thead>
+                    <tbody id="formulaBody"></tbody>
+                </table>
+            </div>
+            
+            <div class="cost-dashboard" id="costDashboard">
+                <h3>💰 لوحة التكاليف (JOD)</h3>
+                <p id="totalCost">التكلفة الإجمالية: 0.00 د.أ</p>
             </div>
         </div>
-        
-        <!-- Musk -->
-        <div id="musk" class="section-box">
-            <div class="search-section">
-                <h2>🧴 مختبر المسكات</h2>
-                <div class="controls-grid">
-                    <div class="control-group"><label>النوع:</label><select id="muskType" onchange="calculateMusk()"><option value="pomegranate">مسك الرمان</option><option value="baby">مسك الباودر</option><option value="musc">مسك الطهارة</option><option value="tahara">مسك التحرير</option><option value="musk_flower">مسك الزهور</option></select></div>
-                    <div class="control-group"><label>الوزن:</label><input type="number" id="muskWeight" value="100" oninput="calculateMusk()"></div>
-                </div>
-                <button class="btn btn-secondary" onclick="calculateMusk()">صياغة المسك</button>
-                <div id="muskResult" style="margin-top:10px;"></div>
-            </div>
-        </div>
-        
-        <!-- Bakhoor -->
-        <div id="bakhoor" class="section-box">
-            <div class="search-section">
-                <h2>🪵 مختبر البخور</h2>
-                <div class="controls-grid">
-                    <div class="control-group"><label>النوع:</label><select id="bakhoorType" onchange="calculateBakhoor()"><option value="mabthooth">مبثوث ملكي</option><option value="maamoul">معمول عود</option><option value="sudanese">بخور سوداني</option><option value="luban">لبان ذكر</option><option value="jawi">عود جاوي</option><option value="kasturi">مسك كستوري</option><option value="royal_oud">عود ملكي</option></select></div>
-                    <div class="control-group"><label>وزن الخشب:</label><input type="number" id="bakhoorWeight" value="100" oninput="calculateBakhoor()"></div>
-                </div>
-                <button class="btn btn-brown" onclick="calculateBakhoor()">صياغة البخور</button>
-                <div id="bakhoorResult" style="margin-top:10px;"></div>
-            </div>
-        </div>
-        
-        <!-- Mukhallat -->
-        <div id="mukhallat" class="section-box">
-            <div class="search-section">
-                <h2>🏺 مصمم المخلطات</h2>
-                <div class="controls-grid">
-                    <div class="control-group"><label>الكمية (تولة):</label><input type="number" id="mukhallatTola" value="1" step="0.25" oninput="calculateMukhallat()"></div>
-                    <div class="control-group"><label>النوع:</label><select id="mukhallatType" onchange="calculateMukhallat()"><option value="blue">مخلط العود الأزرق</option><option value="royal">مخلط ملكي</option><option value="sultan">مخلط السلطان</option><option value="bakhoor">مخلط بخور</option><option value="attar">مخلط عطري</option><option value="musk">مخلط مسك</option></select></div>
-                </div>
-                <button class="btn btn-green" onclick="calculateMukhallat()">توليف الأدهان</button>
-                <div id="mukhallatResult" style="margin-top:10px;"></div>
-            </div>
-        </div>
-        
-        <!-- Spray -->
-        <div id="spray" class="section-box">
-            <div class="search-section">
-                <h2>💨 معطرات الجو</h2>
-                <div class="controls-grid">
-                    <div class="control-group"><label>النوع:</label><select id="sprayType" onchange="calculateSpray()"><option value="haram">معطر الحرم</option><option value="linen">معطر الملابس</option><option value="room">معطر الغرف</option><option value="car">معطر السيارات</option><option value="mosque">معطر المساجد</option></select></div>
-                    <div class="control-group"><label>الحجم:</label><input type="number" id="sprayVolume" value="250" oninput="calculateSpray()"></div>
-                </div>
-                <button class="btn btn-purple" onclick="calculateSpray()">صياغة المعطر</button>
-                <div id="sprayResult" style="margin-top:10px;"></div>
-            </div>
-        </div>
-        
-        <!-- Hair & Body -->
-        <div id="hairBody" class="section-box">
-            <div class="search-section">
-                <h2>🌸 معطرات الشعر والجسم</h2>
-                <div class="controls-grid">
-                    <div class="control-group"><label>النوع:</label><select id="hbType" onchange="calculateHB()"><option value="hair">معطر الشعر</option><option value="body">معطر الجسم</option><option value="perfume">معطر عطري</option><option value="deodorant">مزيل عرق</option><option value="afterShave">ماء بعد الحلاقة</option></select></div>
-                    <div class="control-group"><label>الحجم:</label><input type="number" id="hbVolume" value="100" oninput="calculateHB()"></div>
-                </div>
-                <button class="btn btn-secondary" onclick="calculateHB()">صياغة المعطر</button>
-                <div id="hbResult" style="margin-top:10px;"></div>
-            </div>
-        </div>
-        
-        <!-- IFRA -->
-        <div id="ifra" class="section-box">
-            <div class="search-section">
-                <h2>🛡️ كاشف IFRA</h2>
-                <div class="controls-grid">
-                    <div class="control-group"><label>المادة:</label><select id="ifraSelect" onchange="calculateIFRA()"><option value="oakmoss">أوكموس</option><option value="bergamot">برغموت</option><option value="cinnamon">قرفة</option><option value="eugenol">يوجينول</option><option value="iso">Iso E Super</option><option value="cashmeran">كشميران</option><option value="lilial">ليليال</option><option value="musk">مسك</option><option value="sandalwood">صندل</option><option value="limonene">ليمونين</option><option value="linalool">لينالول</option><option value="citral">سيترال</option></select></div>
-                    <div class="control-group"><label>الوزن:</label><input type="number" id="ifraWeight" value="0.35" step="0.01" oninput="calculateIFRA()"></div>
-                    <div class="control-group"><label>الحجم:</label><input type="number" id="ifraVolume" value="100" oninput="calculateIFRA()"></div>
-                </div>
-                <button class="btn btn-red" onclick="calculateIFRA()">فحص IFRA</button>
-                <div id="ifraResult" style="margin-top:10px;"></div>
-            </div>
-        </div>
-        
-        <!-- Cost -->
-        <div id="cost" class="section-box">
-            <div class="search-section">
-                <h2>💰 حاسبة التكلفة</h2>
-                <div class="controls-grid">
-                    <div class="control-group"><label>الحجم:</label><input type="number" id="costVolume" value="100" oninput="calculateCost()"></div>
-                    <div class="control-group"><label>سعر الزيت/كغم:</label><input type="number" id="costOilKg" value="120" oninput="calculateCost()"></div>
-                    <div class="control-group"><label>سعر الكحول/لتر:</label><input type="number" id="costAlcL" value="6" oninput="calculateCost()"></div>
-                    <div class="control-group"><label>التغليف:</label><input type="number" id="costPack" value="2.75" oninput="calculateCost()"></div>
-                    <div class="control-group"><label>هامش الربح:</label><input type="number" id="costMargin" value="60" oninput="calculateCost()"></div>
-                </div>
-                <button class="btn btn-green" onclick="calculateCost()">حساب التكلفة</button>
-                <div id="costResult" style="margin-top:10px;"></div>
-            </div>
-        </div>
-        
-        <!-- Other placeholders -->
-        <div id="inventory" class="section-box"><div class="search-section"><h2>📦 نظام الجرد (قريباً)</h2></div></div>
-        <div id="rawMaterials" class="section-box"><div class="search-section"><h2>🧪 المواد الخام (قريباً)</h2></div></div>
-        <div id="admin" class="section-box"><div class="search-section"><h2>👤 لوحة التحكم (قريباً)</h2></div></div>
     </div>
+</div>
+
+<script>
+    // كلمة مرور المختبر
+    const LAB_PASSWORD = "1993";
     
-    <script>
-        // Database
-        const perfumeDB = {
-            'creed_aventus': {
-                name: 'Creed Aventus', family: 'Fruity Chypre', concentration: 0.20,
-                notes: { top: ['أناناس', 'كشمش أسود', 'برغموت'], heart: ['بتولا', 'باتشولي', 'ورد'], base: ['مسك', 'أوكموس', 'عنبر'] },
-                color: { blue: 2, red: 1, yellow: 3, green: 0 },
-                performance: { skin_hours: 8, fabric_days: 3, sillage: 'قوي', projection: 2.5 },
-                cost: { oil_per_kg: 350, alcohol_per_l: 8 },
-                gcms: [
-                    { name: 'Limonene', cas: '5989-27-5', pct: 15.2 },
-                    { name: 'Linalool', cas: '78-70-6', pct: 8.5 },
-                    { name: 'Iso E Super', cas: '54464-57-2', pct: 3.2 },
-                    { name: 'Hedione', cas: '24851-98-7', pct: 2.8 },
-                    { name: 'Ambroxan', cas: '6790-58-5', pct: 1.1 },
-                    { name: 'Ethyl Maltol', cas: '4940-11-8', pct: 0.05 },
-                    { name: 'Oakmoss', cas: '9000-50-4', pct: 0.8 },
-                    { name: 'Musk Ketone', cas: '81-14-1', pct: 1.5 }
-                ]
-            },
-            'dior_sauvage': {
-                name: 'Dior Sauvage', family: 'Aromatic Fougère', concentration: 0.18,
-                notes: { top: ['برغموت', 'فلفل', 'لافندر'], heart: ['سيدار', 'باتشولي', 'جيرانيوم'], base: ['عنبر', 'مسك', 'فيتيفر'] },
-                color: { blue: 3, red: 0, yellow: 2, green: 0 },
-                performance: { skin_hours: 10, fabric_days: 4, sillage: 'قوي جداً', projection: 3 },
-                cost: { oil_per_kg: 400, alcohol_per_l: 10 },
-                gcms: [
-                    { name: 'Limonene', cas: '5989-27-5', pct: 12.5 },
-                    { name: 'Linalool', cas: '78-70-6', pct: 10.2 },
-                    { name: 'Lavender Oil', cas: '8000-28-0', pct: 5.8 },
-                    { name: 'Iso E Super', cas: '54464-57-2', pct: 4.5 },
-                    { name: 'Hedione', cas: '24851-98-7', pct: 3.2 },
-                    { name: 'Ambroxan', cas: '6790-58-5', pct: 0.9 },
-                    { name: 'Patchouli Oil', cas: '8014-09-3', pct: 2.1 }
-                ]
-            }
-        };
-
-        let currentPerfume = null;
-
-        function init() { document.getElementById('perfumeCount').textContent = Object.keys(perfumeDB).length + ' عطر'; }
-
-        // Drawer
-        function openDrawer() { document.getElementById('drawerOverlay').style.display = 'block'; document.getElementById('drawer').classList.add('open'); }
-        function closeDrawer() { document.getElementById('drawerOverlay').style.display = 'none'; document.getElementById('drawer').classList.remove('open'); }
-        function goToSection(id) { document.querySelectorAll('.section-box').forEach(box => box.classList.remove('active')); document.getElementById(id).classList.add('active'); closeDrawer(); }
-
-        // Search
-        function handleSearch(query) {
-            const searchResults = document.getElementById('searchResults');
-            searchResults.innerHTML = '';
-            if (query.length < 1) { searchResults.style.display = 'none'; return; }
-            
-            const matches = Object.keys(perfumeDB).filter(key => {
-                return perfumeDB[key].name.toLowerCase().startsWith(query.toLowerCase()) || perfumeDB[key].name_ar?.includes(query);
-            });
-            
-            if (matches.length === 0) { searchResults.style.display = 'none'; return; }
-            searchResults.style.display = 'block';
-            
-            matches.forEach(key => {
-                const item = document.createElement('div');
-                item.className = 'autocomplete-item';
-                item.innerHTML = `<strong>${perfumeDB[key].name}</strong> <small>${perfumeDB[key].family}</small>`;
-                item.onclick = () => { selectPerfume(key); searchResults.style.display = 'none'; };
-                searchResults.appendChild(item);
-            });
+    // قاعدة البيانات (تقرأ من GitHub)
+    let perfumeDB = [];
+    
+    // تحميل البيانات
+    async function loadData() {
+        try {
+            const response = await fetch('https://raw.githubusercontent.com/hourane48-prog/-perfume-data/main/DATA/perfume_catalog.json');
+            perfumeDB = await response.json();
+            console.log("✅ تم تحميل", perfumeDB.length, "عطر");
+            renderStore();
+        } catch (error) {
+            console.error("❌ فشل تحميل البيانات:", error);
         }
-
-        // Select
-        function selectPerfume(id) {
-            currentPerfume = perfumeDB[id];
-            document.getElementById('primarySearch').value = currentPerfume.name;
-            document.getElementById('perfumeInfo').style.display = 'block';
-            document.getElementById('labPerfumeName').textContent = currentPerfume.name;
-            document.getElementById('labView').classList.add('active');
+    }
+    
+    // عرض المتجر
+    function renderStore() {
+        const grid = document.getElementById('storeGrid');
+        grid.innerHTML = "";
+        
+        perfumeDB.forEach((perfume, index) => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
             
-            document.getElementById('dropBlue').value = currentPerfume.color.blue;
-            document.getElementById('dropRed').value = currentPerfume.color.red;
-            document.getElementById('dropYellow').value = currentPerfume.color.yellow;
-            document.getElementById('dropGreen').value = currentPerfume.color.green;
+            const notes = perfume.top_notes && perfume.top_notes.length > 0 
+                ? perfume.top_notes.slice(0, 3).join('، ') 
+                : 'لا توجد نوتات';
             
-            calculateFormula();
-        }
-
-        function resetLab() {
-            document.getElementById('labView').classList.remove('active');
-            document.getElementById('perfumeInfo').style.display = 'none';
-            document.getElementById('primarySearch').value = '';
-            currentPerfume = null;
-        }
-
-        // Tabs
-        function switchLabTab(tab) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            if (tab === 'formula') { document.querySelectorAll('.tab-btn')[0].classList.add('active'); document.getElementById('labFormula').classList.add('active'); }
-            if (tab === 'steps') { document.querySelectorAll('.tab-btn')[1].classList.add('active'); document.getElementById('labSteps').classList.add('active'); }
-            if (tab === 'cost') { document.querySelectorAll('.tab-btn')[2].classList.add('active'); document.getElementById('labCost').classList.add('active'); }
-            if (tab === 'pyramid') { document.querySelectorAll('.tab-btn')[3].classList.add('active'); document.getElementById('labPyramid').classList.add('active'); }
-        }
-
-        // Calculate Formula
-        function calculateFormula() {
-            if (!currentPerfume) return;
-            const batchSize = parseFloat(document.getElementById('netBatch').value) || 100;
-            const concentration = parseFloat(document.getElementById('concentration').value) || currentPerfume.concentration;
-            const lossFactor = parseFloat(document.getElementById('lossFactor').value) || 1.025;
-            
-            const gross = batchSize * lossFactor;
-            const oil = gross * concentration;
-            const solvent = gross - oil;
-            
-            document.getElementById('formulaDetails').innerHTML = `
-                <div class="detail-row"><strong>الحجم:</strong> <span>${batchSize} جم</span></div>
-                <div class="detail-row"><strong>الزيت:</strong> <span>${oil.toFixed(2)} جم</span></div>
-                <div class="detail-row"><strong>المذيب:</strong> <span>${solvent.toFixed(2)} جم</span></div>
+            card.innerHTML = `
+                ${perfume.image ? `<img src="${perfume.image}" alt="${perfume.name}" loading="lazy">` : '<div style="height:200px; background:#222; display:flex; align-items:center; justify-content:center;">لا توجد صورة</div>'}
+                <h3>${perfume.name}</h3>
+                <p class="price">${perfume.priceJOD} د.أ</p>
+                <p class="notes">${notes}</p>
+                <button onclick="addToCart(${index})">🛒 اطلب</button>
             `;
             
-            let gcms = '<table><thead><tr><th>المادة</th><th>CAS</th><th>%</th><th>جم</th></tr></thead><tbody>';
-            currentPerfume.gcms.forEach(comp => {
-                const w = oil * (comp.pct / 100);
-                gcms += `<tr><td>${comp.name}</td><td>${comp.cas}</td><td>${comp.pct}</td><td>${w.toFixed(3)}</td></tr>`;
-            });
-            gcms += '</tbody></table>';
-            document.getElementById('gcmsDetails').innerHTML = gcms;
+            grid.appendChild(card);
+        });
+    }
+    
+    // عرض المختبر
+    function showLab() {
+        document.getElementById('storePanel').style.display = 'none';
+        document.getElementById('labPanel').style.display = 'block';
+        document.querySelectorAll('.nav-btn')[0].classList.remove('active');
+        document.querySelectorAll('.nav-btn')[1].classList.add('active');
+    }
+    
+    // عرض المتجر
+    function showStore() {
+        document.getElementById('storePanel').style.display = 'block';
+        document.getElementById('labPanel').style.display = 'none';
+        document.querySelectorAll('.nav-btn')[1].classList.remove('active');
+        document.querySelectorAll('.nav-btn')[0].classList.add('active');
+    }
+    
+    // فحص كلمة المرور
+    function checkPassword() {
+        const pass = document.getElementById('labPassword').value;
+        if (pass === LAB_PASSWORD) {
+            document.getElementById('labContent').style.display = 'block';
+            document.getElementById('errMsg').style.display = 'none';
+        } else {
+            document.getElementById('errMsg').style.display = 'block';
         }
+    }
+    
+    // تنفيذ المحرك الكيميائي
+    function runEngine() {
+        const basePerfume = document.getElementById('basePerfume').value;
+        const family = document.getElementById('familySelect').value;
+        const batchSize = parseFloat(document.getElementById('batchSize').value);
+        const concentration = parseFloat(document.getElementById('concentration').value);
+        
+        // حساب كمية الزيت
+        const oilWeight = batchSize * concentration;
+        
+        // جدول المعادلة
+        const formula = [
+            { name: basePerfume, weight: oilWeight, pct: concentration * 100 },
+            { name: "Iso E Super", weight: 0.8, pct: 0.8 },
+            { name: "Hedione", weight: 0.5, pct: 0.5 },
+            { name: "Ambroxan", weight: 0.2, pct: 0.2 },
+            { name: "DPG", weight: 1.0, pct: 1.0 },
+            { name: "Ethanol 96%", weight: batchSize - (oilWeight + 2.5), pct: 100 - (concentration * 100 + 2.5) }
+        ];
+        
+        // عرض النتائج
+        const tableBody = document.getElementById('formulaBody');
+        tableBody.innerHTML = "";
+        
+        formula.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.name}</td>
+                <td>${item.weight.toFixed(2)}</td>
+                <td>${item.pct.toFixed(2)}%</td>
+            `;
+            tableBody.appendChild(row);
+        });
+        
+        // حساب التكلفة (تقريبي)
+        const estimatedCost = (oilWeight * 0.15) + 2.5;
+        document.getElementById('totalCost').innerText = `التكلفة الإجمالية: ${estimatedCost.toFixed(2)} د.أ`;
+        
+        // عرض النتائج
+        document.getElementById('resultBox').style.display = 'block';
+        document.getElementById('costDashboard').style.display = 'block';
+    }
+    
+    // إضافة إلى السلة
+    function addToCart(index) {
+        const perfume = perfumeDB[index];
+        alert(`🛒 تم إضافة "${perfume.name}" إلى السلة!\n💰 السعر: ${perfume.priceJOD} د.أ`);
+    }
+    
+    // تحميل البيانات عند فتح الصفحة
+    window.onload = loadData;
+</script>
 
-        // Others (Musk, Bakhoor, etc.)
-        function calculateMusk() {
-            const type = document.getElementById('muskType').value;
-            const weight = parseFloat(document.getElementById('muskWeight').value) || 100;
-            const formulas = { 'pomegranate': { base: 45, accord: 35, softener: 10, solvent: 10 }, 'baby': { base: 50, accord: 30, softener: 10, solvent: 10 }, 'musc': { base: 50, accord: 30, softener: 15, solvent: 5 }, 'tahara': { base: 55, accord: 25, softener: 15, solvent: 5 }, 'musk_flower': { base: 40, accord: 35, softener: 20, solvent: 5 } };
-            const f = formulas[type];
-            document.getElementById('muskResult').innerHTML = `<div class="cards-grid"><div class="card"><h3>التركيبة</h3><div class="detail-row"><strong>القاعدة:</strong> <span>${(weight*f.base/100).toFixed(2)}</span></div><div class="detail-row"><strong>الأكورد:</strong> <span>${(weight*f.accord/100).toFixed(2)}</span></div><div class="detail-row"><strong>المنعم:</strong> <span>${(weight*f.softener/100).toFixed(2)}</span></div><div class="detail-row"><strong>المذيب:</strong> <span>${(weight*f.solvent/100).toFixed(2)}</span></div></div></div>`;
-        }
-
-        function calculateBakhoor() {
-            const type = document.getElementById('bakhoorType').value;
-            const weight = parseFloat(document.getElementById('bakhoorWeight').value) || 100;
-            const formulas = { 'mabthooth': { wood: 65, oils: 20, resins: 10, fixatives: 5 }, 'maamoul': { wood: 60, oils: 20, gum: 7, water: 13 }, 'sudanese': { wood: 50, sugar: 25, resins: 15, oils: 10 }, 'luban': { wood: 40, luban: 40, oils: 15, fixatives: 5 }, 'jawi': { wood: 55, jawi: 25, oils: 15, fixatives: 5 }, 'kasturi': { wood: 45, kasturi: 35, oils: 15, fixatives: 5 }, 'royal_oud': { wood: 70, oils: 20, resins: 7, fixatives: 3 } };
-            const f = formulas[type];
-            let html = '<div class="cards-grid"><div class="card"><h3>التركيبة</h3>';
-            Object.keys(f).forEach(k => { html += `<div class="detail-row"><strong>${k.toUpperCase()}:</strong> <span>${(weight*f[k]/100).toFixed(2)}</span></div>`; });
-            html += '</div></div>';
-            document.getElementById('bakhoorResult').innerHTML = html;
-        }
-
-        function calculateMukhallat() {
-            const tola = parseFloat(document.getElementById('mukhallatTola').value) || 1;
-            const type = document.getElementById('mukhallatType').value;
-            const formulas = { 'blue': { oud: 40, amber: 25, blue: 20, sandal: 15 }, 'royal': { oud: 35, rose: 25, sandal: 25, amber: 15 }, 'sultan': { oud: 30, rose: 20, saffron: 10, musk: 15, sandal: 25 }, 'bakhoor': { oud: 40, resins: 30, oils: 20, fixatives: 10 }, 'attar': { oud: 25, rose: 30, jasmine: 20, musk: 15, sandal: 10 }, 'musk': { musk: 40, oud: 20, rose: 20, sandal: 20 } };
-            const f = formulas[type];
-            const total = tola * 11.66;
-            let html = '<div class="cards-grid"><div class="card"><h3>التركيبة</h3>';
-            Object.keys(f).forEach(k => { html += `<div class="detail-row"><strong>${k.toUpperCase()}:</strong> <span>${(total*f[k]/100).toFixed(2)}</span></div>`; });
-            html += '</div></div>';
-            document.getElementById('mukhallatResult').innerHTML = html;
-        }
-
-        // Spray, HB, IFRA, Cost
-        function calculateSpray() {
-            const type = document.getElementById('sprayType').value;
-            const vol = parseFloat(document.getElementById('sprayVolume').value) || 250;
-            const formulas = { 'haram': { water: 60, alcohol: 15, oil: 12, dpg: 5, fixative: 8 }, 'linen': { water: 92, oil: 3, emulsifier: 4.5, preservative: 0.5 }, 'room': { water: 80, alcohol: 15, oil: 4, fixative: 1 }, 'car': { water: 75, alcohol: 20, oil: 4, fixative: 1 }, 'mosque': { water: 70, alcohol: 20, oil: 8, dpg: 2 } };
-            const f = formulas[type];
-            let html = '<div class="cards-grid"><div class="card"><h3>التركيبة</h3>';
-            Object.keys(f).forEach(k => { html += `<div class="detail-row"><strong>${k.toUpperCase()}:</strong> <span>${(vol*f[k]/100).toFixed(2)}</span></div>`; });
-            html += '</div></div>';
-            document.getElementById('sprayResult').innerHTML = html;
-        }
-
-        function calculateHB() {
-            const type = document.getElementById('hbType').value;
-            const vol = parseFloat(document.getElementById('hbVolume').value) || 100;
-            const formulas = { 'hair': { water: 90, oil: 1.5, emulsifier: 3.75, humectant: 0.8, preservative: 0.45 }, 'body': { water: 82, oil: 2.5, emulsifier: 5, alcohol: 8, preservative: 0.5 }, 'perfume': { water: 65, alcohol: 25, oil: 8, fixative: 2 }, 'deodorant': { water: 85, alcohol: 10, oil: 2, anti_wet: 2, preservative: 1 }, 'afterShave': { water: 60, alcohol: 30, oil: 3, emollient: 6, preservative: 1 } };
-            const f = formulas[type];
-            let html = '<div class="cards-grid"><div class="card"><h3>التركيبة</h3>';
-            Object.keys(f).forEach(k => { html += `<div class="detail-row"><strong>${k.toUpperCase()}:</strong> <span>${(vol*f[k]/100).toFixed(2)}</span></div>`; });
-            html += '</div></div>';
-            document.getElementById('hbResult').innerHTML = html;
-        }
-
-        function calculateIFRA() {
-            const m = document.getElementById('ifraSelect').value;
-            const w = parseFloat(document.getElementById('ifraWeight').value) || 0.35;
-            const v = parseFloat(document.getElementById('ifraVolume').value) || 100;
-            const limits = { 'oakmoss': 0.1, 'bergamot': 0.4, 'cinnamon': 0.05, 'eugenol': 2.5, 'iso': 21.4, 'cashmeran': 3.8, 'lilial': 0, 'musk': 2.0, 'sandalwood': 10.0, 'limonene': 10.0, 'linalool': 5.0, 'citral': 1.0 };
-            const limit = limits[m];
-            const conc = (w / v) * 100;
-            const safe = limit === 0 ? false : conc <= limit;
-            document.getElementById('ifraResult').innerHTML = `<div class="cards-grid"><div class="card"><h3>النتيجة</h3><div class="detail-row"><strong>التركيز:</strong> <span>${conc.toFixed(2)}%</span></div><div class="detail-row"><strong>الحد:</strong> <span>${limit}%</span></div><div class="alert ${safe ? 'alert-success' : 'alert-danger'}">${limit === 0 ? '⛔ محظور' : (safe ? '✅ مطابق' : '❌ غير مطابق')}</div></div></div>`;
-        }
-
-        function calculateCost() {
-            const v = parseFloat(document.getElementById('costVolume').value) || 100;
-            const oilKg = parseFloat(document.getElementById('costOilKg').value) || 120;
-            const alcL = parseFloat(document.getElementById('costAlcL').value) || 6;
-            const pack = parseFloat(document.getElementById('costPack').value) || 2.75;
-            const margin = parseFloat(document.getElementById('costMargin').value) || 60;
-            const oilW = v * 0.20 * 0.95;
-            const alcV = v * 0.80;
-            const oilC = (oilW / 1000) * oilKg;
-            const alcC = (alcV / 1000) * alcL;
-            const total = oilC + alcC + pack;
-            const sell = total * (1 + margin / 100);
-            document.getElementById('costResult').innerHTML = `<div class="cards-grid"><div class="card"><h3>التكلفة</h3><div class="detail-row"><strong>الزيت:</strong> <span>${oilC.toFixed(2)}</span></div><div class="detail-row"><strong>الكحول:</strong> <span>${alcC.toFixed(2)}</span></div><div class="detail-row"><strong>التغليف:</strong> <span>${pack.toFixed(2)}</span></div><div class="detail-row"><strong>الإجمالي:</strong> <span>${total.toFixed(2)}</span></div><div class="detail-row"><strong>البيع:</strong> <span>${sell.toFixed(2)}</span></div></div></div>`;
-        }
-
-        window.addEventListener('DOMContentLoaded', init);
-    </script>
 </body>
 </html>
+
+
+
+
+
+
