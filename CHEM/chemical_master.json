@@ -1,58 +1,83 @@
 {
-    "Iso E Super": {
-        "cas": "54464-57-2",
-        "substantivity_hours": 400,
-        "vapor_pressure_mmhg": 0.00062,
-        "ifra_max_pct": 20.0,
-        "role": "هيكل خشبي/مجسّم للرائحة"
-    },
-    "Hedione": {
-        "cas": "24851-98-7",
-        "substantivity_hours": 384,
-        "vapor_pressure_mmhg": 0.001,
-        "ifra_max_pct": 100.0,
-        "role": "موسع انتشار إشعاعي"
-    },
-    "Ambroxan": {
-        "cas": "6790-58-5",
-        "substantivity_hours": 400,
-        "vapor_pressure_mmhg": 0.0001,
-        "ifra_max_pct": 100.0,
-        "role": "مثبت عنبري عميق"
-    },
-    "Galaxolide": {
-        "cas": "1222-05-5",
-        "substantivity_hours": 400,
-        "vapor_pressure_mmhg": 8.5e-05,
-        "ifra_max_pct": 20.0,
-        "role": "مسك نظيف قاعدي"
-    },
-    "Cyclomethicone D5": {
-        "cas": "541-02-6",
-        "substantivity_hours": 0,
-        "vapor_pressure_mmhg": 0.2,
-        "ifra_max_pct": 100.0,
-        "role": "ناقل حريري/مانع تزييت"
-    },
-    "DPG (Dipropylene Glycol)": {
-        "cas": "25265-71-8",
-        "substantivity_hours": 0,
-        "vapor_pressure_mmhg": 0.016,
-        "ifra_max_pct": 100.0,
-        "role": "معدل تبخر كيميائي"
-    },
-    "BHT (Antioxidant)": {
-        "cas": "128-37-0",
-        "substantivity_hours": 0,
-        "vapor_pressure_mmhg": 0.001,
-        "ifra_max_pct": 0.5,
-        "role": "مضاد أكسدة لحماية الزيوت"
-    },
-    "Ethanol 96%": {
-        "cas": "64-17-5",
-        "substantivity_hours": 0,
-        "vapor_pressure_mmhg": 59.3,
-        "ifra_max_pct": 100.0,
-        "role": "مذيب كحولي متطاير"
-    }
+  "Iso E Super": {
+    "cas": "54464-57-2",
+    "density": 0.965,
+    "substantivity_hours": 400,
+    "vapor_pressure_mmhg": 0.00062,
+    "ifra_max_pct": 20.0,
+    "role": "هيكل خشبي/مجسّم للرائحة",
+    "price_per_kg_jod": 68.0
+  },
+  "Hedione": {
+    "cas": "24851-98-7",
+    "density": 1.0,
+    "substantivity_hours": 96,
+    "vapor_pressure_mmhg": 0.001,
+    "ifra_max_pct": 30.0,
+    "role": "موسع انتشار ومفتاح هوائي",
+    "price_per_kg_jod": 97.0
+  },
+  "Ambroxan": {
+    "cas": "6790-58-5",
+    "density": 1.02,
+    "substantivity_hours": 400,
+    "vapor_pressure_mmhg": 0.0003,
+    "ifra_max_pct": 5.0,
+    "role": "عنبر جاف طويل الأمد",
+    "price_per_kg_jod": 697.0
+  },
+  "Galaxolide": {
+    "cas": "1222-05-5",
+    "density": 1.05,
+    "substantivity_hours": 400,
+    "vapor_pressure_mmhg": 0.00007,
+    "ifra_max_pct": 2.0,
+    "role": "مسك نظيف",
+    "price_per_kg_jod": 78.0
+  },
+  "Cyclomethicone D5": {
+    "cas": "541-02-6",
+    "density": 0.95,
+    "substantivity_hours": 2,
+    "vapor_pressure_mmhg": 0.15,
+    "ifra_max_pct": 100.0,
+    "role": "ناقل حريري سريع الجفاف",
+    "price_per_kg_jod": 35.0
+  },
+  "DPG (Dipropylene Glycol)": {
+    "cas": "25265-71-8",
+    "density": 1.02,
+    "substantivity_hours": 300,
+    "vapor_pressure_mmhg": 0.01,
+    "ifra_max_pct": 100.0,
+    "role": "مذيب ومبطئ تبخر",
+    "price_per_kg_jod": 12.0
+  },
+  "IPM (Isopropyl Myristate)": {
+    "cas": "110-27-0",
+    "density": 0.85,
+    "substantivity_hours": 200,
+    "vapor_pressure_mmhg": 0.01,
+    "ifra_max_pct": 100.0,
+    "role": "ناقل جاف يمنع البقع",
+    "price_per_kg_jod": 20.0
+  },
+  "BHT": {
+    "cas": "128-37-0",
+    "density": 1.05,
+    "substantivity_hours": 500,
+    "vapor_pressure_mmhg": 0.0001,
+    "ifra_max_pct": 0.1,
+    "role": "مضاد أكسدة",
+    "price_per_kg_jod": 60.0
+  },
+  "Ethyl Maltol": {
+    "cas": "4940-11-8",
+    "density": 1.0,
+    "substantivity_hours": 200,
+    "vapor_pressure_mmhg": 0.001,
+    "ifra_max_pct": 0.5,
+    "role": "سكر كراميل",
+    "price_per_kg_jod": 80.0
+  }
 }
