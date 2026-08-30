@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mask - Perfume Empire</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+        }
+        /* أزرار التنقل */
+        .nav-buttons {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .nav-btn {
+            background: transparent;
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+        .nav-btn.active {
+            background: #d4af37;
+            color: #000;
+        }
+        .nav-btn:hover {
+            background: #d4af37;
+            color: #000;
+        }
+        /* بطاقات المتجر */
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .product-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #222;
+        }
+        .product-card h3 {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #fff;
+        }
+        .product-card .price {
+            color: #d4af37;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .product-card .notes {
+            font-size: 12px;
+            color: #888;
+            margin: 5px 10px;
+        }
+        .product-card button {
+            background: #d4af37;
+            color: #000;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+            width: 90%;
+            font-weight: bold;
+        }
+        /* المختبر */
+        #labPanel {
+            display: none;
+            padding: 20px;
+        }
+        .lab-box {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            margin-bottom: 20px;
+        }
+        .lab-box h2 {
+            color: #d4af37;
+        }
+        input, select, textarea {
+            background: #222;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .lab-btn {
+            background: #d4af37;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .lab-btn:hover {
+            background: #bfa030;
+        }
+        /* لوحة النتائج */
+        .result-box {
+            background: #0f2a0f;
+            border: 1px solid #4caf50;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        .result-box h3 {
+            color: #4caf50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 8px;
+            text-align: center;
+            font-size: 14px;
+        }
+        th {
+            background-color: #333;
+            color: #d4af37;
+        }
+        .cost-dashboard {
+            background: #1a2a1a;
+            border: 1px solid #4caf50;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        .cost-dashboard h3 {
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🎭 The Mask</h1>
+    <p class="subtitle">Beyond the Face</p>
+    
+    <!-- أزرار التنقل -->
+    <div class="nav-buttons">
+        <button class="nav-btn active" onclick="showStore()">🛍️ المتجر</button>
+        <button class="nav-btn" onclick="showLab()">⚗️ المختبر</button>
+    </div>
+    
+    <!-- قسم المتجر -->
+    <div id="storePanel">
+        <div class="store-grid" id="storeGrid"></div>
+    </div>
+    
+    <!-- قسم المختبر -->
+    <div id="labPanel">
+        <div class="lab-box">
+            <h2>🔒 دخول المختبر</h2>
+            <input type="password" id="labPassword" placeholder="كلمة المرور">
+            <button class="lab-btn" onclick="checkPassword()">دخول</button>
+            <p id="errMsg" style="color:red; display:none;">كلمة المرور غير صحيحة!</p>
+        </div>
+        
+        <div id="labContent" style="display:none;">
+            <div class="lab-box">
+                <h2>⚙️ محرك التصنيع</h2>
+                <label>العطر الأساسي:</label>
+                <input type="text" id="basePerfume" placeholder="اكتب اسم العطر">
+                
+                <label>العائلة العطرية:</label>
+                <select id="familySelect">
+                    <option value="woody">خشبي</option>
+                    <option value="citrus">حمضي</option>
+                    <option value="marine">بحري</option>
+                    <option value="amber">عنبري</option>
+                    <option value="gourmand">غورماند</option>
+                    <option value="floral">أزهار</option>
+                    <option value="musky">مسك</option>
+                    <option value="fruity">فواكه</option>
+                    <option value="green">أخضر</option>
+                    <option value="leather">جلدي</option>
+                </select>
+                
+                <label>حجم التشغيلة (جرام):</label>
+                <input type="number" id="batchSize" value="100" min="10">
+                
+                <label>التركيز:</label>
+                <select id="concentration">
+                    <option value="0.25">Extrait 25%</option>
+                    <option value="0.18" selected>EDP 18%</option>
+                    <option value="0.10">EDT 10%</option>
+                    <option value="0.04">EDC 4%</option>
+                </select>
+                
+                <button class="lab-btn" onclick="runEngine()">⚡ تنفيذ المحرك</button>
+            </div>
+            
+            <div class="result-box" id="resultBox">
+                <h3>⚗️ المعادلة المعملية</h3>
+                <table id="formulaTable">
+                    <thead>
+                        <tr>
+                            <th>المكون</th>
+                            <th>الوزن (g)</th>
+                            <th>النسبة %</th>
+                        </tr>
+                    </thead>
+                    <tbody id="formulaBody"></tbody>
+                </table>
+            </div>
+            
+            <div class="cost-dashboard" id="costDashboard">
+                <h3>💰 لوحة التكاليف (JOD)</h3>
+                <p id="totalCost">التكلفة الإجمالية: 0.00 د.أ</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // كلمة مرور المختبر
+    const LAB_PASSWORD = "1993";
+    
+    // قاعدة البيانات (تقرأ من GitHub)
+    let perfumeDB = [];
+    
+    // تحميل البيانات
+    async function loadData() {
+        try {
+            const response = await fetch('https://raw.githubusercontent.com/hourane48-prog/-perfume-data/main/DATA/perfume_catalog.json');
+            perfumeDB = await response.json();
+            console.log("✅ تم تحميل", perfumeDB.length, "عطر");
+            renderStore();
+        } catch (error) {
+            console.error("❌ فشل تحميل البيانات:", error);
+        }
+    }
+    
+    // عرض المتجر
+    function renderStore() {
+        const grid = document.getElementById('storeGrid');
+        grid.innerHTML = "";
+        
+        perfumeDB.forEach((perfume, index) => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            
+            const notes = perfume.top_notes && perfume.top_notes.length > 0 
+                ? perfume.top_notes.slice(0, 3).join('، ') 
+                : 'لا توجد نوتات';
+            
+            card.innerHTML = `
+                ${perfume.image ? `<img src="${perfume.image}" alt="${perfume.name}" loading="lazy">` : '<div style="height:200px; background:#222; display:flex; align-items:center; justify-content:center;">لا توجد صورة</div>'}
+                <h3>${perfume.name}</h3>
+                <p class="price">${perfume.priceJOD} د.أ</p>
+                <p class="notes">${notes}</p>
+                <button onclick="addToCart(${index})">🛒 اطلب</button>
+            `;
+            
+            grid.appendChild(card);
+        });
+    }
+    
+    // عرض المختبر
+    function showLab() {
+        document.getElementById('storePanel').style.display = 'none';
+        document.getElementById('labPanel').style.display = 'block';
+        document.querySelectorAll('.nav-btn')[0].classList.remove('active');
+        document.querySelectorAll('.nav-btn')[1].classList.add('active');
+    }
+    
+    // عرض المتجر
+    function showStore() {
+        document.getElementById('storePanel').style.display = 'block';
+        document.getElementById('labPanel').style.display = 'none';
+        document.querySelectorAll('.nav-btn')[1].classList.remove('active');
+        document.querySelectorAll('.nav-btn')[0].classList.add('active');
+    }
+    
+    // فحص كلمة المرور
+    function checkPassword() {
+        const pass = document.getElementById('labPassword').value;
+        if (pass === LAB_PASSWORD) {
+            document.getElementById('labContent').style.display = 'block';
+            document.getElementById('errMsg').style.display = 'none';
+        } else {
+            document.getElementById('errMsg').style.display = 'block';
+        }
+    }
+    
+    // تنفيذ المحرك الكيميائي
+    function runEngine() {
+        const basePerfume = document.getElementById('basePerfume').value;
+        const family = document.getElementById('familySelect').value;
+        const batchSize = parseFloat(document.getElementById('batchSize').value);
+        const concentration = parseFloat(document.getElementById('concentration').value);
+        
+        // حساب كمية الزيت
+        const oilWeight = batchSize * concentration;
+        
+        // جدول المعادلة
+        const formula = [
+            { name: basePerfume, weight: oilWeight, pct: concentration * 100 },
+            { name: "Iso E Super", weight: 0.8, pct: 0.8 },
+            { name: "Hedione", weight: 0.5, pct: 0.5 },
+            { name: "Ambroxan", weight: 0.2, pct: 0.2 },
+            { name: "DPG", weight: 1.0, pct: 1.0 },
+            { name: "Ethanol 96%", weight: batchSize - (oilWeight + 2.5), pct: 100 - (concentration * 100 + 2.5) }
+        ];
+        
+        // عرض النتائج
+        const tableBody = document.getElementById('formulaBody');
+        tableBody.innerHTML = "";
+        
+        formula.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.name}</td>
+                <td>${item.weight.toFixed(2)}</td>
+                <td>${item.pct.toFixed(2)}%</td>
+            `;
+            tableBody.appendChild(row);
+        });
+        
+        // حساب التكلفة (تقريبي)
+        const estimatedCost = (oilWeight * 0.15) + 2.5;
+        document.getElementById('totalCost').innerText = `التكلفة الإجمالية: ${estimatedCost.toFixed(2)} د.أ`;
+        
+        // عرض النتائج
+        document.getElementById('resultBox').style.display = 'block';
+        document.getElementById('costDashboard').style.display = 'block';
+    }
+    
+    // إضافة إلى السلة
+    function addToCart(index) {
+        const perfume = perfumeDB[index];
+        alert(`🛒 تم إضافة "${perfume.name}" إلى السلة!\n💰 السعر: ${perfume.priceJOD} د.أ`);
+    }
+    
+    // تحميل البيانات عند فتح الصفحة
+    window.onload = loadData;
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
